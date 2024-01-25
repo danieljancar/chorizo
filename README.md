@@ -1,0 +1,84 @@
+<div align="center">
+    <img src="assets/logo.png" width="250" height="250" alt="Chorizo Logo">
+    <h1>Chorizo</h1>
+    <p>A self-hosted course management platform. Manage courses, create entry lists, and share downloadable resources seamlessly. Fully dynamic and tailored for streamlined administration.</p>
+</div>
+
+<div align="center">
+
+[![Chorizo](https://img.shields.io/badge/Chorizo-ea8634?logo=github)](https://github.com/danieljancar/chorizo)
+[![Mockups - Figma](https://img.shields.io/badge/Mockups-Figma-e36631?logo=figma&logoColor=e36631)](https://www.figma.com/file/oarKaGgevt8SQNcB2w4Lbr/Mockups?type=design&mode=design&t=CBVvajzXHWh5z6Gf-1)
+[![issues - chorizo](https://img.shields.io/github/issues/danieljancar/chorizo)](https://github.com/danieljancar/chorizo/issues)
+[![License](https://img.shields.io/badge/License-MIT-blue)](#license)
+
+[![Angular](https://img.shields.io/badge/Angular-c3012f?logo=angular)](https://angular.dev)
+[![TailwindCSS](https://img.shields.io/badge/TailwindCSS-ffffff?logo=tailwindcss)](https://tailwindcss.com/)
+[![Angular Material](https://img.shields.io/badge/Angular_Material-3f50b5?logo=angular)](https://material.angular.io/)
+[![Typescript](https://img.shields.io/badge/Typescript-ffffff?logo=typescript)](https://www.typescriptlang.org/)
+[![Firebase](https://img.shields.io/badge/Firebase-ffffff?logo=firebase)](https://firebase.google.com/)
+
+</div>
+
+---
+
+# Table of Contents
+
+- [Features](#features)
+- [Usage](#usage)
+- [Setup](#setup)
+- [Contributing](#contributing)
+    - [Prerequisites](#prerequisites)
+- [License](#license)
+- [Credits](#credits)
+
+# Features
+
+Chorizo is designed to revolutionize course management with its cutting-edge features
+
+- **Highly Configurable**: Customize Chorizo to your needs with a wide range of configuration options.
+- **Self-Hosting**: Gain full control over your data and course material by hosting Chorizo on your own server.
+- **Angular Frontend**: Enjoy a sleek, responsive user interface designed using Angular, optimized for both desktop and
+  mobile devices.
+- **Firebase Backend**: Benefit from a robust, scalable backend powered by Firebase, ensuring high performance and
+  reliability.
+- **Efficient Course Management**: Create and manage entry lists, share resources, and streamline course administration
+  with ease.
+- **Downloadable Resources**: Offer students and course participants easy access to downloadable course materials.
+- **Comprehensive Documentation**: Find all the information you need in our extensive documentation, making it easier to
+  get started and resolve any issues.
+
+# Usage
+
+Detailed instructions on how to use Chorizo for managing your courses will be provided here...
+
+# Setup
+
+Detailed instructions on how to set up Chorizo on your own server will be provided here...
+
+# Contributing
+
+Contributions are appreciated and needed to make Chorizo the best course management platform out there. If you want to
+contribute, please read
+the [Contributing Guidelines](.github/CONTRIBUTING.md), [Code of Conduct](.github/CODE_OF_CONDUCT.md),
+and [Developer Certificate of Origin](.github/DCO.md) first.
+
+## Prerequisites
+
+- [Node.js](https://nodejs.org/en/)
+- [Yarn](https://yarnpkg.com/)
+- [Git](https://git-scm.com/)
+
+# License
+
+This project is licensed under the [MIT License](LICENSE). By contributing to Chorizo, you agree that your contributions
+will be released under the same license. Also, you agree to
+the [Contributor Covenant Code of Conduct](.github/CODE_OF_CONDUCT.md)
+and [Developer Certificate of Origin](.github/DCO.md).
+
+# Credits
+
+Thanks to the following people for their contributions:
+
+[![Contributors](https://contrib.rocks/image?repo=danieljancar/chorizo)](https://github.com/danieljancar/chorizo/graphs/contributors)
+
+Released under [MIT License](LICENSE) by [@danieljancar](https://github.com/danieljancar).
