@@ -8,10 +8,9 @@ describe('NavbarCourseDetailComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [NavbarCourseDetailComponent]
-    })
-    .compileComponents();
-    
+      imports: [NavbarCourseDetailComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(NavbarCourseDetailComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
