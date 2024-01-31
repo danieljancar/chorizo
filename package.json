@@ -1,0 +1,29 @@
+{
+  "name": "chorizo",
+  "version": "0.1.0",
+  "description": "A self-hosted course management platform. Manage courses, create entry lists, and share downloadable resources seamlessly. Fully dynamic and tailored for streamlined administration.",
+  "scripts": {},
+  "author": "Daniel Jancar",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+,danieljancar/chorizo.git"
+  },
+  "bugs": {
+    "url": ",danieljancar/chorizo/issues",
+    "email": "dan_jan1@icloud.com",
+    "type": "git"
+  },
+  "keywords": [
+    "course",
+    "management",
+    "platform",
+    "self-hosted",
+    "dynamic",
+    "tailored",
+    "streamlined",
+    "administration",
+    "technical-course",
+    "course-management"
+  ]
+}
