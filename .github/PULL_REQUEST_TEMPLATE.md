@@ -1,5 +1,3 @@
-# Pull Request Template
-
 ## Types of changes
 
 - [ ] Bug fix (non-breaking change which fixes an issue)
