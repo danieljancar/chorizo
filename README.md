@@ -27,7 +27,7 @@
 - [Usage](#usage)
 - [Setup](#setup)
 - [Contributing](#contributing)
-    - [Prerequisites](#prerequisites)
+  - [Prerequisites](#prerequisites)
 - [License](#license)
 - [Credits](#credits)
 

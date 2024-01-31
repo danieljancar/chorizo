@@ -2,7 +2,7 @@
   "name": "adminui",
   "private": true,
   "version": "0.0.0",
-    "description": "Admin UI for Chorizo course platform.",
+  "description": "Admin UI for Chorizo course platform.",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",

@@ -18,12 +18,12 @@ yarn dev
 
 ### Building the project
 
-Make sure you update your `package.json` `build` script with the correct 
+Make sure you update your `package.json` `build` script with the correct
 project name. Then run:
 
 ```bash
 yarn build
 ```
 
-> Note: this may not work if you have set up your Firebase hosting with 
+> Note: this may not work if you have set up your Firebase hosting with
 > a custom config.
