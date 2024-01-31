@@ -12,7 +12,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/git+,danieljancar/chorizo.git"
+    "url": "https://github.com/danieljancar/chorizo.git"
   },
   "bugs": {
     "email": "dan_jan1@icloud.com"
@@ -35,6 +35,7 @@
     "@typescript-eslint/parser": "^6.20.0",
     "eslint": "^8.56.0",
     "husky": "^9.0.7",
-    "prettier": "3.2.4"
+    "prettier": "3.2.4",
+    "semantic-release": "^23.0.0"
   }
 }
