@@ -2,17 +2,18 @@
   "name": "chorizo",
   "version": "0.1.0",
   "description": "A self-hosted course management platform. Manage courses, create entry lists, and share downloadable resources seamlessly. Fully dynamic and tailored for streamlined administration.",
-  "scripts": {},
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
   "author": "Daniel Jancar",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+,danieljancar/chorizo.git"
+    "url": "git+https://github.com/git+,danieljancar/chorizo.git"
   },
   "bugs": {
-    "url": ",danieljancar/chorizo/issues",
-    "email": "dan_jan1@icloud.com",
-    "type": "git"
+    "email": "dan_jan1@icloud.com"
   },
   "keywords": [
     "course",
@@ -25,5 +26,12 @@
     "administration",
     "technical-course",
     "course-management"
-  ]
+  ],
+  "homepage": "https://github.com/git+,danieljancar/chorizo#readme",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.20.0",
+    "@typescript-eslint/parser": "^6.20.0",
+    "eslint": "^8.56.0",
+    "husky": "^9.0.7"
+  }
 }
