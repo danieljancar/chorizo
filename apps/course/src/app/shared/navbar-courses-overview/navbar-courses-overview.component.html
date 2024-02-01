@@ -1,6 +1,15 @@
-<mat-toolbar>
-  <button [routerLink]="['/']" aria-label="menu Icon" mat-icon-button>
+<mat-toolbar class="bg-amber-500">
+  <button
+    [routerLink]="['/']"
+    aria-label="menu Icon"
+    class="cursor-pointer"
+    mat-icon-button
+  >
     <img alt="chorizo logo" height="757" ngSrc="/assets/logo.png" width="753" />
   </button>
-  <span>Your Title</span>
+  <span
+    [routerLink]="['/']"
+    class="cursor-pointer transition duration-150 ease-in hover:opacity-75"
+    >Your Title</span
+  >
 </mat-toolbar>
