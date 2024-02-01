@@ -13,7 +13,6 @@
 
 [![Angular](https://img.shields.io/badge/Angular-c3012f?logo=angular)](https://angular.dev)
 [![TailwindCSS](https://img.shields.io/badge/TailwindCSS-ffffff?logo=tailwindcss)](https://tailwindcss.com/)
-[![PrelineUI](https://img.shields.io/badge/Preline-3f50b5?logo=preline)](https://preline.co)
 [![Typescript](https://img.shields.io/badge/Typescript-ffffff?logo=typescript)](https://www.typescriptlang.org/)
 [![Firebase](https://img.shields.io/badge/Firebase-ffffff?logo=firebase)](https://firebase.google.com/)
 
