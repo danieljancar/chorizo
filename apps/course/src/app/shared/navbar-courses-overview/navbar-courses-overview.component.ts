@@ -1,20 +1,11 @@
 import { Component } from '@angular/core';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
 import { NgOptimizedImage } from '@angular/common';
 
 @Component({
   selector: 'app-navbar-courses-overview',
   standalone: true,
-  imports: [
-    MatToolbarModule,
-    MatButtonModule,
-    MatIconModule,
-    RouterLink,
-    NgOptimizedImage,
-  ],
+  imports: [RouterLink, NgOptimizedImage],
   templateUrl: './navbar-courses-overview.component.html',
   styleUrl: './navbar-courses-overview.component.scss',
 })
