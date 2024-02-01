@@ -1,0 +1,22 @@
+<app-navbar-courses-overview />
+<div class="flex justify-center items-center">
+  <div class="card w-full lg:w-1/2">
+    <div class="card-body">
+      <h2 class="card-title">Login</h2>
+      <p>Enter your credentials to access your account.</p>
+      <form (ngSubmit)="submit()" [formGroup]="credentials" class="form-control">
+        <input class="input input-bordered" formControlName="email" placeholder="Email" type="email">
+        @if (getErrorMessage('email')) {
+          <div class="text-error text-xs m-2">{{ getErrorMessage('email') }}</div>
+        }
+        <span class="my-1.5"></span>
+        <input class="input input-bordered" formControlName="password" placeholder="Password"
+               type="password">
+        @if (getErrorMessage('password')) {
+          <div class="text-red-500 text-xs m-2">{{ getErrorMessage('password') }}</div>
+        }
+        <button [disabled]="!credentials.valid" class="btn btn-primary mt-7" type="submit">Login</button>
+      </form>
+    </div>
+  </div>
+</div>
