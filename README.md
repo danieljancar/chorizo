@@ -1,5 +1,5 @@
 <div align="center">
-    <img src="assets/logo.png" width="250" height="250" alt="Chorizo Logo">
+    <img src="apps/course/src/assets/logo.png" width="250" height="250" alt="Chorizo Logo">
     <h1>Chorizo</h1>
     <p>A self-hosted course management platform. Manage courses, create entry lists, and share downloadable resources seamlessly. Fully dynamic and tailored for streamlined administration.</p>
 </div>
