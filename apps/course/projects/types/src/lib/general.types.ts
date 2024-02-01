@@ -1,5 +1,5 @@
 export type General = {
-  id: number;
+  id: string;
   title: string;
   description: string;
   logo: string;
