@@ -4,9 +4,7 @@ import { NavbarCoursesOverviewComponent } from '../../shared/navbar-courses-over
 @Component({
   selector: 'app-courses-overview',
   standalone: true,
-  imports: [
-    NavbarCoursesOverviewComponent,
-  ],
+  imports: [NavbarCoursesOverviewComponent],
   templateUrl: './courses-overview.component.html',
   styleUrl: './courses-overview.component.scss',
 })
