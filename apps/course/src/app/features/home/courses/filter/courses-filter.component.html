@@ -1,4 +1,4 @@
-@defer (on idle;prefetch on idle) {
+@defer (on idle; prefetch on idle) {
   <div class="navbar bg-base-100">
     <div class="flex-1 items-center">
       <button class="btn btn-ghost text-2xl btn-lg">Courses</button>
@@ -6,8 +6,12 @@
     <div class="flex gap-2 items-center">
       <div class="form-control">
         <form [formGroup]="filterForm">
-          <input type="text" class="input input-bordered w-24 md:w-auto" placeholder="Search"
-                 formControlName="searchTerm">
+          <input
+            type="text"
+            class="input input-bordered w-24 md:w-auto"
+            placeholder="Search"
+            formControlName="searchTerm"
+          />
         </form>
       </div>
       <div class="dropdown dropdown-end z-30">
@@ -15,7 +19,10 @@
           {{ getSortText() }}
           <mat-icon class="ml-2">arrow_drop_down</mat-icon>
         </div>
-        <ul class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52" tabindex="0">
+        <ul
+          class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
+          tabindex="0"
+        >
           <li><a (click)="setSortBy(Sort.latest)">Latest</a></li>
           <li><a (click)="setSortBy(Sort.oldest)">Oldest</a></li>
         </ul>
