@@ -1,7 +1,7 @@
 export type Course = {
   id: string;
   published: boolean;
-  name: string;
+  title: string;
   about: string;
   banner?: string;
   category?: string;
@@ -11,7 +11,6 @@ export type Course = {
     repository?: string;
     npm?: string;
   };
-  agenda?: AgendaEntry[];
   createdAt: Date;
   updatedAt?: Date;
 };

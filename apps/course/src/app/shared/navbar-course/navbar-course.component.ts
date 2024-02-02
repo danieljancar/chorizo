@@ -3,12 +3,12 @@ import { environment } from '../../../environments/environment';
 import { RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-navbar-course-detail',
+  selector: 'app-navbar-course',
   standalone: true,
   imports: [RouterLink],
-  templateUrl: './navbar-course-detail.component.html',
-  styleUrl: './navbar-course-detail.component.scss',
+  templateUrl: './navbar-course.component.html',
+  styleUrl: './navbar-course.component.scss',
 })
-export class NavbarCourseDetailComponent {
+export class NavbarCourseComponent {
   title: string = environment.metaConfig.title;
 }

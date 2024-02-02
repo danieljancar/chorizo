@@ -16,10 +16,8 @@ export class AuthService {
   async isLoggedIn(): Promise<boolean> {
     try {
       const user = await this.afa.currentUser;
-      console.log('Current user:', user);
       return user !== null;
     } catch (error) {
-      console.error('Error fetching current user:', error);
       return false;
     }
   }

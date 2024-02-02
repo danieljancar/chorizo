@@ -9,16 +9,16 @@ import {
   MatSidenavContent,
 } from '@angular/material/sidenav';
 import { MatNavList } from '@angular/material/list';
-import { AuthService } from '../../core/auth.service';
+import { AuthService } from '../../core/auth/auth.service';
 import { AsyncPipe } from '@angular/common';
 import { Observable } from 'rxjs';
-import { ToastService } from '../../core/toast.service';
+import { ToastService } from '../../core/utility/toast.service';
 import { environment } from '../../../environments/environment';
 
 @Component({
-  selector: 'app-navbar-courses-overview',
-  templateUrl: './navbar-courses-overview.component.html',
-  styleUrls: ['./navbar-courses-overview.component.scss'],
+  selector: 'app-navbar',
+  templateUrl: './navbar.component.html',
+  styleUrls: ['./navbar.component.scss'],
   standalone: true,
   imports: [
     MatToolbarModule,
@@ -32,7 +32,7 @@ import { environment } from '../../../environments/environment';
     AsyncPipe,
   ],
 })
-export class NavbarCoursesOverviewComponent {
+export class NavbarComponent {
   isLoggedIn$: Observable<boolean>;
   title: string = environment.metaConfig.title;
 

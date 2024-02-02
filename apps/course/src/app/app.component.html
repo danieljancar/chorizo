@@ -1,7 +1,7 @@
 @if (showCoursesNavbar) {
-  <app-navbar-course-detail />
+  <app-navbar-course />
 } @else {
-  <app-navbar-courses-overview />
+  <app-navbar />
 }
 <router-outlet />
 @if (toastService.getToasts().length) {
