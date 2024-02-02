@@ -1,11 +1,21 @@
+@if (showCoursesNavbar) {
+  <app-navbar-course-detail />
+} @else {
+  <app-navbar-courses-overview />
+}
 <router-outlet />
 @if (toastService.getToasts().length) {
   @for (toast of toastService.getToasts();track $index) {
     <div class="toast">
-      <div class="alert" [ngClass]="{'alert-info': toast.type === 'info',
-                     'alert-success': toast.type === 'success',
-                     'alert-warning': toast.type === 'warning',
-                     'alert-error': toast.type === 'error'}">
+      <div
+        class="alert"
+        [ngClass]="{
+          'alert-info': toast.type === 'info',
+          'alert-success': toast.type === 'success',
+          'alert-warning': toast.type === 'warning',
+          'alert-error': toast.type === 'error'
+        }"
+      >
         <span>{{ toast.message }}</span>
       </div>
     </div>

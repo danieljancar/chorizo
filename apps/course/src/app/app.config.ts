@@ -23,6 +23,7 @@ export const appConfig: ApplicationConfig = {
     importProvidersFrom(provideStorage(() => getStorage())),
     importProvidersFrom(
       AngularFireModule.initializeApp(environment.firebaseConfig),
-    ), provideAnimationsAsync(),
+    ),
+    provideAnimationsAsync(),
   ],
 };
