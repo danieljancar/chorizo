@@ -11,8 +11,10 @@ import {
 import { MatNavList } from '@angular/material/list';
 import { AuthService } from '../../core/auth.service';
 import { AsyncPipe } from '@angular/common';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, catchError, finalize, Observable, of } from 'rxjs';
 import { ToastService } from '../../core/toast.service';
+import { GeneralService } from '../../core/general.service';
+import { General } from '../../../../projects/types/src/lib/general.types';
 
 @Component({
   selector: 'app-navbar-courses-overview',
@@ -33,13 +35,24 @@ import { ToastService } from '../../core/toast.service';
 })
 export class NavbarCoursesOverviewComponent {
   isLoggedIn$: Observable<boolean>;
+  mainDocument$: Observable<General | undefined>;
+  isLoading$ = new BehaviorSubject<boolean>(true);
+  error$ = new BehaviorSubject<string | null>(null);
 
   constructor(
     private authService: AuthService,
     private router: Router,
     private toastService: ToastService,
+    private generalService: GeneralService,
   ) {
     this.isLoggedIn$ = this.authService.isLoggedIn$;
+    this.mainDocument$ = this.generalService.getMainDocument().pipe(
+      catchError((error) => {
+        this.error$.next(error.message);
+        return of(undefined);
+      }),
+      finalize(() => this.isLoading$.next(false)),
+    );
   }
 
   logout() {

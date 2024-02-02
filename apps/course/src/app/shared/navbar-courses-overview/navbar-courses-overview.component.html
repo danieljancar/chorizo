@@ -11,7 +11,11 @@
         <li routerLink="/c"><a>Courses</a></li>
       </ul>
     </div>
-    <a class="btn btn-ghost text-xl" routerLink="/">Your title</a>
+    @if (mainDocument$ | async;as main) {
+      <a class="btn btn-ghost text-xl" routerLink="/">{{ main.title }}</a>
+    } @else if (isLoading$ | async) {
+      <a class="btn btn-ghost text-xl" routerLink="/">Chorizo</a>
+    }
   </div>
   <div class="navbar-center hidden lg:flex">
     <ul class="menu menu-horizontal px-1">
