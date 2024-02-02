@@ -20,16 +20,18 @@ export class CourseService {
         if (searchTerm) {
           query = query
             .where('title', '>=', searchTerm)
-            .where('title', '<=', searchTerm + '\uf8ff');
+            .where('title', '<=', searchTerm + '\uf8ff')
+            .orderBy('title')
+            .limit(10);
         }
 
-        if (sortBy === 'oldest') {
-          query = query.orderBy('createdAt', 'asc');
-        } else {
-          query = query.orderBy('createdAt', 'desc');
+        if (!searchTerm) {
+          if (sortBy === 'oldest') {
+            query = query.orderBy('createdAt', 'asc');
+          } else {
+            query = query.orderBy('createdAt', 'desc');
+          }
         }
-
-        query = query.limit(10);
 
         return query;
       })

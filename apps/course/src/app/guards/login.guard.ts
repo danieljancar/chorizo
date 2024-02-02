@@ -4,7 +4,7 @@ import { CanActivate, Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Observable } from 'rxjs';
 import { map, take, tap } from 'rxjs/operators';
-import { AuthService } from '../core/auth/auth.service';
+import { ToastService } from '../core/utility/toast.service';
 
 @Injectable({
   providedIn: 'root',
@@ -13,16 +13,18 @@ export class LoginGuard implements CanActivate {
   constructor(
     private afa: AngularFireAuth,
     private router: Router,
-    private authService: AuthService,
+    private toastService: ToastService,
   ) {}
 
   canActivate(): Observable<boolean> | Promise<boolean> | boolean {
     return this.afa.authState.pipe(
       take(1),
-      map((user) => !user), // Invert the boolean, true if auth is NOT logged in
+      map((user) => !user),
       tap((notLoggedIn) => {
         if (!notLoggedIn) {
-          this.router.navigate(['/']); // Redirect to homepage or another route if the auth is already logged in
+          this.router.navigate(['/']).then(() => {
+            this.toastService.showToast('You are already logged in.', 'info');
+          });
         }
       }),
     );

@@ -1,14 +1,16 @@
-@defer (on idle; prefetch on idle) {
+@defer (on immediate; prefetch on idle) {
   <div class="navbar bg-base-100">
-    <div class="flex-1 items-center">
-      <button class="btn btn-ghost text-2xl btn-lg">Courses</button>
+    <div class="items-center flex-1">
+      <button class="btn btn-ghost text-2xl btn-lg md:block hidden">
+        Courses
+      </button>
     </div>
     <div class="flex gap-2 items-center">
       <div class="form-control">
         <form [formGroup]="filterForm">
           <input
             type="text"
-            class="input input-bordered w-24 md:w-auto"
+            class="input input-bordered w-auto"
             placeholder="Search"
             formControlName="searchTerm"
           />

@@ -83,9 +83,7 @@ export class LoginComponent {
       if (email && password) {
         try {
           await this.authService.login(email, password);
-          await this.router.navigate(['/']).then(() => {
-            this.toastService.showToast('Logged in successfully', 'success');
-          });
+          await this.router.navigate(['/']);
         } catch (error) {
           this.toastService.showToast(
             'Error logging in, please try again.',

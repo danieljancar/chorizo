@@ -17,6 +17,13 @@ export class ToastService {
     type: 'info' | 'success' | 'warning' | 'error' = 'info',
   ) {
     const toast = { message, type };
+
+    const maxToasts = 1;
+
+    if (this.toasts.length >= maxToasts) {
+      this.toasts.shift();
+    }
+
     this.toasts.push(toast);
 
     setTimeout(() => this.removeToast(toast), 5000);

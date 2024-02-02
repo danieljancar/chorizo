@@ -36,11 +36,19 @@ export class CoursesFilterComponent implements OnInit {
   ngOnInit() {
     this.activatedRoute.queryParams.subscribe((params) => {
       const sortParam = params['sort'] as Sort;
+      const searchParam = params['search'] as string;
+
       if (sortParam && Sort[sortParam] !== undefined) {
         this.currentSort = sortParam;
         this.filterForm
           .get('sortBy')
           ?.setValue(this.currentSort, { emitEvent: false });
+      }
+
+      if (searchParam) {
+        this.filterForm
+          .get('searchTerm')
+          ?.setValue(searchParam, { emitEvent: false });
       }
     });
 

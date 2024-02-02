@@ -9,6 +9,7 @@ import {
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Observable } from 'rxjs';
 import { map, take, tap } from 'rxjs/operators';
+import { ToastService } from '../core/utility/toast.service';
 
 @Injectable({
   providedIn: 'root',
@@ -17,6 +18,7 @@ export class AuthGuard implements CanActivate {
   constructor(
     private afa: AngularFireAuth,
     private router: Router,
+    private toastService: ToastService,
   ) {}
 
   canActivate(
@@ -28,7 +30,12 @@ export class AuthGuard implements CanActivate {
       map((user) => !!user),
       tap((loggedIn) => {
         if (!loggedIn) {
-          this.router.navigate(['/a/login']);
+          this.router.navigate(['/a/login']).then(() => {
+            this.toastService.showToast(
+              'You must be logged in to access this page.',
+              'error',
+            );
+          });
         }
       }),
     );

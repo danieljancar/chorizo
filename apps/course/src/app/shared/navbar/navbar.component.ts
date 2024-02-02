@@ -47,7 +47,7 @@ export class NavbarComponent {
   logout() {
     this.authService.logout().then(() => {
       this.router.navigate(['/a/login']).then(() => {
-        this.toastService.showToast('Logged out successfully', 'success');
+        this.toastService.showToast('Logged out successfully.', 'success');
       });
     });
   }

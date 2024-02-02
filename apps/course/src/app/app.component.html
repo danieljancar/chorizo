@@ -8,7 +8,7 @@
   @for (toast of toastService.getToasts(); track $index) {
     <div class="toast">
       <div
-        class="alert"
+        class="alert text-base-100"
         [ngClass]="{
           'alert-info': toast.type === 'info',
           'alert-success': toast.type === 'success',
@@ -16,6 +16,19 @@
           'alert-error': toast.type === 'error'
         }"
       >
+        <mat-icon>
+          {{
+            toast.type === 'info'
+              ? 'info'
+              : toast.type === 'success'
+                ? 'check_circle'
+                : toast.type === 'warning'
+                  ? 'warning'
+                  : toast.type === 'error'
+                    ? 'error'
+                    : ''
+          }}
+        </mat-icon>
         <span>{{ toast.message }}</span>
       </div>
     </div>

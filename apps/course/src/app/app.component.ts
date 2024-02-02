@@ -5,11 +5,18 @@ import { ToastService } from './core/utility/toast.service';
 import { NgClass } from '@angular/common';
 import { NavbarCourseComponent } from './shared/navbar-course/navbar-course.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
+import { MatIcon } from '@angular/material/icon';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NgClass, NavbarCourseComponent, NavbarComponent],
+  imports: [
+    RouterOutlet,
+    NgClass,
+    NavbarCourseComponent,
+    NavbarComponent,
+    MatIcon,
+  ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })

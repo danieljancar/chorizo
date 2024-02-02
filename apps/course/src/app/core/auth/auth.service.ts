@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { ToastService } from '../utility/toast.service';
 
 @Injectable({
   providedIn: 'root',
@@ -9,21 +10,25 @@ import { Observable } from 'rxjs';
 export class AuthService {
   isLoggedIn$: Observable<boolean>;
 
-  constructor(private afa: AngularFireAuth) {
+  constructor(
+    private afa: AngularFireAuth,
+    private toastService: ToastService,
+  ) {
     this.isLoggedIn$ = this.afa.authState.pipe(map((user) => user !== null));
   }
 
-  async isLoggedIn(): Promise<boolean> {
-    try {
-      const user = await this.afa.currentUser;
-      return user !== null;
-    } catch (error) {
-      return false;
-    }
-  }
-
   async login(email: string, password: string) {
-    return this.afa.signInWithEmailAndPassword(email, password);
+    return this.afa
+      .signInWithEmailAndPassword(email, password)
+      .then(() => {
+        this.toastService.showToast('Logged in successfully.', 'success');
+      })
+      .catch((error) => {
+        this.toastService.showToast(
+          "Couldn't log in, please try again.",
+          'error',
+        );
+      });
   }
 
   async logout() {

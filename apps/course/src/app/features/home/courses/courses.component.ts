@@ -4,13 +4,19 @@ import { CourseService } from '../../../core/data/course.service';
 import { Course } from '../../../../../projects/types/src/lib/course.types';
 import { LoadingBarsComponent } from '../../../shared/loading-bars/loading-bars.component';
 import { CoursesFilterComponent } from './filter/courses-filter.component';
+import { FeedbackMessageComponent } from '../../../shared/feedback-message/feedback-message.component';
 
 @Component({
   selector: 'app-courses',
   standalone: true,
   templateUrl: './courses.component.html',
   styleUrls: ['./courses.component.scss'],
-  imports: [CoursesFilterComponent, LoadingBarsComponent, RouterLink],
+  imports: [
+    CoursesFilterComponent,
+    LoadingBarsComponent,
+    RouterLink,
+    FeedbackMessageComponent,
+  ],
 })
 export class CoursesComponent implements OnInit {
   courses: Course[] = [];
@@ -30,15 +36,13 @@ export class CoursesComponent implements OnInit {
     });
   }
 
-  openCourse(course: Course) {
-    this.router.navigate([`c/${course.id}`]);
-  }
-
   loadCourses(searchTerm: string = '', sortBy: string = 'createdAt') {
     this.isLoading = true;
     this.courseService.getCourses(searchTerm, sortBy).subscribe((courses) => {
       this.courses = courses;
-      this.isLoading = false;
+      setTimeout(() => {
+        this.isLoading = false;
+      }, 250);
     });
   }
 }
