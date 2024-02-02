@@ -5,14 +5,14 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { AuthService } from '../../../core/auth.service';
+import { AuthService } from '../../../core/auth/auth.service';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { NavbarCoursesOverviewComponent } from '../../../shared/navbar-courses-overview/navbar-courses-overview.component';
+import { NavbarComponent } from '../../../shared/navbar/navbar.component';
 import { Router } from '@angular/router';
-import { ToastService } from '../../../core/toast.service';
+import { ToastService } from '../../../core/utility/toast.service';
 
 @Component({
   selector: 'app-login',
@@ -25,7 +25,7 @@ import { ToastService } from '../../../core/toast.service';
     MatInputModule,
     MatButtonModule,
     MatFormFieldModule,
-    NavbarCoursesOverviewComponent,
+    NavbarComponent,
   ],
 })
 export class LoginComponent {

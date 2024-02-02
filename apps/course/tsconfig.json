@@ -20,6 +20,7 @@
     "module": "ES2022",
     "useDefineForClassFields": false,
     "paths": {
+      "enums": ["./dist/enums"],
       "types": ["./dist/types"],
     },
     "lib": ["ES2022", "dom"],

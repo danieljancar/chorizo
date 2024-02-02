@@ -1,11 +1,11 @@
 @if (showCoursesNavbar) {
-  <app-navbar-course-detail />
+  <app-navbar-course />
 } @else {
-  <app-navbar-courses-overview />
+  <app-navbar />
 }
 <router-outlet />
 @if (toastService.getToasts().length) {
-  @for (toast of toastService.getToasts();track $index) {
+  @for (toast of toastService.getToasts(); track $index) {
     <div class="toast">
       <div
         class="alert"

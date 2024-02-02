@@ -1,25 +1,20 @@
 import { Component } from '@angular/core';
 import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { filter } from 'rxjs/operators';
-import { ToastService } from './core/toast.service';
+import { ToastService } from './core/utility/toast.service';
 import { NgClass } from '@angular/common';
-import { NavbarCourseDetailComponent } from './shared/navbar-course-detail/navbar-course-detail.component';
-import { NavbarCoursesOverviewComponent } from './shared/navbar-courses-overview/navbar-courses-overview.component';
+import { NavbarCourseComponent } from './shared/navbar-course/navbar-course.component';
+import { NavbarComponent } from './shared/navbar/navbar.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [
-    RouterOutlet,
-    NgClass,
-    NavbarCourseDetailComponent,
-    NavbarCoursesOverviewComponent,
-  ],
+  imports: [RouterOutlet, NgClass, NavbarCourseComponent, NavbarComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  showCoursesNavbar = false;
+  showCoursesNavbar: boolean = false;
 
   constructor(
     public toastService: ToastService,

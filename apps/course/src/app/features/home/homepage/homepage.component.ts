@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { NavbarCoursesOverviewComponent } from '../../shared/navbar-courses-overview/navbar-courses-overview.component';
+import { NavbarComponent } from '../../../shared/navbar/navbar.component';
 
 @Component({
   selector: 'app-homepage',
   standalone: true,
-  imports: [NavbarCoursesOverviewComponent],
+  imports: [NavbarComponent],
   templateUrl: './homepage.component.html',
   styleUrl: './homepage.component.scss',
 })

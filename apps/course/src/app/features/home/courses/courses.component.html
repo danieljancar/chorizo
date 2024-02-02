@@ -1,0 +1,19 @@
+<app-courses-filter />
+@if (isLoading) {
+  <app-loading-bars />
+} @else {
+  <div class="flex flex-col mx-1 sm:mx-3 md:mx-32">
+    @for (course of courses; track $index) {
+      <div class="my-1.5"></div>
+      <div
+        [routerLink]="course.id"
+        class="card lg:card-side bg-base-100 shadow-xl transition duration-150 hover:opacity-75 hover:cursor-pointer hover:scale-105 ease-in-out"
+      >
+        <div class="card-body">
+          <h2 class="card-title">{{ course.title }}</h2>
+          <p>{{ course.about }}</p>
+        </div>
+      </div>
+    }
+  </div>
+}

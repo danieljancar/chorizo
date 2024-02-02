@@ -1,8 +1,8 @@
 import { Routes } from '@angular/router';
-import { CoursesOverviewComponent } from './features/courses-overview/courses-overview.component';
-import { CourseDetailComponent } from './features/course-detail/course-detail.component';
-import { HomepageComponent } from './features/homepage/homepage.component';
-import { LoginComponent } from './features/user/login/login.component';
+import { CoursesComponent } from './features/home/courses/courses.component';
+import { IntroductionComponent } from './features/course/introduction/introduction.component';
+import { HomepageComponent } from './features/home/homepage/homepage.component';
+import { LoginComponent } from './features/auth/login/login.component';
 import { AuthGuard } from './guards/auth.guard';
 import { LoginGuard } from './guards/login.guard';
 
@@ -13,12 +13,12 @@ export const routes: Routes = [
   },
   {
     path: 'c',
-    component: CoursesOverviewComponent,
+    component: CoursesComponent,
     canActivate: [AuthGuard],
   },
   {
     path: 'c/:courseId',
-    component: CourseDetailComponent,
+    component: IntroductionComponent,
   },
   {
     path: 'a/login',

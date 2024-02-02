@@ -1,0 +1,42 @@
+@defer (on idle; prefetch on idle) {
+  <div class="navbar bg-base-100">
+    <div class="flex-1 items-center">
+      <button class="btn btn-ghost text-2xl btn-lg">Courses</button>
+    </div>
+    <div class="flex gap-2 items-center">
+      <div class="form-control">
+        <form [formGroup]="filterForm">
+          <input
+            type="text"
+            class="input input-bordered w-24 md:w-auto"
+            placeholder="Search"
+            formControlName="searchTerm"
+          />
+        </form>
+      </div>
+      <div class="dropdown dropdown-end z-30">
+        <div class="btn btn-ghost" role="button" tabindex="0">
+          {{ getSortText() }}
+          <mat-icon class="ml-2">arrow_drop_down</mat-icon>
+        </div>
+        <ul
+          class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
+          tabindex="0"
+        >
+          <li><a (click)="setSortBy(Sort.latest)">Latest</a></li>
+          <li><a (click)="setSortBy(Sort.oldest)">Oldest</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+} @loading (after 250) {
+  <div class="flex justify-between mx-3">
+    <div>
+      <div class="skeleton w-28 h-10 md:w-52"></div>
+    </div>
+    <div class="flex">
+      <div class="skeleton w-32 h-10 mr-2"></div>
+      <div class="skeleton w-20 h-10"></div>
+    </div>
+  </div>
+}
