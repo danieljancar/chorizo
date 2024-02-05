@@ -1,1 +1,13 @@
-<p>footer works!</p>
+<footer
+  class="footer footer-title py-20 px-10 bg-base-200 text-base-content rounded"
+>
+  <nav class="grid grid-flow-col gap-4">
+    <a routerLink="/" class="link link-hover">Home</a>
+    <a routerLink="/c" class="link link-hover">Courses</a>
+    <a class="link link-hover">Rules</a>
+    <a class="link link-hover">Legal</a>
+  </nav>
+  <aside>
+    <p>Copyright © {{ currentYear }} - All rights reserved</p>
+  </aside>
+</footer>
