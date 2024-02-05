@@ -1,0 +1,15 @@
+@if (courses.length === 0) {
+  <app-feedback-message showIcon="false" message="No courses found" />
+} @else {
+  <div class="flex flex-wrap justify-center xl:gap-x-4 lg:gap-x-3.5 mb-7">
+    @for (course of courses;track course.id) {
+      <div
+        class="card bg-base-100 shadow-xl my-3 lg:mb-0 lg:w-1/3 xl:w-1/3 hover:cursor-pointer duration-100 hover:opacity-80">
+        <div class="card-body">
+          <h2 class="card-title">{{ course.title }}</h2>
+          <p>{{ course.about }}</p>
+        </div>
+      </div>
+    }
+  </div>
+}

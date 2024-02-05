@@ -4,6 +4,7 @@ html,
 body {
   height: 100%;
 }
+
 body {
   margin: 0;
   font-family: Roboto, 'Helvetica Neue', sans-serif;
@@ -13,11 +14,6 @@ body {
 @tailwind components;
 @tailwind utilities;
 
-html,
-body {
-  height: 100%;
-}
-body {
-  margin: 0;
-  font-family: Roboto, 'Helvetica Neue', sans-serif;
+.min-h-near {
+  min-height: calc(100vh - 20vh);
 }

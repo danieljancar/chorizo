@@ -7,6 +7,8 @@ import { Course } from '../../../../projects/types/src/lib/course.types';
   providedIn: 'root',
 })
 export class CourseService {
+  private COURSES_COLLECTION = 'courses';
+
   constructor(private afs: AngularFirestore) {}
 
   getCourses(
@@ -14,7 +16,7 @@ export class CourseService {
     sortBy: string = 'createdAt',
   ): Observable<Course[]> {
     return this.afs
-      .collection<Course>('courses', (ref) => {
+      .collection<Course>(this.COURSES_COLLECTION, (ref) => {
         let query = ref as any;
 
         if (searchTerm) {
@@ -36,5 +38,13 @@ export class CourseService {
         return query;
       })
       .valueChanges({ idField: 'id' });
+  }
+
+  getLatestCourses(amount: number): Observable<Course[]> {
+    return this.afs
+      .collection(this.COURSES_COLLECTION, (ref) =>
+        ref.orderBy('createdAt', 'desc').limit(amount),
+      )
+      .valueChanges({ idField: 'id' }) as Observable<Course[]>;
   }
 }

@@ -10,6 +10,8 @@ import { getStorage, provideStorage } from '@angular/fire/storage';
 import { environment } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire/compat';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { HttpClient, provideHttpClient } from '@angular/common/http';
+import { provideMarkdown } from 'ngx-markdown';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -25,5 +27,7 @@ export const appConfig: ApplicationConfig = {
       AngularFireModule.initializeApp(environment.firebaseConfig),
     ),
     provideAnimationsAsync(),
+    provideHttpClient(),
+    provideMarkdown({ loader: HttpClient }),
   ],
 };

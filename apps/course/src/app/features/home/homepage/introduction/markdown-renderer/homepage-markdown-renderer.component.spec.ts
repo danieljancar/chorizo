@@ -8,10 +8,9 @@ describe('HomepageMarkdownRendererComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HomepageMarkdownRendererComponent]
-    })
-    .compileComponents();
-    
+      imports: [HomepageMarkdownRendererComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(HomepageMarkdownRendererComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
