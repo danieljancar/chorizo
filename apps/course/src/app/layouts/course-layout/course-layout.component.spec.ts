@@ -8,10 +8,9 @@ describe('CourseLayoutComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CourseLayoutComponent]
-    })
-    .compileComponents();
-    
+      imports: [CourseLayoutComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(CourseLayoutComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
