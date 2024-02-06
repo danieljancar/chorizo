@@ -5,6 +5,9 @@ import { HomepageMarkdownRendererComponent } from './markdown-renderer/homepage-
 import { HomepageSubnavbarComponent } from './subnavbar/homepage-subnavbar.component';
 import { HomepageAboutComponent } from './markdown-renderer/about/homepage-about.component';
 import { HomepageLatestCoursesComponent } from './latest-courses/homepage-latest-courses.component';
+import { Title } from '@angular/platform-browser';
+import { environment } from '../../../../environments/environment';
+import { AppComponent } from '../../../app.component';
 
 @Component({
   selector: 'app-homepage',
@@ -20,4 +23,13 @@ import { HomepageLatestCoursesComponent } from './latest-courses/homepage-latest
   templateUrl: './homepage.component.html',
   styleUrl: './homepage.component.scss',
 })
-export class HomepageComponent {}
+export class HomepageComponent {
+  constructor(private titleService: Title) {
+    this.titleService.setTitle(
+      'Home - ' +
+        environment.metaConfig.title +
+        ' - ' +
+        AppComponent.chorizo.title,
+    );
+  }
+}
