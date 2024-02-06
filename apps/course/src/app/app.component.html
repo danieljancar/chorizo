@@ -4,7 +4,7 @@
   <app-navbar />
 }
 <div class="min-h-screen">
-  <router-outlet />
+  <router-outlet (activate)="onActivate($event)" />
 </div>
 @if (toastService.getToasts().length) {
   @for (toast of toastService.getToasts(); track $index) {
