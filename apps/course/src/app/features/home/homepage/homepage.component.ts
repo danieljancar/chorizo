@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { NavbarComponent } from '../../../shared/navbar/navbar.component';
-import { FooterComponent } from '../../../shared/footer/footer.component';
-import { HomepageMarkdownRendererComponent } from './introduction/markdown-renderer/homepage-markdown-renderer.component';
+import { NavbarComponent } from '../../../shared/navigation/navbar/navbar.component';
+import { FooterComponent } from '../../../shared/navigation/footer/footer.component';
+import { HomepageMarkdownRendererComponent } from './markdown-renderer/homepage-markdown-renderer.component';
 import { HomepageSubnavbarComponent } from './subnavbar/homepage-subnavbar.component';
-import { HomepageAboutComponent } from './introduction/about/homepage-about.component';
-import { LatestCoursesComponent } from './latest-courses/latest-courses.component';
+import { HomepageAboutComponent } from './markdown-renderer/about/homepage-about.component';
+import { HomepageLatestCoursesComponent } from './latest-courses/homepage-latest-courses.component';
 
 @Component({
   selector: 'app-homepage',
@@ -14,7 +14,7 @@ import { LatestCoursesComponent } from './latest-courses/latest-courses.componen
     HomepageMarkdownRendererComponent,
     HomepageSubnavbarComponent,
     HomepageAboutComponent,
-    LatestCoursesComponent,
+    HomepageLatestCoursesComponent,
     FooterComponent,
   ],
   templateUrl: './homepage.component.html',

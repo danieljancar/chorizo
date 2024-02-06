@@ -10,7 +10,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { NavbarComponent } from '../../../shared/navbar/navbar.component';
+import { NavbarComponent } from '../../../shared/navigation/navbar/navbar.component';
 import { Router } from '@angular/router';
 import { ToastService } from '../../../core/utility/toast.service';
 

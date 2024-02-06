@@ -3,10 +3,10 @@ import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { ToastService } from './core/utility/toast.service';
 import { NgClass } from '@angular/common';
-import { NavbarCourseComponent } from './shared/navbar-course/navbar-course.component';
-import { NavbarComponent } from './shared/navbar/navbar.component';
+import { NavbarCourseComponent } from './shared/navigation/navbar-course/navbar-course.component';
+import { NavbarComponent } from './shared/navigation/navbar/navbar.component';
 import { MatIcon } from '@angular/material/icon';
-import { FooterComponent } from './shared/footer/footer.component';
+import { FooterComponent } from './shared/navigation/footer/footer.component';
 
 @Component({
   selector: 'app-root',

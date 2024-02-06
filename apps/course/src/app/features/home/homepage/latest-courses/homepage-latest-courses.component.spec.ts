@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LatestCoursesComponent } from './latest-courses.component';
+import { HomepageLatestCoursesComponent } from './homepage-latest-courses.component';
 
 describe('LatestCoursesComponent', () => {
-  let component: LatestCoursesComponent;
-  let fixture: ComponentFixture<LatestCoursesComponent>;
+  let component: HomepageLatestCoursesComponent;
+  let fixture: ComponentFixture<HomepageLatestCoursesComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [LatestCoursesComponent],
+      imports: [HomepageLatestCoursesComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(LatestCoursesComponent);
+    fixture = TestBed.createComponent(HomepageLatestCoursesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

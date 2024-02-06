@@ -1,17 +1,17 @@
 import { Component, SecurityContext, ViewEncapsulation } from '@angular/core';
-import { GeneralService } from '../../../../../core/data/general.service';
+import { GeneralService } from '../../../../core/data/general.service';
 import {
   MarkdownComponent,
   MarkdownService,
   provideMarkdown,
 } from 'ngx-markdown';
-import { LoadingBarsComponent } from '../../../../../shared/loading-bars/loading-bars.component';
+import { LoadingBarsComponent } from '../../../../shared/feedback/loading-bars/loading-bars.component';
 import { map, switchMap } from 'rxjs/operators';
-import { GeneralMainDocument } from '../../../../../types/general.types';
+import { GeneralMainDocument } from '../../../../types/general.types';
 import { HttpClient } from '@angular/common/http';
 import { JsonPipe } from '@angular/common';
-import { HomepageAboutComponent } from '../about/homepage-about.component';
-import { FeedbackMessageComponent } from '../../../../../shared/feedback-message/feedback-message.component';
+import { HomepageAboutComponent } from './about/homepage-about.component';
+import { FeedbackMessageComponent } from '../../../../shared/feedback/feedback-message/feedback-message.component';
 
 @Component({
   selector: 'app-homepage-markdown-renderer',
