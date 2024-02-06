@@ -9,11 +9,11 @@ import {
   MatSidenavContent,
 } from '@angular/material/sidenav';
 import { MatNavList } from '@angular/material/list';
-import { AuthService } from '../../core/auth/auth.service';
+import { AuthService } from '../../../core/auth/auth.service';
 import { AsyncPipe } from '@angular/common';
 import { Observable } from 'rxjs';
-import { ToastService } from '../../core/utility/toast.service';
-import { environment } from '../../../environments/environment';
+import { ToastService } from '../../../core/utility/toast.service';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-navbar',
