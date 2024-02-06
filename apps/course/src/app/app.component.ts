@@ -23,6 +23,15 @@ import { FooterComponent } from './shared/navigation/footer/footer.component';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
+  static readonly chorizo = {
+    title: 'Chorizo',
+    subtitle: 'A firebase self hosted course platform',
+    description:
+      'Chorizo is a self hosted course platform that allows you to host your own courses and content.',
+    links: {
+      github: 'https://github.com/danieljancar/chorizo',
+    },
+  };
   showCoursesNavbar: boolean = false;
   isBigScreen: boolean;
 

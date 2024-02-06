@@ -5,6 +5,9 @@ import { Course } from '../../../../../projects/types/src/lib/course.types';
 import { LoadingBarsComponent } from '../../../shared/feedback/loading-bars/loading-bars.component';
 import { CoursesFilterComponent } from './filter/courses-filter.component';
 import { FeedbackMessageComponent } from '../../../shared/feedback/feedback-message/feedback-message.component';
+import { Title } from '@angular/platform-browser';
+import { environment } from '../../../../environments/environment';
+import { AppComponent } from '../../../app.component';
 
 @Component({
   selector: 'app-courses',
@@ -26,7 +29,15 @@ export class CoursesComponent implements OnInit {
     private courseService: CourseService,
     protected route: ActivatedRoute,
     protected router: Router,
-  ) {}
+    private titleService: Title,
+  ) {
+    this.titleService.setTitle(
+      'Courses - ' +
+        environment.metaConfig.title +
+        ' - ' +
+        AppComponent.chorizo.title,
+    );
+  }
 
   ngOnInit() {
     this.route.queryParams.subscribe((params) => {
