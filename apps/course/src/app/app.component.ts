@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
-import { filter } from 'rxjs/operators';
+import { RouterOutlet } from '@angular/router';
 import { ToastService } from './core/utility/toast.service';
 import { NgClass } from '@angular/common';
 import { NavbarCourseComponent } from './shared/navigation/navbar-course/navbar-course.component';
@@ -32,22 +31,9 @@ export class AppComponent {
       github: 'https://github.com/danieljancar/chorizo',
     },
   };
-  showCoursesNavbar: boolean = false;
   isBigScreen: boolean;
 
-  constructor(
-    public toastService: ToastService,
-    private router: Router,
-  ) {
-    this.router.events
-      .pipe(
-        filter(
-          (event): event is NavigationEnd => event instanceof NavigationEnd,
-        ),
-      )
-      .subscribe((event: NavigationEnd) => {
-        this.showCoursesNavbar = event.urlAfterRedirects.startsWith('/c/');
-      });
+  constructor(public toastService: ToastService) {
     this.isBigScreen = window.innerWidth > 640;
   }
 
