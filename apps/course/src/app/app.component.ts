@@ -24,6 +24,7 @@ import { FooterComponent } from './shared/footer/footer.component';
 })
 export class AppComponent {
   showCoursesNavbar: boolean = false;
+  isBigScreen: boolean;
 
   constructor(
     public toastService: ToastService,
@@ -38,5 +39,6 @@ export class AppComponent {
       .subscribe((event: NavigationEnd) => {
         this.showCoursesNavbar = event.urlAfterRedirects.startsWith('/c/');
       });
+    this.isBigScreen = window.innerWidth > 640;
   }
 }

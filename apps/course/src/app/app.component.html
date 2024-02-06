@@ -3,9 +3,11 @@
 } @else {
   <app-navbar />
 }
-<router-outlet />
+<div class="min-h-screen">
+  <router-outlet />
+</div>
 @if (toastService.getToasts().length) {
-  @for (toast of toastService.getToasts(); track $index) {
+  @for (toast of toastService.getToasts();track $index) {
     <div class="toast">
       <div
         class="alert text-base-100"
@@ -16,19 +18,21 @@
           'alert-error': toast.type === 'error'
         }"
       >
-        <mat-icon>
-          {{
-            toast.type === 'info'
-              ? 'info'
-              : toast.type === 'success'
-                ? 'check_circle'
-                : toast.type === 'warning'
-                  ? 'warning'
-                  : toast.type === 'error'
-                    ? 'error'
-                    : ''
-          }}
-        </mat-icon>
+        @if (isBigScreen) {
+          <mat-icon>
+            {{
+              toast.type === 'info'
+                ? 'info'
+                : toast.type === 'success'
+                  ? 'check_circle'
+                  : toast.type === 'warning'
+                    ? 'warning'
+                    : toast.type === 'error'
+                      ? 'error'
+                      : ''
+            }}
+          </mat-icon>
+        }
         <span>{{ toast.message }}</span>
       </div>
     </div>
