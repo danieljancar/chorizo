@@ -3,13 +3,19 @@ export type Course = {
   published: boolean;
   title: string;
   about: string;
-  banner?: string;
-  category?: string;
   tags?: string[];
   links?: {
     homepage?: string;
     repository?: string;
     npm?: string;
+  };
+  settings: {
+    showSections: {
+      agenda: boolean;
+      tasks: boolean;
+      documentation: boolean;
+      resources: boolean;
+    };
   };
   createdAt: Date;
   updatedAt?: Date;

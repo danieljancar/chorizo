@@ -2,10 +2,8 @@
 
 html,
 body {
+  scroll-behavior: smooth;
   height: 100%;
-}
-
-body {
   margin: 0;
   font-family: Roboto, 'Helvetica Neue', sans-serif;
 }
@@ -13,7 +11,3 @@ body {
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-.min-h-near {
-  min-height: calc(100vh - 20vh);
-}
