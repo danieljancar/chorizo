@@ -1,13 +1,5 @@
-@if (showCoursesNavbar) {
-  <app-navbar-course />
-} @else {
-  <app-navbar />
-}
-<div class="min-h-screen">
-  <router-outlet (activate)="onActivate($event)" />
-</div>
 @if (toastService.getToasts().length) {
-  @for (toast of toastService.getToasts(); track $index) {
+  @for (toast of toastService.getToasts();track $index) {
     <div class="toast">
       <div
         class="alert text-base-100"
@@ -38,4 +30,6 @@
     </div>
   }
 }
-<app-footer></app-footer>
+<div class="min-h-screen">
+  <router-outlet (activate)="onActivate($event)"></router-outlet>
+</div>
