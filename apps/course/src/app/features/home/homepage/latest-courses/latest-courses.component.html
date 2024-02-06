@@ -3,9 +3,11 @@
 } @else {
   <h1 class="text-3xl font-bold pt-5 pl-5">Latest Courses</h1>
   <div class="flex flex-wrap justify-center gap-x-10 mb-7">
-    @for (course of courses;track course.id) {
-      <div role="link" [routerLink]="['/c', course.id]"
-           class="card bg-base-100 shadow-xl my-3 w-full hover:cursor-pointer duration-100 hover:opacity-80 hover:scale-95"
+    @for (course of courses; track course.id) {
+      <div
+        role="link"
+        [routerLink]="['/c', course.id]"
+        class="card bg-base-100 shadow-xl my-3 w-full hover:cursor-pointer duration-100 hover:opacity-80 hover:scale-95"
       >
         <div class="card-body">
           <h2 class="card-title">{{ course.title }}</h2>

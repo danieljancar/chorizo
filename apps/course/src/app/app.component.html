@@ -5,7 +5,7 @@
 }
 <router-outlet />
 @if (toastService.getToasts().length) {
-  @for (toast of toastService.getToasts();track $index) {
+  @for (toast of toastService.getToasts(); track $index) {
     <div class="toast">
       <div
         class="alert text-base-100"

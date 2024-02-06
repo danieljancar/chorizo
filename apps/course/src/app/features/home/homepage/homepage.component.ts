@@ -15,7 +15,7 @@ import { LatestCoursesComponent } from './latest-courses/latest-courses.componen
     HomepageSubnavbarComponent,
     HomepageAboutComponent,
     LatestCoursesComponent,
-    FooterComponent
+    FooterComponent,
   ],
   templateUrl: './homepage.component.html',
   styleUrl: './homepage.component.scss',
