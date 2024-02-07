@@ -1,33 +1,33 @@
-<div class="mx-1 md:mx-3 lg:mx-32 xl:mx-60">
+<div class="mx-1 md:mx-3 lg:mx-32 xl:mx-60 min-h-nearly-full">
   <app-courses-filter />
   @if (isLoading) {
     <app-loading-bars />
-  } @else if (!isLoading && courses.length) {
-    <div class="flex flex-col xl:flex-row flex-wrap justify-center">
-      @for (course of courses; track $index) {
-        <div
-          role="link"
-          [routerLink]="course.id"
-          class="w-full xl:w-5/12 mb-2 mt-2 card lg:card-side bg-base-100 shadow-xl transition duration-150 hover:opacity-75 hover:cursor-pointer hover:scale-105 ease-in-out"
-        >
-          <div class="card-body">
-            <h2 class="card-title">{{ course.title }}</h2>
-            <p>{{ course.about }}</p>
-            <p>{{customTimestamp(course.createdAt)}}</p>
-          </div>
-        </div>
-        @if($index % 2 === 0){
-          <div class="my-1.5 xl:m-8"></div>
-        }
-      }
-    </div>
-  } @else if (!isLoading && !courses.length) {
+  } @else if (!isLoading && courses.length === 0) {
     <app-feedback-message
       message="No courses were found, try again later."
       title="Nothing found"
       icon="mood_bad"
       showIcon="false"
     />
+  } @else if (!isLoading && courses.length > 0) {
+    <div class="flex flex-col xl:flex-row flex-wrap justify-center">
+      @for (course of courses;track $index) {
+        <div
+          role="link"
+          [routerLink]="course.id"
+          class="w-full xl:w-5/12 mb-2 mt-2 card lg:card-side bg-base-100 shadow-xl transition hover:opacity-75 hover:scale-95 hover:cursor-pointer"
+        >
+          <div class="card-body text-pretty">
+            <h2 class="card-title">{{ course.title }}</h2>
+            <p>{{ course.about }}</p>
+            <p class="text-primary">{{ course.createdAt.toDate() | relativeTime:'relative' }}</p>
+          </div>
+        </div>
+        @if ($index % 2 === 0) {
+          <div class="my-1.5 xl:m-8"></div>
+        }
+      }
+    </div>
   } @else {
     <app-feedback-message
       message="An error occurred while trying to fetch the courses, try again later."

@@ -1,17 +1,18 @@
-@if (courses.length === 0) {
-  <app-feedback-message showIcon="false" message="No courses found" />
-} @else {
+@if (courses.length === 0 && !isLoading) {
+  <app-feedback-message showIcon="false" message="No latest courses found" />
+} @else if (!isLoading && courses.length > 0) {
   <h1 class="text-3xl font-bold pt-5 pl-5">Latest Courses</h1>
   <div class="flex flex-wrap justify-center gap-x-10 mb-7">
-    @for (course of courses; track course.id) {
+    @for (course of courses;track course.id) {
       <div
         role="link"
         [routerLink]="['/c', course.id]"
-        class="card bg-base-100 shadow-xl my-3 w-full hover:cursor-pointer duration-100 hover:opacity-80 hover:scale-95"
+        class="card bg-base-100 shadow-xl my-3 w-full hover:cursor-pointer transition hover:opacity-80 hover:scale-95"
       >
-        <div class="card-body">
+        <div class="card-body text-pretty">
           <h2 class="card-title">{{ course.title }}</h2>
           <p>{{ course.about }}</p>
+          <p class="text-primary">{{ course.createdAt.toDate() | relativeTime:'relative' }}</p>
         </div>
       </div>
     }

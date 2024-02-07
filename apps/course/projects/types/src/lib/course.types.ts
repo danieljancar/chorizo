@@ -1,3 +1,5 @@
+import { Timestamp } from 'firebase/firestore';
+
 export type Course = {
   id: string;
   published: boolean;
@@ -17,16 +19,16 @@ export type Course = {
       resources: boolean;
     };
   };
-  createdAt: Date;
-  updatedAt?: Date;
+  createdAt: Timestamp;
+  updatedAt?: Timestamp;
 };
 
 export type AgendaEntry = {
   id: string;
   name: string;
   description?: string;
-  start: Date;
+  start: Timestamp;
   icon?: string;
-  createdAt: Date;
-  updatedAt?: Date;
+  createdAt: Timestamp;
+  updatedAt?: Timestamp;
 };
