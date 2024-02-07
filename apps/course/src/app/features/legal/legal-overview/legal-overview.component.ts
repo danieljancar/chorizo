@@ -1,3 +1,5 @@
+import {Component, OnInit} from '@angular/core';
+import {LegalService} from "../legal.service";
 import { Component, OnInit } from '@angular/core';
 import { LegalService } from '../../../core/data/legal.service';
 import { LegalDocument } from '../../../types/legal.type';
@@ -10,6 +12,13 @@ import { LoadingBarsComponent } from '../../../shared/feedback/loading-bars/load
 @Component({
   selector: 'app-legal-overview',
   standalone: true,
+  imports: [],
+  templateUrl: './legal-overview.component.html',
+  styleUrl: './legal-overview.component.scss'
+})
+export class LegalOverviewComponent {
+  constructor(private legalService: LegalService) { }
+
   imports: [RouterLink, LoadingBarsComponent],
   templateUrl: './legal-overview.component.html',
   styleUrl: './legal-overview.component.scss',
