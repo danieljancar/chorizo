@@ -13,7 +13,7 @@
           <div class="card-body">
             <h2 class="card-title">{{ course.title }}</h2>
             <p>{{ course.about }}</p>
-            <p>{{convertTimestamp(course.createdAt)}}</p>
+            <p>{{customTimestamp(course.createdAt)}}</p>
           </div>
         </div>
         @if($index % 2 === 0){

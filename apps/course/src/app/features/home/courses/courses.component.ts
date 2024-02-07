@@ -56,8 +56,7 @@ export class CoursesComponent implements OnInit {
       }, 250);
     });
   }
-
-  convertTimestamp(timestamp: any) {
+  customTimestamp(timestamp: any) {
     let date = timestamp.toDate();
     let mm = date.getMonth();
     let dd = date.getDate();
