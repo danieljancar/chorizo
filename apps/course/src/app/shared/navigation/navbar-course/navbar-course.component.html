@@ -17,7 +17,7 @@
           />
         </svg>
       </div>
-      @if (course$ | async;as course) {
+      @if (course$ | async; as course) {
         <ul
           class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
           tabindex="0"
@@ -43,9 +43,9 @@
     </a>
   </div>
   <div class="navbar-center hidden lg:flex">
-    @if (course$ | async;as course) {
+    @if (course$ | async; as course) {
       <ul class="menu menu-horizontal px-1">
-        <li><a routerLink="/c/{{courseId}}">Introduction</a></li>
+        <li><a routerLink="/c/{{ courseId }}">Introduction</a></li>
         @if (course.settings.showSections.agenda) {
           <li><a>Agenda</a></li>
         }
