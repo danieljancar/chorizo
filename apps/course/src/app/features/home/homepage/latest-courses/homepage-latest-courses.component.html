@@ -7,11 +7,12 @@
       <div
         role="link"
         [routerLink]="['/c', course.id]"
-        class="card bg-base-100 shadow-xl my-3 w-full hover:cursor-pointer duration-100 hover:opacity-80 hover:scale-95"
+        class="card bg-base-100 shadow-xl my-3 w-full hover:cursor-pointer duration-100 hover:opacity-80 hover:scale-105 ease-in-out"
       >
         <div class="card-body">
           <h2 class="card-title">{{ course.title }}</h2>
           <p>{{ course.about }}</p>
+          <p>{{ date(course.createdAt) }}</p>
         </div>
       </div>
     }
