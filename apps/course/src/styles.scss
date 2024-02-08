@@ -11,3 +11,7 @@ body {
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.min-h-nearly-full {
+  min-height: calc(100vh - 25vh);
+}

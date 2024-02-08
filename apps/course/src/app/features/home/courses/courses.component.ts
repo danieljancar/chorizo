@@ -8,6 +8,7 @@ import { FeedbackMessageComponent } from '../../../shared/feedback/feedback-mess
 import { Title } from '@angular/platform-browser';
 import { environment } from '../../../../environments/environment';
 import { AppComponent } from '../../../app.component';
+import { RelativeTimePipe } from '../../../pipes/relative-time.pipe';
 
 @Component({
   selector: 'app-courses',
@@ -19,6 +20,7 @@ import { AppComponent } from '../../../app.component';
     LoadingBarsComponent,
     RouterLink,
     FeedbackMessageComponent,
+    RelativeTimePipe,
   ],
 })
 export class CoursesComponent implements OnInit {
@@ -55,15 +57,5 @@ export class CoursesComponent implements OnInit {
         this.isLoading = false;
       }, 250);
     });
-  }
-  customTimestamp(timestamp: any) {
-    let date = timestamp.toDate();
-    let mm = date.getMonth();
-    let dd = date.getDate();
-    let yyyy = date.getFullYear();
-    const month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "Dezember"]
-  
-    date =  dd + '. ' + month[mm] + ' ' + yyyy;
-    return date;
   }
 }

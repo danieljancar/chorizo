@@ -41,6 +41,8 @@ export class CourseService {
           }
         }
 
+        query = query.where('published', '==', true);
+
         return query;
       })
       .valueChanges({ idField: 'id' });
@@ -49,7 +51,10 @@ export class CourseService {
   getLatestCourses(amount: number): Observable<Course[]> {
     return this.afs
       .collection(this.COURSES_COLLECTION, (ref) =>
-        ref.orderBy('createdAt', 'desc').limit(amount),
+        ref
+          .orderBy('createdAt', 'desc')
+          .limit(amount)
+          .where('published', '==', true),
       )
       .valueChanges({ idField: 'id' }) as Observable<Course[]>;
   }

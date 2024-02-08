@@ -7,16 +7,18 @@ import { environment } from '../../../../environments/environment';
 import { Course } from '../../../../../projects/types/src/lib/course.types';
 import { AsyncPipe } from '@angular/common';
 import { ToastService } from '../../../core/utility/toast.service';
+import { MatIcon } from '@angular/material/icon';
 
 @Component({
   selector: 'app-navbar-course',
   standalone: true,
-  imports: [RouterLink, AsyncPipe],
+  imports: [RouterLink, AsyncPipe, MatIcon],
   templateUrl: './navbar-course.component.html',
   styleUrls: ['./navbar-course.component.scss'],
 })
 export class NavbarCourseComponent implements OnInit {
   course$!: Observable<Course | undefined>;
+  courseId: string | null = null;
   title: string = environment.metaConfig.title;
 
   constructor(
@@ -30,6 +32,7 @@ export class NavbarCourseComponent implements OnInit {
     this.course$ = this.route.paramMap.pipe(
       switchMap((params) => {
         const courseId = params.get('courseId');
+        this.courseId = courseId;
         if (courseId) {
           return this.courseService.getCourse(courseId);
         }

@@ -17,6 +17,8 @@ import { CoursesComponent } from '../../courses/courses.component';
 export class HomepageLatestCoursesComponent {
   public courses: Course[] = [];
   public date: any = null;
+  public isLoading = true;
+
 
   constructor(
     private courseService: CourseService,
@@ -24,6 +26,7 @@ export class HomepageLatestCoursesComponent {
     ) {
     this.courseService.getLatestCourses(2).subscribe((courses) => {
       this.courses = courses;
+      this.isLoading = false;
     });
 
     this.date = coursComp.customTimestamp;

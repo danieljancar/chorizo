@@ -1,3 +1,5 @@
+import { Timestamp } from 'firebase/firestore';
+
 export type User = {
   id: string;
   email: string;
@@ -8,6 +10,6 @@ export type User = {
   bio?: string;
   links?: string[];
   tags?: string[];
-  createdAt: Date;
-  updatedAt?: Date;
+  createdAt: Timestamp;
+  updatedAt?: Timestamp;
 };
