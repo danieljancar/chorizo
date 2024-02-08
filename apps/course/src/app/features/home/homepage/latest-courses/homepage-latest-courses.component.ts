@@ -20,4 +20,14 @@ export class HomepageLatestCoursesComponent {
       this.courses = courses;
     });
   }
+  customTimestamp(timestamp: any) {
+    let date = timestamp.toDate();
+    let mm = date.getMonth();
+    let dd = date.getDate();
+    let yyyy = date.getFullYear();
+    const month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "Dezember"]
+  
+    date =  dd + '. ' + month[mm] + ' ' + yyyy;
+    return date;
+  }
 }
