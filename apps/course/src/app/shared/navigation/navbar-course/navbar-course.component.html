@@ -17,22 +17,22 @@
           />
         </svg>
       </div>
-      @if (course$ | async; as course) {
+      @if (course$ | async;as course) {
         <ul
           class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
           tabindex="0"
         >
           <li><a>Introduction</a></li>
-          @if (course.settings.showSections.agenda) {
+          @if (course.settings?.showSections?.agenda) {
             <li><a>Agenda</a></li>
           }
-          @if (course.settings.showSections.tasks) {
+          @if (course.settings?.showSections?.tasks) {
             <li><a>Tasks</a></li>
           }
-          @if (course.settings.showSections.documentation) {
+          @if (course.settings?.showSections?.documentation) {
             <li><a>Documentation</a></li>
           }
-          @if (course.settings.showSections.resources) {
+          @if (course.settings?.showSections?.resources) {
             <li><a>Resources</a></li>
           }
         </ul>
@@ -43,19 +43,19 @@
     </a>
   </div>
   <div class="navbar-center hidden lg:flex">
-    @if (course$ | async; as course) {
+    @if (course$ | async;as course) {
       <ul class="menu menu-horizontal px-1">
         <li><a routerLink="/c/{{ courseId }}">Introduction</a></li>
-        @if (course.settings.showSections.agenda) {
+        @if (course.settings?.showSections?.agenda) {
           <li><a>Agenda</a></li>
         }
-        @if (course.settings.showSections.tasks) {
+        @if (course.settings?.showSections?.tasks) {
           <li><a>Tasks</a></li>
         }
-        @if (course.settings.showSections.documentation) {
+        @if (course.settings?.showSections?.documentation) {
           <li><a>Documentation</a></li>
         }
-        @if (course.settings.showSections.resources) {
+        @if (course.settings?.showSections?.resources) {
           <li><a>Resources</a></li>
         }
       </ul>

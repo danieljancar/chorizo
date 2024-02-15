@@ -11,8 +11,8 @@ export type Course = {
     repository?: string;
     npm?: string;
   };
-  settings: {
-    showSections: {
+  settings?: {
+    showSections?: {
       agenda: boolean;
       tasks: boolean;
       documentation: boolean;
