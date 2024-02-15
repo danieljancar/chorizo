@@ -3,7 +3,7 @@
   <app-feedback-message showIcon="false" message="No latest courses found" />
 } @else if (!isLoading && courses.length > 0) {
   <div class="flex flex-wrap justify-center gap-x-10 mb-7">
-    @for (course of courses;track course.id) {
+    @for (course of courses; track course.id) {
       <div
         role="link"
         [routerLink]="['/c', course.id]"
