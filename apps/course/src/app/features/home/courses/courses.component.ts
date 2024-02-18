@@ -31,9 +31,9 @@ export class CoursesComponent implements OnInit {
     private courseService: CourseService,
     protected route: ActivatedRoute,
     protected router: Router,
-    private titleService: Title,
+    private title: Title,
   ) {
-    this.titleService.setTitle(
+    this.title.setTitle(
       'Courses - ' +
         environment.metaConfig.title +
         ' - ' +

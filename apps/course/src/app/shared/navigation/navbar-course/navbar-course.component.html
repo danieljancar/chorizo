@@ -17,46 +17,46 @@
           />
         </svg>
       </div>
-      @if (course$ | async; as course) {
+      @if (course$ | async;as course) {
         <ul
           class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
           tabindex="0"
         >
-          <li><a>Introduction</a></li>
+          <li><a routerLink="/c/{{ course.id }}">Introduction</a></li>
           @if (course.settings?.showSections?.agenda) {
-            <li><a>Agenda</a></li>
+            <li><a routerLink="/c/{{ course.id }}/agenda">Agenda</a></li>
           }
           @if (course.settings?.showSections?.tasks) {
-            <li><a>Tasks</a></li>
+            <li><a routerLink="/c/{{ course.id }}/tasks">Tasks</a></li>
           }
           @if (course.settings?.showSections?.documentation) {
-            <li><a>Documentation</a></li>
+            <li><a routerLink="/c/{{ course.id }}/documentation">Documentation</a></li>
           }
           @if (course.settings?.showSections?.resources) {
-            <li><a>Resources</a></li>
+            <li><a routerLink="/c/{{ course.id }}/resources">Resources</a></li>
           }
         </ul>
       }
     </div>
     <a class="btn btn-ghost text-xl" routerLink="/">
-      <mat-icon>home</mat-icon>
+      <mat-icon>navigate_before</mat-icon>
     </a>
   </div>
   <div class="navbar-center hidden lg:flex">
-    @if (course$ | async; as course) {
+    @if (course$ | async;as course) {
       <ul class="menu menu-horizontal px-1">
-        <li><a routerLink="/c/{{ courseId }}">Introduction</a></li>
+        <li><a routerLink="/c/{{ course.id }}">Introduction</a></li>
         @if (course.settings?.showSections?.agenda) {
-          <li><a>Agenda</a></li>
+          <li><a routerLink="/c/{{ course.id }}/agenda">Agenda</a></li>
         }
         @if (course.settings?.showSections?.tasks) {
-          <li><a>Tasks</a></li>
+          <li><a routerLink="/c/{{ course.id }}/tasks">Tasks</a></li>
         }
         @if (course.settings?.showSections?.documentation) {
-          <li><a>Documentation</a></li>
+          <li><a routerLink="/c/{{ course.id }}/documentation">Documentation</a></li>
         }
         @if (course.settings?.showSections?.resources) {
-          <li><a>Resources</a></li>
+          <li><a routerLink="/c/{{ course.id }}/resources">Resources</a></li>
         }
       </ul>
     }

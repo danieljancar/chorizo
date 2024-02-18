@@ -1,12 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { Observable, of } from 'rxjs';
-import { switchMap, tap } from 'rxjs/operators';
+import { RouterLink } from '@angular/router';
+import { Observable, Subject } from 'rxjs';
 import { CourseService } from '../../../core/data/course.service';
-import { environment } from '../../../../environments/environment';
 import { Course } from '../../../../../projects/types/src/lib/course.types';
 import { AsyncPipe } from '@angular/common';
-import { ToastService } from '../../../core/utility/toast.service';
 import { MatIcon } from '@angular/material/icon';
 
 @Component({
@@ -17,36 +14,20 @@ import { MatIcon } from '@angular/material/icon';
   styleUrls: ['./navbar-course.component.scss'],
 })
 export class NavbarCourseComponent implements OnInit {
-  course$!: Observable<Course | undefined>;
   courseId: string | null = null;
-  title: string = environment.metaConfig.title;
+  course$: Observable<Course | undefined>;
+  private destroy$ = new Subject<void>();
 
-  constructor(
-    private route: ActivatedRoute,
-    private courseService: CourseService,
-    private router: Router,
-    private toastService: ToastService,
-  ) {}
+  constructor(private courseService: CourseService) {
+    this.course$ = new Observable();
+  }
 
   ngOnInit(): void {
-    this.course$ = this.route.paramMap.pipe(
-      switchMap((params) => {
-        const courseId = params.get('courseId');
-        this.courseId = courseId;
-        if (courseId) {
-          return this.courseService.getCourse(courseId);
-        }
-        return of(undefined);
-      }),
-      tap((course) => {
-        if (!course) {
-          this.router
-            .navigate(['/'])
-            .then(() =>
-              this.toastService.showToast('Course was not found', 'error'),
-            );
-        }
-      }),
-    );
+    this.course$ = this.courseService.getCurrentCourse();
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 }

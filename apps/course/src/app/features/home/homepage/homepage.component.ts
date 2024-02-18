@@ -24,8 +24,8 @@ import { AppComponent } from '../../../app.component';
   styleUrl: './homepage.component.scss',
 })
 export class HomepageComponent {
-  constructor(private titleService: Title) {
-    this.titleService.setTitle(
+  constructor(private title: Title) {
+    this.title.setTitle(
       'Home - ' +
         environment.metaConfig.title +
         ' - ' +
