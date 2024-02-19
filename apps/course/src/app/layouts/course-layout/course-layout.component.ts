@@ -40,9 +40,7 @@ export class CourseLayoutComponent implements OnInit {
       )
       .subscribe();
     this.courseService.getCurrentCourse().subscribe((course) => {
-      if (course) {
-        this.isLoading = false;
-      }
+      this.isLoading = !course;
     });
   }
 }

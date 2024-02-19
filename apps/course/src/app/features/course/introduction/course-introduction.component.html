@@ -1,1 +1,24 @@
-<p>course-detail works!</p>
+<div class="mx-2 sm:mx-3 md:mx-32 lg:mx-60 xl:mx-96 md:mt-5">
+  <img
+    [src]="bannerUrl || 'https://t4.ftcdn.net/jpg/02/63/91/23/360_F_263912399_43aWirNarabUjIcy387x5OPO9pEFfRwZ.jpg'"
+    alt="course banner"
+    class="w-full h-96 object-cover rounded-lg mb-5"
+  />
+  @if (course$ | async;as course) {
+    <div class="border-b-2 mb-5 pb-5">
+      <h1>{{ course.title }}</h1>
+      <p class="text-pretty">{{ course.about }}</p>
+      <div class="flex flex-wrap gap-2">
+        @for (tag of course.tags;track $index) {
+          <a
+            href="https://www.google.com/search?q={{ tag }}"
+            target="_blank"
+            class="badge badge-ghost badge-md mr-2 mb-2 h-auto px-2 text-center hover:opacity-75 hover:cursor-pointer hover:scale-95 transition ease-in-out duration-100"
+          >{{ tag }}</a
+          >
+        }
+      </div>
+    </div>
+    <markdown>{{ course.content | newlineFormat }}</markdown>
+  }
+</div>

@@ -5,6 +5,8 @@ export type Course = {
   published: boolean;
   title: string;
   about: string;
+  content: string;
+  banner: string;
   tags?: string[];
   links?: {
     homepage?: string;
