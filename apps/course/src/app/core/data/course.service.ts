@@ -10,13 +10,7 @@ export class CourseService {
   private COURSES_COLLECTION = 'courses';
 
   constructor(private afs: AngularFirestore) {}
-
-  getCourse(courseId: string): Observable<Course | undefined> {
-    return this.afs
-      .doc<Course>(`${this.COURSES_COLLECTION}/${courseId}`)
-      .valueChanges({ idField: 'id' });
-  }
-
+  
   getCourses(
     searchTerm: string = '',
     sortBy: string = 'createdAt',

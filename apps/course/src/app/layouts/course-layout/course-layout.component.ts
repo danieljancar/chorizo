@@ -25,9 +25,7 @@ export class CourseLayoutComponent implements OnInit, OnDestroy {
   constructor(
     private courseStateService: CourseStateService,
     private route: ActivatedRoute,
-  ) {
-    this.isLoading = true;
-  }
+  ) {}
 
   ngOnInit(): void {
     this.route.paramMap
@@ -35,7 +33,15 @@ export class CourseLayoutComponent implements OnInit, OnDestroy {
       .subscribe((params) => {
         const courseId = params.get('courseId');
         if (courseId) {
+          this.isLoading = true;
           this.courseStateService.setCurrentCourse(courseId);
+        }
+      });
+
+    this.courseStateService.currentCourse$
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe((course) => {
+        if (course) {
           this.isLoading = false;
         }
       });
