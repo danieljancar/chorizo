@@ -6,5 +6,5 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "ignorePatterns": ["apps/", "dist/", "node_modules/"]
+  "ignorePatterns": ["dist/", "node_modules/"]
 }
