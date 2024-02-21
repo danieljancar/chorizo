@@ -26,7 +26,6 @@ export class CourseStateService {
             this.currentCourseSubject.next(course);
           }
         });
-    } else {
     }
   }
 }
