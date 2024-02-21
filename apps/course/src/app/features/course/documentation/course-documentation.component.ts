@@ -17,7 +17,7 @@ export class CourseDocumentationComponent implements OnInit, OnDestroy {
   private subscription: Subscription = new Subscription();
   private courseStateService = inject(CourseStateService);
   private titleService = inject(Title);
-  
+
   ngOnInit(): void {
     this.subscription = this.courseStateService.currentCourse$.subscribe(
       (course) => {

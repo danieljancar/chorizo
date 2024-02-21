@@ -38,7 +38,7 @@ export class CourseIntroductionComponent implements OnInit, OnDestroy {
           this.isLoading = true;
           this.course = course;
           this.titleService.setTitle(
-            course.title + ' - Introduction - ' + course.about,
+            'Intro - ' + course.title + ' - ' + course.about,
           );
           if (course.banner) {
             this.imageLoaderService
