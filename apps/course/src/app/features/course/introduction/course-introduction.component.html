@@ -15,12 +15,12 @@
         <h1>{{ course.title }}</h1>
         <p class="text-pretty">{{ course.about }}</p>
         <div class="flex flex-wrap gap-2">
-          @for (tag of course.tags;track $index) {
+          @for (tag of course.tags; track $index) {
             <a
               href="https://www.google.com/search?q={{ tag }}"
               target="_blank"
               class="badge badge-ghost badge-md mr-2 mb-2 h-auto px-2 text-center hover:opacity-75 hover:cursor-pointer hover:scale-95 transition ease-in-out duration-100"
-            >{{ tag }}</a
+              >{{ tag }}</a
             >
           }
         </div>

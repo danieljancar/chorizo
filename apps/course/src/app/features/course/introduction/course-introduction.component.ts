@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Course } from '../../../../../projects/types/src/lib/course.types';
 import { AsyncPipe, NgOptimizedImage } from '@angular/common';
@@ -27,12 +27,9 @@ export class CourseIntroductionComponent implements OnInit, OnDestroy {
   bannerUrl!: string;
   isLoading: boolean = true;
   private subscription: Subscription = new Subscription();
-
-  constructor(
-    private courseStateService: CourseStateService,
-    private imageLoaderService: ImageLoaderService,
-    private titleService: Title,
-  ) {}
+  private courseStateService = inject(CourseStateService);
+  private titleService = inject(Title);
+  private imageLoaderService = inject(ImageLoaderService);
 
   ngOnInit(): void {
     this.subscription = this.courseStateService.currentCourse$.subscribe(

@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Course } from '../../../../../projects/types/src/lib/course.types';
 import { CourseStateService } from '../../../core/data/course-state.service';
@@ -15,12 +15,9 @@ export class CourseDocumentationComponent implements OnInit, OnDestroy {
   course: Course | undefined;
   isLoading: boolean = true;
   private subscription: Subscription = new Subscription();
-
-  constructor(
-    private courseStateService: CourseStateService,
-    private titleService: Title,
-  ) {}
-
+  private courseStateService = inject(CourseStateService);
+  private titleService = inject(Title);
+  
   ngOnInit(): void {
     this.subscription = this.courseStateService.currentCourse$.subscribe(
       (course) => {
