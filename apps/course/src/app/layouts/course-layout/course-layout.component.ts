@@ -6,6 +6,7 @@ import { CourseService } from '../../core/data/course.service';
 import { switchMap } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { LoadingBarsComponent } from '../../shared/feedback/loading-bars/loading-bars.component';
+import { PlatformLocation } from '@angular/common';
 
 @Component({
   selector: 'app-course-layout',
@@ -25,6 +26,7 @@ export class CourseLayoutComponent implements OnInit {
   constructor(
     private courseService: CourseService,
     private route: ActivatedRoute,
+    private readonly platformLocation: PlatformLocation,
   ) {}
 
   ngOnInit(): void {
@@ -42,6 +44,9 @@ export class CourseLayoutComponent implements OnInit {
     this.courseService.getCurrentCourse().subscribe((course) => {
       if (course) {
         this.isLoading = false;
+      } else {
+        this.isLoading = false;
+        this.platformLocation.back();
       }
     });
   }
