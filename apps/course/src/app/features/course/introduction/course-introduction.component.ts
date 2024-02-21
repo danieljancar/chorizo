@@ -7,6 +7,7 @@ import { MarkdownComponent } from 'ngx-markdown';
 import { NewlineFormatPipe } from '../../../pipes/newline-format.pipe';
 import { CourseStateService } from '../../../core/data/course-state.service';
 import { LoadingBarsComponent } from '../../../shared/feedback/loading-bars/loading-bars.component';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-introduction',
@@ -23,13 +24,14 @@ import { LoadingBarsComponent } from '../../../shared/feedback/loading-bars/load
 })
 export class CourseIntroductionComponent implements OnInit, OnDestroy {
   course: Course | undefined;
-  bannerUrl: string | undefined;
+  bannerUrl!: string;
   isLoading: boolean = true;
   private subscription: Subscription = new Subscription();
 
   constructor(
     private courseStateService: CourseStateService,
     private imageLoaderService: ImageLoaderService,
+    private titleService: Title,
   ) {}
 
   ngOnInit(): void {
@@ -38,6 +40,9 @@ export class CourseIntroductionComponent implements OnInit, OnDestroy {
         if (course) {
           this.isLoading = true;
           this.course = course;
+          this.titleService.setTitle(
+            course.title + ' - Introduction - ' + course.about,
+          );
           if (course.banner) {
             this.imageLoaderService
               .getDownloadUrl(course.banner)

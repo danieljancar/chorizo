@@ -1,13 +1,14 @@
 @if (isLoading) {
-  <div>
-    <app-loading-bars />
-  </div>
+  <app-loading-bars />
 } @else {
   <div class="mx-2 sm:mx-3 md:mx-32 lg:mx-60 xl:mx-96 md:mt-5">
     <img
-      [src]="bannerUrl"
+      [ngSrc]="bannerUrl"
       alt="course banner"
       class="w-full h-96 object-cover rounded-lg mb-5"
+      width="1200"
+      height="720"
+      priority="true"
     />
     @if (course) {
       <div class="border-b-2 mb-5 pb-5">

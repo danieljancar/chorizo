@@ -10,7 +10,7 @@ export class CourseService {
   private COURSES_COLLECTION = 'courses';
 
   constructor(private afs: AngularFirestore) {}
-  
+
   getCourses(
     searchTerm: string = '',
     sortBy: string = 'createdAt',
