@@ -9,6 +9,7 @@ export class ImageLoaderService {
 
   async getDownloadUrl(path: string): Promise<string> {
     const ref = this.storage.ref(path);
-    return ref.getDownloadURL().toPromise();
+    const url = await ref.getDownloadURL().toPromise();
+    return `${url}?timestamp=${new Date().getTime()}`;
   }
 }

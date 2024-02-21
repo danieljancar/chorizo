@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { Observable, Subject } from 'rxjs';
-import { CourseService } from '../../../core/data/course.service';
+import { Subscription } from 'rxjs';
 import { Course } from '../../../../../projects/types/src/lib/course.types';
 import { AsyncPipe } from '@angular/common';
 import { MatIcon } from '@angular/material/icon';
+import { CourseStateService } from '../../../core/data/course-state.service';
 
 @Component({
   selector: 'app-navbar-course',
@@ -13,21 +13,21 @@ import { MatIcon } from '@angular/material/icon';
   templateUrl: './navbar-course.component.html',
   styleUrls: ['./navbar-course.component.scss'],
 })
-export class NavbarCourseComponent implements OnInit {
-  courseId: string | null = null;
-  course$: Observable<Course | undefined>;
-  private destroy$ = new Subject<void>();
+export class NavbarCourseComponent implements OnInit, OnDestroy {
+  course: Course | undefined;
+  private subscription: Subscription = new Subscription();
 
-  constructor(private courseService: CourseService) {
-    this.course$ = new Observable();
-  }
+  constructor(private courseStateService: CourseStateService) {}
 
   ngOnInit(): void {
-    this.course$ = this.courseService.getCurrentCourse();
+    this.subscription = this.courseStateService.currentCourse$.subscribe(
+      (course) => {
+        this.course = course;
+      },
+    );
   }
 
   ngOnDestroy(): void {
-    this.destroy$.next();
-    this.destroy$.complete();
+    this.subscription.unsubscribe();
   }
 }

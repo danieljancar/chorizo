@@ -1,13 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Observable, Subject, takeUntil } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { Course } from '../../../../../projects/types/src/lib/course.types';
-import { CourseService } from '../../../core/data/course.service';
-import { Title } from '@angular/platform-browser';
-import { AppComponent } from '../../../app.component';
 import { AsyncPipe, NgOptimizedImage } from '@angular/common';
 import { ImageLoaderService } from '../../../core/data/image-loader.service';
 import { MarkdownComponent } from 'ngx-markdown';
 import { NewlineFormatPipe } from '../../../pipes/newline-format.pipe';
+import { CourseStateService } from '../../../core/data/course-state.service';
 
 @Component({
   selector: 'app-introduction',
@@ -17,34 +15,31 @@ import { NewlineFormatPipe } from '../../../pipes/newline-format.pipe';
   styleUrl: './course-introduction.component.scss',
 })
 export class CourseIntroductionComponent implements OnInit, OnDestroy {
-  course$: Observable<Course | undefined>;
+  course: Course | undefined;
   bannerUrl: string | undefined;
-  private destroy$ = new Subject<void>();
+  private subscription: Subscription = new Subscription();
 
   constructor(
-    private courseService: CourseService,
-    private title: Title,
+    private courseStateService: CourseStateService,
     private imageLoaderService: ImageLoaderService,
-  ) {
-    this.course$ = new Observable();
-  }
+  ) {}
 
-  async ngOnInit() {
-    this.course$ = this.courseService.getCurrentCourse();
-    this.course$.pipe(takeUntil(this.destroy$)).subscribe(async (course) => {
-      if (course) {
-        this.bannerUrl = await this.imageLoaderService.getDownloadUrl(
-          course.banner,
-        );
-        this.title.setTitle(
-          course.title + ' - Introduction' + ' - ' + AppComponent.chorizo.title,
-        );
-      }
-    });
+  ngOnInit(): void {
+    this.subscription = this.courseStateService.currentCourse$.subscribe(
+      (course) => {
+        this.course = course;
+        if (course?.banner) {
+          this.imageLoaderService.getDownloadUrl(course.banner).then((url) => {
+            this.bannerUrl = url;
+          });
+        } else {
+          this.bannerUrl = 'assets/placeholder-banner.webp';
+        }
+      },
+    );
   }
 
   ngOnDestroy(): void {
-    this.destroy$.next();
-    this.destroy$.complete();
+    this.subscription.unsubscribe();
   }
 }
