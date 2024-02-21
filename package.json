@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "description": "A self-hosted course management platform. Manage courses, create entry lists, and share downloadable resources seamlessly. Fully dynamic and tailored for streamlined administration.",
   "scripts": {
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
+    "lint": "eslint '**/*.{ts,tsx}'",
+    "lint:fix": "eslint '**/*.{ts,tsx}' --fix",
     "prettier": "prettier --write .",
     "prettier:check": "prettier --check ."
   },
@@ -31,6 +31,8 @@
   ],
   "homepage": "https://github.com/git+,danieljancar/chorizo#readme",
   "devDependencies": {
+    "@commitlint/cli": "^18.6.1",
+    "@commitlint/config-conventional": "^18.6.2",
     "@typescript-eslint/eslint-plugin": "^6.20.0",
     "@typescript-eslint/parser": "^6.20.0",
     "daisyui": "^4.6.1",

@@ -23,7 +23,7 @@ export class AuthService {
       .then(() => {
         this.toastService.showToast('Logged in successfully.', 'success');
       })
-      .catch((error) => {
+      .catch(() => {
         this.toastService.showToast(
           "Couldn't log in, please try again.",
           'error',

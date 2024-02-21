@@ -37,7 +37,8 @@ export class AppComponent {
     this.isBigScreen = window.innerWidth > 640;
   }
 
-  onActivate(event: any) {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  onActivate() {
     window.scroll({
       top: 0,
       left: 0,

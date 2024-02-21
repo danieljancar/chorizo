@@ -1,11 +1,6 @@
 // auth.guard.ts
 import { Injectable } from '@angular/core';
-import {
-  ActivatedRouteSnapshot,
-  CanActivate,
-  Router,
-  RouterStateSnapshot,
-} from '@angular/router';
+import { CanActivate, Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Observable } from 'rxjs';
 import { map, take, tap } from 'rxjs/operators';
@@ -21,10 +16,7 @@ export class AuthGuard implements CanActivate {
     private toastService: ToastService,
   ) {}
 
-  canActivate(
-    next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot,
-  ): Observable<boolean> | Promise<boolean> | boolean {
+  canActivate(): Observable<boolean> | Promise<boolean> | boolean {
     return this.afa.authState.pipe(
       take(1),
       map((user) => !!user),

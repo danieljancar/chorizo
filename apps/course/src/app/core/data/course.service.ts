@@ -24,6 +24,7 @@ export class CourseService {
   ): Observable<Course[]> {
     return this.afs
       .collection<Course>(this.COURSES_COLLECTION, (ref) => {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         let query = ref as any;
 
         if (searchTerm) {
