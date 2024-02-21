@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class ToastService {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private toasts: any[] = [];
 
   constructor() {}
@@ -29,6 +30,7 @@ export class ToastService {
     setTimeout(() => this.removeToast(toast), 5000);
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private removeToast(toast: any) {
     const index = this.toasts.indexOf(toast);
     if (index > -1) {
