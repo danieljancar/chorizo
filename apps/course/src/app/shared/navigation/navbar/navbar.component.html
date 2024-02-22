@@ -35,9 +35,22 @@
   </div>
   <div class="navbar-end">
     @if (isLoggedIn$ | async) {
-      <a class="btn" (click)="logout()">Logout</a>
+      <div class="dropdown dropdown-bottom dropdown-end z-40">
+        <div tabindex="0" role="button" class="btn m-1">
+          <mat-icon>person</mat-icon>
+        </div>
+        <ul
+          tabindex="0"
+          class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+        >
+          <li routerLink="/a/profile"><a>Profile</a></li>
+          <li class="text-error" (click)="logout()"><a>Logout</a></li>
+        </ul>
+      </div>
     } @else {
-      <a class="btn" routerLink="/a/login">Login</a>
+      <a class="btn" routerLink="/a/login">
+        <mat-icon>login</mat-icon>
+      </a>
     }
   </div>
 </div>

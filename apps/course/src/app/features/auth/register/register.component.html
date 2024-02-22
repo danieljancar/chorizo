@@ -1,13 +1,27 @@
 <div class="flex justify-center items-center">
   <div class="card w-full lg:w-1/2">
     <div class="card-body">
-      <h2 class="card-title">Login</h2>
-      <p>Enter your credentials to access your account.</p>
+      <h2 class="card-title">Registration</h2>
+      <p>Register to create an account</p>
       <form
         (ngSubmit)="submit()"
         [formGroup]="credentials"
         class="form-control"
       >
+        <input
+          class="input input-bordered"
+          formControlName="username"
+          placeholder="Username"
+          type="text"
+        />
+        @if (getErrorMessage('username')) {
+          <div class="text-error text-xs m-2">
+            {{ getErrorMessage('username') }}
+          </div>
+        } @else if (credentials.get('username')?.hasError('usernameTaken')) {
+          <div class="text-error text-xs m-2">Username is already taken</div>
+        }
+        <span class="my-1.5"></span>
         <input
           class="input input-bordered"
           formControlName="email"
@@ -31,22 +45,35 @@
             {{ getErrorMessage('password') }}
           </div>
         }
+        <span class="my-1.5"></span>
+        <input
+          class="input input-bordered"
+          formControlName="confirmPassword"
+          placeholder="Confirm Password"
+          type="password"
+        />
+        @if (getErrorMessage('confirmPassword')) {
+          <div class="text-red-500 text-xs m-2">
+            {{ getErrorMessage('confirmPassword') }}
+          </div>
+        }
+        <span class="my-1.5"></span>
         <button
           [disabled]="!credentials.valid"
           class="btn btn-primary mt-7"
           type="submit"
         >
-          Login
+          Register
         </button>
       </form>
       <div class="text-center mt-2">
         <p>
-          Don't have an account?
-          <a class="link link-primary" routerLink="/a/register">Register</a>
+          Already have an account?
+          <a class="link link-primary" routerLink="/a/login">Login</a>
         </p>
         <p class="text-xs text-gray-500">
-          By continuing, you agree to our
-          <a class="link link-primary" href="#">Terms of Service</a> and
+          By clicking the register button, you agree to our
+          <a class="link link-primary">Terms & Conditions</a> and
           <a class="link link-primary" href="#">Privacy Policy</a>.
         </p>
       </div>

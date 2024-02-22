@@ -3,9 +3,9 @@ import { Timestamp } from 'firebase/firestore';
 export type User = {
   id: string;
   email: string;
-  password: string;
+  username: string;
+  password?: string;
   name?: string;
-  username?: string;
   avatar?: string;
   bio?: string;
   links?: string[];
