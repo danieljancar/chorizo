@@ -9,7 +9,6 @@ export type User = {
   avatar?: string;
   bio?: string;
   links?: string[];
-  tags?: string[];
   createdAt: Timestamp;
   updatedAt?: Timestamp;
 };

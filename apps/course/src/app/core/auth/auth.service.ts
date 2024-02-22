@@ -71,4 +71,12 @@ export class AuthService {
   public async logout() {
     return this.afa.signOut();
   }
+
+  public async updateUser(userData: User): Promise<void> {
+    const currentUser = await this.afa.currentUser;
+    if (currentUser) {
+      const uid = currentUser.uid;
+      await this.afs.collection('users').doc(uid).update(userData);
+    }
+  }
 }
