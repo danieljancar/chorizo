@@ -1,0 +1,104 @@
+<div class="mx-1 sm:mx-3 md:mx-32 lg:mx-60 xl:mx-72 mt-1.5 md:mt-6">
+  <div class="flex flex-row justify-between items-center h-full border-b-2">
+    <button class="btn btn-ghost text-2xl btn-lg">Account</button>
+    <button (click)="loadUser()" class="btn btn-ghost">
+      <mat-icon>refresh</mat-icon>
+    </button>
+  </div>
+  @if (isLoading) {
+    <app-loading-bars />
+  } @else {
+    @if (user$ | async; as user) {
+      <div
+        class="flex flex-col items-center md:items-start md:flex-row text-center md:text-left h-full mt-5"
+      >
+        <div class="w-24 h-24 rounded-xl overflow-hidden">
+          @if (user.avatar) {
+            <img
+              src="{{ user.avatar }}"
+              alt="avatar"
+              class="w-full h-full object-cover"
+            />
+          } @else {
+            <div
+              class="bg-neutral text-neutral-content rounded-full w-24 h-24 flex items-center justify-center"
+            >
+              <span class="text-3xl">{{
+                user.username.charAt(0).toUpperCase()
+              }}</span>
+            </div>
+          }
+        </div>
+        <div class="h-full my-auto mt-5 md:ml-5">
+          <p class="text-2xl font-medium">{{ user.username }}</p>
+        </div>
+      </div>
+      <div class="divider"></div>
+      @if (userProfileForm) {
+        <form
+          [formGroup]="userProfileForm"
+          (ngSubmit)="submit()"
+          class="form-control w-full"
+        >
+          <div>
+            <label class="label">
+              <span class="label-text">Name</span>
+            </label>
+            <input
+              type="text"
+              placeholder="Please enter your name"
+              [value]="user.name"
+              class="input input-bordered w-full"
+              formControlName="name"
+            />
+            @if (getErrorMessage('name')) {
+              <div class="text-error text-xs p-1">
+                {{ getErrorMessage('name') }}
+              </div>
+            }
+          </div>
+          <div>
+            <label class="label">
+              <span class="label-text">Email</span>
+            </label>
+            <input
+              type="email"
+              placeholder="Please enter your email"
+              [value]="user.email"
+              class="input input-bordered w-full"
+              formControlName="email"
+            />
+            @if (getErrorMessage('email')) {
+              <div class="text-error text-xs p-1">
+                {{ getErrorMessage('email') }}
+              </div>
+            }
+          </div>
+          <div>
+            <label class="label">
+              <span class="label-text">Bio</span>
+            </label>
+            <textarea
+              class="textarea textarea-bordered h-24 w-full"
+              placeholder="Please enter your bio"
+              formControlName="bio"
+              >{{ user.bio }}</textarea
+            >
+            @if (getErrorMessage('bio')) {
+              <div class="text-error text-xs p-1">
+                {{ getErrorMessage('bio') }}
+              </div>
+            }
+          </div>
+          <button
+            [disabled]="!userProfileForm.valid && !userProfileForm.touched"
+            class="btn btn-primary mt-4 w-full"
+            type="submit"
+          >
+            Update
+          </button>
+        </form>
+      }
+    }
+  }
+</div>

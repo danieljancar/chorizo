@@ -1,9 +1,24 @@
-<div class="flex justify-center items-center my-auto h-full">
+<div class="flex justify-center items-center">
   <div class="card w-full max-w-md">
     <div class="card-body">
-      <h2 class="card-title">Login</h2>
-      <p>Enter your credentials to access your account.</p>
+      <h2 class="card-title">Registration</h2>
+      <p>Register to create an account.</p>
       <form (ngSubmit)="submit()" [formGroup]="credentials">
+        <label class="label">
+          <span class="label-text">Username</span>
+        </label>
+        <input
+          class="input input-bordered w-full"
+          formControlName="username"
+          placeholder="Username"
+          type="text"
+        />
+        @if (getErrorMessage('username')) {
+          <div class="text-error text-xs p-1">
+            {{ getErrorMessage('username') }}
+          </div>
+        }
+
         <label class="label">
           <span class="label-text">Email</span>
         </label>
@@ -34,22 +49,37 @@
           </div>
         }
 
+        <label class="label">
+          <span class="label-text">Confirm Password</span>
+        </label>
+        <input
+          class="input input-bordered w-full"
+          formControlName="confirmPassword"
+          placeholder="Confirm Password"
+          type="password"
+        />
+        @if (getErrorMessage('confirmPassword')) {
+          <div class="text-error text-xs p-1">
+            {{ getErrorMessage('confirmPassword') }}
+          </div>
+        }
+
         <button
           [disabled]="!credentials.valid"
           class="btn btn-primary mt-4 w-full"
           type="submit"
         >
-          Login
+          Register
         </button>
       </form>
       <div class="text-center mt-4">
         <p>
-          Don't have an account?
-          <a class="link link-primary" routerLink="/a/register">Register</a>
+          Already have an account?
+          <a class="link link-primary" routerLink="/a/login">Login</a>
         </p>
         <p class="text-xs text-gray-600">
-          By continuing, you agree to our
-          <a class="link link-primary" href="#">Terms of Service</a> and
+          By clicking the register button, you agree to our
+          <a class="link link-primary">Terms & Conditions</a> and
           <a class="link link-primary" href="#">Privacy Policy</a>.
         </p>
       </div>
