@@ -13,6 +13,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { NavbarComponent } from '../../../shared/navigation/navbar/navbar.component';
 import { Router, RouterLink } from '@angular/router';
 import { ToastService } from '../../../core/utility/toast.service';
+import { Title } from '@angular/platform-browser';
+import { environment } from '../../../../environments/environment';
+import { AppComponent } from '../../../app.component';
 
 @Component({
   selector: 'app-login',
@@ -30,8 +33,7 @@ import { ToastService } from '../../../core/utility/toast.service';
   ],
 })
 export class LoginComponent {
-  private readonly formBuilder = inject(FormBuilder);
-  credentials: FormGroup = this.formBuilder.group({
+  public credentials: FormGroup = this.formBuilder.group({
     email: [
       '',
       [
@@ -46,25 +48,22 @@ export class LoginComponent {
       [Validators.required, Validators.minLength(6), Validators.maxLength(99)],
     ],
   });
-  private readonly authService = inject(AuthService);
-  private readonly router = inject(Router);
-  private readonly toastService = inject(ToastService);
 
-  getErrorMessage(controlName: string): string | null {
-    const control = this.credentials.get(controlName);
-    if (control && control.touched && control.errors) {
-      if (control.errors['required']) {
-        return 'This field is required';
-      }
-      if (control.errors['email']) {
-        return 'Invalid email format';
-      }
-      return control.errors['minlength'] || control.errors['maxlength'];
-    }
-    return null;
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private toastService: ToastService,
+    private authService: AuthService,
+  ) {
+    inject(Title).setTitle(
+      'Login - ' +
+        environment.metaConfig.title +
+        ' - ' +
+        AppComponent.chorizo.title,
+    );
   }
 
-  async submit() {
+  public async submit() {
     if (!this.credentials.valid) {
       return;
     }
@@ -77,6 +76,20 @@ export class LoginComponent {
     } catch (error) {
       this.handleError(error);
     }
+  }
+
+  public getErrorMessage(controlName: string): string | null {
+    const control = this.credentials.get(controlName);
+    if (control && control.touched && control.errors) {
+      if (control.errors['required']) {
+        return 'This field is required';
+      }
+      if (control.errors['email']) {
+        return 'Invalid email format';
+      }
+      return control.errors['minlength'] || control.errors['maxlength'];
+    }
+    return null;
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

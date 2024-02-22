@@ -10,6 +10,9 @@ import { Router, RouterLink } from '@angular/router';
 import { ToastService } from '../../../core/utility/toast.service';
 import { usernameTakenValidator } from '../../../validators/username-taken.validator';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Title } from '@angular/platform-browser';
+import { environment } from '../../../../environments/environment';
+import { AppComponent } from '../../../app.component';
 
 @Component({
   selector: 'app-register',
@@ -19,16 +22,11 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
   styleUrl: './register.component.scss',
 })
 export class RegisterComponent {
-  private readonly formBuilder = inject(FormBuilder);
-  private readonly authService = inject(AuthService);
-  private readonly router = inject(Router);
-  private readonly toastService = inject(ToastService);
-  private readonly afs = inject(AngularFirestore);
-  credentials: FormGroup = this.formBuilder.group({
+  public credentials: FormGroup = this.formBuilder.group({
     username: [
       '',
       [Validators.required, Validators.minLength(3), Validators.maxLength(50)],
-      [usernameTakenValidator(this.afs)],
+      [usernameTakenValidator(inject(AngularFirestore))],
     ],
     email: [
       '',
@@ -49,7 +47,21 @@ export class RegisterComponent {
     ],
   });
 
-  getErrorMessage(controlName: string): string | null {
+  constructor(
+    private formBuilder: FormBuilder,
+    private authService: AuthService,
+    private router: Router,
+    private toastService: ToastService,
+  ) {
+    inject(Title).setTitle(
+      'Register - ' +
+        environment.metaConfig.title +
+        ' - ' +
+        AppComponent.chorizo.title,
+    );
+  }
+
+  public getErrorMessage(controlName: string): string | null {
     const control = this.credentials.get(controlName);
     if (control && control.touched && control.errors) {
       if (control.errors['required']) {
@@ -71,7 +83,7 @@ export class RegisterComponent {
     return null;
   }
 
-  async submit() {
+  public async submit() {
     if (!this.credentials.valid) {
       return;
     }
@@ -107,7 +119,7 @@ export class RegisterComponent {
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  async handleError(error: any) {
+  private async handleError(error: any) {
     if (error.code === 'auth/email-already-in-use') {
       this.toastService.showToast(
         'This email is already in use, please try another.',

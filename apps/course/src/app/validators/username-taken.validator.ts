@@ -17,7 +17,7 @@ export function usernameTakenValidator(
       .pipe(
         take(1),
         map((arr) => (arr.length ? { usernameTaken: true } : null)),
-        catchError(() => of(null)), // Handle errors, possibly return a custom error
+        catchError(() => of(null)),
       );
   };
 }
