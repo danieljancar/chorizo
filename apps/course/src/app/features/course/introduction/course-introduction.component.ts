@@ -1,41 +1,67 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Observable, Subject, takeUntil } from 'rxjs';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { Course } from '../../../../../projects/types/src/lib/course.types';
-import { CourseService } from '../../../core/data/course.service';
+import { AsyncPipe, NgOptimizedImage } from '@angular/common';
+import { ImageLoaderService } from '../../../core/data/image-loader.service';
+import { MarkdownComponent } from 'ngx-markdown';
+import { NewlineFormatPipe } from '../../../pipes/newline-format.pipe';
+import { CourseStateService } from '../../../core/data/course-state.service';
+import { LoadingBarsComponent } from '../../../shared/feedback/loading-bars/loading-bars.component';
 import { Title } from '@angular/platform-browser';
-import { AppComponent } from '../../../app.component';
 
 @Component({
   selector: 'app-introduction',
   standalone: true,
-  imports: [],
+  imports: [
+    AsyncPipe,
+    NgOptimizedImage,
+    MarkdownComponent,
+    NewlineFormatPipe,
+    LoadingBarsComponent,
+  ],
   templateUrl: './course-introduction.component.html',
   styleUrl: './course-introduction.component.scss',
 })
 export class CourseIntroductionComponent implements OnInit, OnDestroy {
-  course$: Observable<Course | undefined>;
-  private destroy$ = new Subject<void>();
-
-  constructor(
-    private courseService: CourseService,
-    private title: Title,
-  ) {
-    this.course$ = new Observable();
-  }
+  course: Course | undefined;
+  bannerUrl!: string;
+  isLoading: boolean = true;
+  private subscription: Subscription = new Subscription();
+  private courseStateService = inject(CourseStateService);
+  private titleService = inject(Title);
+  private imageLoaderService = inject(ImageLoaderService);
 
   ngOnInit(): void {
-    this.course$ = this.courseService.getCurrentCourse();
-    this.course$.pipe(takeUntil(this.destroy$)).subscribe((course) => {
-      if (course) {
-        this.title.setTitle(
-          course.title + ' - Introduction' + ' - ' + AppComponent.chorizo.title,
-        );
-      }
-    });
+    this.subscription = this.courseStateService.currentCourse$.subscribe(
+      (course) => {
+        if (course) {
+          this.isLoading = true;
+          this.course = course;
+          this.titleService.setTitle(
+            'Intro - ' + course.title + ' - ' + course.about,
+          );
+          if (course.banner) {
+            this.imageLoaderService
+              .getDownloadUrl(course.banner)
+              .then((url) => {
+                this.bannerUrl = url;
+                this.isLoading = false;
+              })
+              .catch(() => {
+                this.isLoading = false;
+              });
+          } else {
+            this.bannerUrl = 'assets/placeholder-banner.webp';
+            this.isLoading = false;
+          }
+        } else {
+          this.isLoading = true;
+        }
+      },
+    );
   }
 
   ngOnDestroy(): void {
-    this.destroy$.next();
-    this.destroy$.complete();
+    this.subscription.unsubscribe();
   }
 }

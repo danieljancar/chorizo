@@ -1,22 +1,15 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { Observable, ReplaySubject } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Course } from '../../../../projects/types/src/lib/course.types';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CourseService {
-  private currentCourse = new ReplaySubject<Course | undefined>(1);
   private COURSES_COLLECTION = 'courses';
 
   constructor(private afs: AngularFirestore) {}
-
-  getCourse(courseId: string): Observable<Course | undefined> {
-    return this.afs
-      .doc<Course>(`${this.COURSES_COLLECTION}/${courseId}`)
-      .valueChanges({ idField: 'id' });
-  }
 
   getCourses(
     searchTerm: string = '',
@@ -59,15 +52,5 @@ export class CourseService {
           .where('published', '==', true),
       )
       .valueChanges({ idField: 'id' }) as Observable<Course[]>;
-  }
-
-  setCurrentCourse(courseId: string): void {
-    this.getCourse(courseId).subscribe((course) =>
-      this.currentCourse.next(course),
-    );
-  }
-
-  getCurrentCourse(): Observable<Course | undefined> {
-    return this.currentCourse.asObservable();
   }
 }

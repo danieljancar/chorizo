@@ -1,9 +1,8 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Observable, Subject, takeUntil } from 'rxjs';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { Course } from '../../../../../projects/types/src/lib/course.types';
-import { CourseService } from '../../../core/data/course.service';
+import { CourseStateService } from '../../../core/data/course-state.service';
 import { Title } from '@angular/platform-browser';
-import { AppComponent } from '../../../app.component';
 
 @Component({
   selector: 'app-docs',
@@ -13,32 +12,29 @@ import { AppComponent } from '../../../app.component';
   styleUrl: './course-documentation.component.scss',
 })
 export class CourseDocumentationComponent implements OnInit, OnDestroy {
-  course$: Observable<Course | undefined>;
-  private destroy$ = new Subject<void>();
-
-  constructor(
-    private courseService: CourseService,
-    private title: Title,
-  ) {
-    this.course$ = new Observable();
-  }
+  course: Course | undefined;
+  isLoading: boolean = true;
+  private subscription: Subscription = new Subscription();
+  private courseStateService = inject(CourseStateService);
+  private titleService = inject(Title);
 
   ngOnInit(): void {
-    this.course$ = this.courseService.getCurrentCourse();
-    this.course$.pipe(takeUntil(this.destroy$)).subscribe((course) => {
-      if (course) {
-        this.title.setTitle(
-          'Documentation - ' +
-            course.title +
-            ' - ' +
-            AppComponent.chorizo.title,
-        );
-      }
-    });
+    this.subscription = this.courseStateService.currentCourse$.subscribe(
+      (course) => {
+        if (course) {
+          this.isLoading = true;
+          this.course = course;
+          this.titleService.setTitle(
+            'Documentation - ' + course.title + ' - ' + course.about,
+          );
+        } else {
+          this.isLoading = true;
+        }
+      },
+    );
   }
 
   ngOnDestroy(): void {
-    this.destroy$.next();
-    this.destroy$.complete();
+    this.subscription.unsubscribe();
   }
 }

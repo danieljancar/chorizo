@@ -12,6 +12,7 @@ import { HttpClient } from '@angular/common/http';
 import { JsonPipe } from '@angular/common';
 import { HomepageAboutComponent } from './about/homepage-about.component';
 import { FeedbackMessageComponent } from '../../../../shared/feedback/feedback-message/feedback-message.component';
+import { NewlineFormatPipe } from '../../../../pipes/newline-format.pipe';
 
 @Component({
   selector: 'app-homepage-markdown-renderer',
@@ -22,6 +23,7 @@ import { FeedbackMessageComponent } from '../../../../shared/feedback/feedback-m
     JsonPipe,
     HomepageAboutComponent,
     FeedbackMessageComponent,
+    NewlineFormatPipe,
   ],
   templateUrl: './homepage-markdown-renderer.component.html',
   styleUrls: ['./homepage-markdown-renderer.component.scss'],

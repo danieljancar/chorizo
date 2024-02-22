@@ -1,11 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NavbarCourseComponent } from '../../shared/navigation/navbar-course/navbar-course.component';
 import { ActivatedRoute, RouterOutlet } from '@angular/router';
 import { FooterComponent } from '../../shared/navigation/footer/footer.component';
-import { CourseService } from '../../core/data/course.service';
-import { switchMap } from 'rxjs/operators';
-import { of } from 'rxjs';
 import { LoadingBarsComponent } from '../../shared/feedback/loading-bars/loading-bars.component';
+import { CourseStateService } from '../../core/data/course-state.service';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-course-layout',
@@ -19,30 +18,37 @@ import { LoadingBarsComponent } from '../../shared/feedback/loading-bars/loading
     LoadingBarsComponent,
   ],
 })
-export class CourseLayoutComponent implements OnInit {
+export class CourseLayoutComponent implements OnInit, OnDestroy {
   isLoading: boolean = true;
+  private unsubscribe$ = new Subject<void>();
 
   constructor(
-    private courseService: CourseService,
+    private courseStateService: CourseStateService,
     private route: ActivatedRoute,
   ) {}
 
   ngOnInit(): void {
     this.route.paramMap
-      .pipe(
-        switchMap((params) => {
-          const courseId = params.get('courseId');
-          if (courseId) {
-            this.courseService.setCurrentCourse(courseId);
-          }
-          return of(undefined);
-        }),
-      )
-      .subscribe();
-    this.courseService.getCurrentCourse().subscribe((course) => {
-      if (course) {
-        this.isLoading = false;
-      }
-    });
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe((params) => {
+        const courseId = params.get('courseId');
+        if (courseId) {
+          this.isLoading = true;
+          this.courseStateService.setCurrentCourse(courseId);
+        }
+      });
+
+    this.courseStateService.currentCourse$
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe((course) => {
+        if (course) {
+          this.isLoading = false;
+        }
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
   }
 }

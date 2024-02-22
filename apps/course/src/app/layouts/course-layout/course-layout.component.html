@@ -1,11 +1,12 @@
 @if (isLoading) {
   <div
-    class="absolute bg-neutral bg-opacity-75 z-10 h-full w-full flex items-center justify-center"
+    class="absolute bg-base-100 bg-opacity-100 z-10 h-full w-full flex items-center justify-center"
   >
     <app-loading-bars />
   </div>
 }
-<app-navbar-course />
-<router-outlet />
-<div class="min-h-1-2"></div>
+<div class="min-h-screen">
+  <app-navbar-course />
+  <router-outlet />
+</div>
 <app-footer />
