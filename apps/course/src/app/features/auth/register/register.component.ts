@@ -106,7 +106,10 @@ export class RegisterComponent {
 
     try {
       await this.authService.register(email, password, username);
-      this.toastService.showToast('Registration successful.', ToastType.Info);
+      this.toastService.showToast(
+        'Registration successful.',
+        ToastType.Success,
+      );
       await this.router.navigate(['/']);
     } catch (error) {
       const message = this.authService.handleAuthError(error);
