@@ -5,7 +5,6 @@ import {
   OnDestroy,
   OnInit,
 } from '@angular/core';
-import { AuthService } from '../../../core/auth/auth.service';
 import {
   FormBuilder,
   FormGroup,
@@ -25,6 +24,8 @@ import { AccountProfileBannerComponent } from './profile-banner/account-profile-
 import { RelativeTimePipe } from '../../../pipes/relative-time.pipe';
 import { interval, Observable, Subscription } from 'rxjs';
 import { ToastType } from '../../../types/feedback/toast.types';
+import { UserService } from '../../../core/data/user.service';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
 
 @Component({
   selector: 'app-account',
@@ -45,14 +46,16 @@ export class AccountComponent implements OnInit, OnDestroy {
   isLoading: boolean = false;
   userProfileForm: FormGroup;
   public user$: Observable<User | null | undefined> =
-    this.authService.getCurrentUser();
+    this.userService.getCurrentUser();
+  avatarIsUploading: boolean = false;
   private subscriptions = new Subscription();
 
   constructor(
-    private authService: AuthService,
     private formBuilder: FormBuilder,
     private toastService: ToastService,
     private changeDetectorRef: ChangeDetectorRef,
+    private userService: UserService,
+    private storage: AngularFireStorage,
   ) {
     inject(Title).setTitle(
       `Account - ${environment.metaConfig.title} - ${AppComponent.chorizo.title}`,
@@ -86,7 +89,7 @@ export class AccountComponent implements OnInit, OnDestroy {
 
   loadUser(): void {
     this.isLoading = true;
-    const userSubscription = this.authService.getCurrentUser().subscribe({
+    const userSubscription = this.userService.getCurrentUser().subscribe({
       next: (user) => {
         if (user) {
           this.userProfileForm.patchValue(user);
@@ -136,10 +139,32 @@ export class AccountComponent implements OnInit, OnDestroy {
     return null;
   }
 
+  handleAvatarChange(file: File): void {
+    this.avatarIsUploading = true;
+    this.userService
+      .updateUserAvatar(file)
+      .then(() => {
+        this.toastService.showToast(
+          'Avatar updated successfully.',
+          ToastType.Success,
+        );
+        this.avatarIsUploading = false;
+      })
+      .catch((error) => {
+        console.error('Failed to update avatar:', error);
+        this.toastService.showToast(
+          'Failed to update avatar, please try again.',
+          ToastType.Error,
+        );
+        this.avatarIsUploading = false;
+        this.loadUser();
+      });
+  }
+
   submit(): void {
     if (this.userProfileForm.valid) {
       const updatedUserData = this.userProfileForm.value;
-      this.authService
+      this.userService
         .updateUser(updatedUserData)
         .then(() => {
           this.toastService.showToast(

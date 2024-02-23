@@ -1,18 +1,35 @@
 <div
   class="flex flex-col items-center justify-center text-center pt-5 md:flex-row md:justify-normal"
 >
-  <div class="w-24 h-24 rounded-xl overflow-hidden">
-    @if (avatar) {
-      <img src="{{ avatar }}" alt="avatar" class="w-full h-full object-cover" />
-    } @else {
-      <div
-        class="bg-neutral text-neutral-content rounded-full w-24 h-24 flex items-center justify-center"
-      >
-        <span class="text-3xl">{{ username.charAt(0) }}</span>
-      </div>
-    }
+  <div>
+    <div class="w-24 h-24 rounded-xl overflow-hidden">
+      @if (uploading) {
+        <div class="w-24 h-24 skeleton"></div>
+      } @else if (avatarUrl) {
+        <img
+          src="{{ avatarUrl }}"
+          alt="avatar"
+          class="w-full h-full object-cover"
+        />
+      } @else {
+        <div
+          class="bg-neutral text-neutral-content rounded-full w-24 h-24 flex items-center justify-center"
+        >
+          <span class="text-3xl">{{ username.charAt(0) }}</span>
+        </div>
+      }
+    </div>
+    <p class="mt-2 text-blue-500 hover:text-blue-600 cursor-pointer text-xs">
+      <label class="cursor-pointer" for="avatarUpload"> Change avatar </label>
+      <input
+        (change)="onFileSelected($event)"
+        class="hidden"
+        id="avatarUpload"
+        type="file"
+      />
+    </p>
   </div>
   <div class="flex flex-wrap items-center mt-5 md:mt-0 md:ml-5">
-    <p class="text-2xl font-medium">{{ username }}</p>
+    <p class="text-2xl font-medium link link-hover">{{ '@' + username }}</p>
   </div>
 </div>
