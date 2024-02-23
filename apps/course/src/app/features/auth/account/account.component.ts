@@ -1,4 +1,10 @@
-import { Component, inject, OnInit } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  inject,
+  OnDestroy,
+  OnInit,
+} from '@angular/core';
 import { AuthService } from '../../../core/auth/auth.service';
 import {
   FormBuilder,
@@ -15,6 +21,9 @@ import { RouterLink } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { environment } from '../../../../environments/environment';
 import { AppComponent } from '../../../app.component';
+import { AccountProfileBannerComponent } from './profile-banner/account-profile-banner.component';
+import { RelativeTimePipe } from '../../../pipes/relative-time.pipe';
+import { interval, Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-account',
@@ -27,23 +36,25 @@ import { AppComponent } from '../../../app.component';
     LoadingBarsComponent,
     MatIcon,
     RouterLink,
+    AccountProfileBannerComponent,
+    RelativeTimePipe,
   ],
 })
-export class AccountComponent implements OnInit {
+export class AccountComponent implements OnInit, OnDestroy {
   isLoading: boolean = false;
   userProfileForm: FormGroup;
-  user$: Promise<User | null> = Promise.resolve(null);
+  public user$: Observable<User | null | undefined> =
+    this.authService.getCurrentUser();
+  private subscriptions = new Subscription();
 
   constructor(
     private authService: AuthService,
     private formBuilder: FormBuilder,
     private toastService: ToastService,
+    private changeDetectorRef: ChangeDetectorRef,
   ) {
     inject(Title).setTitle(
-      'Account - ' +
-        environment.metaConfig.title +
-        ' - ' +
-        AppComponent.chorizo.title,
+      `Account - ${environment.metaConfig.title} - ${AppComponent.chorizo.title}`,
     );
     this.userProfileForm = this.formBuilder.group({
       name: [
@@ -55,7 +66,10 @@ export class AccountComponent implements OnInit {
         ],
       ],
       email: [
-        { value: '', disabled: true },
+        {
+          value: '',
+          disabled: true,
+        },
         [
           Validators.required,
           Validators.email,
@@ -69,22 +83,35 @@ export class AccountComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadUser();
+    this.setupUpdateTime();
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe();
   }
 
   loadUser(): void {
     this.isLoading = true;
-    this.user$ = this.authService.getCurrentUser();
-    this.user$
-      .then((user) => {
+    const userSubscription = this.authService.getCurrentUser().subscribe({
+      next: (user) => {
         if (user) {
           this.userProfileForm.patchValue(user);
-          this.isLoading = false;
         }
-      })
-      .catch(() => {
+        this.isLoading = false;
+      },
+      error: () => {
         this.toastService.showToast('Error loading user data.', 'error');
         this.isLoading = false;
-      });
+      },
+    });
+    this.subscriptions.add(userSubscription);
+  }
+
+  setupUpdateTime(): void {
+    const timeUpdateSubscription = interval(60000).subscribe(() => {
+      this.changeDetectorRef.markForCheck();
+    });
+    this.subscriptions.add(timeUpdateSubscription);
   }
 
   public getErrorMessage(controlName: string): string | null {
@@ -118,11 +145,17 @@ export class AccountComponent implements OnInit {
       this.authService
         .updateUser(updatedUserData)
         .then(() => {
-          this.toastService.showToast('User updated successfully.', 'success');
-          this.loadUser(); // Refresh user data
+          this.toastService.showToast(
+            'Your profile was updated successfully.',
+            'success',
+          );
+          this.loadUser();
         })
         .catch(() => {
-          this.toastService.showToast('Error updating user data.', 'error');
+          this.toastService.showToast(
+            'There was an error updating your profile.',
+            'error',
+          );
         });
     }
   }

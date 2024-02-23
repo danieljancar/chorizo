@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -8,56 +8,66 @@ import {
 import { AuthService } from '../../../core/auth/auth.service';
 import { Router, RouterLink } from '@angular/router';
 import { ToastService } from '../../../core/utility/toast.service';
-import { usernameTakenValidator } from '../../../validators/username-taken.validator';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { passwordMatcher } from '../../../validators/auth/password-matcher.validator';
 import { Title } from '@angular/platform-browser';
 import { environment } from '../../../../environments/environment';
 import { AppComponent } from '../../../app.component';
+import { usernameTakenValidator } from '../../../validators/auth/username-taken.validator';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [ReactiveFormsModule, RouterLink],
   templateUrl: './register.component.html',
-  styleUrl: './register.component.scss',
+  styleUrls: ['./register.component.scss'],
+  imports: [ReactiveFormsModule, RouterLink],
 })
 export class RegisterComponent {
-  public credentials: FormGroup = this.formBuilder.group({
-    username: [
-      '',
-      [Validators.required, Validators.minLength(3), Validators.maxLength(50)],
-      [usernameTakenValidator(inject(AngularFirestore))],
-    ],
-    email: [
-      '',
-      [
-        Validators.required,
-        Validators.email,
-        Validators.minLength(3),
-        Validators.maxLength(150),
-      ],
-    ],
-    password: [
-      '',
-      [Validators.required, Validators.minLength(6), Validators.maxLength(99)],
-    ],
-    confirmPassword: [
-      '',
-      [Validators.required, Validators.minLength(6), Validators.maxLength(99)],
-    ],
-  });
+  public credentials: FormGroup;
 
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private router: Router,
     private toastService: ToastService,
+    private titleService: Title,
+    private afs: AngularFirestore,
   ) {
-    inject(Title).setTitle(
-      'Register - ' +
-        environment.metaConfig.title +
-        ' - ' +
-        AppComponent.chorizo.title,
+    this.credentials = this.formBuilder.group(
+      {
+        username: [
+          '',
+          [
+            Validators.required,
+            Validators.minLength(3),
+            Validators.maxLength(50),
+          ],
+          [usernameTakenValidator(this.afs)],
+        ],
+        email: [
+          '',
+          [
+            Validators.required,
+            Validators.email,
+            Validators.minLength(4),
+            Validators.maxLength(150),
+          ],
+        ],
+        password: [
+          '',
+          [
+            Validators.required,
+            Validators.minLength(6),
+            Validators.maxLength(99),
+          ],
+        ],
+        confirmPassword: ['', [Validators.required]],
+      },
+      { validators: passwordMatcher('password', 'confirmPassword') },
+    );
+
+    this.titleService.setTitle(
+      `Register - ${environment.metaConfig.title} - ${AppComponent.chorizo.title}`,
     );
   }
 
@@ -67,17 +77,20 @@ export class RegisterComponent {
       if (control.errors['required']) {
         return 'This field is required';
       }
-      if (control.errors['username']) {
-        return 'Invalid username format';
-      }
       if (control.errors['email']) {
         return 'Invalid email format';
+      }
+      if (control.errors['usernameTaken']) {
+        return 'Username is already taken, please try another';
       }
       if (control.errors['minlength']) {
         return `Minimum length should be ${control.errors['minlength']['requiredLength']}`;
       }
       if (control.errors['maxlength']) {
         return `Maximum length should be ${control.errors['maxlength']['requiredLength']}`;
+      }
+      if (control.errors['passwordMatcher']) {
+        return 'Passwords do not match';
       }
     }
     return null;
@@ -88,45 +101,15 @@ export class RegisterComponent {
       return;
     }
 
-    const { email, password, confirmPassword, username } =
-      this.credentials.value;
-
-    if (password !== confirmPassword) {
-      this.toastService.showToast(
-        'Passwords do not match, please try again.',
-        'error',
-      );
-      return;
-    }
+    const { email, password, username } = this.credentials.value;
 
     try {
-      const exists = await this.authService.emailExists(email);
-      if (exists) {
-        this.toastService.showToast(
-          'This account already exists, please log in.',
-          'error',
-        );
-        await this.router.navigate(['/a/login']);
-        return;
-      }
-
       await this.authService.register(email, password, username);
       this.toastService.showToast('Registration successful.', 'success');
       await this.router.navigate(['/']);
     } catch (error) {
-      await this.handleError(error);
-    }
-  }
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private async handleError(error: any) {
-    if (error.code === 'auth/email-already-in-use') {
-      this.toastService.showToast(
-        'This email is already in use, please try another.',
-        'error',
-      );
-    } else {
-      this.toastService.showToast('Error occurred, please try again.', 'error');
+      const message = this.authService.handleAuthError(error);
+      this.toastService.showToast(message, 'error');
     }
   }
 }

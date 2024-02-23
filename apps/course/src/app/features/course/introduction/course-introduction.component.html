@@ -6,14 +6,14 @@
       [ngSrc]="bannerUrl"
       alt="course banner"
       class="w-full h-96 object-cover rounded-lg mb-5"
-      width="1200"
-      height="720"
+      width="723"
+      height="384"
       priority="true"
     />
     @if (course) {
       <div class="border-b-2 mb-5 pb-5">
-        <h1>{{ course.title }}</h1>
-        <p class="text-pretty">{{ course.about }}</p>
+        <h1 class="text-2xl font-bold mb-2">{{ course.title }}</h1>
+        <p class="text-pretty mb-2">{{ course.about }}</p>
         <div class="flex flex-wrap gap-2">
           @for (tag of course.tags; track $index) {
             <a

@@ -9,30 +9,7 @@
     <app-loading-bars />
   } @else {
     @if (user$ | async; as user) {
-      <div
-        class="flex flex-col items-center md:items-start md:flex-row text-center md:text-left h-full mt-5"
-      >
-        <div class="w-24 h-24 rounded-xl overflow-hidden">
-          @if (user.avatar) {
-            <img
-              src="{{ user.avatar }}"
-              alt="avatar"
-              class="w-full h-full object-cover"
-            />
-          } @else {
-            <div
-              class="bg-neutral text-neutral-content rounded-full w-24 h-24 flex items-center justify-center"
-            >
-              <span class="text-3xl">{{
-                user.username.charAt(0).toUpperCase()
-              }}</span>
-            </div>
-          }
-        </div>
-        <div class="h-full my-auto mt-5 md:ml-5">
-          <p class="text-2xl font-medium">{{ user.username }}</p>
-        </div>
-      </div>
+      <app-account-profile-banner [user]="user" />
       <div class="divider"></div>
       @if (userProfileForm) {
         <form
@@ -91,13 +68,18 @@
             }
           </div>
           <button
-            [disabled]="!userProfileForm.valid && !userProfileForm.touched"
+            [disabled]="userProfileForm.valid && userProfileForm.pristine"
             class="btn btn-primary mt-4 w-full"
             type="submit"
           >
             Update
           </button>
         </form>
+      }
+      @if (user.updatedAt) {
+        <p class="text-center text-neutral text-xs mt-2">
+          Last updated: {{ user.updatedAt.toDate() | relativeTime: 'relative' }}
+        </p>
       }
     }
   }

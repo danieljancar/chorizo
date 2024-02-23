@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -6,11 +6,6 @@ import {
   Validators,
 } from '@angular/forms';
 import { AuthService } from '../../../core/auth/auth.service';
-import { MatCardModule } from '@angular/material/card';
-import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from '@angular/material/button';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { NavbarComponent } from '../../../shared/navigation/navbar/navbar.component';
 import { Router, RouterLink } from '@angular/router';
 import { ToastService } from '../../../core/utility/toast.service';
 import { Title } from '@angular/platform-browser';
@@ -22,44 +17,40 @@ import { AppComponent } from '../../../app.component';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
   standalone: true,
-  imports: [
-    ReactiveFormsModule,
-    MatCardModule,
-    MatInputModule,
-    MatButtonModule,
-    MatFormFieldModule,
-    NavbarComponent,
-    RouterLink,
-  ],
+  imports: [ReactiveFormsModule, RouterLink],
 })
 export class LoginComponent {
-  public credentials: FormGroup = this.formBuilder.group({
-    email: [
-      '',
-      [
-        Validators.required,
-        Validators.email,
-        Validators.minLength(3),
-        Validators.maxLength(150),
-      ],
-    ],
-    password: [
-      '',
-      [Validators.required, Validators.minLength(6), Validators.maxLength(99)],
-    ],
-  });
+  public credentials: FormGroup;
 
   constructor(
     private formBuilder: FormBuilder,
+    private authService: AuthService,
     private router: Router,
     private toastService: ToastService,
-    private authService: AuthService,
+    titleService: Title,
   ) {
-    inject(Title).setTitle(
-      'Login - ' +
-        environment.metaConfig.title +
-        ' - ' +
-        AppComponent.chorizo.title,
+    this.credentials = this.formBuilder.group({
+      email: [
+        '',
+        [
+          Validators.required,
+          Validators.email,
+          Validators.minLength(4),
+          Validators.maxLength(150),
+        ],
+      ],
+      password: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(6),
+          Validators.maxLength(99),
+        ],
+      ],
+    });
+
+    titleService.setTitle(
+      `Login - ${environment.metaConfig.title} - ${AppComponent.chorizo.title}`,
     );
   }
 
@@ -72,9 +63,11 @@ export class LoginComponent {
 
     try {
       await this.authService.login(email, password);
+      this.toastService.showToast('Logged in successfully.', 'success');
       await this.router.navigate(['/']);
     } catch (error) {
-      this.handleError(error);
+      const message = this.authService.handleAuthError(error);
+      this.toastService.showToast(message, 'error');
     }
   }
 
@@ -85,24 +78,15 @@ export class LoginComponent {
         return 'This field is required';
       }
       if (control.errors['email']) {
-        return 'Invalid email format';
+        return 'Invalid email format, please try another.';
       }
-      return control.errors['minlength'] || control.errors['maxlength'];
+      if (control.errors['minlength']) {
+        return `Minimum length should be ${control.errors['minlength']['requiredLength']}`;
+      }
+      if (control.errors['maxlength']) {
+        return `Maximum length should be ${control.errors['maxlength']['requiredLength']}`;
+      }
     }
     return null;
-  }
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private handleError(error: any) {
-    let message = 'Error logging in, please try again.';
-    if (
-      error.code === 'auth/user-not-found' ||
-      error.code === 'auth/wrong-password' ||
-      error.code === 'auth/invalid-credential'
-    ) {
-      message = 'Incorrect email or password, please try again.';
-    }
-
-    this.toastService.showToast(message, 'error');
   }
 }

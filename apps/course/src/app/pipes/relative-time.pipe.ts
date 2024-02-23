@@ -50,11 +50,11 @@ export class RelativeTimePipe implements PipeTransform {
     if (seconds < 60) {
       return 'Just now';
     } else if (minutes < 60) {
-      return `${minutes} minutes ago`;
+      return minutes === 1 ? '1 minute ago' : `${minutes} minutes ago`;
     } else if (hours < 24) {
-      return `${hours} hours ago`;
+      return hours === 1 ? '1 hour ago' : `${hours} hours ago`;
     } else if (days < 7) {
-      return `${days} days ago`;
+      return days === 1 ? '1 day ago' : `${days} days ago`;
     } else {
       return this.formatDate(date);
     }

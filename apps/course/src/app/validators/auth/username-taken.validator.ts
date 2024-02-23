@@ -7,6 +7,11 @@ import {
 import { catchError, map, take } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 
+/**
+ * Custom validator to check if a username is already taken
+ * @param afs AngularFirestore
+ * @returns AsyncValidatorFn
+ */
 export function usernameTakenValidator(
   afs: AngularFirestore,
 ): AsyncValidatorFn {
