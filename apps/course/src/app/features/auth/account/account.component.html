@@ -12,7 +12,9 @@
       <app-account-profile-banner
         [username]="user['username']"
         [avatar]="user['avatar']"
-      />
+        (avatarChange)="handleAvatarChange($event)"
+        [uploading]="avatarIsUploading"
+      ></app-account-profile-banner>
       <div class="divider"></div>
       @if (userProfileForm) {
         <form
@@ -71,7 +73,11 @@
             }
           </div>
           <button
-            [disabled]="userProfileForm.valid && userProfileForm.pristine"
+            [disabled]="
+              userProfileForm.valid &&
+              userProfileForm.pristine &&
+              userProfileForm.touched
+            "
             class="btn btn-primary mt-4 w-full"
             type="submit"
           >
