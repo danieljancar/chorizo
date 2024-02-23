@@ -48,18 +48,16 @@ export class UserService {
   public async updateUserAvatar(file: File): Promise<void> {
     const uid = (await this.afa.currentUser)?.uid;
     const filePath = `users/avatars/${uid}/${Date.now()}_${file.name}`;
-    const fileRef = this.storage.ref(filePath);
 
     await this.storage
       .upload(filePath, file)
       .snapshotChanges()
       .pipe(
         finalize(async () => {
-          const avatarUrl = await fileRef.getDownloadURL().toPromise();
           await this.afs
             .collection('users')
             .doc(uid)
-            .update({ avatar: avatarUrl });
+            .update({ avatar: filePath });
         }),
       )
       .toPromise();

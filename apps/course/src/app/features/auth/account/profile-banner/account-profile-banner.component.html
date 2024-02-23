@@ -5,9 +5,9 @@
     <div class="w-24 h-24 rounded-xl overflow-hidden">
       @if (uploading) {
         <div class="w-24 h-24 skeleton"></div>
-      } @else if (avatar) {
+      } @else if (avatarUrl) {
         <img
-          src="{{ avatar }}"
+          src="{{ avatarUrl }}"
           alt="avatar"
           class="w-full h-full object-cover"
         />
