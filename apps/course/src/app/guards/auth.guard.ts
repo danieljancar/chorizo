@@ -4,6 +4,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Observable } from 'rxjs';
 import { map, take, tap } from 'rxjs/operators';
 import { ToastService } from '../core/feedback/toast.service';
+import { ToastType } from '../types/feedback/toast.types';
 
 @Injectable({
   providedIn: 'root',
@@ -24,7 +25,7 @@ export class AuthGuard implements CanActivate {
           this.router.navigate(['/a/login']).then(() => {
             this.toastService.showToast(
               'You must be logged in to access this page.',
-              'error',
+              ToastType.Info,
             );
           });
         }

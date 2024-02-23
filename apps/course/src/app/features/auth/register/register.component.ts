@@ -14,6 +14,7 @@ import { environment } from '../../../../environments/environment';
 import { AppComponent } from '../../../app.component';
 import { usernameTakenValidator } from '../../../validators/auth/username-taken.validator';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { ToastType } from '../../../types/feedback/toast.types';
 
 @Component({
   selector: 'app-register',
@@ -105,11 +106,11 @@ export class RegisterComponent {
 
     try {
       await this.authService.register(email, password, username);
-      this.toastService.showToast('Registration successful.', 'success');
+      this.toastService.showToast('Registration successful.', ToastType.Info);
       await this.router.navigate(['/']);
     } catch (error) {
       const message = this.authService.handleAuthError(error);
-      this.toastService.showToast(message, 'error');
+      this.toastService.showToast(message, ToastType.Error);
     }
   }
 }

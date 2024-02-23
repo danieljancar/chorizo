@@ -4,10 +4,10 @@
       <div
         class="alert text-base-100"
         [ngClass]="{
-          'alert-info': toast.type === 'info',
-          'alert-success': toast.type === 'success',
-          'alert-warning': toast.type === 'warning',
-          'alert-error': toast.type === 'error'
+          'alert-info': toast.type === ToastType.Info,
+          'alert-success': toast.type === ToastType.Success,
+          'alert-warning': toast.type === ToastType.Warning,
+          'alert-error': toast.type === ToastType.Error
         }"
       >
         @if (isBigScreen) {

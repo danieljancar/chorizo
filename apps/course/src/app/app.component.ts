@@ -6,6 +6,7 @@ import { NavbarCourseComponent } from './shared/navigation/navbar-course/navbar-
 import { NavbarComponent } from './shared/navigation/navbar/navbar.component';
 import { MatIcon } from '@angular/material/icon';
 import { FooterComponent } from './shared/navigation/footer/footer.component';
+import { ToastType } from './types/feedback/toast.types';
 
 @Component({
   selector: 'app-root',
@@ -32,6 +33,7 @@ export class AppComponent {
     },
   };
   isBigScreen: boolean;
+  protected readonly ToastType = ToastType;
 
   constructor(public toastService: ToastService) {
     this.isBigScreen = window.innerWidth > 640;

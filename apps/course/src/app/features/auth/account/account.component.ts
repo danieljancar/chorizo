@@ -24,6 +24,7 @@ import { AppComponent } from '../../../app.component';
 import { AccountProfileBannerComponent } from './profile-banner/account-profile-banner.component';
 import { RelativeTimePipe } from '../../../pipes/relative-time.pipe';
 import { interval, Observable, Subscription } from 'rxjs';
+import { ToastType } from '../../../types/feedback/toast.types';
 
 @Component({
   selector: 'app-account',
@@ -57,14 +58,7 @@ export class AccountComponent implements OnInit, OnDestroy {
       `Account - ${environment.metaConfig.title} - ${AppComponent.chorizo.title}`,
     );
     this.userProfileForm = this.formBuilder.group({
-      name: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(3),
-          Validators.maxLength(50),
-        ],
-      ],
+      name: ['', [Validators.minLength(3), Validators.maxLength(50)]],
       email: [
         {
           value: '',
@@ -100,7 +94,10 @@ export class AccountComponent implements OnInit, OnDestroy {
         this.isLoading = false;
       },
       error: () => {
-        this.toastService.showToast('Error loading user data.', 'error');
+        this.toastService.showToast(
+          'Error loading user data.',
+          ToastType.Error,
+        );
         this.isLoading = false;
       },
     });
@@ -147,14 +144,14 @@ export class AccountComponent implements OnInit, OnDestroy {
         .then(() => {
           this.toastService.showToast(
             'Your profile was updated successfully.',
-            'success',
+            ToastType.Success,
           );
           this.loadUser();
         })
         .catch(() => {
           this.toastService.showToast(
             'There was an error updating your profile.',
-            'error',
+            ToastType.Error,
           );
         });
     }

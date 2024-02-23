@@ -4,6 +4,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Observable } from 'rxjs';
 import { map, take, tap } from 'rxjs/operators';
 import { ToastService } from '../core/feedback/toast.service';
+import { ToastType } from '../types/feedback/toast.types';
 
 @Injectable({
   providedIn: 'root',
@@ -22,7 +23,10 @@ export class LoginGuard implements CanActivate {
       tap((notLoggedIn) => {
         if (!notLoggedIn) {
           this.router.navigate(['/']).then(() => {
-            this.toastService.showToast('You are already logged in.', 'info');
+            this.toastService.showToast(
+              'You are already logged in.',
+              ToastType.Info,
+            );
           });
         }
       }),

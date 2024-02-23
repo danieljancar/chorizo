@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { User } from '../../../../../../projects/types/src/lib/user.types';
 
 @Component({
   selector: 'app-account-profile-banner',
@@ -9,5 +8,6 @@ import { User } from '../../../../../../projects/types/src/lib/user.types';
   styleUrl: './account-profile-banner.component.scss',
 })
 export class AccountProfileBannerComponent {
-  @Input() user: User | undefined;
+  @Input() avatar: string | undefined;
+  @Input() username: string = '';
 }

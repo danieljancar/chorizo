@@ -8,7 +8,7 @@ import {
 import { ActivatedRoute, Router } from '@angular/router';
 import { debounceTime } from 'rxjs/operators';
 import { MatIcon } from '@angular/material/icon';
-import { Sort, SortText } from '../../../../enums/sort.enum';
+import { SortText, SortValue } from '../../../../enums/sort.enums';
 
 @Component({
   selector: 'app-courses-filter',
@@ -19,8 +19,8 @@ import { Sort, SortText } from '../../../../enums/sort.enum';
 })
 export class CoursesFilterComponent implements OnInit {
   filterForm: FormGroup;
-  currentSort: Sort;
-  protected readonly Sort = Sort;
+  currentSort: SortValue;
+  protected readonly Sort = SortValue;
 
   constructor(
     private router: Router,
@@ -28,17 +28,17 @@ export class CoursesFilterComponent implements OnInit {
   ) {
     this.filterForm = new FormGroup({
       searchTerm: new FormControl(''),
-      sortBy: new FormControl(Sort.latest),
+      sortBy: new FormControl(SortValue.latest),
     });
-    this.currentSort = Sort.latest;
+    this.currentSort = SortValue.latest;
   }
 
   ngOnInit() {
     this.activatedRoute.queryParams.subscribe((params) => {
-      const sortParam = params['sort'] as Sort;
+      const sortParam = params['sort'] as SortValue;
       const searchParam = params['search'] as string;
 
-      if (sortParam && Sort[sortParam] !== undefined) {
+      if (sortParam && SortValue[sortParam] !== undefined) {
         this.currentSort = sortParam;
         this.filterForm
           .get('sortBy')
@@ -64,7 +64,7 @@ export class CoursesFilterComponent implements OnInit {
     });
   }
 
-  setSortBy(sortBy: Sort): void {
+  setSortBy(sortBy: SortValue): void {
     this.currentSort = sortBy;
     const sortByControl = this.filterForm.get('sortBy');
     if (sortByControl) {

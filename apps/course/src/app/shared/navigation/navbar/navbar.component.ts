@@ -14,6 +14,7 @@ import { AsyncPipe } from '@angular/common';
 import { Observable } from 'rxjs';
 import { ToastService } from '../../../core/feedback/toast.service';
 import { environment } from '../../../../environments/environment';
+import { ToastType } from '../../../types/feedback/toast.types';
 
 @Component({
   selector: 'app-navbar',
@@ -47,7 +48,10 @@ export class NavbarComponent {
   logout() {
     this.authService.logout().then(() => {
       this.router.navigate(['/a/login']).then(() => {
-        this.toastService.showToast('Logged out successfully.', 'success');
+        this.toastService.showToast(
+          'Logged out successfully.',
+          ToastType.Success,
+        );
       });
     });
   }

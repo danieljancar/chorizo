@@ -3,7 +3,7 @@ export enum SortText {
   oldest = 'Oldest',
 }
 
-export enum Sort {
+export enum SortValue {
   latest = 'latest',
   oldest = 'oldest',
 }

@@ -11,6 +11,7 @@ import { ToastService } from '../../../core/feedback/toast.service';
 import { Title } from '@angular/platform-browser';
 import { environment } from '../../../../environments/environment';
 import { AppComponent } from '../../../app.component';
+import { ToastType } from '../../../types/feedback/toast.types';
 
 @Component({
   selector: 'app-login',
@@ -63,11 +64,10 @@ export class LoginComponent {
 
     try {
       await this.authService.login(email, password);
-      this.toastService.showToast('Logged in successfully.', 'success');
       await this.router.navigate(['/']);
     } catch (error) {
       const message = this.authService.handleAuthError(error);
-      this.toastService.showToast(message, 'error');
+      this.toastService.showToast(message, ToastType.Error);
     }
   }
 

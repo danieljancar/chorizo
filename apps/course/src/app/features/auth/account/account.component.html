@@ -9,7 +9,10 @@
     <app-loading-bars />
   } @else {
     @if (user$ | async; as user) {
-      <app-account-profile-banner [user]="user" />
+      <app-account-profile-banner
+        [username]="user['username']"
+        [avatar]="user['avatar']"
+      />
       <div class="divider"></div>
       @if (userProfileForm) {
         <form

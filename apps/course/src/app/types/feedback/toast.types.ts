@@ -1,6 +1,11 @@
+export enum ToastType {
+  Info = 'info',
+  Success = 'success',
+  Warning = 'warning',
+  Error = 'error',
+}
+
 export type Toast = {
   message: string;
   type: ToastType;
 };
-
-export type ToastType = 'info' | 'success' | 'warning' | 'error';

@@ -6,6 +6,7 @@ import { ToastService } from '../feedback/toast.service';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { User } from '../../../../projects/types/src/lib/user.types';
 import { Timestamp } from 'firebase/firestore';
+import { ToastType } from '../../types/feedback/toast.types';
 
 @Injectable({
   providedIn: 'root',
@@ -23,7 +24,7 @@ export class AuthService {
 
   public async login(email: string, password: string) {
     await this.afa.signInWithEmailAndPassword(email, password);
-    this.toastService.showToast('Logged in successfully.', 'success');
+    this.toastService.showToast('Logged in successfully.', ToastType.Success);
   }
 
   public async register(email: string, password: string, username: string) {
@@ -39,7 +40,7 @@ export class AuthService {
         createdAt: new Date(),
         updatedAt: new Date(),
       });
-      this.toastService.showToast('Registered successfully.', 'success');
+      this.toastService.showToast('Registered successfully.', ToastType.Info);
     }
   }
 
