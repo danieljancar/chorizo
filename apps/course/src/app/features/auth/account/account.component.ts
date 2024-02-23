@@ -14,7 +14,7 @@ import {
 } from '@angular/forms';
 import { User } from '../../../../../projects/types/src/lib/user.types';
 import { AsyncPipe } from '@angular/common';
-import { ToastService } from '../../../core/utility/toast.service';
+import { ToastService } from '../../../core/feedback/toast.service';
 import { LoadingBarsComponent } from '../../../shared/feedback/loading-bars/loading-bars.component';
 import { MatIcon } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';

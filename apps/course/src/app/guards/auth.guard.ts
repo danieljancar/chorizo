@@ -1,10 +1,9 @@
-// auth.guard.ts
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Observable } from 'rxjs';
 import { map, take, tap } from 'rxjs/operators';
-import { ToastService } from '../core/utility/toast.service';
+import { ToastService } from '../core/feedback/toast.service';
 
 @Injectable({
   providedIn: 'root',

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { map, switchMap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
-import { ToastService } from '../utility/toast.service';
+import { ToastService } from '../feedback/toast.service';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { User } from '../../../../projects/types/src/lib/user.types';
 import { Timestamp } from 'firebase/firestore';

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { ToastService } from './core/utility/toast.service';
+import { ToastService } from './core/feedback/toast.service';
 import { NgClass } from '@angular/common';
 import { NavbarCourseComponent } from './shared/navigation/navbar-course/navbar-course.component';
 import { NavbarComponent } from './shared/navigation/navbar/navbar.component';

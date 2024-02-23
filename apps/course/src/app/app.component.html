@@ -1,6 +1,6 @@
 @if (toastService.getToasts().length) {
   @for (toast of toastService.getToasts(); track $index) {
-    <div class="toast">
+    <div class="toast toast-end">
       <div
         class="alert text-base-100"
         [ngClass]="{
@@ -25,7 +25,9 @@
             }}
           </mat-icon>
         }
-        <span>{{ toast.message }}</span>
+        <span class="break-words whitespace-normal text-sm sm:text-base">{{
+          toast.message
+        }}</span>
       </div>
     </div>
   }
