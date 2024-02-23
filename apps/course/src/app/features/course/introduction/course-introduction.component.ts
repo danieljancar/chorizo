@@ -2,7 +2,7 @@ import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Course } from '../../../../../projects/types/src/lib/course.types';
 import { AsyncPipe, NgOptimizedImage } from '@angular/common';
-import { ImageLoaderService } from '../../../core/data/image-loader.service';
+import { ImageLoaderService } from '../../../core/util/image-loader.service';
 import { MarkdownComponent } from 'ngx-markdown';
 import { NewlineFormatPipe } from '../../../pipes/newline-format.pipe';
 import { CourseStateService } from '../../../core/data/course-state.service';
