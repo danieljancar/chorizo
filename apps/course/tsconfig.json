@@ -21,14 +21,14 @@
     "useDefineForClassFields": false,
     "paths": {
       "enums": ["./dist/enums"],
-      "types": ["./dist/types"]
+      "types": ["./dist/types"],
     },
-    "lib": ["ES2022", "dom"]
+    "lib": ["ES2022", "dom"],
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
-    "strictTemplates": true
-  }
+    "strictTemplates": true,
+  },
 }

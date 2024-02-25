@@ -3,20 +3,23 @@
 >
   <div>
     <div class="w-24 h-24 rounded-xl overflow-hidden">
-      @if (uploading) {
-        <div class="w-24 h-24 skeleton"></div>
-      } @else if (avatarUrl) {
+      @if (avatarUrl) {
         <img
-          src="{{ avatarUrl }}"
+          ngSrc="{{ avatarUrl }}"
+          width="100"
+          height="100"
           alt="avatar"
           class="w-full h-full object-cover"
+          priority="true"
         />
-      } @else {
+      } @else if (avatarPath == undefined) {
         <div
-          class="bg-neutral text-neutral-content rounded-full w-24 h-24 flex items-center justify-center"
+          class="bg-neutral text-neutral-content w-24 h-24 flex items-center justify-center"
         >
           <span class="text-3xl">{{ username.charAt(0) }}</span>
         </div>
+      } @else {
+        <div class="w-24 h-24 skeleton"></div>
       }
     </div>
     <p class="mt-2 text-blue-500 hover:text-blue-600 cursor-pointer text-xs">

@@ -12,6 +12,7 @@ import { Title } from '@angular/platform-browser';
 import { environment } from '../../../../environments/environment';
 import { AppComponent } from '../../../app.component';
 import { ToastType } from '../../../types/feedback/toast.types';
+import { isReactive } from '@angular/core/primitives/signals';
 
 @Component({
   selector: 'app-login',
@@ -22,6 +23,8 @@ import { ToastType } from '../../../types/feedback/toast.types';
 })
 export class LoginComponent {
   public credentials: FormGroup;
+  public isLoggingIn: boolean = false;
+  protected readonly isReactive = isReactive;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -56,6 +59,7 @@ export class LoginComponent {
   }
 
   public async submit() {
+    this.isLoggingIn = true;
     if (!this.credentials.valid) {
       return;
     }
@@ -63,11 +67,14 @@ export class LoginComponent {
     const { email, password } = this.credentials.value;
 
     try {
-      await this.authService.login(email, password);
-      await this.router.navigate(['/']);
+      await this.authService.login(email, password).then(async () => {
+        this.isLoggingIn = false;
+        await this.router.navigate(['/']);
+      });
     } catch (error) {
       const message = this.authService.handleAuthError(error);
       this.toastService.showToast(message, ToastType.Error);
+      this.isLoggingIn = false;
     }
   }
 

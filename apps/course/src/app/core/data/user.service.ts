@@ -48,6 +48,7 @@ export class UserService {
   public async updateUserAvatar(file: File): Promise<void> {
     const uid = (await this.afa.currentUser)?.uid;
     const filePath = `users/avatars/${uid}/${Date.now()}_${file.name}`;
+    const updatedAt = new Timestamp(new Date().getTime() / 1000, 0);
 
     await this.storage
       .upload(filePath, file)
@@ -57,7 +58,7 @@ export class UserService {
           await this.afs
             .collection('users')
             .doc(uid)
-            .update({ avatar: filePath });
+            .update({ avatar: filePath, updatedAt: updatedAt });
         }),
       )
       .toPromise();

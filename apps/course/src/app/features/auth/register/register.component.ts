@@ -25,6 +25,7 @@ import { ToastType } from '../../../types/feedback/toast.types';
 })
 export class RegisterComponent {
   public credentials: FormGroup;
+  public isRegistering: boolean = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -98,6 +99,7 @@ export class RegisterComponent {
   }
 
   public async submit() {
+    this.isRegistering = true;
     if (!this.credentials.valid) {
       return;
     }
@@ -105,15 +107,20 @@ export class RegisterComponent {
     const { email, password, username } = this.credentials.value;
 
     try {
-      await this.authService.register(email, password, username);
-      this.toastService.showToast(
-        'Registration successful.',
-        ToastType.Success,
-      );
-      await this.router.navigate(['/']);
+      await this.authService
+        .register(email, password, username)
+        .then(async () => {
+          this.toastService.showToast(
+            'Registration successful.',
+            ToastType.Success,
+          );
+          this.isRegistering = false;
+          await this.router.navigate(['/']);
+        });
     } catch (error) {
       const message = this.authService.handleAuthError(error);
       this.toastService.showToast(message, ToastType.Error);
+      this.isRegistering = false;
     }
   }
 }

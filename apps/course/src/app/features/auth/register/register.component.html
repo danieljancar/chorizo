@@ -65,10 +65,13 @@
         }
 
         <button
-          [disabled]="!credentials.valid"
+          [disabled]="!credentials.valid || isRegistering"
           class="btn btn-primary mt-4 w-full"
           type="submit"
         >
+          @if (isRegistering) {
+            <span class="loading loading-spinner"></span>
+          }
           Register
         </button>
       </form>

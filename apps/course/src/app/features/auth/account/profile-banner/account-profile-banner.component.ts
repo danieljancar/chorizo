@@ -8,11 +8,12 @@ import {
 } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
 import { ImageLoaderService } from '../../../../core/util/image-loader.service';
+import { NgOptimizedImage } from '@angular/common';
 
 @Component({
   selector: 'app-account-profile-banner',
   standalone: true,
-  imports: [MatIcon],
+  imports: [MatIcon, NgOptimizedImage],
   templateUrl: './account-profile-banner.component.html',
   styleUrl: './account-profile-banner.component.scss',
 })
