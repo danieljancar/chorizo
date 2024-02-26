@@ -119,6 +119,7 @@ export class AccountComponent implements OnInit, OnDestroy {
 
   public loadUser(): void {
     this.isLoading = true;
+    this.clearUserForm();
     const userSubscription = this.user$.subscribe({
       next: (user) => {
         if (user) {
@@ -161,6 +162,10 @@ export class AccountComponent implements OnInit, OnDestroy {
       ],
       bio: ['', [Validators.minLength(3), Validators.maxLength(800)]],
     });
+  }
+
+  private clearUserForm(): void {
+    this.userProfileForm.reset();
   }
 
   private setupUpdateTime(): void {
