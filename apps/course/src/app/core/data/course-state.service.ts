@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import { Observable, ReplaySubject } from 'rxjs';
 import { Course } from '../../../../projects/types/src/lib/course.types';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Router } from '@angular/router';
+import { ToastService } from '../feedback/toast.service';
+import { ToastType } from '../../types/feedback/toast.types';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +15,11 @@ export class CourseStateService {
     this.currentCourseSubject.asObservable();
   private lastCourseId: string | null = null;
 
-  constructor(private afs: AngularFirestore) {}
+  constructor(
+    private afs: AngularFirestore,
+    private router: Router,
+    private toastService: ToastService,
+  ) {}
 
   setCurrentCourse(courseId: string): void {
     if (this.lastCourseId !== courseId) {
@@ -22,8 +29,16 @@ export class CourseStateService {
         .doc<Course>(`courses/${courseId}`)
         .valueChanges({ idField: 'id' })
         .subscribe((course) => {
-          if (course) {
+          if (course?.title) {
             this.currentCourseSubject.next(course);
+          } else {
+            this.currentCourseSubject.next(undefined);
+            this.router.navigate(['/c']).then(() => {
+              this.toastService.showToast(
+                'Course with that ID was not found.',
+                ToastType.Error,
+              );
+            });
           }
         });
     }
