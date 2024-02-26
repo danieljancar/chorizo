@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CourseService } from '../../../../core/data/course.service';
+import { CourseService } from '../../../../core/course.service';
 import { Course } from '../../../../../../projects/types/src/lib/course.types';
 import { LoadingBarsComponent } from '../../../../shared/feedback/loading-bars/loading-bars.component';
 import { FeedbackMessageComponent } from '../../../../shared/feedback/feedback-message/feedback-message.component';

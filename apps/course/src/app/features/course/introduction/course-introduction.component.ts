@@ -4,8 +4,7 @@ import { Course } from '../../../../../projects/types/src/lib/course.types';
 import { AsyncPipe, NgOptimizedImage } from '@angular/common';
 import { ImageLoaderService } from '../../../core/util/image-loader.service';
 import { MarkdownComponent } from 'ngx-markdown';
-import { NewlineFormatPipe } from '../../../pipes/newline-format.pipe';
-import { CourseStateService } from '../../../core/data/course-state.service';
+import { CourseStateService } from '../../../core/course-state.service';
 import { LoadingBarsComponent } from '../../../shared/feedback/loading-bars/loading-bars.component';
 import { Title } from '@angular/platform-browser';
 
@@ -16,7 +15,6 @@ import { Title } from '@angular/platform-browser';
     AsyncPipe,
     NgOptimizedImage,
     MarkdownComponent,
-    NewlineFormatPipe,
     LoadingBarsComponent,
   ],
   templateUrl: './course-introduction.component.html',

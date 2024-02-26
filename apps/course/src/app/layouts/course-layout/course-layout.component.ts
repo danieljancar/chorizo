@@ -3,7 +3,7 @@ import { NavbarCourseComponent } from '../../shared/navigation/navbar-course/nav
 import { ActivatedRoute, RouterOutlet } from '@angular/router';
 import { FooterComponent } from '../../shared/navigation/footer/footer.component';
 import { LoadingBarsComponent } from '../../shared/feedback/loading-bars/loading-bars.component';
-import { CourseStateService } from '../../core/data/course-state.service';
+import { CourseStateService } from '../../core/course-state.service';
 import { Subject, takeUntil } from 'rxjs';
 
 @Component({

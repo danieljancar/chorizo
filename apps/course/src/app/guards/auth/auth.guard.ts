@@ -3,13 +3,13 @@ import { CanActivate, Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Observable } from 'rxjs';
 import { map, take, tap } from 'rxjs/operators';
-import { ToastService } from '../core/feedback/toast.service';
-import { ToastType } from '../types/feedback/toast.types';
+import { ToastService } from '../../core/feedback/toast.service';
+import { ToastType } from '../../types/feedback/toast.types';
 
 @Injectable({
   providedIn: 'root',
 })
-export class LoginGuard implements CanActivate {
+export class AuthGuard implements CanActivate {
   constructor(
     private afa: AngularFireAuth,
     private router: Router,
@@ -19,12 +19,12 @@ export class LoginGuard implements CanActivate {
   canActivate(): Observable<boolean> | Promise<boolean> | boolean {
     return this.afa.authState.pipe(
       take(1),
-      map((user) => !user),
-      tap((notLoggedIn) => {
-        if (!notLoggedIn) {
-          this.router.navigate(['/']).then(() => {
+      map((user) => !!user),
+      tap((loggedIn) => {
+        if (!loggedIn) {
+          this.router.navigate(['/a/login']).then(() => {
             this.toastService.showToast(
-              'You are already logged in.',
+              'You must be logged in to access this page.',
               ToastType.Info,
             );
           });

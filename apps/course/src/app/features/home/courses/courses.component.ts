@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { CourseService } from '../../../core/data/course.service';
+import { CourseService } from '../../../core/course.service';
 import { Course } from '../../../../../projects/types/src/lib/course.types';
 import { LoadingBarsComponent } from '../../../shared/feedback/loading-bars/loading-bars.component';
 import { CoursesFilterComponent } from './filter/courses-filter.component';

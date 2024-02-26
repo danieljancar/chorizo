@@ -1,5 +1,5 @@
 import { Component, SecurityContext, ViewEncapsulation } from '@angular/core';
-import { GeneralService } from '../../../../core/data/general.service';
+import { GeneralService } from '../../../../core/general.service';
 import {
   MarkdownComponent,
   MarkdownService,
@@ -12,7 +12,6 @@ import { HttpClient } from '@angular/common/http';
 import { JsonPipe } from '@angular/common';
 import { HomepageAboutComponent } from './about/homepage-about.component';
 import { FeedbackMessageComponent } from '../../../../shared/feedback/feedback-message/feedback-message.component';
-import { NewlineFormatPipe } from '../../../../pipes/newline-format.pipe';
 
 @Component({
   selector: 'app-homepage-markdown-renderer',
@@ -23,7 +22,6 @@ import { NewlineFormatPipe } from '../../../../pipes/newline-format.pipe';
     JsonPipe,
     HomepageAboutComponent,
     FeedbackMessageComponent,
-    NewlineFormatPipe,
   ],
   templateUrl: './homepage-markdown-renderer.component.html',
   styleUrls: ['./homepage-markdown-renderer.component.scss'],
