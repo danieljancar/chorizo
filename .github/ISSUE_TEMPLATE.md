@@ -1,14 +1,5 @@
 ## Description
 
-### Type
-
-- [ ] Bug
-- [ ] Feature
-- [ ] Improvement
-- [ ] Documentation
-- [ ] Other
-- [ ] Question
-
 ### Package
 
 - [ ] `course`
