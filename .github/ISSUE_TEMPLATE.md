@@ -1,8 +1,25 @@
 ## Description
 
-<!--- Provide a general summary of the issue in the Title above -->
+### Type
 
-- Package: <!--- Name of the package you are working on e.g. frontend -->
+- [ ] Bug
+- [ ] Feature
+- [ ] Improvement
+- [ ] Documentation
+- [ ] Other
+- [ ] Question
+
+### Package
+
+- [ ] `course`
+- [ ] `adminui`
+- [ ] `cli`
+- [ ] `chorizodev`
+- [ ] `architecture`
+- [ ] `documentation`
+- [ ] `Other`
+
+<!--- Provide a general summary of the issue in the Title above -->
 
 ## Expected Behavior
 
