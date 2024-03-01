@@ -1,10 +1,13 @@
 # Contributing to Chorizo
 
-Thank you for your interest in contributing to Chorizo. To ensure a smooth contribution process and maintain the quality of our codebase, we have set specific guidelines, especially for commit messages and versioning.
+Thank you for your interest in contributing to Chorizo. To ensure a smooth contribution process and maintain the quality
+of our codebase, we have set specific guidelines, especially for commit messages and versioning.
 
 ## Semantic Release and Commit Message Guidelines
 
-We use semantic release for automated version management and changelog generation. This requires commit messages to adhere to a specific format, enabling the automatic determination of version numbers and the generation of meaningful changelogs.
+We use semantic release for automated version management and changelog generation. This requires commit messages to
+adhere to a specific format, enabling the automatic determination of version numbers and the generation of meaningful
+changelogs.
 
 ### Commit Message Format
 
@@ -20,13 +23,23 @@ Every commit message should be structured as follows:
    - `test` (adding tests, refactoring tests; no production code change)
    - `chore` (updating build tasks, package manager configs, etc; no production code change)
 
-2. **Scope** (optional): This refers to the part of the codebase affected by the change, e.g., `login`, `user-dashboard`.
+2. **Scope** (optional): This refers to the part of the codebase affected by the change:
+
+   - `adminui`
+   - `course`
+   - `cli`
+   - `chorizodev`
+   - `architecture`
+   - `documentation`
+   - `Other`
 
 3. **Subject**: A brief description of the change, in the imperative mood.
 
-4. **Body** (optional): A more detailed explanation of the changes. This is where you should explain the reasoning behind the changes if necessary.
+4. **Body** (optional): A more detailed explanation of the changes. This is where you should explain the reasoning
+   behind the changes if necessary.
 
-5. **Footer** (optional): This should contain any information about Breaking Changes and is also the place to reference GitHub issues that this commit closes.
+5. **Footer** (optional): This should contain any information about Breaking Changes and is also the place to reference
+   GitHub issues that this commit closes.
 
 Example:
 
@@ -47,11 +60,13 @@ BREAKING CHANGE: Users can no longer log in using their email address. Instead, 
 
 ## Pull Requests
 
-1. **Squashing Commits**: Before submitting a PR, squash your commits into a single commit with a meaningful commit message as per the above guidelines.
+1. **Squashing Commits**: Before submitting a PR, squash your commits into a single commit with a meaningful commit
+   message as per the above guidelines.
 
 2. **Pull Request Description**: Provide a clear description in your PR. Link the PR to any relevant issues.
 
-3. **Review and Merge**: Once a PR is submitted, the maintainers will review it. If all criteria are met, it will be merged into the main codebase.
+3. **Review and Merge**: Once a PR is submitted, the maintainers will review it. If all criteria are met, it will be
+   merged into the main codebase.
 
 ## Reporting Issues
 
@@ -61,6 +76,8 @@ BREAKING CHANGE: Users can no longer log in using their email address. Instead, 
 
 ## Labels in Issues
 
-- **Categorize with Labels**: Use appropriate labels like `bug`, `feature`, `documentation`, `help wanted` to help categorize and prioritize the issue.
+- **Categorize with Labels**: Use appropriate labels like `bug`, `feature`, `documentation`, `help wanted` to help
+  categorize and prioritize the issue.
 
-Your contributions are vital to keeping Chorizo robust and reliable. By following these guidelines, we can ensure a smooth and efficient development process. Thank you for your contributions!
+Your contributions are vital to keeping Chorizo robust and reliable. By following these guidelines, we can ensure a
+smooth and efficient development process. Thank you for your contributions!

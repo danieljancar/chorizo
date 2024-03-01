@@ -25,7 +25,7 @@ git clone https://github.com/danieljancar/chorizo.git
 npm install
 ```
 
-# Projects
+# Packages
 
 ## Course
 
