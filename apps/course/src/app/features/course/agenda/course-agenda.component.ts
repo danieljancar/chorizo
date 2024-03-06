@@ -8,9 +8,7 @@ import { LoadingBarsComponent } from '../../../shared/feedback/loading-bars/load
 @Component({
   selector: 'app-agenda',
   standalone: true,
-  imports: [
-    LoadingBarsComponent,
-  ],
+  imports: [LoadingBarsComponent],
   templateUrl: './course-agenda.component.html',
   styleUrl: './course-agenda.component.scss',
 })

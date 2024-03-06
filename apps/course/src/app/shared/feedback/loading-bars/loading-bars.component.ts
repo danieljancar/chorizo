@@ -4,7 +4,7 @@ import { Component, Input } from '@angular/core';
   selector: 'app-loading-bars',
   templateUrl: './loading-bars.component.html',
   styleUrls: ['./loading-bars.component.scss'],
-  standalone: true
+  standalone: true,
 })
 export class LoadingBarsComponent {
   @Input() size: string = 'lg';
