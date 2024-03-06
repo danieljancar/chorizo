@@ -9,4 +9,9 @@
     [class.loading-sm]="size === 'sm'"
     class="loading-bars loading"
   ></span>
+
+  <!-- Optionaler Lade-Text -->
+  @if (shouldShowLoadingText()) {
+    <div class="loading-text">{{ loadingText }}</div>
+  }
 </div>
