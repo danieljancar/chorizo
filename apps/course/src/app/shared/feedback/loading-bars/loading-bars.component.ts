@@ -13,6 +13,4 @@ export class LoadingBarsComponent {
   @Input() loadingText: string | null;
 
   constructor() {}
-
-
 }
