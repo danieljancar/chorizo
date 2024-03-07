@@ -4,4 +4,10 @@
 node_modules
 .angular
 dist
+.firebase
+
+# Course app config
 environments/
+
+# AdminUI app config
+/apps/admin-ui/src/config.ts
