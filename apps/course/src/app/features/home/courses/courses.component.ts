@@ -9,6 +9,7 @@ import { Title } from '@angular/platform-browser';
 import { environment } from '../../../../environments/environment';
 import { AppComponent } from '../../../app.component';
 import { RelativeTimePipe } from '../../../pipes/relative-time.pipe';
+import { Link } from '../../../app.component';
 
 @Component({
   selector: 'app-courses',
@@ -39,6 +40,7 @@ export class CoursesComponent implements OnInit {
         ' - ' +
         AppComponent.chorizo.title,
     );
+    Link.send = window.location.href;
   }
 
   ngOnInit() {

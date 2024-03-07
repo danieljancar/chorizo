@@ -5,6 +5,7 @@ import { LoadingBarsComponent } from '../../../../shared/feedback/loading-bars/l
 import { FeedbackMessageComponent } from '../../../../shared/feedback/feedback-message/feedback-message.component';
 import { RouterLink } from '@angular/router';
 import { RelativeTimePipe } from '../../../../pipes/relative-time.pipe';
+import { Link } from '../../../../app.component';
 
 @Component({
   selector: 'app-latest-courses',
@@ -27,5 +28,6 @@ export class HomepageLatestCoursesComponent {
       this.courses = courses;
       this.isLoading = false;
     });
+    Link.send = window.location.href;
   }
 }
