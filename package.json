@@ -10,7 +10,7 @@
     "prettier:check": "prettier --check .",
     "build:all:dev": "npm run build:adminui:dev && npm run build:course:dev",
     "build:adminui:dev": "cd apps/admin-ui && yarn build",
-    "build:course:dev": "cd apps/course && npm run build:dev",
+    "build:course:dev": "cd apps/course && npm run build",
     "preview:prepare:dev": "firebase use chorizo-dev",
     "preview:deploy:dev": "firebase deploy --only hosting"
   },

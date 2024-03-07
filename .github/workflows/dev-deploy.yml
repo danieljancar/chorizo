@@ -39,7 +39,7 @@ jobs:
           npm run build:adminui:dev
 
       - name: Create Environment Directory for Course App
-        run: mkdir -p ./apps/course/src/environments && touch ./apps/course/src/environments/environment.development.ts
+        run: mkdir -p ./apps/course/src/environments && touch ./apps/course/src/environments/environment.development.ts && touch ./apps/course/src/environments/environment.ts
 
       - name: Prepare Firebase Environment Config for Course App
         run: |
@@ -65,7 +65,7 @@ jobs:
 
       - name: Build Course App - Development
         run: |
-          cd ./apps/course && npm run build:dev && cd ../..
+          cd ./apps/course && npm run build && cd ../..
 
       - name: Prepare Firebase Preview - Development
         run: npm run preview:prepare:dev
