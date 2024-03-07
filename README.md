@@ -74,7 +74,10 @@ or `.github` directory. Here are some of the most important ones:
 
 ## Development Previews
 
-We have deployed the latest
+We deploy the latest development version of Chorizo to Firebase Hosting. You can find the latest preview at:
+
+- [Course Development Preview](https://dev-preview-course-chorizo.web.app/)
+- [AdminUI Development Preview](https://dev-adminui-chorizo.web.app/)
 
 # License
 
