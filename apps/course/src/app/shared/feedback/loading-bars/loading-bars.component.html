@@ -9,4 +9,8 @@
     [class.loading-sm]="size === 'sm'"
     class="loading-bars loading"
   ></span>
+
+  @if (loadingText) {
+    <p>{{ loadingText }}</p>
+  }
 </div>

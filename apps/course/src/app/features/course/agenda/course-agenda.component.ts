@@ -3,11 +3,9 @@ import { Subscription } from 'rxjs';
 import { Course } from '../../../../../projects/types/src/lib/course.types';
 import { CourseStateService } from '../../../core/course-state.service';
 import { Title } from '@angular/platform-browser';
-
 @Component({
   selector: 'app-agenda',
   standalone: true,
-  imports: [],
   templateUrl: './course-agenda.component.html',
   styleUrl: './course-agenda.component.scss',
 })
