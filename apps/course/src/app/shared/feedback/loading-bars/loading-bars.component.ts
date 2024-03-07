@@ -14,7 +14,5 @@ export class LoadingBarsComponent {
 
   constructor() {}
 
-  shouldShowLoadingText(): boolean {
-    return !!this.loadingText;
-  }
+
 }
