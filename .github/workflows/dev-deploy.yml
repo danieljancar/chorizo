@@ -45,9 +45,9 @@ jobs:
         run: |
           echo "export const environment = {" > ./apps/course/src/environments/environment.development.ts
           echo "  production: false," >> ./apps/course/src/environments/environment.development.ts
-          echo "  metaConfig: {" >> ./apps/course/src/environments/environment .development.ts
-          echo "    title: 'Chorizo Dev - Development'," >> ./apps/course/src/environments/environment.development.ts
-          echo "    description: 'Development environment for Chorizo Dev.'," >> ./apps/course/src/environments/environment.development.ts
+          echo "  metaConfig: {" >> ./apps/course/src/environments/environment.development.ts
+          echo "    title: 'Chorizo Dev'," >> ./apps/course/src/environments/environment.development.ts
+          echo "    description: 'A versatile, open-source platform for interactive course management and learning experiences. Tailored for small-group instruction across various disciplines.'," >> ./apps/course/src/environments/environment.development.ts
           echo "  }," >> ./apps/course/src/environments/environment.development.ts
           echo "  firebaseConfig: {" >> ./apps/course/src/environments/environment.development.ts
           echo "    apiKey: '${{ secrets.FIREBASE_API_KEY }}'," >> ./apps/course/src/environments/environment.development.ts
