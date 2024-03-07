@@ -60,6 +60,9 @@ jobs:
           echo "  }," >> ./apps/course/src/environments/environment.development.ts
           echo "};" >> ./apps/course/src/environments/environment.development.ts
 
+      - name: List environment files
+        run: ls -la ./apps/course/src/environments/
+
       - name: Build Course App - Development
         run: |
           cd ./apps/course && npm run build:dev && cd ../..
