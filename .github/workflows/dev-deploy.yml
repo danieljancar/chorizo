@@ -45,7 +45,7 @@ jobs:
         run: |
           echo "export const environment = {" > ./apps/course/src/environments/environment.development.ts
           echo "  production: false," >> ./apps/course/src/environments/environment.development.ts
-          echo "  metaConfig: {" >> ./apps/course/src/environments/environment.development.ts
+          echo "  metaConfig: {" >> ./apps/course/src/environments/environment .development.ts
           echo "    title: 'Chorizo Dev - Development'," >> ./apps/course/src/environments/environment.development.ts
           echo "    description: 'Development environment for Chorizo Dev.'," >> ./apps/course/src/environments/environment.development.ts
           echo "  }," >> ./apps/course/src/environments/environment.development.ts
@@ -59,9 +59,6 @@ jobs:
           echo "    measurementId: '${{ secrets.FIREBASE_MEASUREMENT_ID }}'," >> ./apps/course/src/environments/environment.development.ts
           echo "  }," >> ./apps/course/src/environments/environment.development.ts
           echo "};" >> ./apps/course/src/environments/environment.development.ts
-
-      - name: List environment files
-        run: ls -la ./apps/course/src/environments/
 
       - name: Build Course App - Development
         run: |
