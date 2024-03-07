@@ -5,7 +5,6 @@ import { Course } from '../../../../../projects/types/src/lib/course.types';
 import { AsyncPipe } from '@angular/common';
 import { MatIcon } from '@angular/material/icon';
 import { CourseStateService } from '../../../core/course-state.service';
-import { Link } from '../../../app.component';
 
 @Component({
   selector: 'app-navbar-course',
@@ -21,6 +20,7 @@ export class NavbarCourseComponent implements OnInit, OnDestroy {
 
   constructor(private courseStateService: CourseStateService) {
     this.link = Link.send;
+    console.log(this.link)
   }
 
   ngOnInit(): void {
@@ -35,3 +35,7 @@ export class NavbarCourseComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 }
+
+export const Link = {
+  send: '',
+};

@@ -48,7 +48,3 @@ export class AppComponent {
     });
   }
 }
-
-export const Link = {
-  send: 'href',
-};

@@ -9,7 +9,7 @@ import { Title } from '@angular/platform-browser';
 import { environment } from '../../../../environments/environment';
 import { AppComponent } from '../../../app.component';
 import { RelativeTimePipe } from '../../../pipes/relative-time.pipe';
-import { Link } from '../../../app.component';
+import { Link } from '../../../shared/navigation/navbar-course/navbar-course.component';
 
 @Component({
   selector: 'app-courses',

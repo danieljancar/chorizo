@@ -5,7 +5,7 @@ import { LoadingBarsComponent } from '../../../../shared/feedback/loading-bars/l
 import { FeedbackMessageComponent } from '../../../../shared/feedback/feedback-message/feedback-message.component';
 import { RouterLink } from '@angular/router';
 import { RelativeTimePipe } from '../../../../pipes/relative-time.pipe';
-import { Link } from '../../../../app.component';
+import { Link } from '../../../../shared/navigation/navbar-course/navbar-course.component';
 
 @Component({
   selector: 'app-latest-courses',
