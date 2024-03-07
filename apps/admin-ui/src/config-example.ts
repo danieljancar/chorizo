@@ -10,5 +10,5 @@ export const firebaseConfig: FirebaseConfig = {
 };
 
 export const metaConfig: MetaConfig = {
-  name: 'Your App Name',
+  name: 'Chorizo Dev',
 };
