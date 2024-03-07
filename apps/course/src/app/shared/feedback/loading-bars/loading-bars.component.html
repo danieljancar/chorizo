@@ -1,16 +1,16 @@
 <div
   [style.margin-bottom.px]="marginBottom"
   [style.margin-top.px]="marginTop"
-  class="flex justify-center items-center"
+  class="flex flex-col justify-center items-center"
 >
   <span
     [class.loading-lg]="size === 'lg'"
     [class.loading-md]="size === 'md'"
     [class.loading-sm]="size === 'sm'"
-    class="loading-bars loading"
+    class="loading-bars loading mb-2.5"
   ></span>
 
   @if (loadingText) {
-    <p>{{ loadingText }}</p>
+    <p class="font-normal text-lg">{{ loadingText }}</p>
   }
 </div>

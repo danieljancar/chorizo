@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "A self-hosted course management platform. Manage courses, create entry lists, and share downloadable resources seamlessly. Fully dynamic and tailored for streamlined administration.",
   "scripts": {
+    "prepare": "husky install",
     "install:all": "cd apps/admin-ui && yarn install && cd ../course && npm install",
     "lint": "eslint '**/*.{ts,tsx}'",
     "lint:fix": "eslint '**/*.{ts,tsx}' --fix",
