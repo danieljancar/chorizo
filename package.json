@@ -3,10 +3,16 @@
   "version": "0.1.0",
   "description": "A self-hosted course management platform. Manage courses, create entry lists, and share downloadable resources seamlessly. Fully dynamic and tailored for streamlined administration.",
   "scripts": {
+    "install:all": "cd apps/admin-ui && yarn install && cd ../course && npm install",
     "lint": "eslint '**/*.{ts,tsx}'",
     "lint:fix": "eslint '**/*.{ts,tsx}' --fix",
     "prettier": "prettier --write .",
-    "prettier:check": "prettier --check ."
+    "prettier:check": "prettier --check .",
+    "build:all:dev": "npm run build:adminui:dev && npm run build:course:dev",
+    "build:adminui:dev": "cd apps/admin-ui && yarn build",
+    "build:course:dev": "cd apps/course && npm run build:dev",
+    "preview:prepare:dev": "firebase use chorizo-dev",
+    "preview:deploy:dev": "firebase deploy --only hosting"
   },
   "author": "Daniel Jancar",
   "license": "MIT",
@@ -15,7 +21,8 @@
     "url": "https://github.com/danieljancar/chorizo.git"
   },
   "bugs": {
-    "email": "dan_jan1@icloud.com"
+    "email": "dan_jan1@icloud.com",
+    "url": "https://github.com/danieljancar/chorizo/issues"
   },
   "keywords": [
     "course",
@@ -37,6 +44,7 @@
     "@typescript-eslint/parser": "^6.20.0",
     "daisyui": "^4.6.1",
     "eslint": "^8.56.0",
+    "firebase-tools": "^13.4.0",
     "husky": "^9.0.7",
     "prettier": "3.2.4",
     "semantic-release": "^23.0.0"

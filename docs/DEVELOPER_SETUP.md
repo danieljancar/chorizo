@@ -3,13 +3,21 @@
 This document describes how to setup your development environment for the packages and projects in this repository. As
 stated, this repository contains multiple projects, also called monorepo.
 
-## Prerequisites
+# Prerequisites
 
 - [Angular CLI](https://angular.dev)
 - [Firebase CLI](https://firebase.google.com/docs/cli)
 - [FireCMS](https://firecms.co)
 - [Node.js](https://nodejs.org/en/)
 - [Git](https://git-scm.com/)
+- [Yarn](https://yarnpkg.com/)
+
+# Table of Contents
+
+- [Setup](#setup)
+- [Packages](#packages)
+  - [Course](#course)
+  - [AdminUI](#adminui)
 
 # Setup
 
@@ -72,4 +80,35 @@ export const environment = {
 
 ```bash
 npm run start
+```
+
+## AdminUI
+
+The AdminUI is made with FireCMS, a headless CMS for Firebase. It allows the team to manage the content of the website.
+
+### Setup
+
+> **Note:** The AdminUI uses Yarn as the package manager.
+
+1. Install dependencies
+
+```bash
+cd apps/admin-ui
+yarn
+```
+
+2. Connect to Firebase
+
+If you're an internal developer, you will get the credentials provided by the team. If you're an external developer,
+you'll need to create your own Firebase project and connect it to the application.
+
+3. Provide the environment variables
+
+In `apps/admin-ui/src`, create a `config.ts` file, you can copy the `config-example.ts` file and fill in your Firebase
+credentials.
+
+4. Run the application
+
+```bash
+yarn dev
 ```

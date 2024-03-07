@@ -1,0 +1,16 @@
+{
+  "projects": {},
+  "targets": {
+    "chorizo-dev": {
+      "hosting": {
+        "adminui": [
+          "dev-adminui-chorizo"
+        ],
+        "course": [
+          "dev-preview-course-chorizo"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}

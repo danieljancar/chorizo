@@ -13,22 +13,36 @@ jobs:
         with:
           script: |
             const issueCreator = context.payload.issue.user.login;
+            const pullRequestCreator = context.payload.pull_request.user.login;
             const repoOwner = context.repo.owner;
             const repoName = context.repo.repo;
 
-            // Check if the issue creator is a collaborator
             const isCollaborator = await github.rest.repos.checkCollaborator({
               owner: repoOwner,
               repo: repoName,
               username: issueCreator,
             }).then(response => true).catch(error => false);
 
-            // If not a collaborator, add the needs review label
-            if (!isCollaborator) {
-              github.rest.issues.addLabels({
+            const isPullRequestCreatorCollaborator = await github.rest.repos.checkCollaborator({
+              owner: repoOwner,
+              repo: repoName,
+              username: pullRequestCreator,
+            }).then(response => true).catch(error => false);
+
+            if (!isCollaborator && !isPullRequestCreatorCollaborator) {
+              await github.rest.issues.addLabels({
                 owner: repoOwner,
                 repo: repoName,
-                issue_number: context.issue.number,
+                issue_number: context.payload.issue.number,
+                labels: ['triage']
+              });
+            }
+
+            if (!isPullRequestCreatorCollaborator) {
+              await github.rest.issues.addLabels({
+                owner: repoOwner,
+                repo: repoName,
+                issue_number: context.payload.pull_request.number,
                 labels: ['triage']
               });
             }
