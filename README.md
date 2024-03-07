@@ -26,7 +26,7 @@
 - [Usage](#usage)
 - [Setup](#setup)
 - [Contributing](#contributing)
-  - [Prerequisites](#prerequisites)
+  - [Developer Guidelines and Repository Setup](#developer-guidelines-and-repository-setup)
 - [License](#license)
 - [Credits](#credits)
 
@@ -61,11 +61,16 @@ contribute, please read
 the [Contributing Guidelines](.github/CONTRIBUTING.md), [Code of Conduct](.github/CODE_OF_CONDUCT.md),
 and [Developer Certificate of Origin](.github/DCO.md) first.
 
-## Prerequisites
+## Developer Guidelines and Repository Setup
 
-- [Node.js](https://nodejs.org/en/)
-- [Yarn](https://yarnpkg.com/)
-- [Git](https://git-scm.com/)
+We have several documents for developers to help them get started with the project. You can find them in the `docs`
+or `.github` directory. Here are some of the most important ones:
+
+- [Contributing Guidelines](.github/CONTRIBUTING.md)
+- [Workflow](docs/WORKFLOW.md)
+- [Developer Setup](docs/DEVELOPER_SETUP.md)
+- [Best Practices](docs/BEST_PRACTICES.md)
+- [Formatting](docs/FORMATTING.md)
 
 # License
 
