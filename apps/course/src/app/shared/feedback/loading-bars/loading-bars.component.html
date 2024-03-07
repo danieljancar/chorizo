@@ -10,8 +10,7 @@
     class="loading-bars loading"
   ></span>
 
-  <!-- Optionaler Lade-Text -->
-  @if (shouldShowLoadingText()) {
-    <div class="loading-text">{{ loadingText }}</div>
+  @if (loadingText) {
+    <p>{{ loadingText }}</p>
   }
 </div>

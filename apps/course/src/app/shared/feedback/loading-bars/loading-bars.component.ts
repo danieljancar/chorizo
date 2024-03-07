@@ -10,7 +10,7 @@ export class LoadingBarsComponent {
   @Input() size: string = 'lg';
   @Input() marginTop: string = '50';
   @Input() marginBottom: string = '50';
-  @Input() loadingText: string = '';
+  @Input() loadingText: string | null;
 
   constructor() {}
 
