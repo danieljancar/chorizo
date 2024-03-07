@@ -38,6 +38,9 @@ jobs:
         run: |
           npm run build:adminui:dev
 
+      - name: Create Environment Directory for Course App
+        run: mkdir -p ./apps/course/src/environments
+
       - name: Prepare Firebase Environment Config for Course App
         run: |
           echo "export const environment = {" > ./apps/course/src/environments/environment.development.ts
