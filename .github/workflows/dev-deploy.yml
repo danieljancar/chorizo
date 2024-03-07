@@ -19,7 +19,7 @@ jobs:
           node-version: '20'
 
       - name: Install Dependencies
-        run: npm install
+        run: npm install && npm run install:all
 
       - name: Run Lint
         run: npm run lint
