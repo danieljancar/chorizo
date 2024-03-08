@@ -61,14 +61,20 @@ following content:
 
 ```ts
 export const environment = {
+  production: false,
+  metaConfig: {
+    title: 'Chorizo Dev',
+    description:
+      'A versatile, open-source platform for interactive course management and learning experiences. Tailored for small-group instruction across various disciplines.',
+  },
   firebaseConfig: {
-    apiKey: '',
-    authDomain: '',
-    projectId: '',
-    storageBucket: '',
-    messagingSenderId: '',
-    appId: '',
-    measurementId: '',
+    apiKey: 'your-api-key',
+    authDomain: 'your-auth-domain',
+    projectId: 'your-project-id',
+    storageBucket: 'your-storage-bucket',
+    messagingSenderId: 'your-messaging-sender-id',
+    appId: 'your-app-id',
+    measurementId: 'your-measurement-id',
   },
 };
 ```
@@ -88,7 +94,7 @@ The AdminUI is made with FireCMS, a headless CMS for Firebase. It allows the tea
 
 ### Setup
 
-> **Note:** The AdminUI uses Yarn as the package manager.
+> **Note:** The AdminUI uses **Yarn** as the package manager.
 
 1. Install dependencies
 
