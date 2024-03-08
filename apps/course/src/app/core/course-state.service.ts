@@ -10,6 +10,7 @@ import { ToastType } from '../types/feedback/toast.types';
   providedIn: 'root',
 })
 export class CourseStateService {
+  public currentCourseId: string | null = null;
   private currentCourseSubject = new ReplaySubject<Course | undefined>(1);
   currentCourse$: Observable<Course | undefined> =
     this.currentCourseSubject.asObservable();
@@ -31,6 +32,7 @@ export class CourseStateService {
         .subscribe((course) => {
           if (course?.title) {
             this.currentCourseSubject.next(course);
+            this.currentCourseId = course.id;
           } else {
             this.currentCourseSubject.next(undefined);
             this.router.navigate(['/c']).then(() => {

@@ -1,0 +1,30 @@
+name: Build AdminUI on PR
+
+on:
+  pull_request:
+    branches:
+      - develop
+    paths:
+      - 'apps/admin-ui/**'
+
+jobs:
+  build-admin-ui:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Dependencies
+        run: |
+          cd apps/admin-ui
+          yarn
+
+      - name: Build AdminUI
+        run: |
+          cd apps/admin-ui
+          yarn build

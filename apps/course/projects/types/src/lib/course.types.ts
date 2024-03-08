@@ -25,12 +25,20 @@ export type Course = {
   updatedAt?: Timestamp;
 };
 
-export type AgendaEntry = {
+export type CourseChapter = {
   id: string;
-  name: string;
-  description?: string;
-  start: Timestamp;
-  icon?: string;
-  createdAt: Timestamp;
-  updatedAt?: Timestamp;
+  title: string;
+  content: string;
+  order: number;
+  createdAt: Date;
+  updatedAt: Date;
+};
+
+export type CourseDocument = {
+  id: string;
+  title: string;
+  content: string;
+  order: number;
+  createdAt: Date;
+  updatedAt: Date;
 };
