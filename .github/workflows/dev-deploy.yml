@@ -18,13 +18,58 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Deploy to Development Environment
-        run: ./scripts/deploy-to-dev.sh
+      - name: Install Dependencies
+        run: npm install && npm run install:all
+
+      - name: Run Lint
+        run: npm run lint
+
+      - name: Prepare Config for AdminUI
+        run: |
+          cp ./apps/admin-ui/src/config-example.ts ./apps/admin-ui/src/config.ts
+          sed -i "s|'your-api-key'|'${{ secrets.FIREBASE_API_KEY }}'|g" ./apps/admin-ui/src/config.ts
+          sed -i "s|'your-auth-domain.firebaseapp.com'|'${{ secrets.FIREBASE_AUTH_DOMAIN }}'|g" ./apps/admin-ui/src/config.ts
+          sed -i "s|'your-project-id'|'${{ secrets.FIREBASE_PROJECT_ID }}'|g" ./apps/admin-ui/src/config.ts
+          sed -i "s|'your-storage-bucket.appspot.com'|'${{ secrets.FIREBASE_STORAGE_BUCKET }}'|g" ./apps/admin-ui/src/config.ts
+          sed -i "s|'your-messaging-sender-id'|'${{ secrets.FIREBASE_MESSAGING_SENDER_ID }}'|g" ./apps/admin-ui/src/config.ts
+          sed -i "s|'your-app-id'|'${{ secrets.FIREBASE_APP_ID }}'|g" ./apps/admin-ui/src/config.ts
+
+      - name: Build AdminUI
+        run: |
+          npm run build:adminui:dev
+
+      - name: Create Environment Directory for Course App
+        run: mkdir -p ./apps/course/src/environments && touch ./apps/course/src/environments/environment.development.ts && touch ./apps/course/src/environments/environment.ts
+
+      - name: Prepare Firebase Environment Config for Course App
+        run: |
+          echo "export const environment = {" > ./apps/course/src/environments/environment.development.ts
+          echo "  production: false," >> ./apps/course/src/environments/environment.development.ts
+          echo "  metaConfig: {" >> ./apps/course/src/environments/environment.development.ts
+          echo "    title: 'Chorizo Dev'," >> ./apps/course/src/environments/environment.development.ts
+          echo "    description: 'A versatile, open-source platform for interactive course management and learning experiences. Tailored for small-group instruction across various disciplines.'," >> ./apps/course/src/environments/environment.development.ts
+          echo "  }," >> ./apps/course/src/environments/environment.development.ts
+          echo "  firebaseConfig: {" >> ./apps/course/src/environments/environment.development.ts
+          echo "    apiKey: '${{ secrets.FIREBASE_API_KEY }}'," >> ./apps/course/src/environments/environment.development.ts
+          echo "    authDomain: '${{ secrets.FIREBASE_AUTH_DOMAIN }}'," >> ./apps/course/src/environments/environment.development.ts
+          echo "    projectId: '${{ secrets.FIREBASE_PROJECT_ID }}'," >> ./apps/course/src/environments/environment.development.ts
+          echo "    storageBucket: '${{ secrets.FIREBASE_STORAGE_BUCKET }}'," >> ./apps/course/src/environments/environment.development.ts
+          echo "    messagingSenderId: '${{ secrets.FIREBASE_MESSAGING_SENDER_ID }}'," >> ./apps/course/src/environments/environment.development.ts
+          echo "    appId: '${{ secrets.FIREBASE_APP_ID }}'," >> ./apps/course/src/environments/environment.development.ts
+          echo "    measurementId: '${{ secrets.FIREBASE_MEASUREMENT_ID }}'," >> ./apps/course/src/environments/environment.development.ts
+          echo "  }," >> ./apps/course/src/environments/environment.development.ts
+          echo "};" >> ./apps/course/src/environments/environment.development.ts
+
+      - name: Build Course App - Development
+        run: |
+          cd ./apps/course && npm run build && cd ../..
+
+      - name: Prepare Firebase Preview - Development
+        run: npm run preview:prepare:dev
         env:
-          FIREBASE_API_KEY: ${{ secrets.FIREBASE_API_KEY }}
-          FIREBASE_AUTH_DOMAIN: ${{ secrets.FIREBASE_AUTH_DOMAIN }}
-          FIREBASE_PROJECT_ID: ${{ secrets.FIREBASE_PROJECT_ID }}
-          FIREBASE_STORAGE_BUCKET: ${{ secrets.FIREBASE_STORAGE_BUCKET }}
-          FIREBASE_MESSAGING_SENDER_ID: ${{ secrets.FIREBASE_MESSAGING_SENDER_ID }}
-          FIREBASE_APP_ID: ${{ secrets.FIREBASE_APP_ID }}
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+
+      - name: Deploy to Firebase - Development
+        run: npm run preview:deploy:dev
+        env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
