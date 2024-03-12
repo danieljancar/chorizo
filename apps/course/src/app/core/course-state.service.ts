@@ -10,7 +10,7 @@ import { ToastType } from '../types/feedback/toast.types';
   providedIn: 'root',
 })
 export class CourseStateService {
-  public currentCourseId: string | null = null;
+  public currentCourseId: string | undefined;
   private currentCourseSubject = new ReplaySubject<Course | undefined>(1);
   currentCourse$: Observable<Course | undefined> =
     this.currentCourseSubject.asObservable();

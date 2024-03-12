@@ -1,28 +1,16 @@
 @if (!isLoading) {
-  <div class="drawer lg:drawer-open">
-    <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
-    <div class="drawer-content flex flex-col static">
-      <div class="absolute left-0">
-        <label
-          role="button"
-          for="my-drawer-2"
-          class="btn btn-primary drawer-button lg:hidden"
-        >
-          <mat-icon>menu_book</mat-icon>
-        </label>
-      </div>
-    </div>
-    <div class="drawer-side">
-      <label
-        for="my-drawer-2"
-        aria-label="close sidebar"
-        class="drawer-overlay"
-      ></label>
-      <ul class="menu p-4 w-80 min-h-full bg-base-100 text-base-content">
-        @for (chapter of chapters; track chapter.id) {
-          <a>{{ chapter.title }}</a>
-        }
-      </ul>
+  <div class="flex">
+    <app-course-documentation-navbar
+      (documentSelected)="onDocumentSelected($event)"
+    />
+    <div class="drawer-content mx-1.5 lg:mt-3 lg:mx-5 w-full">
+      @if (documentationDocument !== undefined) {
+        <h1 class="text-4xl font-bold">{{ documentationDocument.title }}</h1>
+        <markdown
+          [data]="documentationDocument.content"
+          class="markdown-content"
+        />
+      }
     </div>
   </div>
 } @else {

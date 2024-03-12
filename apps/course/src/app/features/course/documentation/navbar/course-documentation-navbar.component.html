@@ -1,0 +1,42 @@
+<div class="drawer lg:drawer-open">
+  <input class="drawer-toggle" id="my-drawer-2" type="checkbox" />
+  <div class="drawer-side lg:border-r-2">
+    <label
+      aria-label="close sidebar"
+      class="drawer-overlay"
+      for="my-drawer-2"
+    ></label>
+    <ul class="menu p-4 w-80 min-h-full bg-base-100 text-base-content">
+      <div class="block lg:hidden">
+        <label
+          aria-roledescription="button"
+          class="btn btn-ghost flex flex-row justify-normal w-1/2"
+          for="my-drawer-2"
+        >
+          <mat-icon>close</mat-icon>
+          Close
+        </label>
+        <div class="divider"></div>
+      </div>
+      @for (chapter of chapters; track chapter.id) {
+        <li class="menu-title">
+          <h2>{{ chapter.title }}</h2>
+        </li>
+        <ul>
+          @for (document of chapter.documents; track document.id) {
+            <li (click)="selectDocument(chapter, document.id)">
+              <a>{{ document.title }}</a>
+            </li>
+          }
+        </ul>
+      }
+    </ul>
+  </div>
+  <label
+    class="btn btn-ghost fixed bottom-0 left-0 drawer-button lg:hidden z-50"
+    for="my-drawer-2"
+    role="button"
+  >
+    <mat-icon>menu_book</mat-icon>
+  </label>
+</div>
