@@ -16,8 +16,6 @@
 [![Formatting](https://github.com/danieljancar/chorizo/actions/workflows/format.yml/badge.svg)](https://github.com/danieljancar/chorizo/actions/workflows/format.yml)
 
 [![Deploy latest develop changes](https://github.com/danieljancar/chorizo/actions/workflows/dev-deploy.yml/badge.svg)](https://github.com/danieljancar/chorizo/actions/workflows/dev-deploy.yml)
-[![Build Course App on PR](https://github.com/danieljancar/chorizo/actions/workflows/build-course.yml/badge.svg)](https://github.com/danieljancar/chorizo/actions/workflows/build-course.yml)
-[![Build AdminUI on PR](https://github.com/danieljancar/chorizo/actions/workflows/build-adminui.yml/badge.svg)](https://github.com/danieljancar/chorizo/actions/workflows/build-adminui.yml)
 
 [![Angular](https://img.shields.io/badge/Angular-c3012f?logo=angular)](https://angular.dev)
 [![TailwindCSS](https://img.shields.io/badge/TailwindCSS-ffffff?logo=tailwindcss)](https://tailwindcss.com/)
