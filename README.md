@@ -12,7 +12,7 @@
 [![License](https://img.shields.io/badge/License-MIT-blue)](#license)
 
 [![Linter](https://github.com/danieljancar/chorizo/actions/workflows/lint.yml/badge.svg)](https://github.com/danieljancar/chorizo/actions/workflows/lint.yml)
-[![Triage Labeler](https://github.com/danieljancar/chorizo/actions/workflows/triager.yml/badge.svg)](https://github.com/danieljancar/chorizo/actions/workflows/triager.yml)
+[![Triage Labeler](https://github.com/danieljancar/chorizo/actions/workflows/triager.yml/badge.svg?event=issues)](https://github.com/danieljancar/chorizo/actions/workflows/triager.yml)
 [![Formatting](https://github.com/danieljancar/chorizo/actions/workflows/format.yml/badge.svg)](https://github.com/danieljancar/chorizo/actions/workflows/format.yml)
 
 [![Deploy latest develop changes](https://github.com/danieljancar/chorizo/actions/workflows/dev-deploy.yml/badge.svg)](https://github.com/danieljancar/chorizo/actions/workflows/dev-deploy.yml)
