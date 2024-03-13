@@ -40,7 +40,7 @@ export class CoursesComponent implements OnInit {
         ' - ' +
         AppComponent.chorizo.title,
     );
-    Link.send = window.location.href;
+    Link.send = window.location.pathname;
   }
 
   ngOnInit() {

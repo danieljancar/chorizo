@@ -28,6 +28,6 @@ export class HomepageLatestCoursesComponent {
       this.courses = courses;
       this.isLoading = false;
     });
-    Link.send = window.location.href;
+    Link.send = window.location.pathname;
   }
 }

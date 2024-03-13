@@ -20,7 +20,6 @@ export class NavbarCourseComponent implements OnInit, OnDestroy {
 
   constructor(private courseStateService: CourseStateService) {
     this.link = Link.send;
-    console.log(this.link);
   }
 
   ngOnInit(): void {
