@@ -1,15 +1,30 @@
-<div class="max-w-4xl mx-auto p-5">
-    <h1 class="text-3xl font-bold mb-4">Allgemeine Geschäftsbedingungen (AGB)</h1>
-    <section class="mb-5">
-        <h2 class="text-2xl font-semibold mb-2">1. Geltungsbereich</h2>
-        <p>Diese Allgemeinen Geschäftsbedingungen (nachfolgend "AGB") regeln das Vertragsverhältnis zwischen [Dein
-            Firmenname] (nachfolgend "Anbieter") und den Nutzern (nachfolgend "Kunde") der von dem Anbieter auf der
-            Website [Deine Website-URL] angebotenen Dienste.</p>
-    </section>
-    <section class="mb-5">
-        <h2 class="text-2xl font-semibold mb-2">2. Vertragsgegenstand</h2>
-        <p>Der Anbieter stellt auf seiner Website verschiedene Dienste zur Verfügung. Diese können beispielsweise, aber
-            nicht ausschließlich, den Kauf von Waren oder die Bereitstellung von digitalen Inhalten und Services
-            umfassen.</p>
-    </section>
+<div class="mx-1 md:mx-3 lg:mx-32 xl:mx-60 min-h-1-2">
+  @if (isLoading) {
+    <app-loading-bars/>
+  } @else if (!isLoading) {
+    <div class="navbar bg-base-100 border-b-2">
+      <div class="items-center flex-1">
+        <button class="btn btn-ghost text-2xl btn-lg">
+          Legal
+        </button>
+      </div>
+    </div>
+    <div class="flex flex-col xl:flex-row flex-wrap justify-center">
+      @for (legal of legal; track $index) {
+        <div
+          role="link"
+          [routerLink]="legal.file"
+          class="w-full xl:w-5/12 mb-2 mt-2 card lg:card-side bg-base-100 shadow-xl transition hover:opacity-75 hover:scale-95 hover:cursor-pointer"
+        >
+          <div class="card-body text-pretty">
+            <h2 class="card-title">{{ legal.name }}</h2>
+            <p>{{ legal.description }}</p>
+          </div>
+        </div>
+        @if ($index % 2 === 0) {
+          <div class="my-1.5 xl:m-8"></div>
+        }
+      }
+    </div>
+  }
 </div>
