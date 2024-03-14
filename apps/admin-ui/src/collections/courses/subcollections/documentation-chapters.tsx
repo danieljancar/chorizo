@@ -3,7 +3,6 @@ import { courseDocumentationDocumentsCollection } from './documentation-document
 
 type DocumentationChapter = {
   title: string;
-  content: string;
   order: number;
   createdAt: Date;
   updatedAt: Date;
@@ -29,12 +28,6 @@ export const courseDocumentationChapterCollection =
         name: 'Title',
         validation: { required: true },
         dataType: 'string',
-      },
-      content: {
-        name: 'Content',
-        validation: { required: true, min: 10, max: 100000 },
-        dataType: 'string',
-        markdown: true,
       },
       order: {
         name: 'Order',

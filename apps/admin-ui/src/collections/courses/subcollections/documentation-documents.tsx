@@ -10,7 +10,7 @@ type DocumentationDocuments = {
 
 export const courseDocumentationDocumentsCollection =
   buildCollection<DocumentationDocuments>({
-    name: 'Documentation',
+    name: 'Documents',
     singularName: 'Document',
     path: 'documents',
     icon: 'MenuBook',
