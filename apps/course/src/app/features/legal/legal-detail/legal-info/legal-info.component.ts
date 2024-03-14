@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { LegalDocument } from '../../../../types/legal.type';
+import { Legal } from '../../../../types/legal.type';
 
 @Component({
   selector: 'app-legal-info',
@@ -9,5 +10,5 @@ import { LegalDocument } from '../../../../types/legal.type';
   styleUrl: './legal-info.component.scss',
 })
 export class LegalInfoComponent {
-  @Input() legal: LegalDocument | undefined;
+  @Input() legal: Legal | undefined;
 }

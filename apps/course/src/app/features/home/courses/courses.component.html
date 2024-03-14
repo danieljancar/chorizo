@@ -1,7 +1,7 @@
 <div class="mx-1 md:mx-3 lg:mx-32 xl:mx-60">
-  <app-courses-filter />
+  <app-courses-filter/>
   @if (isLoading) {
-    <app-loading-bars />
+    <app-loading-bars/>
   } @else if (!isLoading && courses.length === 0) {
     <app-feedback-message
       [message]="'courses.no-courses-message' | translate"

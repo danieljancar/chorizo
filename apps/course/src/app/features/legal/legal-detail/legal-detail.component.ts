@@ -9,6 +9,10 @@ import { environment } from '../../../../environments/environment';
 import { AppComponent } from '../../../app.component';
 import { ToastService } from '../../../core/feedback/toast.service';
 import { ToastType } from '../../../types/feedback/toast.types';
+import { Legal } from '../../../types/legal.type';
+import { ActivatedRoute, Router } from '@angular/router';
+import { LegalService } from '../../../core/legal.service';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-legal-detail',
@@ -19,6 +23,7 @@ import { ToastType } from '../../../types/feedback/toast.types';
 })
 export class LegalDetailComponent implements OnInit {
   public legal: LegalDocument | undefined;
+  public legal: Legal | undefined;
 
   constructor(
     private route: ActivatedRoute,
@@ -50,6 +55,19 @@ export class LegalDetailComponent implements OnInit {
           );
         });
       }
+      this.legal = this.legalService.getLegalByFile(legalId);
+      if (this.legal) {
+        this.titleService.setTitle('${this.legal.name}');
+        this.metaService.updateTag({
+          name: 'description',
+          content: this.legal.description,
+        });
+      }
+      if (!this.legal) {
+        this.router.navigate(['/404']);
+      }
+    } else {
+      this.router.navigate(['/404']);
     }
   }
 }

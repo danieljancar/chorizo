@@ -9,3 +9,5 @@ export type LegalDocument = {
   description: string;
   file: string;
 };
+  file: string;
+};
