@@ -33,6 +33,8 @@ export const routes: Routes = [
       { path: 'l/terms', component: LegalOverviewComponent },
       { path: 'l', component: LegalOverviewComponent },
       { path: 'l/:legalId', component: LegalDetailComponent },
+      { path: 'l', component: LegalOverviewComponent },
+      { path: 'l/:legalId', component: LegalDetailComponent },
       {
         path: 'a/register',
         component: RegisterComponent,
