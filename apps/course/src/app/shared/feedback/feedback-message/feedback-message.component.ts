@@ -20,7 +20,7 @@ import { MatIcon } from '@angular/material/icon';
 export class FeedbackMessageComponent {
   @Input() public title: string | undefined = 'Oops!';
   @Input() public message: string | undefined = 'Something went wrong.';
-  @Input() public icon: string | undefined = 'emergency_home';
+  @Input() public icon: string | undefined = 'warning';
   @Input({ transform: booleanAttribute }) public showIcon: boolean | undefined =
     true;
 }

@@ -28,8 +28,8 @@ export type Course = {
 export type CourseChapter = {
   id: string;
   title: string;
-  content: string;
   order: number;
+  documents: CourseDocument[];
   createdAt: Date;
   updatedAt: Date;
 };
