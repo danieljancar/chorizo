@@ -3,6 +3,7 @@ import {
   inject,
   OnDestroy,
   OnInit,
+  ViewChild,
   ViewEncapsulation,
 } from '@angular/core';
 import { Subscription } from 'rxjs';
@@ -18,6 +19,7 @@ import { LoadingBarsComponent } from '../../../shared/feedback/loading-bars/load
 import { MatIcon } from '@angular/material/icon';
 import { CourseDocumentationNavbarComponent } from './navbar/course-documentation-navbar.component';
 import { MarkdownComponent, MarkdownPipe, provideMarkdown } from 'ngx-markdown';
+import { FeedbackMessageComponent } from '../../../shared/feedback/feedback-message/feedback-message.component';
 
 @Component({
   selector: 'app-docs',
@@ -28,6 +30,7 @@ import { MarkdownComponent, MarkdownPipe, provideMarkdown } from 'ngx-markdown';
     CourseDocumentationNavbarComponent,
     MarkdownComponent,
     MarkdownPipe,
+    FeedbackMessageComponent,
   ],
   templateUrl: './course-documentation.component.html',
   styleUrl: './course-documentation.component.scss',
@@ -39,7 +42,8 @@ export class CourseDocumentationComponent implements OnInit, OnDestroy {
   public chapters: CourseChapter[] | undefined;
   public isLoading: boolean = true;
   public documentationDocument: CourseDocument | undefined;
-  protected readonly provideMarkdown = provideMarkdown;
+  @ViewChild(CourseDocumentationNavbarComponent)
+  navbarComponent!: CourseDocumentationNavbarComponent;
   private subscription: Subscription = new Subscription();
   private courseStateService = inject(CourseStateService);
   private titleService = inject(Title);
@@ -58,8 +62,8 @@ export class CourseDocumentationComponent implements OnInit, OnDestroy {
             .getCourseChapters(course.id)
             .subscribe((chapters) => {
               this.chapters = chapters;
+              this.isLoading = false;
             });
-          this.isLoading = false;
         } else {
           this.isLoading = true;
         }
@@ -67,8 +71,14 @@ export class CourseDocumentationComponent implements OnInit, OnDestroy {
     );
   }
 
-  onDocumentSelected(document: CourseDocument | undefined): void {
+  public onDocumentSelected(document: CourseDocument | undefined): void {
+    this.isLoading = true;
     this.documentationDocument = document;
+    this.isLoading = false;
+  }
+
+  public navigateDocuments(direction: 'next' | 'previous'): void {
+    this.navbarComponent.navigateDocuments(direction);
   }
 
   ngOnDestroy(): void {

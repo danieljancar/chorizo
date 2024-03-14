@@ -38,13 +38,4 @@ export class AppComponent {
   constructor(public toastService: ToastService) {
     this.isBigScreen = window.innerWidth > 640;
   }
-
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  onActivate() {
-    window.scroll({
-      top: 0,
-      left: 0,
-      behavior: 'smooth',
-    });
-  }
 }

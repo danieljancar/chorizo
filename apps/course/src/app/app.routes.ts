@@ -13,7 +13,6 @@ import { CourseDocumentationComponent } from './features/course/documentation/co
 import { CourseResourcesComponent } from './features/course/resources/course-resources.component';
 import { RegisterComponent } from './features/auth/register/register.component';
 import { AccountComponent } from './features/auth/account/account.component';
-import { CourseDocumentationNavbarComponent } from './features/course/documentation/navbar/course-documentation-navbar.component';
 
 export const routes: Routes = [
   {
@@ -60,12 +59,6 @@ export const routes: Routes = [
       {
         path: 'documentation',
         component: CourseDocumentationComponent,
-        children: [
-          {
-            path: ':chapterId/:documentationDocumentId',
-            component: CourseDocumentationNavbarComponent,
-          },
-        ],
       },
       {
         path: 'resources',

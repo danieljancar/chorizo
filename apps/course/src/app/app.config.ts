@@ -3,7 +3,11 @@ import {
   importProvidersFrom,
   SecurityContext,
 } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import {
+  provideRouter,
+  withInMemoryScrolling,
+  withViewTransitions,
+} from '@angular/router';
 
 import { routes } from './app.routes';
 import { provideAnimations } from '@angular/platform-browser/animations';
@@ -19,7 +23,11 @@ import { provideMarkdown } from 'ngx-markdown';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideRouter(routes),
+    provideRouter(
+      routes,
+      withViewTransitions(),
+      withInMemoryScrolling({ scrollPositionRestoration: 'top' }),
+    ),
     provideAnimations(),
     importProvidersFrom(
       provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),

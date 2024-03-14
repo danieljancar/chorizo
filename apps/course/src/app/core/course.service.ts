@@ -64,7 +64,9 @@ export class CourseService {
     return this.afs
       .collection(this.COURSES_COLLECTION_COLLECTION)
       .doc(courseId)
-      .collection<CourseChapter>('documentation', (ref) => ref.orderBy('order'))
+      .collection<CourseChapter>('documentation', (ref) =>
+        ref.orderBy('order', 'asc'),
+      )
       .valueChanges({
         idField: 'id',
       }) as Observable<CourseChapter[]>;
@@ -77,7 +79,7 @@ export class CourseService {
     return this.afs
       .collection(
         `${this.COURSES_COLLECTION_COLLECTION}/${courseId}/${this.COURSE_DOCUMENTATION_COLLECTION}/${chapterId}/${this.COURSE_DOCUMENTATION_DOCUMENTS_COLLECTION}`,
-        (ref) => ref.orderBy('order'),
+        (ref) => ref.orderBy('order', 'asc'),
       )
       .valueChanges({ idField: 'id' }) as Observable<CourseDocument[]>;
   }

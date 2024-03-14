@@ -1,18 +1,33 @@
-@if (!isLoading) {
-  <div class="flex">
-    <app-course-documentation-navbar
-      (documentSelected)="onDocumentSelected($event)"
-    />
-    <div class="drawer-content mx-1.5 lg:mt-3 lg:mx-5 w-full">
+<div class="flex">
+  <app-course-documentation-navbar
+    (documentSelected)="onDocumentSelected($event)"
+  />
+  <div class="drawer-content mx-1.5 lg:mt-3 lg:mx-5 w-full">
+    @if (!isLoading) {
       @if (documentationDocument !== undefined) {
-        <h1 class="text-4xl font-bold">{{ documentationDocument.title }}</h1>
-        <markdown
-          [data]="documentationDocument.content"
-          class="markdown-content"
-        />
+        <article class="prose lg:prose-lg">
+          <h1 class="text-4xl font-bold">{{ documentationDocument.title }}</h1>
+          <markdown
+            [data]="documentationDocument.content"
+            class="markdown-content"
+          />
+          <div class="flex justify-between mt-4">
+            <button
+              class="btn btn-ghost"
+              (click)="navigateDocuments('previous')"
+            >
+              <mat-icon>arrow_back</mat-icon>
+              Previous
+            </button>
+            <button class="btn btn-ghost" (click)="navigateDocuments('next')">
+              Next
+              <mat-icon>arrow_forward</mat-icon>
+            </button>
+          </div>
+        </article>
       }
-    </div>
+    } @else {
+      <app-loading-bars />
+    }
   </div>
-} @else {
-  <app-loading-bars />
-}
+</div>

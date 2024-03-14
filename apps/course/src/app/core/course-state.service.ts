@@ -6,6 +6,21 @@ import { Router } from '@angular/router';
 import { ToastService } from './feedback/toast.service';
 import { ToastType } from '../types/feedback/toast.types';
 
+/**
+ * Provides functionality for managing and tracking the state of the current and last visited courses within an Angular application.
+ * It enables components to access, observe, and respond to changes in the course state. This service is crucial for components
+ * that need to display or operate based on the current course's information. It interacts with AngularFirestore to fetch course
+ * details and ensures that components have up-to-date information about the course being viewed or interacted with.
+ *
+ * Properties:
+ * - `currentCourseId`: ID of the current course being viewed. Undefined if no course is selected.
+ * - `currentCourse$`: Observable that components can subscribe to for receiving updates on the current course.
+ * - `private currentCourseSubject`: A ReplaySubject that maintains the latest state of the current course for emitting to subscribers.
+ * - `private lastCourseId`: Stores the ID of the last course that was visited for comparison and potential rollback scenarios.
+ *
+ * Methods:
+ * - `setCurrentCourse(courseId: string)`: Updates the current course's state based on the specified courseId. Fetches course details from Firestore.
+ */
 @Injectable({
   providedIn: 'root',
 })
