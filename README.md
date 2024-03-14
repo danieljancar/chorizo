@@ -33,8 +33,11 @@
 - [Setup](#setup)
 - [Contributing](#contributing)
   - [Developer Guidelines and Repository Setup](#developer-guidelines-and-repository-setup)
+  - [Development Previews](#development-previews)
 - [License](#license)
 - [Credits](#credits)
+  - [Special Thanks](#special-thanks)
+  - [Contributors](#contributors)
 
 # Features
 
@@ -93,6 +96,16 @@ the [Contributor Covenant Code of Conduct](.github/CODE_OF_CONDUCT.md)
 and [Developer Certificate of Origin](.github/DCO.md).
 
 # Credits
+
+## Special Thanks
+
+Thanks to the following projects and their contributors for making Chorizo possible:
+
+- [DaisyUI](https://daisyui.com/)
+- [FireCMS](https://firecms.co/)
+- [Angular](https://angular.io/)
+
+## Contributors
 
 Thanks to the following people for their contributions:
 
