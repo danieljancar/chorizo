@@ -11,8 +11,10 @@ import { CourseAgendaComponent } from './features/course/agenda/course-agenda.co
 import { CourseTasksComponent } from './features/course/tasks/course-tasks.component';
 import { CourseDocumentationComponent } from './features/course/documentation/course-documentation.component';
 import { CourseResourcesComponent } from './features/course/resources/course-resources.component';
+import { LegalOverviewComponent } from './features/legal/legal-overview/legal-overview.component';
 import { RegisterComponent } from './features/auth/register/register.component';
 import { AccountComponent } from './features/auth/account/account.component';
+import { LegalDetailComponent } from './features/legal/legal-detail/legal-detail.component';
 
 export const routes: Routes = [
   {
@@ -27,6 +29,8 @@ export const routes: Routes = [
       },
       { path: 'a', redirectTo: 'a/login', pathMatch: 'full' },
       { path: 'a/login', component: LoginComponent, canActivate: [LoginGuard] },
+      { path: 'l', component: LegalOverviewComponent },
+      { path: 'l/:legalId', component: LegalDetailComponent },
       {
         path: 'a/register',
         component: RegisterComponent,

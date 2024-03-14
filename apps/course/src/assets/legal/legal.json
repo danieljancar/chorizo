@@ -1,0 +1,26 @@
+{
+  "name": "legal.json",
+  "description": "Metadata for some legal documents.",
+  "files": [
+    {
+      "name": "Terms of Service",
+      "description": "Terms of service are the legal agreements between a service provider and a person who wants to use that service. The person must agree to abide by the terms of service in order to use the offered service.",
+      "file": "terms"
+    },
+    {
+      "name": "Privacy Policy",
+      "description": "Privacy policy is a statement or a legal document that discloses some or all of the ways a party gathers, uses, discloses, and manages a client's data.",
+      "file": "privacy"
+    },
+    {
+      "name": "Cookie Policy",
+      "description": "Cookie policy is a declaration to the users on what cookies are active on a website, what user data they track, for what purpose, and where in the world this data is sent.",
+      "file": "cookies"
+    },
+    {
+      "name": "Code of Conduct",
+      "description": "Code of conduct is a set of rules outlining the norms, rules, and responsibilities or proper practices of an individual party or an organisation.",
+      "file": "code-of-conduct"
+    }
+  ]
+}
