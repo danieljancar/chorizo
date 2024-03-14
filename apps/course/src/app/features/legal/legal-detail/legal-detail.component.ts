@@ -5,6 +5,8 @@ import { Legal } from '../../../types/legal.type';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LegalService } from '../../../core/legal.service';
 import { Meta, Title } from '@angular/platform-browser';
+import { environment } from '../../../../environments/environment';
+import { AppComponent } from '../../../app.component';
 
 @Component({
   selector: 'app-legal-detail',
@@ -20,7 +22,7 @@ export class LegalDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private legalService: LegalService,
-    private titleService: Title,
+    private title: Title,
     private metaService: Meta,
   ) {}
 
@@ -29,17 +31,25 @@ export class LegalDetailComponent implements OnInit {
     if (legalId) {
       this.legal = this.legalService.getLegalByFile(legalId);
       if (this.legal) {
-        this.titleService.setTitle('${this.legal.name}');
-        this.metaService.updateTag({
-          name: 'description',
-          content: this.legal.description,
-        });
-      }
-      if (!this.legal) {
+        {
+          this.title.setTitle(
+            this.legal.name +
+              ' - ' +
+              environment.metaConfig.title +
+              ' - ' +
+              AppComponent.chorizo.title,
+          );
+          this.metaService.updateTag({
+            name: 'description',
+            content: this.legal.description,
+          });
+        }
+        if (!this.legal) {
+          this.router.navigate(['/404']);
+        }
+      } else {
         this.router.navigate(['/404']);
       }
-    } else {
-      this.router.navigate(['/404']);
     }
   }
 }

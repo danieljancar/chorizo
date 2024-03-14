@@ -14,6 +14,7 @@ import { CourseResourcesComponent } from './features/course/resources/course-res
 import { LegalOverviewComponent } from './features/legal/legal-overview/legal-overview.component';
 import { RegisterComponent } from './features/auth/register/register.component';
 import { AccountComponent } from './features/auth/account/account.component';
+import { LegalDetailComponent } from './features/legal/legal-detail/legal-detail.component';
 
 export const routes: Routes = [
   {
@@ -28,7 +29,8 @@ export const routes: Routes = [
       },
       { path: 'a', redirectTo: 'a/login', pathMatch: 'full' },
       { path: 'a/login', component: LoginComponent, canActivate: [LoginGuard] },
-      { path: 'l/terms', component: LegalOverviewComponent },
+      { path: 'l', component: LegalOverviewComponent },
+      { path: 'l/:legalId', component: LegalDetailComponent },
       {
         path: 'a/register',
         component: RegisterComponent,
