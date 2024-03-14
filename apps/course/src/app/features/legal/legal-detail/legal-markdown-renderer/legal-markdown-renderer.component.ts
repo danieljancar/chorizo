@@ -14,8 +14,6 @@ import {
 } from 'ngx-markdown';
 import { HttpClient } from '@angular/common/http';
 import { FooterComponent } from '../../../../shared/navigation/footer/footer.component';
-import { Legal } from '../../../../types/legal.type';
-import { LoadingBarsComponent } from '../../../../shared/feedback/loading-bars/loading-bars.component';
 import { LoadingBarsComponent } from '../../../../shared/feedback/loading-bars/loading-bars.component';
 import { LegalDocument } from '../../../../types/legal.type';
 

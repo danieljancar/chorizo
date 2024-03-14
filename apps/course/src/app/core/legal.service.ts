@@ -1,20 +1,26 @@
-import { Injectable } from '@angular/core';
-import { legal, Legal } from '../types/legal.type';
+import { inject, Injectable } from '@angular/core';
+import { Legal, LegalDocument } from '../types/legal.type';
 import * as legalData from '../../assets/legal/legal.json';
+import { ToastService } from './feedback/toast.service';
+import { ToastType } from '../types/feedback/toast.types';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LegalService {
-  private legals: Legal[] = (legalData as legal).files;
+  public legals: LegalDocument[] = (legalData as Legal).files;
 
-  constructor() {}
-
-  getLegalByFile(file: string): Legal | undefined {
-    return this.legals.find((legal) => legal.file === file);
-  }
-
-  getLegals(): Legal[] {
-    return this.legals;
+  getLegalDocumentByFileId(file: string): LegalDocument | undefined {
+    return this.legals.find((legal) => {
+      if (legal) {
+        return legal.file === file;
+      } else {
+        inject(ToastService).showToast(
+          'Could not find the legal document, try again.',
+          ToastType.Error,
+        );
+      }
+      return undefined;
+    });
   }
 }
