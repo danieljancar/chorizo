@@ -1,3 +1,11 @@
+name: Triage Labeler
+
+on:
+  issues:
+    types: [opened]
+  pull_request:
+    types: [opened]
+
 jobs:
   label-triage:
     runs-on: ubuntu-latest
