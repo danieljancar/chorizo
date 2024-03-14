@@ -1,12 +1,8 @@
 @if (isLoading) {
   <app-loading-bars />
 } @else {
-  <div class="markdown-content">
-    <markdown
-      [src]="'assets/legal/content/' + legal?.file + '.md'"
-      lineNumbers
-      ngPreserveWhitespaces
-    />
-  </div>
-  <div class="divider"></div>
+  <markdown
+    [src]="'assets/legal/content/' + legal?.file + '.md'"
+    class="markdown-content"
+  />
 }

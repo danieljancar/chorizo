@@ -8,15 +8,15 @@
       </div>
     </div>
     <div class="flex flex-col xl:flex-row flex-wrap justify-center">
-      @for (legal of legal; track $index) {
+      @for (document of legalDocuments; track document.file) {
         <div
           role="link"
-          [routerLink]="legal.file"
+          [routerLink]="document.file"
           class="w-full xl:w-5/12 mb-2 mt-2 card lg:card-side bg-base-100 shadow-xl transition hover:opacity-75 hover:scale-95 hover:cursor-pointer"
         >
           <div class="card-body text-pretty">
-            <h2 class="card-title">{{ legal.name }}</h2>
-            <p>{{ legal.description }}</p>
+            <h2 class="card-title">{{ document.name }}</h2>
+            <p>{{ document.description }}</p>
           </div>
         </div>
         @if ($index % 2 === 0) {

@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { LegalInfoComponent } from './legal-info/legal-info.component';
 import { LegalMarkdownRendererComponent } from './legal-markdown-renderer/legal-markdown-renderer.component';
-import { Legal } from '../../../types/legal.type';
+import { LegalDocument } from '../../../types/legal.type';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LegalService } from '../../../core/legal.service';
-import { Meta, Title } from '@angular/platform-browser';
+import { Title } from '@angular/platform-browser';
 import { environment } from '../../../../environments/environment';
 import { AppComponent } from '../../../app.component';
+import { ToastService } from '../../../core/feedback/toast.service';
+import { ToastType } from '../../../types/feedback/toast.types';
 
 @Component({
   selector: 'app-legal-detail',
@@ -16,20 +18,20 @@ import { AppComponent } from '../../../app.component';
   styleUrl: './legal-detail.component.scss',
 })
 export class LegalDetailComponent implements OnInit {
-  public legal: Legal | undefined;
+  public legal: LegalDocument | undefined;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private legalService: LegalService,
     private title: Title,
-    private metaService: Meta,
+    private toastService: ToastService,
   ) {}
 
   ngOnInit(): void {
     const legalId = this.route.snapshot.paramMap.get('legalId');
     if (legalId) {
-      this.legal = this.legalService.getLegalByFile(legalId);
+      this.legal = this.legalService.getLegalDocumentByFileId(legalId);
       if (this.legal) {
         {
           this.title.setTitle(
@@ -39,16 +41,14 @@ export class LegalDetailComponent implements OnInit {
               ' - ' +
               AppComponent.chorizo.title,
           );
-          this.metaService.updateTag({
-            name: 'description',
-            content: this.legal.description,
-          });
-        }
-        if (!this.legal) {
-          this.router.navigate(['/404']);
         }
       } else {
-        this.router.navigate(['/404']);
+        this.router.navigate(['/404']).then(() => {
+          this.toastService.showToast(
+            'The document could not be found.',
+            ToastType.Error,
+          );
+        });
       }
     }
   }

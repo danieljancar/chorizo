@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LegalService } from '../../../core/legal.service';
-import { Legal } from '../../../types/legal.type';
+import { LegalDocument } from '../../../types/legal.type';
 import { Title } from '@angular/platform-browser';
 import { RouterLink } from '@angular/router';
 import { environment } from '../../../../environments/environment';
@@ -15,7 +15,7 @@ import { LoadingBarsComponent } from '../../../shared/feedback/loading-bars/load
   styleUrl: './legal-overview.component.scss',
 })
 export class LegalOverviewComponent implements OnInit {
-  legal: Legal[] = [];
+  legalDocuments: LegalDocument[] = [];
   public isLoading = true;
 
   constructor(
@@ -31,11 +31,7 @@ export class LegalOverviewComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.initializeLegalData();
-  }
-
-  initializeLegalData() {
-    this.legal = this.legalService.getLegals();
+    this.legalDocuments = this.legalService.legals;
     this.isLoading = false;
   }
 }

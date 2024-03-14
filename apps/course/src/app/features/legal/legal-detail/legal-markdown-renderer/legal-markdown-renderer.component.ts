@@ -14,8 +14,8 @@ import {
 } from 'ngx-markdown';
 import { HttpClient } from '@angular/common/http';
 import { FooterComponent } from '../../../../shared/navigation/footer/footer.component';
-import { Legal } from '../../../../types/legal.type';
 import { LoadingBarsComponent } from '../../../../shared/feedback/loading-bars/loading-bars.component';
+import { LegalDocument } from '../../../../types/legal.type';
 
 @Component({
   selector: 'app-legal-markdown-renderer',
@@ -34,15 +34,12 @@ import { LoadingBarsComponent } from '../../../../shared/feedback/loading-bars/l
     }),
   ],
   templateUrl: './legal-markdown-renderer.component.html',
-  styleUrls: [
-    './legal-markdown-renderer.component.scss',
-    '../../../../styles/markdown.scss',
-  ],
+  styleUrl: './legal-markdown-renderer.component.scss',
   encapsulation: ViewEncapsulation.None,
 })
 export class LegalMarkdownRendererComponent implements OnInit {
-  @Input() legal: Legal | undefined;
-  isLoading: boolean = true;
+  @Input() public legal: LegalDocument | undefined;
+  public isLoading: boolean = true;
 
   constructor(private markdownService: MarkdownService) {}
 

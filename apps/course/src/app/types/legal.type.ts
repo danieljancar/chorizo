@@ -1,11 +1,11 @@
 export type Legal = {
   name: string;
   description: string;
-  file: string;
+  files: LegalDocument[];
 };
 
-export type legal = {
+export type LegalDocument = {
   name: string;
   description: string;
-  files: Legal[];
+  file: string;
 };
