@@ -20,6 +20,7 @@ import { MatIcon } from '@angular/material/icon';
 import { CourseDocumentationNavbarComponent } from './navbar/course-documentation-navbar.component';
 import { MarkdownComponent, MarkdownPipe, provideMarkdown } from 'ngx-markdown';
 import { FeedbackMessageComponent } from '../../../shared/feedback/feedback-message/feedback-message.component';
+import { CourseSkeletonDocumentationComponent } from './skeletons/course-skeleton-documentation.component';
 
 @Component({
   selector: 'app-docs',
@@ -31,6 +32,7 @@ import { FeedbackMessageComponent } from '../../../shared/feedback/feedback-mess
     MarkdownComponent,
     MarkdownPipe,
     FeedbackMessageComponent,
+    CourseSkeletonDocumentationComponent,
   ],
   templateUrl: './course-documentation.component.html',
   styleUrl: './course-documentation.component.scss',
