@@ -3,7 +3,7 @@
 This document describes how to setup your development environment for the packages and projects in this repository. As
 stated, this repository contains multiple projects, also called monorepo.
 
-# Prerequisites
+## Prerequisites
 
 - [Angular CLI](https://angular.dev)
 - [Firebase CLI](https://firebase.google.com/docs/cli)
@@ -12,14 +12,16 @@ stated, this repository contains multiple projects, also called monorepo.
 - [Git](https://git-scm.com/)
 - [Yarn](https://yarnpkg.com/)
 
-# Table of Contents
+## Table of Contents
 
 - [Setup](#setup)
-- [Packages](#packages)
+- [Apps](#apps)
   - [Course](#course)
+    - [Setup](#setup)
   - [AdminUI](#adminui)
+    - [Setup](#setup)
 
-# Setup
+## Setup
 
 1. Clone the repository
 
@@ -33,14 +35,14 @@ git clone https://github.com/danieljancar/chorizo.git
 npm install
 ```
 
-# Packages
+## Apps
 
-## Course
+### Course
 
 This Angular 17 project is the main application. It is a course management system that allows course creators to
 successfully manage courses, invite students, provide course content, and more.
 
-### Setup
+#### Setup
 
 1. Install dependencies
 
@@ -88,11 +90,11 @@ export const environment = {
 npm run start
 ```
 
-## AdminUI
+### AdminUI
 
 The AdminUI is made with FireCMS, a headless CMS for Firebase. It allows the team to manage the content of the website.
 
-### Setup
+#### Setup
 
 > **Note:** The AdminUI uses **Yarn** as the package manager.
 
