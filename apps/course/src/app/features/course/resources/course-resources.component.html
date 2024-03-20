@@ -1,1 +1,34 @@
-<p>resources works!</p>
+<div class="mx-1 md:mx-3 lg:mx-32 xl:mx-60">
+  @if (!isLoading) {
+    <div>
+      <div class="overflow-x-auto">
+        <table class="table table-lg">
+          <!-- head -->
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th class="hidden md:block">Uploaded at</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (resource of resources; track resource.id) {
+              <tr>
+                <td>{{ resource.title }}</td>
+                <td class="hidden md:block">
+                  {{ resource.updatedAt.toDate() | relativeTime: 'relative' }}
+                </td>
+                <td>
+                  <button class="btn btn-sm btn-primary">
+                    <mat-icon class="text-xl">download</mat-icon>
+                  </button>
+                </td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  } @else {
+    <app-loading-bars />
+  }
+</div>

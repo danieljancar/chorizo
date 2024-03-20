@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { CourseService } from '../../../core/course.service';
-import { Course } from '../../../../../projects/types/src/lib/course.types';
+import { Course } from '../../../../../projects/types/src/lib/course/course.types';
 import { LoadingBarsComponent } from '../../../shared/feedback/loading-bars/loading-bars.component';
 import { CoursesFilterComponent } from './filter/courses-filter.component';
 import { FeedbackMessageComponent } from '../../../shared/feedback/feedback-message/feedback-message.component';

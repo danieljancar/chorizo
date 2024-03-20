@@ -7,11 +7,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { Subscription } from 'rxjs';
-import {
-  Course,
-  CourseChapter,
-  CourseDocument,
-} from '../../../../../projects/types/src/lib/course.types';
+import { Course } from '../../../../../projects/types/src/lib/course/course.types';
 import { CourseStateService } from '../../../core/course-state.service';
 import { Title } from '@angular/platform-browser';
 import { CourseService } from '../../../core/course.service';
@@ -20,6 +16,10 @@ import { MatIcon } from '@angular/material/icon';
 import { CourseDocumentationNavbarComponent } from './navbar/course-documentation-navbar.component';
 import { MarkdownComponent, MarkdownPipe, provideMarkdown } from 'ngx-markdown';
 import { FeedbackMessageComponent } from '../../../shared/feedback/feedback-message/feedback-message.component';
+import {
+  CourseChapter,
+  CourseDocument,
+} from '../../../../../projects/types/src/lib/course/course-documentation.types';
 
 @Component({
   selector: 'app-docs',

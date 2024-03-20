@@ -8,16 +8,16 @@ import {
 } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { MatIcon } from '@angular/material/icon';
-import {
-  CourseChapter,
-  CourseDocument,
-} from '../../../../../../projects/types/src/lib/course.types';
 import { Subscription } from 'rxjs';
 import { CourseService } from '../../../../core/course.service';
 import { CourseStateService } from '../../../../core/course-state.service';
 import { NgClass } from '@angular/common';
 import { LoadingBarsComponent } from '../../../../shared/feedback/loading-bars/loading-bars.component';
 import { FeedbackMessageComponent } from '../../../../shared/feedback/feedback-message/feedback-message.component';
+import {
+  CourseChapter,
+  CourseDocument,
+} from '../../../../../../projects/types/src/lib/course/course-documentation.types';
 
 @Component({
   selector: 'app-course-documentation-navbar',
