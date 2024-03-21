@@ -4,7 +4,6 @@ type ResourcesDocument = {
   title: string;
   description?: string;
   source: string;
-  group: string;
   createdAt: Date;
   updatedAt: Date;
 };
@@ -43,11 +42,6 @@ export const courseResourcesCollection = buildCollection<ResourcesDocument>({
         storagePath: 'files/courses/resources/',
       },
     }),
-    group: {
-      name: 'Group',
-      validation: { required: true },
-      dataType: 'string',
-    },
     createdAt: {
       name: 'Created at',
       dataType: 'date',

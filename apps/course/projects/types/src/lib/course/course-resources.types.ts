@@ -5,7 +5,6 @@ export type CourseResource = {
   title: string;
   description?: string;
   source: string;
-  group: string;
   createdAt: Timestamp;
   updatedAt: Timestamp;
 };

@@ -17,12 +17,9 @@ export class FileDownloadService {
     const ref = this.storage.ref(filePath);
     ref.getDownloadURL().subscribe(
       (url) => {
-        console.log('Downloading file:', url);
         saveAs(url, filePath.split('/').pop());
-        this.toastService.showToast('File downloaded', ToastType.Success);
       },
-      (error) => {
-        console.error('Error downloading file:', error);
+      () => {
         this.toastService.showToast('Error downloading file', ToastType.Error);
       },
     );
