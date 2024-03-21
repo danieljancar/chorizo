@@ -1,6 +1,6 @@
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { Course } from '../../../../../projects/types/src/lib/course.types';
+import { Course } from '../../../../../projects/types/src/lib/course/course.types';
 import { CourseStateService } from '../../../core/course-state.service';
 import { Title } from '@angular/platform-browser';
 

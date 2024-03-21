@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
+import { Course } from '../../../projects/types/src/lib/course/course.types';
 import {
-  Course,
   CourseChapter,
   CourseDocument,
-} from '../../../projects/types/src/lib/course.types';
+} from '../../../projects/types/src/lib/course/course-documentation.types';
+import { CourseResource } from '../../../projects/types/src/lib/course/course-resources.types';
 
 @Injectable({
   providedIn: 'root',
@@ -82,5 +83,16 @@ export class CourseService {
         (ref) => ref.orderBy('order', 'asc'),
       )
       .valueChanges({ idField: 'id' }) as Observable<CourseDocument[]>;
+  }
+
+  getCourseResources(
+    courseId: string | undefined,
+  ): Observable<CourseResource[]> {
+    return this.afs
+      .collection(
+        `${this.COURSES_COLLECTION_COLLECTION}/${courseId}/resources`,
+        (ref) => ref.orderBy('createdAt', 'asc'),
+      )
+      .valueChanges({ idField: 'id' }) as Observable<CourseResource[]>;
   }
 }

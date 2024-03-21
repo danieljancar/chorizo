@@ -1,20 +1,21 @@
 import { buildCollection } from 'firecms';
-import { courseDocumentationDocumentsCollection } from './documentation-documents.tsx';
 
-type DocumentationChapter = {
+type DocumentationDocument = {
   title: string;
+  content: string;
   order: number;
   createdAt: Date;
   updatedAt: Date;
 };
 
-export const courseDocumentationChapterCollection =
-  buildCollection<DocumentationChapter>({
-    name: 'Documentation',
-    singularName: 'Chapter',
-    path: 'documentation',
+export const courseDocumentationDocumentsCollection =
+  buildCollection<DocumentationDocument>({
+    name: 'Documents',
+    singularName: 'Document',
+    path: 'documents',
     icon: 'MenuBook',
     defaultSize: 'm',
+    selectionEnabled: true,
     initialSort: ['order', 'asc'],
     permissions: () => ({
       read: true,
@@ -22,12 +23,17 @@ export const courseDocumentationChapterCollection =
       create: true,
       delete: true,
     }),
-    subcollections: [courseDocumentationDocumentsCollection],
     properties: {
       title: {
         name: 'Title',
         validation: { required: true },
         dataType: 'string',
+      },
+      content: {
+        name: 'Content',
+        validation: { required: false, min: 3, max: 100000 },
+        dataType: 'string',
+        markdown: true,
       },
       order: {
         name: 'Order',

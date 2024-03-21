@@ -1,1 +1,84 @@
-<p>resources works!</p>
+<div class="mx-1 md:mx-3 lg:mx-32 xl:mx-60">
+  @if (!isLoading) {
+    <div class="overflow-x-auto">
+      <table class="table table-lg">
+        <thead>
+          <tr>
+            <th class="hidden md:block">
+              <mat-icon>insert_drive_file</mat-icon>
+            </th>
+            <th>
+              <button
+                class="flex items-center btn btn-sm btn-ghost"
+                (click)="
+                  sortResourcesByName(sortState.name === 'asc' ? 'desc' : 'asc')
+                "
+              >
+                Name
+                <mat-icon>
+                  {{
+                    sortState.name === 'asc'
+                      ? 'keyboard_arrow_up'
+                      : sortState.name === 'desc'
+                        ? 'keyboard_arrow_down'
+                        : 'sort_by_alpha'
+                  }}
+                </mat-icon>
+              </button>
+            </th>
+            <th class="hidden md:block">
+              <button
+                class="flex items-center btn btn-sm btn-ghost"
+                (click)="
+                  sortResourcesByLastUpdated(
+                    sortState.date === 'asc' ? 'desc' : 'asc'
+                  )
+                "
+              >
+                Last Modified
+                <mat-icon>
+                  {{
+                    sortState.date === 'asc'
+                      ? 'keyboard_arrow_up'
+                      : sortState.date === 'desc'
+                        ? 'keyboard_arrow_down'
+                        : 'sort'
+                  }}
+                </mat-icon>
+              </button>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (resource of resources; track resource.id) {
+            <tr>
+              <td class="hidden md:block">
+                <mat-icon>insert_drive_file</mat-icon>
+              </td>
+              <td>
+                <p>{{ resource.title }}</p>
+              </td>
+              <td class="hidden md:block">
+                <p class="text-sm text-gray-500">
+                  {{ resource.updatedAt.toDate() | relativeTime: 'relative' }}
+                </p>
+              </td>
+              <td>
+                <div class="flex justify-end items-center">
+                  <mat-icon
+                    class="cursor-pointer"
+                    (click)="downloadResource(resource.source)"
+                  >
+                    cloud_download
+                  </mat-icon>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  } @else {
+    <app-course-skeleton-resources />
+  }
+</div>

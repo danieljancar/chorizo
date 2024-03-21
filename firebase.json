@@ -9,6 +9,21 @@
           "source": "**",
           "destination": "/index.html"
         }
+      ],
+      "headers": [
+        {
+          "source": "index.html",
+          "headers": [
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "https://*.web.app, http://localhost:5173"
+            },
+            {
+              "key": "Access-Control-Allow-Methods",
+              "value": "*"
+            }
+          ]
+        }
       ]
     },
     {
@@ -19,6 +34,21 @@
         {
           "source": "**",
           "destination": "/index.html"
+        }
+      ],
+      "headers": [
+        {
+          "source": "index.html",
+          "headers": [
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "https://*.web.app, http://localhost:4200"
+            },
+            {
+              "key": "Access-Control-Allow-Methods",
+              "value": "*"
+            }
+          ]
         }
       ]
     }
