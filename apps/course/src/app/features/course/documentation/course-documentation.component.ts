@@ -20,6 +20,7 @@ import {
   CourseChapter,
   CourseDocument,
 } from '../../../../../projects/types/src/lib/course/course-documentation.types';
+import { CourseSkeletonDocumentationComponent } from './skeletons/course-skeleton-documentation.component';
 
 @Component({
   selector: 'app-docs',
@@ -31,6 +32,7 @@ import {
     MarkdownComponent,
     MarkdownPipe,
     FeedbackMessageComponent,
+    CourseSkeletonDocumentationComponent,
   ],
   templateUrl: './course-documentation.component.html',
   styleUrl: './course-documentation.component.scss',
@@ -62,7 +64,6 @@ export class CourseDocumentationComponent implements OnInit, OnDestroy {
             .getCourseChapters(course.id)
             .subscribe((chapters) => {
               this.chapters = chapters;
-              this.isLoading = false;
             });
         } else {
           this.isLoading = true;
@@ -72,7 +73,6 @@ export class CourseDocumentationComponent implements OnInit, OnDestroy {
   }
 
   public onDocumentSelected(document: CourseDocument | undefined): void {
-    this.isLoading = true;
     this.documentationDocument = document;
     this.isLoading = false;
   }

@@ -26,6 +26,7 @@
       <label class="cursor-pointer" for="avatarUpload"> Change avatar </label>
       <input
         (change)="onFileSelected($event)"
+        accept="image/*"
         class="hidden"
         id="avatarUpload"
         type="file"

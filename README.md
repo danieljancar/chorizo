@@ -80,6 +80,7 @@ or `.github` directory. Here are some of the most important ones:
 - [Developer Setup](docs/DEVELOPER_SETUP.md)
 - [Best Practices](docs/BEST_PRACTICES.md)
 - [Formatting](docs/FORMATTING.md)
+- [Dev Actions](docs/DEV_ACTIONS.md)
 
 ## Development Previews
 

@@ -3,12 +3,8 @@
   "targets": {
     "chorizo-dev": {
       "hosting": {
-        "adminui": [
-          "dev-adminui-chorizo"
-        ],
-        "course": [
-          "dev-preview-course-chorizo"
-        ]
+        "adminui": ["dev-adminui-chorizo"],
+        "course": ["dev-preview-course-chorizo"]
       }
     }
   },

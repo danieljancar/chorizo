@@ -18,6 +18,7 @@ import {
   CourseChapter,
   CourseDocument,
 } from '../../../../../../projects/types/src/lib/course/course-documentation.types';
+import { CourseSkeletonDocumentationNavbarComponent } from '../skeletons/course-skeleton-documentation-navbar.component';
 
 @Component({
   selector: 'app-course-documentation-navbar',
@@ -28,6 +29,7 @@ import {
     NgClass,
     LoadingBarsComponent,
     FeedbackMessageComponent,
+    CourseSkeletonDocumentationNavbarComponent,
   ],
   templateUrl: './course-documentation-navbar.component.html',
   styleUrls: ['./course-documentation-navbar.component.scss'],
@@ -76,7 +78,7 @@ export class CourseDocumentationNavbarComponent implements OnInit, OnDestroy {
     if (chapter && document) {
       this.router
         .navigate([], {
-          queryParams: { chapterID: chapter.id, documentID: document.id },
+          queryParams: { cId: chapter.id, dId: document.id },
         })
         .then(() => {
           this.currentDocumentId = document.id;
@@ -148,8 +150,8 @@ export class CourseDocumentationNavbarComponent implements OnInit, OnDestroy {
   // Sets up the router events to select the current document based on the query params or the first document if none are provided
   private setupRouterEvents(chapters: CourseChapter[]): void {
     this.activatedRoute.queryParams.subscribe((params) => {
-      const chapterId = params['chapterID'];
-      const documentId = params['documentID'];
+      const chapterId = params['cId'];
+      const documentId = params['dId'];
 
       if (chapterId && documentId) {
         const chapter = chapters.find((c) => c.id === chapterId);
