@@ -1,0 +1,5 @@
+{
+  "origin": ["http://localhost:4200", "https://*.web.app"],
+  "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+  "preflightContinue": false
+}

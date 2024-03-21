@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, ReplaySubject } from 'rxjs';
-import { Course } from '../../../projects/types/src/lib/course.types';
+import { Course } from '../../../projects/types/src/lib/course/course.types';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
 import { ToastService } from './feedback/toast.service';

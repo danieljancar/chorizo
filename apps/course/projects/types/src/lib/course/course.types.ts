@@ -24,21 +24,3 @@ export type Course = {
   createdAt: Timestamp;
   updatedAt?: Timestamp;
 };
-
-export type CourseChapter = {
-  id: string;
-  title: string;
-  order: number;
-  documents: CourseDocument[];
-  createdAt: Date;
-  updatedAt: Date;
-};
-
-export type CourseDocument = {
-  id: string;
-  title: string;
-  content: string;
-  order: number;
-  createdAt: Date;
-  updatedAt: Date;
-};

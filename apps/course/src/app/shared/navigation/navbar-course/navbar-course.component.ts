@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { Course } from '../../../../../projects/types/src/lib/course.types';
+import { Course } from '../../../../../projects/types/src/lib/course/course.types';
 import { AsyncPipe } from '@angular/common';
 import { MatIcon } from '@angular/material/icon';
 import { CourseStateService } from '../../../core/course-state.service';

@@ -1,6 +1,7 @@
 import { buildCollection, buildProperty } from 'firecms';
 import { courseTaskCollection } from './subcollections/tasks.tsx';
-import { courseDocumentationChapterCollection } from './subcollections/documentation-chapters.tsx';
+import { courseDocumentationChapterCollection } from './subcollections/documentation-chapter.tsx';
+import { courseResourcesCollection } from './subcollections/resources.tsx';
 
 type Course = {
   title: string;
@@ -33,7 +34,11 @@ export const coursesCollection = buildCollection<Course>({
     create: true,
     delete: true,
   }),
-  subcollections: [courseTaskCollection, courseDocumentationChapterCollection],
+  subcollections: [
+    courseTaskCollection,
+    courseDocumentationChapterCollection,
+    courseResourcesCollection,
+  ],
   properties: {
     title: {
       name: 'Title',
