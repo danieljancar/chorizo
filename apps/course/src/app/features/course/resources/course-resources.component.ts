@@ -82,7 +82,6 @@ export class CourseResourcesComponent implements OnInit, OnDestroy {
       const dateB = new Date(b.updatedAt.toDate()).getTime();
       return by === 'asc' ? dateA - dateB : dateB - dateA;
     });
-    console.log(this.resources);
     this.sortState.date = by;
     this.sortState.name = '';
   }

@@ -7,6 +7,7 @@ import {
   CourseDocument,
 } from '../../../projects/types/src/lib/course/course-documentation.types';
 import { CourseResource } from '../../../projects/types/src/lib/course/course-resources.types';
+import { CourseTask } from '../../../projects/types/src/lib/course/course-tasks.types';
 
 @Injectable({
   providedIn: 'root',
@@ -59,6 +60,16 @@ export class CourseService {
           .where('published', '==', true),
       )
       .valueChanges({ idField: 'id' }) as Observable<Course[]>;
+  }
+
+  getCourseTasks(courseId: string | undefined): Observable<CourseTask[]> {
+    return this.afs
+      .collection(this.COURSES_COLLECTION_COLLECTION)
+      .doc(courseId)
+      .collection<CourseTask>('tasks', (ref) => ref.orderBy('createdAt', 'asc'))
+      .valueChanges({
+        idField: 'id',
+      }) as Observable<CourseTask[]>;
   }
 
   getCourseChapters(courseId: string | undefined): Observable<CourseChapter[]> {

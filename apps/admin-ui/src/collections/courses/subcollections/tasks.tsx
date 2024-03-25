@@ -3,8 +3,9 @@ import { courseTaskDoneCollection } from './task-done.tsx';
 
 type Task = {
   title: string;
-  content: string;
+  content?: string;
   order: number;
+  workPhase: 'individual' | 'pair' | 'group' | 'plenum';
   createdAt: Date;
   updatedAt: Date;
 };
@@ -37,8 +38,20 @@ export const courseTaskCollection = buildCollection<Task>({
     },
     order: {
       name: 'Order',
-      validation: { required: true, unique: true, integer: true },
+      validation: { required: true, unique: true },
       dataType: 'number',
+    },
+    workPhase: {
+      name: 'Work phase',
+      validation: { required: true },
+      dataType: 'string',
+      defaultValue: 'individual',
+      enumValues: {
+        individual: 'Individual',
+        pair: 'Pair',
+        group: 'Group',
+        plenum: 'Plenum',
+      },
     },
     createdAt: {
       name: 'Created at',

@@ -1,1 +1,5 @@
-<p>tasks works!</p>
+<div class="mx-1 md:mx-3 lg:mx-32 xl:mx-60">
+  @for (task of tasks; track task.id) {
+    <p>{{ task.title }}</p>
+  }
+</div>
