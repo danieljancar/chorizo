@@ -36,6 +36,7 @@ import { ToastType } from '../../../types/feedback/toast.types';
 export class NavbarComponent {
   isLoggedIn$: Observable<boolean>;
   title: string = environment.metaConfig.title;
+  isDropdownOpen: boolean = false;
 
   constructor(
     private authService: AuthService,
@@ -54,5 +55,13 @@ export class NavbarComponent {
         );
       });
     });
+  }
+
+  toggleDropdown(): void {
+    this.isDropdownOpen = !this.isDropdownOpen;
+  }
+
+  closeDropdown(): void {
+    this.isDropdownOpen = false;
   }
 }

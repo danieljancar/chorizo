@@ -15,6 +15,7 @@ import { CourseStateService } from '../../../core/course-state.service';
 })
 export class NavbarCourseComponent implements OnInit, OnDestroy {
   course: Course | undefined;
+  isDropdownOpen: boolean = false;
   private subscription: Subscription = new Subscription();
 
   constructor(private courseStateService: CourseStateService) {}
@@ -25,6 +26,14 @@ export class NavbarCourseComponent implements OnInit, OnDestroy {
         this.course = course;
       },
     );
+  }
+
+  toggleDropdown(): void {
+    this.isDropdownOpen = !this.isDropdownOpen;
+  }
+
+  closeDropdown(): void {
+    this.isDropdownOpen = false;
   }
 
   ngOnDestroy(): void {
