@@ -1,13 +1,11 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { ToastService } from './feedback/toast.service';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { finalize, Observable, of } from 'rxjs';
 import { User } from '../../../projects/types/src/lib/user.types';
 import { switchMap } from 'rxjs/operators';
 import { Timestamp } from 'firebase/firestore';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
-import { AuthService } from './auth/auth.service';
 
 @Injectable({
   providedIn: 'root',
@@ -15,8 +13,6 @@ import { AuthService } from './auth/auth.service';
 export class UserService {
   constructor(
     private afa: AngularFireAuth,
-    private authService: AuthService,
-    private toastService: ToastService,
     private afs: AngularFirestore,
     private storage: AngularFireStorage,
   ) {}

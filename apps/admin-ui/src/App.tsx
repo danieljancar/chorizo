@@ -54,7 +54,7 @@ export default function App() {
       authentication={myAuthenticator}
       collections={rootCollections}
       firebaseConfig={firebaseConfig}
-      signInOptions={['google.com', 'password']}
+      signInOptions={['password']}
     />
   );
 }

@@ -1,10 +1,25 @@
 export type CourseTask = {
   id: string;
   title: string;
-  content?: string;
+  description: string;
   order: number;
-  workPhase: CourseTaskWorkPhase;
-  isCompleted: boolean;
+  workPhase: CourseWorkPhase;
+  createdAt: Date;
+  updatedAt: Date;
+  done?: boolean;
+  doneMetadata?: CourseTasksDone | undefined;
 };
 
-export type CourseTaskWorkPhase = 'individual' | 'pair' | 'group' | 'plenum';
+type CourseWorkPhase = 'individual' | 'pair' | 'group' | 'plenum';
+
+export type CourseTasksDone = {
+  id: string;
+  userId: string | undefined;
+  done: boolean;
+  firstDoneAt: Date;
+  firstUndoneAt: Date;
+  lastDoneAt: Date;
+  lastUndoneAt: Date;
+  createdAt: Date;
+  updatedAt: Date;
+};

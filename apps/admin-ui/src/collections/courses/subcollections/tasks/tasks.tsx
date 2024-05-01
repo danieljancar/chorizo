@@ -1,14 +1,16 @@
 import { buildCollection } from 'firecms';
-import { courseTaskDoneCollection } from './task-done.tsx';
+import { courseTasksDoneCollection } from './tasks-done.tsx';
 
 type Task = {
   title: string;
-  content?: string;
+  description: string;
   order: number;
-  workPhase: 'individual' | 'pair' | 'group' | 'plenum';
+  workPhase: WorkPhase;
   createdAt: Date;
   updatedAt: Date;
 };
+
+type WorkPhase = 'individual' | 'pair' | 'group' | 'plenum';
 
 export const courseTaskCollection = buildCollection<Task>({
   name: 'Tasks',
@@ -16,36 +18,36 @@ export const courseTaskCollection = buildCollection<Task>({
   path: 'tasks',
   icon: 'Assignment',
   defaultSize: 'm',
+  selectionEnabled: true,
   initialSort: ['order', 'asc'],
+  subcollections: [courseTasksDoneCollection],
   permissions: () => ({
     read: true,
     edit: true,
     create: true,
     delete: true,
   }),
-  subcollections: [courseTaskDoneCollection],
   properties: {
     title: {
       name: 'Title',
-      validation: { required: true, min: 3, max: 100 },
+      validation: { required: true },
       dataType: 'string',
     },
-    content: {
-      name: 'Content',
+    description: {
+      name: 'Description',
       validation: { required: false, min: 3, max: 100000 },
       dataType: 'string',
       markdown: true,
     },
     order: {
       name: 'Order',
-      validation: { required: true, unique: true },
+      validation: { required: true, unique: true, integer: true },
       dataType: 'number',
     },
     workPhase: {
       name: 'Work phase',
       validation: { required: true },
       dataType: 'string',
-      defaultValue: 'individual',
       enumValues: {
         individual: 'Individual',
         pair: 'Pair',

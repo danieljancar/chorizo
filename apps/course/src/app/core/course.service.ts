@@ -7,6 +7,7 @@ import {
   CourseDocument,
 } from '../../../projects/types/src/lib/course/course-documentation.types';
 import { CourseResource } from '../../../projects/types/src/lib/course/course-resources.types';
+import { UserService } from './user.service';
 import { CourseTask } from '../../../projects/types/src/lib/course/course-tasks.types';
 
 @Injectable({
@@ -16,8 +17,14 @@ export class CourseService {
   private readonly COURSES_COLLECTION_COLLECTION = 'courses';
   private readonly COURSE_DOCUMENTATION_COLLECTION = 'documentation';
   private readonly COURSE_DOCUMENTATION_DOCUMENTS_COLLECTION = 'documents';
+  private readonly COURSE_TASKS_COLLECTION = 'tasks';
+  private readonly COURSE_TASKS_DONE_COLLECTION = 'done';
+  private readonly COURSE_RESOURCES_COLLECTION = 'resources';
 
-  constructor(private afs: AngularFirestore) {}
+  constructor(
+    private afs: AngularFirestore,
+    private userService: UserService,
+  ) {}
 
   getCourses(
     searchTerm: string = '',
@@ -64,12 +71,11 @@ export class CourseService {
 
   getCourseTasks(courseId: string | undefined): Observable<CourseTask[]> {
     return this.afs
-      .collection(this.COURSES_COLLECTION_COLLECTION)
-      .doc(courseId)
-      .collection<CourseTask>('tasks', (ref) => ref.orderBy('createdAt', 'asc'))
-      .valueChanges({
-        idField: 'id',
-      }) as Observable<CourseTask[]>;
+      .collection<CourseTask>(
+        `${this.COURSES_COLLECTION_COLLECTION}/${courseId}/${this.COURSE_TASKS_COLLECTION}`,
+        (ref) => ref.orderBy('order', 'asc'),
+      )
+      .valueChanges({ idField: 'id' });
   }
 
   getCourseChapters(courseId: string | undefined): Observable<CourseChapter[]> {
@@ -101,7 +107,7 @@ export class CourseService {
   ): Observable<CourseResource[]> {
     return this.afs
       .collection(
-        `${this.COURSES_COLLECTION_COLLECTION}/${courseId}/resources`,
+        `${this.COURSES_COLLECTION_COLLECTION}/${courseId}/${this.COURSE_RESOURCES_COLLECTION}`,
         (ref) => ref.orderBy('createdAt', 'asc'),
       )
       .valueChanges({ idField: 'id' }) as Observable<CourseResource[]>;

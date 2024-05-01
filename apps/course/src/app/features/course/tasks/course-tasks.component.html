@@ -1,5 +1,19 @@
 <div class="mx-1 md:mx-3 lg:mx-32 xl:mx-60">
-  @for (task of tasks; track task.id) {
-    <p>{{ task.title }}</p>
-  }
+  <div>
+    @for (task of tasks; track task.id) {
+      <div class="collapse collapse-arrow bg-base-100">
+        <input type="radio" name="course-tasks-accordion" />
+        <div class="collapse-title text-xl font-medium flex items-center">
+          <input type="checkbox" checked="checked" class="checkbox" disabled />
+          <h1 class="ml-3">{{ task.title }}</h1>
+        </div>
+        <div class="collapse-content">
+          <markdown
+            [data]="task.description"
+            class="markdown-content"
+          ></markdown>
+        </div>
+      </div>
+    }
+  </div>
 </div>
