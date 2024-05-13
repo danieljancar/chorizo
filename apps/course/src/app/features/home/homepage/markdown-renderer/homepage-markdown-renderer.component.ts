@@ -1,5 +1,5 @@
 import { Component, SecurityContext, ViewEncapsulation } from '@angular/core';
-import { GeneralService } from '../../../../core/general.service';
+import { GeneralService } from '../../../../core/data/general.service';
 import {
   MarkdownComponent,
   MarkdownService,

@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs';
 import { Course } from '../../../../../projects/types/src/lib/course/course.types';
 import { AsyncPipe } from '@angular/common';
 import { MatIcon } from '@angular/material/icon';
-import { CourseStateService } from '../../../core/course-state.service';
+import { CourseStateService } from '../../../core/data/course-state.service';
 
 @Component({
   selector: 'app-navbar-course',

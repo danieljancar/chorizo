@@ -1,25 +1,29 @@
+import { Timestamp } from 'firebase/firestore';
+import { Reference } from '@angular/fire/compat/firestore';
+
 export type CourseTask = {
   id: string;
   title: string;
   description: string;
   order: number;
+  fileInput: boolean;
+  relatedDocuments: relatedDocument[];
   workPhase: CourseWorkPhase;
-  createdAt: Date;
-  updatedAt: Date;
-  done?: boolean;
-  doneMetadata?: CourseTasksDone | undefined;
+  createdAt: Timestamp;
+  updatedAt: Timestamp;
+  done?: CourseTasksDone | undefined;
 };
 
-type CourseWorkPhase = 'individual' | 'pair' | 'group' | 'plenum';
+export type CourseWorkPhase = 'individual' | 'pair' | 'group' | 'plenum';
+export type relatedDocument = {
+  title: string;
+  url: Reference;
+};
 
 export type CourseTasksDone = {
-  id: string;
-  userId: string | undefined;
-  done: boolean;
-  firstDoneAt: Date;
-  firstUndoneAt: Date;
-  lastDoneAt: Date;
-  lastUndoneAt: Date;
-  createdAt: Date;
-  updatedAt: Date;
+  id?: string;
+  status: boolean;
+  fileInput?: string;
+  createdAt?: Timestamp;
+  updatedAt: Timestamp;
 };
