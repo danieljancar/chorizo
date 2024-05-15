@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LegalService } from '../../../core/legal.service';
+import { LegalService } from '../../../core/data/legal.service';
 import { LegalDocument } from '../../../types/legal.type';
 import { Title } from '@angular/platform-browser';
 import { RouterLink } from '@angular/router';

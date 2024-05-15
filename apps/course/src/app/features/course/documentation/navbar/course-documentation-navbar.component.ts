@@ -9,8 +9,8 @@ import {
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { MatIcon } from '@angular/material/icon';
 import { Subscription } from 'rxjs';
-import { CourseService } from '../../../../core/course.service';
-import { CourseStateService } from '../../../../core/course-state.service';
+import { CourseService } from '../../../../core/data/course.service';
+import { CourseStateService } from '../../../../core/data/course-state.service';
 import { NgClass } from '@angular/common';
 import { LoadingBarsComponent } from '../../../../shared/feedback/loading-bars/loading-bars.component';
 import { FeedbackMessageComponent } from '../../../../shared/feedback/feedback-message/feedback-message.component';

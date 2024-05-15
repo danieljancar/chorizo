@@ -23,10 +23,7 @@ export class LoginGuard implements CanActivate {
       tap((notLoggedIn) => {
         if (!notLoggedIn) {
           this.router.navigate(['/']).then(() => {
-            this.toastService.showToast(
-              'You are already logged in.',
-              ToastType.Info,
-            );
+            this.toastService.showToast('Not yet verified.', ToastType.Info);
           });
         }
       }),

@@ -5,6 +5,7 @@ export type User = {
   email: string;
   username: string;
   password?: string;
+  role: 'user' | 'admin' | undefined;
   name?: string;
   avatar?: string;
   bio?: string;
