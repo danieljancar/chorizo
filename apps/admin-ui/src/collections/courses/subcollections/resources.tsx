@@ -1,8 +1,7 @@
-import { buildCollection, buildProperty } from 'firecms';
+import { buildCollection, buildProperty, getRandomId } from 'firecms';
 
 type ResourcesDocument = {
   title: string;
-  description?: string;
   source: string;
   createdAt: Date;
   updatedAt: Date;
@@ -27,12 +26,6 @@ export const courseResourcesCollection = buildCollection<ResourcesDocument>({
       validation: { required: true },
       dataType: 'string',
     },
-    description: {
-      name: 'Description',
-      validation: { required: false, min: 3, max: 100000 },
-      dataType: 'string',
-      markdown: true,
-    },
     source: buildProperty({
       name: 'Source',
       validation: { required: true },
@@ -40,6 +33,10 @@ export const courseResourcesCollection = buildCollection<ResourcesDocument>({
       storage: {
         mediaType: 'file',
         storagePath: 'files/courses/resources/',
+        fileName: (context) => {
+          const extension = context.file?.name.split('.').pop();
+          return `${getRandomId()}.${extension}`;
+        },
       },
     }),
     createdAt: {

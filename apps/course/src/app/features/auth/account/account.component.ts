@@ -24,7 +24,7 @@ import { AccountProfileBannerComponent } from './profile-banner/account-profile-
 import { RelativeTimePipe } from '../../../pipes/relative-time.pipe';
 import { interval, Observable, Subscription } from 'rxjs';
 import { ToastType } from '../../../types/feedback/toast.types';
-import { UserService } from '../../../core/user.service';
+import { UserService } from '../../../core/data/user.service';
 
 @Component({
   selector: 'app-account',

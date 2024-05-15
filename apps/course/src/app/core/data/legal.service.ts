@@ -1,8 +1,8 @@
 import { inject, Injectable } from '@angular/core';
-import { Legal, LegalDocument } from '../types/legal.type';
-import * as legalData from '../../assets/legal/legal.json';
-import { ToastService } from './feedback/toast.service';
-import { ToastType } from '../types/feedback/toast.types';
+import { Legal, LegalDocument } from '../../types/legal.type';
+import * as legalData from '../../../assets/legal/legal.json';
+import { ToastService } from '../feedback/toast.service';
+import { ToastType } from '../../types/feedback/toast.types';
 
 @Injectable({
   providedIn: 'root',

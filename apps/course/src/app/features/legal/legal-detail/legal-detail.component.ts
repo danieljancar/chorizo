@@ -3,7 +3,7 @@ import { LegalInfoComponent } from './legal-info/legal-info.component';
 import { LegalMarkdownRendererComponent } from './legal-markdown-renderer/legal-markdown-renderer.component';
 import { LegalDocument } from '../../../types/legal.type';
 import { ActivatedRoute, Router } from '@angular/router';
-import { LegalService } from '../../../core/legal.service';
+import { LegalService } from '../../../core/data/legal.service';
 import { Title } from '@angular/platform-browser';
 import { environment } from '../../../../environments/environment';
 import { AppComponent } from '../../../app.component';

@@ -1,6 +1,6 @@
 import { buildCollection, buildProperty } from 'firecms';
-import { courseTaskCollection } from './subcollections/tasks.tsx';
-import { courseDocumentationChapterCollection } from './subcollections/documentation-chapter.tsx';
+import { courseTaskCollection } from './subcollections/tasks/tasks.tsx';
+import { courseDocumentationChapterCollection } from './subcollections/documentation/documentation-chapter.tsx';
 import { courseResourcesCollection } from './subcollections/resources.tsx';
 
 type Course = {
