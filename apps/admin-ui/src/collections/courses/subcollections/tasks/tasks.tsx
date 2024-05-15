@@ -5,12 +5,18 @@ type Task = {
   title: string;
   description: string;
   order: number;
+  fileInput: boolean;
+  relatedDocuments?: relatedDocument[];
   workPhase: WorkPhase;
   createdAt: Date;
   updatedAt: Date;
 };
 
 type WorkPhase = 'individual' | 'pair' | 'group' | 'plenum';
+type relatedDocument = {
+  title: string;
+  url: string;
+};
 
 export const courseTaskCollection = buildCollection<Task>({
   name: 'Tasks',
@@ -30,7 +36,7 @@ export const courseTaskCollection = buildCollection<Task>({
   properties: {
     title: {
       name: 'Title',
-      validation: { required: true },
+      validation: { required: true, min: 3, max: 100 },
       dataType: 'string',
     },
     description: {
@@ -53,6 +59,36 @@ export const courseTaskCollection = buildCollection<Task>({
         pair: 'Pair',
         group: 'Group',
         plenum: 'Plenum',
+      },
+    },
+    fileInput: {
+      name: 'File input',
+      validation: { required: true },
+      defaultValue: false,
+      dataType: 'boolean',
+      disabled: true,
+    },
+    relatedDocuments: {
+      disabled: true,
+      name: 'Related documents',
+      validation: { required: false },
+      dataType: 'array',
+      of: {
+        dataType: 'map',
+        properties: {
+          title: {
+            name: 'Title',
+            validation: { required: true },
+            dataType: 'string',
+          },
+          url: {
+            name: 'URL',
+            validation: { required: true },
+            dataType: 'reference',
+            path: '',
+            previewProperties: ['title'],
+          },
+        },
       },
     },
     createdAt: {

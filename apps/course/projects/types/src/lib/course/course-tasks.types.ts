@@ -23,6 +23,7 @@ export type relatedDocument = {
 export type CourseTasksDone = {
   id?: string;
   status: boolean;
+  email: string;
   fileInput?: string;
   createdAt?: Timestamp;
   updatedAt: Timestamp;

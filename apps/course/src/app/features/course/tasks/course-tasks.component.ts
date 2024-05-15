@@ -24,7 +24,10 @@ export class CourseTasksComponent implements OnInit, OnDestroy {
   public isLoading: boolean = true;
   public tasks: CourseTask[] | undefined;
   public buttonTimer: boolean = false;
-  private userId: string | undefined;
+  private user = {
+    id: '',
+    email: '',
+  };
   private subscription: Subscription = new Subscription();
   private courseStateService = inject(CourseStateService);
   private titleService = inject(Title);
@@ -44,7 +47,8 @@ export class CourseTasksComponent implements OnInit, OnDestroy {
           this.subscription.add(
             this.userService.user$.subscribe((user) => {
               if (user) {
-                this.userId = user.id;
+                this.user.id = user.id;
+                this.user.email = user.email;
                 this.subscription.add(
                   this.courseService
                     .getCourseTasks(course.id, user.id)
@@ -65,10 +69,10 @@ export class CourseTasksComponent implements OnInit, OnDestroy {
     this.buttonTimer = true;
     if (!this.tasks) return;
     const courseId = this.course?.id;
-    const userId = this.userId;
+    const user = this.user;
 
-    if (courseId && userId) {
-      this.courseService.markTaskAsCompleted(courseId, taskId, userId);
+    if (courseId && user) {
+      this.courseService.markTaskAsCompleted(courseId, taskId, user);
       setTimeout(() => {
         this.buttonTimer = false;
       }, 1000);
@@ -85,7 +89,7 @@ export class CourseTasksComponent implements OnInit, OnDestroy {
     this.buttonTimer = true;
     if (!this.tasks) return;
     const courseId = this.course?.id;
-    const userId = this.userId;
+    const userId = this.user.id;
 
     if (courseId && userId) {
       const task = this.tasks.find((task) => task.id === taskId);

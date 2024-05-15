@@ -100,9 +100,13 @@ export class CourseService {
       );
   }
 
-  markTaskAsCompleted(courseId: string, taskId: string, userId: string): void {
+  markTaskAsCompleted(
+    courseId: string,
+    taskId: string,
+    user: { id: string; email: string },
+  ): void {
     const taskDoneRef = this.afs.doc<CourseTasksDone>(
-      `${this.COURSES_COLLECTION_COLLECTION}/${courseId}/${this.COURSE_TASKS_COLLECTION}/${taskId}/${this.COURSE_TASKS_DONE_COLLECTION}/${userId}`,
+      `${this.COURSES_COLLECTION_COLLECTION}/${courseId}/${this.COURSE_TASKS_COLLECTION}/${taskId}/${this.COURSE_TASKS_DONE_COLLECTION}/${user.id}`,
     );
 
     const currentTime = Timestamp.now();
@@ -119,6 +123,7 @@ export class CourseService {
         if (error.code === 'not-found') {
           taskDoneRef.set({
             status: true,
+            email: user.email,
             updatedAt: currentTime,
             createdAt: currentTime,
           });

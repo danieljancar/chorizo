@@ -1,12 +1,8 @@
 import { buildCollection } from 'firecms';
 
 type TasksDone = {
-  userId: undefined;
-  done: boolean;
-  firstDoneAt: Date;
-  firstUndoneAt: Date;
-  lastDoneAt: Date;
-  lastUndoneAt: Date;
+  status: boolean;
+  email: string;
   createdAt: Date;
   updatedAt: Date;
 };
@@ -14,49 +10,28 @@ type TasksDone = {
 export const courseTasksDoneCollection = buildCollection<TasksDone>({
   name: 'Tasks done',
   singularName: 'Task done',
-  path: 'tasks_done',
+  path: 'done',
   icon: 'AssignmentTurnedIn',
   defaultSize: 'm',
   selectionEnabled: true,
-  initialSort: ['lastDoneAt', 'desc'],
+  customId: true,
+  initialSort: ['updatedAt', 'desc'],
   permissions: () => ({
     read: true,
-    edit: true,
-    create: true,
+    edit: false,
+    create: false,
     delete: true,
   }),
   properties: {
-    userId: {
-      name: 'User',
-      validation: { required: true },
-      dataType: 'reference',
-      path: 'users',
-      previewProperties: ['username'],
-    },
-    done: {
+    status: {
       name: 'Done',
       validation: { required: true },
       dataType: 'boolean',
     },
-    firstDoneAt: {
-      name: 'First done at',
-      dataType: 'date',
-      readOnly: true,
-    },
-    firstUndoneAt: {
-      name: 'First undone at',
-      dataType: 'date',
-      readOnly: true,
-    },
-    lastDoneAt: {
-      name: 'Last done at',
-      dataType: 'date',
-      readOnly: true,
-    },
-    lastUndoneAt: {
-      name: 'Last undone at',
-      dataType: 'date',
-      readOnly: true,
+    email: {
+      name: 'Email',
+      validation: { required: true },
+      dataType: 'string',
     },
     createdAt: {
       name: 'Created at',
