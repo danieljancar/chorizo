@@ -1,61 +1,65 @@
 <div class="mx-1 md:mx-3 lg:mx-32 xl:mx-60">
-  <div>
-    @for (task of tasks; track task.id) {
-      <div class="collapse collapse-arrow bg-base-100" disabled="">
-        <input type="radio" name="course-tasks-accordion" />
-        <div class="collapse-title text-xl font-medium flex items-center">
-          <input
-            type="checkbox"
-            [checked]="task.done?.status"
-            class="checkbox"
-            disabled
-          />
-          <h1 class="ml-3 flex items-center">
-            {{ task.title }}
-            <span class="badge badge-sm ml-2">{{ task.workPhase }}</span>
-          </h1>
-        </div>
-        <div class="collapse-content">
-          <markdown
-            [data]="task.description"
-            class="markdown-content"
-          ></markdown>
-          <div class="divider"></div>
-          <div class="flex justify-between items-center flex-col sm:flex-row">
-            <!--
-            @if (task.fileInput && !task.done?.status) {
-               <input type="file" class="file-input file-input-bordered w-full max-w-xs mb-2 sm:mb-0" />
-             } @else {
+  @if (isLoading) {
+    <app-course-skeleton-tasks />
+  } @else {
+    <div>
+      @for (task of tasks; track task.id) {
+        <div class="collapse collapse-arrow bg-base-100" disabled="">
+          <input type="radio" name="course-tasks-accordion" />
+          <div class="collapse-title text-xl font-medium flex items-center">
+            <input
+              type="checkbox"
+              [checked]="task.done?.status"
+              class="checkbox"
+              disabled
+            />
+            <h1 class="ml-3 flex items-center">
+              {{ task.title }}
+              <span class="badge badge-sm ml-2">{{ task.workPhase }}</span>
+            </h1>
+          </div>
+          <div class="collapse-content">
+            <markdown
+              [data]="task.description"
+              class="markdown-content"
+            ></markdown>
+            <div class="divider"></div>
+            <div class="flex justify-between items-center flex-col sm:flex-row">
+              <!--
+              @if (task.fileInput && !task.done?.status) {
+                 <input type="file" class="file-input file-input-bordered w-full max-w-xs mb-2 sm:mb-0" />
+               } @else {
 
-             }
-             -->
-            <span></span>
-            <div class="flex items-center">
-              <button
-                class="btn btn-ghost"
-                (click)="markAsCompleted(task.id)"
-                [disabled]="task.done?.status || buttonTimer"
-              >
-                Mark as completed
-              </button>
-              @if (task.done?.status) {
-                <div
-                  class="tooltip tooltip-left"
-                  data-tip="Reverse completed status"
+               }
+               -->
+              <span></span>
+              <div class="flex items-center">
+                <button
+                  class="btn btn-ghost"
+                  (click)="markAsCompleted(task.id)"
+                  [disabled]="task.done?.status || buttonTimer"
                 >
-                  <button
-                    class="btn btn-circle btn-outline ml-1"
-                    (click)="reverseCompletedStatus(task.id)"
-                    [disabled]="buttonTimer"
+                  Mark as completed
+                </button>
+                @if (task.done?.status) {
+                  <div
+                    class="tooltip tooltip-left"
+                    data-tip="Reverse completed status"
                   >
-                    <mat-icon>assignment_return</mat-icon>
-                  </button>
-                </div>
-              }
+                    <button
+                      class="btn btn-circle btn-outline ml-1"
+                      (click)="reverseCompletedStatus(task.id)"
+                      [disabled]="buttonTimer"
+                    >
+                      <mat-icon>assignment_return</mat-icon>
+                    </button>
+                  </div>
+                }
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    }
-  </div>
+      }
+    </div>
+  }
 </div>
