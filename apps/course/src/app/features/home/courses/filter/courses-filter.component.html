@@ -16,8 +16,13 @@
           />
         </form>
       </div>
-      <div class="dropdown dropdown-end z-30">
-        <div class="btn btn-ghost" role="button" tabindex="0">
+      <div class="dropdown dropdown-end z-30" [class.open]="isDropdownOpen">
+        <div
+          class="btn btn-ghost"
+          role="button"
+          tabindex="0"
+          (click)="toggleDropdown()"
+        >
           {{ getSortText() }}
           <mat-icon class="ml-2">arrow_drop_down</mat-icon>
         </div>
