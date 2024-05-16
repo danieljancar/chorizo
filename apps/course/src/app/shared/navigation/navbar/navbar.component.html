@@ -1,7 +1,12 @@
 <div class="navbar bg-base-200/50 border-b-2">
   <div class="navbar-start">
-    <div class="dropdown">
-      <div class="btn btn-ghost lg:hidden" role="button" tabindex="0">
+    <div [class.open]="isDropdownOpen" class="dropdown">
+      <div
+        (click)="toggleDropdown()"
+        class="btn btn-ghost lg:hidden"
+        role="button"
+        tabindex="0"
+      >
         <svg
           class="h-5 w-5"
           fill="none"
@@ -21,8 +26,8 @@
         class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
         tabindex="0"
       >
-        <li routerLink="/"><a>Home</a></li>
-        <li routerLink="/c"><a>Courses</a></li>
+        <li (click)="closeDropdown()" routerLink="/"><a>Home</a></li>
+        <li (click)="closeDropdown()" routerLink="/c"><a>Courses</a></li>
       </ul>
     </div>
     <a class="btn btn-ghost text-xl" routerLink="/">{{ title }}</a>
@@ -35,15 +40,25 @@
   </div>
   <div class="navbar-end">
     @if (isLoggedIn$ | async) {
-      <div class="dropdown dropdown-bottom dropdown-end z-40">
-        <div tabindex="0" role="button" class="btn m-1">
+      <div
+        class="dropdown dropdown-bottom dropdown-end z-40"
+        [class.open]="isDropdownOpen"
+      >
+        <div
+          tabindex="0"
+          role="button"
+          class="btn m-1"
+          (click)="toggleDropdown()"
+        >
           <mat-icon>person</mat-icon>
         </div>
         <ul
           tabindex="0"
           class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
         >
-          <li routerLink="/a/account"><a>Account</a></li>
+          <li (click)="closeDropdown()" routerLink="/a/account">
+            <a>Account</a>
+          </li>
           <li class="text-error" (click)="logout()"><a>Logout</a></li>
         </ul>
       </div>
