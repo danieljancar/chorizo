@@ -11,11 +11,17 @@ import { UserService } from '../../../core/data/user.service';
 import { RelativeTimePipe } from '../../../pipes/relative-time.pipe';
 import { ToastService } from '../../../core/feedback/toast.service';
 import { ToastType } from '../../../types/feedback/toast.types';
+import { CourseSkeletonTasksComponent } from './skeletons/course-skeleton-tasks/course-skeleton-tasks.component';
 
 @Component({
   selector: 'app-tasks',
   standalone: true,
-  imports: [MatIcon, MarkdownComponent, RelativeTimePipe],
+  imports: [
+    MatIcon,
+    MarkdownComponent,
+    RelativeTimePipe,
+    CourseSkeletonTasksComponent,
+  ],
   templateUrl: './course-tasks.component.html',
   styleUrl: './course-tasks.component.scss',
 })
