@@ -20,6 +20,7 @@ import { SortText, SortValue } from '../../../../enums/sort.enums';
 export class CoursesFilterComponent implements OnInit {
   filterForm: FormGroup;
   currentSort: SortValue;
+  isDropdownOpen: boolean = false;
   protected readonly Sort = SortValue;
 
   constructor(
@@ -70,9 +71,18 @@ export class CoursesFilterComponent implements OnInit {
     if (sortByControl) {
       sortByControl.setValue(sortBy, { emitEvent: true });
     }
+    this.closeDropdown();
   }
 
   getSortText(): string {
     return SortText[this.currentSort];
+  }
+
+  toggleDropdown(): void {
+    this.isDropdownOpen = !this.isDropdownOpen;
+  }
+
+  closeDropdown(): void {
+    this.isDropdownOpen = false;
   }
 }
