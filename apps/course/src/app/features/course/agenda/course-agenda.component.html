@@ -1,7 +1,7 @@
 <div class="mx-1 md:mx-3 lg:mx-32 xl:mx-60">
   @if (!isLoading) {
     <div class="overflow-x-auto">
-      <table class="table">
+      <table class="table table-lg">
         @for (agenda of agenda; track agenda.id) {
           @if (agenda.order === 0) {
             <thead>
