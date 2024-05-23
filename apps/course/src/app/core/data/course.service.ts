@@ -13,16 +13,18 @@ import {
 } from '../../../../projects/types/src/lib/course/course-tasks.types';
 import { map, switchMap } from 'rxjs/operators';
 import { Timestamp } from 'firebase/firestore';
+import { CourseAgenda } from '../../../../projects/types/src/lib/course/course-agenda.types';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CourseService {
   private readonly COURSES_COLLECTION_COLLECTION = 'courses';
-  private readonly COURSE_DOCUMENTATION_COLLECTION = 'documentation';
-  private readonly COURSE_DOCUMENTATION_DOCUMENTS_COLLECTION = 'documents';
+  private readonly COURSE_AGENDA_COLLECTION = 'agenda';
   private readonly COURSE_TASKS_COLLECTION = 'tasks';
   private readonly COURSE_TASKS_DONE_COLLECTION = 'done';
+  private readonly COURSE_DOCUMENTATION_COLLECTION = 'documentation';
+  private readonly COURSE_DOCUMENTATION_DOCUMENTS_COLLECTION = 'documents';
   private readonly COURSE_RESOURCES_COLLECTION = 'resources';
 
   constructor(private afs: AngularFirestore) {}
@@ -70,6 +72,15 @@ export class CourseService {
       .valueChanges({ idField: 'id' }) as Observable<Course[]>;
   }
 
+  getCourseAgenda(courseId: string | undefined): Observable<CourseAgenda[]> {
+    return this.afs
+      .collection<CourseAgenda>(
+        `${this.COURSES_COLLECTION_COLLECTION}/${courseId}/${this.COURSE_AGENDA_COLLECTION}`,
+        (ref) => ref.orderBy('order', 'asc'),
+      )
+      .valueChanges({ idField: 'id' });
+  }
+
   getCourseTasks(
     courseId: string | undefined,
     userId: string,
@@ -109,7 +120,7 @@ export class CourseService {
       `${this.COURSES_COLLECTION_COLLECTION}/${courseId}/${this.COURSE_TASKS_COLLECTION}/${taskId}/${this.COURSE_TASKS_DONE_COLLECTION}/${user.id}`,
     );
 
-    const currentTime = Timestamp.now();
+    const currentTime: Timestamp = Timestamp.now();
 
     const updateData = {
       status: true,
