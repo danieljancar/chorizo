@@ -1,1 +1,33 @@
-<p>agenda works!</p>
+<div class="mx-1 md:mx-3 lg:mx-32 xl:mx-60">
+  @if (!isLoading) {
+    <div class="overflow-x-auto">
+      <table class="table">
+        @for (agenda of agenda; track agenda.id) {
+          @if (agenda.order === 0) {
+            <thead>
+              <tr>
+                @for (entry of agenda.entries; track $index) {
+                  <th>
+                    {{ entry }}
+                  </th>
+                }
+              </tr>
+            </thead>
+          } @else {
+            <tbody>
+              <tr>
+                @for (entry of agenda.entries; track $index) {
+                  <td>
+                    {{ entry }}
+                  </td>
+                }
+              </tr>
+            </tbody>
+          }
+        }
+      </table>
+    </div>
+  } @else {
+    <app-loading-bars />
+  }
+</div>
