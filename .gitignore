@@ -11,3 +11,6 @@ environments/
 
 # AdminUI app config
 /apps/admin-ui/src/config.ts
+
+# CLI test folder
+apps/ccli/local_test/

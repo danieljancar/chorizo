@@ -1,0 +1,12 @@
+{
+  "title": "LUKB Schnuppertage",
+  "description": "Digitale LUKB Unterlagen für ICT-Schnuppertage",
+  "firebase": {
+    "apiKey": "",
+    "authDomain": "",
+    "projectId": "",
+    "storageBucket": "",
+    "messagingSenderId": "",
+    "appId": ""
+  }
+}
