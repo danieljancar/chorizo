@@ -1,8 +1,8 @@
 <div class="navbar bg-base-200/50 border-b-2">
   <div class="navbar-start">
-    <div [class.open]="isDropdownOpen" class="dropdown">
+    <div [class.open]="isAccountDropDown" class="dropdown">
       <div
-        (click)="toggleDropdown()"
+        (click)="toggleAccountDropdown()"
         class="btn btn-ghost lg:hidden"
         role="button"
         tabindex="0"
@@ -26,29 +26,65 @@
         class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
         tabindex="0"
       >
-        <li (click)="closeDropdown()" routerLink="/"><a>Home</a></li>
-        <li (click)="closeDropdown()" routerLink="/c"><a>Courses</a></li>
+        <li (click)="closeDropdown()" routerLink="/">
+          <a>{{ 'home' | translate }}</a>
+        </li>
+        <li (click)="closeDropdown()" routerLink="/c">
+          <a>{{ 'courses' | translate }}</a>
+        </li>
       </ul>
     </div>
     <a class="btn btn-ghost text-xl" routerLink="/">{{ title }}</a>
   </div>
   <div class="navbar-center hidden lg:flex">
     <ul class="menu menu-horizontal px-1">
-      <li routerLink="/"><a>Home</a></li>
-      <li routerLink="/c"><a>Courses</a></li>
+      <li routerLink="/">
+        <a>{{ 'home' | translate }}</a>
+      </li>
+      <li routerLink="/c">
+        <a>{{ 'courses' | translate }}</a>
+      </li>
     </ul>
   </div>
   <div class="navbar-end">
+    <div
+      [class.open]="isLangDropDown"
+      class="dropdown dropdown-bottom dropdown-end z-40"
+    >
+      <div
+        (click)="toggleLangDropdown()"
+        class="btn m-1"
+        role="button"
+        tabindex="0"
+      >
+        <mat-icon>language</mat-icon>
+      </div>
+      <ul
+        class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+        tabindex="0"
+      >
+        @for (lang of languages; track lang) {
+          <li>
+            <a (click)="changeLang(lang)"
+              ><span class="badge badge-outline">{{
+                languageNames[lang] | slice: 0 : 2 | uppercase
+              }}</span>
+              {{ languageNames[lang] }}</a
+            >
+          </li>
+        }
+      </ul>
+    </div>
     @if (isLoggedIn$ | async) {
       <div
         class="dropdown dropdown-bottom dropdown-end z-40"
-        [class.open]="isDropdownOpen"
+        [class.open]="isAccountDropDown"
       >
         <div
           tabindex="0"
           role="button"
           class="btn m-1"
-          (click)="toggleDropdown()"
+          (click)="toggleAccountDropdown()"
         >
           <mat-icon>person</mat-icon>
         </div>
@@ -57,9 +93,11 @@
           class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
         >
           <li (click)="closeDropdown()" routerLink="/a/account">
-            <a>Account</a>
+            <a>{{ 'account' | translate }}</a>
           </li>
-          <li class="text-error" (click)="logout()"><a>Logout</a></li>
+          <li class="text-error" (click)="logout()">
+            <a>{{ 'logout' | translate }}</a>
+          </li>
         </ul>
       </div>
     } @else {

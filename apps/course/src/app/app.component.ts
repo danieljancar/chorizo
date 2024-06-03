@@ -7,6 +7,7 @@ import { NavbarComponent } from './shared/navigation/navbar/navbar.component';
 import { MatIcon } from '@angular/material/icon';
 import { FooterComponent } from './shared/navigation/footer/footer.component';
 import { ToastType } from './types/feedback/toast.types';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
@@ -34,8 +35,17 @@ export class AppComponent {
   };
   isBigScreen: boolean;
   protected readonly ToastType = ToastType;
+  private defaultLanguage: string = 'de';
 
-  constructor(public toastService: ToastService) {
+  constructor(
+    public toastService: ToastService,
+    private translate: TranslateService,
+  ) {
+    this.translate.use(this.defaultLanguage);
     this.isBigScreen = window.innerWidth > 640;
+  }
+
+  public switchLanguage(lang: string) {
+    this.translate.use(lang);
   }
 }

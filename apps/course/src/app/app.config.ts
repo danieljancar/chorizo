@@ -20,6 +20,8 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideHttpClient } from '@angular/common/http';
 import { provideMarkdown } from 'ngx-markdown';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { CustomTranslateLoader } from './translation-loader';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -37,6 +39,12 @@ export const appConfig: ApplicationConfig = {
     importProvidersFrom(provideStorage(() => getStorage())),
     importProvidersFrom(
       AngularFireModule.initializeApp(environment.firebaseConfig),
+      TranslateModule.forRoot({
+        loader: {
+          provide: TranslateLoader,
+          useClass: CustomTranslateLoader,
+        },
+      }),
     ),
     provideAnimationsAsync(),
     provideHttpClient(),
