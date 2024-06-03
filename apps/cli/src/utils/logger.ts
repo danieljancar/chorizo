@@ -39,7 +39,6 @@ const logger = {
    * @example
    * logger.info('Project initialized with config');
    */
-  // @typescript-eslint/no-explicit-any
   info: (message: string, ...meta: any[]) => {
     if (isProjectInstance()) {
       baseLogger.info(message, ...meta);
@@ -53,7 +52,6 @@ const logger = {
    * @example
    * logger.warn('Project already initialized, skipping init.');
    */
-  // @typescript-eslint/no-explicit-any
   warn: (message: string, ...meta: any[]) => {
     if (isProjectInstance()) {
       baseLogger.warn(message, ...meta);
@@ -67,7 +65,6 @@ const logger = {
    * @example
    * logger.error('Failed to initialize project');
    */
-  // @typescript-eslint/no-explicit-any
   error: (message: string, ...meta: any[]) => {
     if (isProjectInstance()) {
       baseLogger.error(message, ...meta);

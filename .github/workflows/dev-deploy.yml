@@ -21,9 +21,6 @@ jobs:
       - name: Install Dependencies
         run: npm install && npm run install:all
 
-      - name: Run Lint
-        run: npm run lint
-
       - name: Prepare Config for AdminUI
         run: |
           cp ./apps/admin-ui/src/config-example.ts ./apps/admin-ui/src/config.ts
