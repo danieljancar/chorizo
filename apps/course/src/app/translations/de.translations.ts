@@ -130,6 +130,34 @@ export const de = {
       documentation: 'Dokumentation',
       resources: 'Ressourcen',
     },
+    tasks: {
+      title: 'Aufgaben',
+      'mark-as-done': 'Als erledigt markieren',
+      'reverse-status': 'Erledigung umkehren',
+      'mark-as-done-success': 'Aufgabe als erledigt markiert',
+      'reverse-status-success': 'Status erfolgreich umgekehrt',
+      'mark-as-done-error': 'Fehler beim Markieren der Aufgabe als erledigt',
+      'reverse-status-error': 'Fehler beim Umkehren des Status',
+      workPhase: {
+        individual: 'Individuell',
+        pair: 'Paar',
+        group: 'Gruppe',
+        plenum: 'Plenum',
+      },
+    },
+    documentation: {
+      title: 'Dokumentation',
+      navbar: {
+        close: 'Schliessen',
+      },
+      next: 'Weiter',
+      previous: 'Zurück',
+    },
+    resources: {
+      title: 'Ressourcen',
+      'last-modified': 'Zuletzt geändert',
+      name: 'Name',
+    },
   },
   authService: {
     'login-success': 'Erfolgreich eingeloggt.',

@@ -11,6 +11,7 @@ import { FileDownloadService } from '../../../core/util/file-download.service';
 import { RelativeTimePipe } from '../../../pipes/relative-time.pipe';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
 import { CourseSkeletonResourcesComponent } from './skeletons/course-skeleton-resources/course-skeleton-resources.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-resources',
@@ -21,6 +22,7 @@ import { CourseSkeletonResourcesComponent } from './skeletons/course-skeleton-re
     RelativeTimePipe,
     MatProgressSpinner,
     CourseSkeletonResourcesComponent,
+    TranslateModule,
   ],
   templateUrl: './course-resources.component.html',
   styleUrls: ['./course-resources.component.scss'],

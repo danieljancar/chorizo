@@ -21,6 +21,7 @@ import {
   CourseDocument,
 } from '../../../../../projects/types/src/lib/course/course-documentation.types';
 import { CourseSkeletonDocumentationComponent } from './skeletons/course-skeleton-documentation.component';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-docs',
@@ -33,6 +34,7 @@ import { CourseSkeletonDocumentationComponent } from './skeletons/course-skeleto
     MarkdownPipe,
     FeedbackMessageComponent,
     CourseSkeletonDocumentationComponent,
+    TranslateModule,
   ],
   templateUrl: './course-documentation.component.html',
   styleUrl: './course-documentation.component.scss',
@@ -50,6 +52,7 @@ export class CourseDocumentationComponent implements OnInit, OnDestroy {
   private courseStateService = inject(CourseStateService);
   private titleService = inject(Title);
   private courseService = inject(CourseService);
+  private t = inject(TranslateService);
 
   ngOnInit(): void {
     this.subscription = this.courseStateService.currentCourse$.subscribe(
@@ -58,7 +61,11 @@ export class CourseDocumentationComponent implements OnInit, OnDestroy {
           this.isLoading = true;
           this.course = course;
           this.titleService.setTitle(
-            'Documentation - ' + course.title + ' - ' + course.about,
+            this.t.instant('course.documentation.title') +
+              ' - ' +
+              course.title +
+              ' - ' +
+              course.about,
           );
           this.subscription = this.courseService
             .getCourseChapters(course.id)

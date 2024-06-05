@@ -12,6 +12,7 @@ import { RelativeTimePipe } from '../../../pipes/relative-time.pipe';
 import { ToastService } from '../../../core/feedback/toast.service';
 import { ToastType } from '../../../types/feedback/toast.types';
 import { CourseSkeletonTasksComponent } from './skeletons/course-skeleton-tasks/course-skeleton-tasks.component';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-tasks',
@@ -21,6 +22,7 @@ import { CourseSkeletonTasksComponent } from './skeletons/course-skeleton-tasks/
     MarkdownComponent,
     RelativeTimePipe,
     CourseSkeletonTasksComponent,
+    TranslateModule,
   ],
   templateUrl: './course-tasks.component.html',
   styleUrl: './course-tasks.component.scss',
@@ -40,6 +42,7 @@ export class CourseTasksComponent implements OnInit, OnDestroy {
   private courseService = inject(CourseService);
   private userService = inject(UserService);
   private toastService = inject(ToastService);
+  private t = inject(TranslateService);
 
   ngOnInit(): void {
     this.subscription = this.courseStateService.currentCourse$.subscribe(
@@ -48,7 +51,11 @@ export class CourseTasksComponent implements OnInit, OnDestroy {
           this.isLoading = true;
           this.course = course;
           this.titleService.setTitle(
-            'Tasks - ' + course.title + ' - ' + course.about,
+            this.t.instant('course.tasks.title') +
+              ' - ' +
+              course.title +
+              ' - ' +
+              course.about,
           );
           this.subscription.add(
             this.userService.user$.subscribe((user) => {
@@ -83,11 +90,14 @@ export class CourseTasksComponent implements OnInit, OnDestroy {
         this.buttonTimer = false;
       }, 1000);
       this.toastService.showToast(
-        'Task marked as completed',
+        this.t.instant('course.tasks.mark-as-done-success'),
         ToastType.Success,
       );
     } else {
-      this.toastService.showToast('An error occurred', ToastType.Error);
+      this.toastService.showToast(
+        'course.tasks.mark-as-done-error',
+        ToastType.Error,
+      );
     }
   }
 
@@ -113,9 +123,15 @@ export class CourseTasksComponent implements OnInit, OnDestroy {
       setTimeout(() => {
         this.buttonTimer = false;
       }, 1000);
-      this.toastService.showToast('Task status reversed', ToastType.Success);
+      this.toastService.showToast(
+        this.t.instant('course.tasks.reverse-status-success'),
+        ToastType.Success,
+      );
     } else {
-      this.toastService.showToast('An error occurred', ToastType.Error);
+      this.toastService.showToast(
+        this.t.instant('course.tasks.reverse-status-error'),
+        ToastType.Error,
+      );
     }
   }
 
