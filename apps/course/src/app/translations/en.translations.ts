@@ -12,4 +12,7 @@ export const en = {
   name: 'Name',
   'language-change-success': 'Language changed successfully',
   'language-change-error': 'Error changing language',
+  'feedback-message.default-title': 'Oops!',
+  'feedback-message.default-message': 'Something went wrong',
+  'homepage-latest-courses.error-message': 'No courses available',
 };

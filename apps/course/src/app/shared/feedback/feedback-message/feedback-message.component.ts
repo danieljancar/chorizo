@@ -1,5 +1,6 @@
 import { booleanAttribute, Component, Input } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-feedback-message',
@@ -18,9 +19,14 @@ import { MatIcon } from '@angular/material/icon';
   </div>`,
 })
 export class FeedbackMessageComponent {
-  @Input() public title: string | undefined = 'Oops!';
-  @Input() public message: string | undefined = 'Something went wrong.';
-  @Input() public icon: string | undefined = 'warning';
-  @Input({ transform: booleanAttribute }) public showIcon: boolean | undefined =
-    true;
+  @Input() public icon: string = 'warning';
+  @Input({ transform: booleanAttribute }) public showIcon: boolean = true;
+  @Input() public title: string = this.t.instant(
+    'feedback-message.default-title',
+  );
+  @Input() public message: string = this.t.instant(
+    'feedback-message.default-message',
+  );
+
+  constructor(private t: TranslateService) {}
 }
