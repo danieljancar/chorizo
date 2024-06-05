@@ -23,7 +23,9 @@
       }
     </div>
     <p class="mt-2 text-blue-500 hover:text-blue-600 cursor-pointer text-xs">
-      <label class="cursor-pointer" for="avatarUpload"> Change avatar </label>
+      <label class="cursor-pointer" for="avatarUpload">{{
+        'accountProfileBanner.change-avatar' | translate
+      }}</label>
       <input
         (change)="onFileSelected($event)"
         accept="image/*"

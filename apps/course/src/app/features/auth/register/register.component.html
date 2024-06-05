@@ -1,16 +1,18 @@
 <div class="flex justify-center items-center">
   <div class="card w-full max-w-lg">
     <div class="card-body">
-      <h2 class="card-title">Registration</h2>
-      <p>Register to create an account.</p>
+      <h2 class="card-title">{{ 'register.title' | translate }}</h2>
+      <p>{{ 'register.credentials-description' | translate }}</p>
       <form (ngSubmit)="submit()" [formGroup]="credentials">
         <label class="label">
-          <span class="label-text">Username</span>
+          <span class="label-text">{{
+            'register.username-label' | translate
+          }}</span>
         </label>
         <input
+          [placeholder]="'register.username-placeholder' | translate"
           class="input input-bordered w-full"
           formControlName="username"
-          placeholder="Username"
           type="text"
         />
         @if (getErrorMessage('username')) {
@@ -18,14 +20,15 @@
             {{ getErrorMessage('username') }}
           </div>
         }
-
         <label class="label">
-          <span class="label-text">Email</span>
+          <span class="label-text">{{
+            'register.email-label' | translate
+          }}</span>
         </label>
         <input
+          [placeholder]="'register.email-placeholder' | translate"
           class="input input-bordered w-full"
           formControlName="email"
-          placeholder="Email"
           type="email"
         />
         @if (getErrorMessage('email')) {
@@ -33,14 +36,15 @@
             {{ getErrorMessage('email') }}
           </div>
         }
-
         <label class="label">
-          <span class="label-text">Password</span>
+          <span class="label-text">{{
+            'register.password-label' | translate
+          }}</span>
         </label>
         <input
+          [placeholder]="'register.password-placeholder' | translate"
           class="input input-bordered w-full"
           formControlName="password"
-          placeholder="Password"
           type="password"
         />
         @if (getErrorMessage('password')) {
@@ -48,14 +52,15 @@
             {{ getErrorMessage('password') }}
           </div>
         }
-
         <label class="label">
-          <span class="label-text">Confirm Password</span>
+          <span class="label-text">{{
+            'register.confirm-password-label' | translate
+          }}</span>
         </label>
         <input
+          [placeholder]="'register.confirm-password-placeholder' | translate"
           class="input input-bordered w-full"
           formControlName="confirmPassword"
-          placeholder="Confirm Password"
           type="password"
         />
         @if (getErrorMessage('confirmPassword')) {
@@ -63,7 +68,6 @@
             {{ getErrorMessage('confirmPassword') }}
           </div>
         }
-
         <button
           [disabled]="!credentials.valid || isRegistering"
           class="btn btn-primary mt-4 w-full"
@@ -72,13 +76,15 @@
           @if (isRegistering) {
             <span class="loading loading-spinner"></span>
           }
-          Register
+          {{ 'register.credentials-submit' | translate }}
         </button>
       </form>
       <div class="text-center mt-4">
         <p class="mb-5">
-          Already have an account?
-          <a class="link link-primary" routerLink="/a/login">Login</a>
+          {{ 'register.existing-account-message' | translate }}
+          <a class="link link-primary" routerLink="/a/login">{{
+            'register.login-link' | translate
+          }}</a>
         </p>
       </div>
     </div>
