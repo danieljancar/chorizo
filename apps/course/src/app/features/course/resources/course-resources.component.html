@@ -3,51 +3,51 @@
     <div class="overflow-x-auto">
       <table class="table table-lg">
         <thead>
-        <tr>
-          <th class="hidden md:block">
-            <mat-icon>insert_drive_file</mat-icon>
-          </th>
-          <th>
-            <button
-              class="flex items-center btn btn-sm btn-ghost"
-              (click)="
+          <tr>
+            <th class="hidden md:block">
+              <mat-icon>insert_drive_file</mat-icon>
+            </th>
+            <th>
+              <button
+                class="flex items-center btn btn-sm btn-ghost"
+                (click)="
                   sortResourcesByName(sortState.name === 'asc' ? 'desc' : 'asc')
                 "
-            >
-              {{ 'course.resources.name' | translate }}
-              <mat-icon>
-                {{
-                  sortState.name === 'asc'
-                    ? 'keyboard_arrow_up'
-                    : sortState.name === 'desc'
-                      ? 'keyboard_arrow_down'
-                      : 'sort_by_alpha'
-                }}
-              </mat-icon>
-            </button>
-          </th>
-          <th class="hidden md:block">
-            <button
-              class="flex items-center btn btn-sm btn-ghost"
-              (click)="
+              >
+                {{ 'course.resources.name' | translate }}
+                <mat-icon>
+                  {{
+                    sortState.name === 'asc'
+                      ? 'keyboard_arrow_up'
+                      : sortState.name === 'desc'
+                        ? 'keyboard_arrow_down'
+                        : 'sort_by_alpha'
+                  }}
+                </mat-icon>
+              </button>
+            </th>
+            <th class="hidden md:block">
+              <button
+                class="flex items-center btn btn-sm btn-ghost"
+                (click)="
                   sortResourcesByLastUpdated(
                     sortState.date === 'asc' ? 'desc' : 'asc'
                   )
                 "
-            >
-              {{ 'course.resources.last-modified' | translate }}
-              <mat-icon>
-                {{
-                  sortState.date === 'asc'
-                    ? 'keyboard_arrow_up'
-                    : sortState.date === 'desc'
-                      ? 'keyboard_arrow_down'
-                      : 'sort'
-                }}
-              </mat-icon>
-            </button>
-          </th>
-        </tr>
+              >
+                {{ 'course.resources.last-modified' | translate }}
+                <mat-icon>
+                  {{
+                    sortState.date === 'asc'
+                      ? 'keyboard_arrow_up'
+                      : sortState.date === 'desc'
+                        ? 'keyboard_arrow_down'
+                        : 'sort'
+                  }}
+                </mat-icon>
+              </button>
+            </th>
+          </tr>
         </thead>
         <tbody>
           @for (resource of resources; track resource.id) {

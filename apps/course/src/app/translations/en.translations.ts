@@ -4,6 +4,7 @@ export const en = {
     courses: 'Courses',
     account: 'Account',
     logout: 'Logout',
+    'logout-success': 'Logged out successfully.',
     login: 'Login',
     'language-change': 'Change Language',
   },
@@ -16,8 +17,31 @@ export const en = {
     'made-with-love': 'Made with ❤️ by',
     chorizo: 'Chorizo',
   },
-  homepageLatestCourses: {
-    'error-message': 'No courses available',
+  homepage: {
+    title: 'Home',
+    markdownRenderer: {
+      about: {
+        title: 'About',
+      },
+    },
+    latestCourses: {
+      title: 'Latest Courses',
+      'error-message': 'No courses available',
+    },
+  },
+  courses: {
+    title: 'Courses',
+    'no-courses-title': 'Nothing found',
+    'no-courses-message': 'No courses available, please try again later.',
+    'error-title': 'Error occurred',
+    'error-message': 'Error loading courses',
+    filter: {
+      search: 'Search',
+      sort: {
+        latest: 'Latest',
+        oldest: 'Oldest',
+      },
+    },
   },
   feedbackMessage: {
     'default-title': 'Oops!',
@@ -99,6 +123,34 @@ export const en = {
       tasks: 'Tasks',
       documentation: 'Documentation',
       resources: 'Resources',
+    },
+    tasks: {
+      title: 'Tasks',
+      'mark-as-done': 'Mark as done',
+      'reverse-status': 'Reverse status',
+      'mark-as-done-success': 'Task marked as done',
+      'reverse-status-success': 'Status reversed successfully',
+      'mark-as-done-error': 'Error marking task as done',
+      'reverse-status-error': 'Error reversing status',
+      workPhase: {
+        individual: 'Individual',
+        pair: 'Pair',
+        group: 'Group',
+        plenum: 'Plenum',
+      },
+    },
+    documentation: {
+      title: 'Documentation',
+      navbar: {
+        close: 'Close',
+      },
+      next: 'Next',
+      previous: 'Previous',
+    },
+    resources: {
+      title: 'Resources',
+      'last-modified': 'Last modified',
+      name: 'Name',
     },
   },
   authService: {
