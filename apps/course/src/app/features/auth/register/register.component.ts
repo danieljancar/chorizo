@@ -8,11 +8,11 @@ import {
 import { AuthService } from '../../../core/auth/auth.service';
 import { Router, RouterLink } from '@angular/router';
 import { ToastService } from '../../../core/feedback/toast.service';
-import { passwordMatcher } from '../../../validators/auth/password-matcher.validator';
+import { passwordMatcher } from '../../../validators/password-matcher.validator';
 import { Title } from '@angular/platform-browser';
 import { environment } from '../../../../environments/environment';
 import { AppComponent } from '../../../app.component';
-import { usernameTakenValidator } from '../../../validators/auth/username-taken.validator';
+import { usernameTakenValidator } from '../../../validators/username-taken.validator';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { ToastType } from '../../../types/feedback/toast.types';
 

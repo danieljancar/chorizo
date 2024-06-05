@@ -11,4 +11,5 @@ export const en = {
   username: 'Username',
   name: 'Name',
   'language-change-success': 'Language changed successfully',
+  'language-change-error': 'Error changing language',
 };

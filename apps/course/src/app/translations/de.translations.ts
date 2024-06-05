@@ -11,4 +11,5 @@ export const de = {
   username: 'Benutzername',
   name: 'Name',
   'language-change-success': 'Sprache erfolgreich geändert',
+  'language-change-error': 'Fehler beim Ändern der Sprache',
 };
