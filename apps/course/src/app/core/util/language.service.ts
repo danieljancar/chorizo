@@ -12,29 +12,29 @@ export class LanguageService {
   private readonly LANG_KEY = 'preferredLang';
 
   constructor(
-    private translateService: TranslateService,
+    private translate: TranslateService,
     private toastService: ToastService,
   ) {
     const preferredLang = localStorage.getItem(this.LANG_KEY) || 'en';
-    this.translateService.use(preferredLang);
+    this.translate.use(preferredLang);
   }
 
   get currentLang(): string {
-    return this.translateService.currentLang;
+    return this.translate.currentLang;
   }
 
   changeLang(lang: string): void {
-    this.translateService.use(lang).subscribe(
+    this.translate.use(lang).subscribe(
       () => {
         localStorage.setItem(this.LANG_KEY, lang);
         this.toastService.showToast(
-          this.translateService.instant('language-change-success'),
+          this.translate.instant('language-change-success'),
           ToastType.Success,
         );
       },
       () => {
         this.toastService.showToast(
-          this.translateService.instant('language-change-error'),
+          this.translate.instant('language-change-error'),
           ToastType.Error,
         );
       },

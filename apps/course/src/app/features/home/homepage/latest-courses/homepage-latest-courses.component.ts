@@ -5,6 +5,7 @@ import { LoadingBarsComponent } from '../../../../shared/feedback/loading-bars/l
 import { FeedbackMessageComponent } from '../../../../shared/feedback/feedback-message/feedback-message.component';
 import { RouterLink } from '@angular/router';
 import { RelativeTimePipe } from '../../../../pipes/relative-time.pipe';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-latest-courses',
@@ -14,6 +15,7 @@ import { RelativeTimePipe } from '../../../../pipes/relative-time.pipe';
     FeedbackMessageComponent,
     RouterLink,
     RelativeTimePipe,
+    TranslateModule,
   ],
   templateUrl: './homepage-latest-courses.component.html',
   styleUrl: './homepage-latest-courses.component.scss',
@@ -22,7 +24,10 @@ export class HomepageLatestCoursesComponent {
   public courses: Course[] = [];
   public isLoading = true;
 
-  constructor(private courseService: CourseService) {
+  constructor(
+    private courseService: CourseService,
+    public t: TranslateService,
+  ) {
     this.courseService.getLatestCourses(2).subscribe((courses) => {
       this.courses = courses;
       this.isLoading = false;
