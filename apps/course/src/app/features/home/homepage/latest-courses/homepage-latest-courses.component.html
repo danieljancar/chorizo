@@ -1,8 +1,10 @@
-<h1 class="text-3xl font-bold pt-5 pl-5">Latest Courses</h1>
+<h1 class="text-3xl font-bold pt-5 pl-5">
+  {{ 'homepage.latestCourses.title' | translate }}
+</h1>
 @if (courses.length === 0 && !isLoading) {
   <app-feedback-message
     showIcon="false"
-    message="{{ 'homepage-latest-courses.error-message' | translate }}"
+    message="{{ 'homepage.latestCourses.error-message' | translate }}"
   />
 } @else if (!isLoading && courses.length > 0) {
   <div class="flex flex-wrap justify-center gap-x-10 mb-7">

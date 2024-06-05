@@ -8,6 +8,7 @@ import { HomepageLatestCoursesComponent } from './latest-courses/homepage-latest
 import { Title } from '@angular/platform-browser';
 import { environment } from '../../../../environments/environment';
 import { AppComponent } from '../../../app.component';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-homepage',
@@ -24,9 +25,13 @@ import { AppComponent } from '../../../app.component';
   styleUrl: './homepage.component.scss',
 })
 export class HomepageComponent {
-  constructor(private title: Title) {
+  constructor(
+    private title: Title,
+    private t: TranslateService,
+  ) {
     this.title.setTitle(
-      'Home - ' +
+      this.t.instant('homepage.title') +
+        ' - ' +
         environment.metaConfig.title +
         ' - ' +
         AppComponent.chorizo.title,
