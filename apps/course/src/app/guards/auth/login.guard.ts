@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { map, take, tap } from 'rxjs/operators';
 import { ToastService } from '../../core/feedback/toast.service';
 import { ToastType } from '../../types/feedback/toast.types';
+import { TranslateService } from '@ngx-translate/core';
 
 @Injectable({
   providedIn: 'root',
@@ -14,6 +15,7 @@ export class LoginGuard implements CanActivate {
     private afa: AngularFireAuth,
     private router: Router,
     private toastService: ToastService,
+    private t: TranslateService,
   ) {}
 
   canActivate(): Observable<boolean> | Promise<boolean> | boolean {
@@ -23,7 +25,10 @@ export class LoginGuard implements CanActivate {
       tap((notLoggedIn) => {
         if (!notLoggedIn) {
           this.router.navigate(['/']).then(() => {
-            this.toastService.showToast('Not yet verified.', ToastType.Info);
+            this.toastService.showToast(
+              this.t.instant('loginGuard.not-verified'),
+              ToastType.Info,
+            );
           });
         }
       }),

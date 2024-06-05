@@ -15,7 +15,7 @@ import { Observable } from 'rxjs';
 import { ToastService } from '../../../core/feedback/toast.service';
 import { environment } from '../../../../environments/environment';
 import { ToastType } from '../../../types/feedback/toast.types';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { languageNames, LanguageNames } from '../../../names/language.names';
 import { LanguageService } from '../../../core/util/language.service';
 
@@ -53,6 +53,7 @@ export class NavbarComponent implements OnInit {
     private router: Router,
     private toastService: ToastService,
     private languageService: LanguageService,
+    private t: TranslateService,
   ) {
     this.isLoggedIn$ = this.authService.isLoggedIn$;
     this.currentLang = this.languageService.currentLang;
@@ -66,7 +67,7 @@ export class NavbarComponent implements OnInit {
     this.authService.logout().then(() => {
       this.router.navigate(['/a/login']).then(() => {
         this.toastService.showToast(
-          'Logged out successfully.',
+          this.t.instant('navbar.logout-success'),
           ToastType.Success,
         );
       });

@@ -27,10 +27,10 @@
         tabindex="0"
       >
         <li (click)="closeDropdown()" routerLink="/">
-          <a>{{ 'home' | translate }}</a>
+          <a>{{ 'navbar.home' | translate }}</a>
         </li>
         <li (click)="closeDropdown()" routerLink="/c">
-          <a>{{ 'courses' | translate }}</a>
+          <a>{{ 'navbar.courses' | translate }}</a>
         </li>
       </ul>
     </div>
@@ -39,10 +39,10 @@
   <div class="navbar-center hidden lg:flex">
     <ul class="menu menu-horizontal px-1">
       <li routerLink="/">
-        <a>{{ 'home' | translate }}</a>
+        <a>{{ 'navbar.home' | translate }}</a>
       </li>
       <li routerLink="/c">
-        <a>{{ 'courses' | translate }}</a>
+        <a>{{ 'navbar.courses' | translate }}</a>
       </li>
     </ul>
   </div>
@@ -67,8 +67,8 @@
           <li>
             <a (click)="changeLang(lang)">
               <span class="badge badge-outline">{{
-                lang | slice: 0 : 2 | uppercase
-              }}</span>
+                  lang | slice: 0 : 2 | uppercase
+                }}</span>
               {{ languageNames[lang] }}
             </a>
           </li>
@@ -93,10 +93,10 @@
           class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
         >
           <li (click)="closeDropdown()" routerLink="/a/account">
-            <a>{{ 'account' | translate }}</a>
+            <a>{{ 'navbar.account' | translate }}</a>
           </li>
           <li class="text-error" (click)="logout()">
-            <a>{{ 'logout' | translate }}</a>
+            <a>{{ 'navbar.logout' | translate }}</a>
           </li>
         </ul>
       </div>

@@ -1,34 +1,27 @@
 export const en = {
+  navbar: {
+    home: 'Home',
+    courses: 'Courses',
+    account: 'Account',
+    logout: 'Logout',
+    login: 'Login',
+    'language-change': 'Change Language',
+  },
+  footer: {
+    home: 'Home',
+    courses: 'Courses',
+    account: 'Account',
+    legal: 'Legal',
+    copyright: 'Copyright © {{ currentYear }} - All rights reserved',
+    'made-with-love': 'Made with ❤️ by',
+    chorizo: 'Chorizo',
+  },
   homepageLatestCourses: {
     'error-message': 'No courses available',
   },
   feedbackMessage: {
     'default-title': 'Oops!',
     'default-message': 'Something went wrong.',
-  },
-  authService: {
-    'login-success': 'Logged in successfully.',
-    'register-success': 'Registered successfully.',
-    'unexpected-error': 'An unexpected error occurred, please try again.',
-    'email-already-in-use': 'This email is already in use, please try another.',
-    'weak-password':
-      'The password is too weak, please try a stronger password.',
-    'user-disabled':
-      'This user has been disabled. Please contact support for more information.',
-    'incorrect-email-password':
-      'Incorrect email or password, please try again.',
-    'too-many-requests': 'Too many requests. Please try again later.',
-    'invalid-credential': 'Invalid credentials. Please try again.',
-  },
-  courseStateService: {
-    'course-not-found': 'Course with that ID was not found.',
-  },
-  fileDownloadService: {
-    'error-download-file': 'Error downloading file',
-  },
-  languageService: {
-    'language-change-success': 'Language changed successfully',
-    'language-change-error': 'Error changing language',
   },
   accountProfileBanner: {
     'change-avatar': 'Change Avatar',
@@ -57,15 +50,6 @@ export const en = {
       'min-length': 'Minimum length is {{min}} characters',
       'max-length': 'Maximum length is {{max}} characters',
     },
-  },
-  relativeTimePipe: {
-    'just-now': 'Just now',
-    'minute-ago': '1 minute ago',
-    'minutes-ago': '{{ minutes }} minutes ago',
-    'hour-ago': '1 hour ago',
-    'hours-ago': '{{ hours }} hours ago',
-    'day-ago': '1 day ago',
-    'days-ago': '{{ days }} days ago',
   },
   login: {
     title: 'Login',
@@ -107,5 +91,54 @@ export const en = {
       'max-length': 'Maximum length should be {{max}} characters',
       'password-mismatch': 'Passwords do not match',
     },
+  },
+  course: {
+    navbar: {
+      introduction: 'Introduction',
+      agenda: 'Agenda',
+      tasks: 'Tasks',
+      documentation: 'Documentation',
+      resources: 'Resources',
+    },
+  },
+  authService: {
+    'login-success': 'Logged in successfully.',
+    'register-success': 'Registered successfully.',
+    'unexpected-error': 'An unexpected error occurred, please try again.',
+    'email-already-in-use': 'This email is already in use, please try another.',
+    'weak-password':
+      'The password is too weak, please try a stronger password.',
+    'user-disabled':
+      'This user has been disabled. Please contact support for more information.',
+    'incorrect-email-password':
+      'Incorrect email or password, please try again.',
+    'too-many-requests': 'Too many requests. Please try again later.',
+    'invalid-credential': 'Invalid credentials. Please try again.',
+  },
+  courseStateService: {
+    'course-not-found': 'Course with that ID was not found.',
+  },
+  fileDownloadService: {
+    'error-download-file': 'Error downloading file',
+  },
+  languageService: {
+    'language-change-success': 'Language changed successfully',
+    'language-change-error': 'Error changing language',
+  },
+  authGuard: {
+    'must-be-verified-user': 'You must be a verified user to access this page.',
+    'must-be-logged-in': 'You must be logged in to access this page.',
+  },
+  loginGuard: {
+    'not-verified': 'Not yet verified.',
+  },
+  relativeTimePipe: {
+    'just-now': 'Just now',
+    'minute-ago': '1 minute ago',
+    'minutes-ago': '{{ minutes }} minutes ago',
+    'hour-ago': '1 hour ago',
+    'hours-ago': '{{ hours }} hours ago',
+    'day-ago': '1 day ago',
+    'days-ago': '{{ days }} days ago',
   },
 };

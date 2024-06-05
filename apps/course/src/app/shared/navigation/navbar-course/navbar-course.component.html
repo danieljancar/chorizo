@@ -28,26 +28,26 @@
           tabindex="0"
         >
           <li (click)="closeDropdown()">
-            <a routerLink="/c/{{ course.id }}">Introduction</a>
+            <a routerLink="/c/{{ course.id }}">{{ 'course.navbar.introduction' | translate }}</a>
           </li>
           @if (course.settings?.showSections?.agenda) {
             <li (click)="closeDropdown()">
-              <a routerLink="/c/{{ course.id }}/agenda">Agenda</a>
+              <a routerLink="/c/{{ course.id }}/agenda">{{ 'course.navbar.agenda' | translate }}</a>
             </li>
           }
           @if (course.settings?.showSections?.tasks) {
             <li (click)="closeDropdown()">
-              <a routerLink="/c/{{ course.id }}/tasks">Tasks</a>
+              <a routerLink="/c/{{ course.id }}/tasks">{{ 'course.navbar.tasks' | translate }}</a>
             </li>
           }
           @if (course.settings?.showSections?.documentation) {
             <li (click)="closeDropdown()">
-              <a routerLink="/c/{{ course.id }}/documentation">Documentation</a>
+              <a routerLink="/c/{{ course.id }}/documentation">{{ 'course.navbar.documentation' | translate }}</a>
             </li>
           }
           @if (course.settings?.showSections?.resources) {
             <li (click)="closeDropdown()">
-              <a routerLink="/c/{{ course.id }}/resources">Resources</a>
+              <a routerLink="/c/{{ course.id }}/resources">{{ 'course.navbar.resources' | translate }}</a>
             </li>
           }
         </ul>
@@ -61,26 +61,26 @@
     @if (course; as course) {
       <ul class="menu menu-horizontal px-1">
         <li (click)="closeDropdown()">
-          <a routerLink="/c/{{ course.id }}">Introduction</a>
+          <a routerLink="/c/{{ course.id }}">{{ 'course.navbar.introduction' | translate }}</a>
         </li>
         @if (course.settings?.showSections?.agenda) {
           <li (click)="closeDropdown()">
-            <a routerLink="/c/{{ course.id }}/agenda">Agenda</a>
+            <a routerLink="/c/{{ course.id }}/agenda">{{ 'course.navbar.agenda' | translate }}</a>
           </li>
         }
         @if (course.settings?.showSections?.tasks) {
           <li (click)="closeDropdown()">
-            <a routerLink="/c/{{ course.id }}/tasks">Tasks</a>
+            <a routerLink="/c/{{ course.id }}/tasks">{{ 'course.navbar.tasks' | translate }}</a>
           </li>
         }
         @if (course.settings?.showSections?.documentation) {
           <li (click)="closeDropdown()">
-            <a routerLink="/c/{{ course.id }}/documentation">Documentation</a>
+            <a routerLink="/c/{{ course.id }}/documentation">{{ 'course.navbar.documentation' | translate }}</a>
           </li>
         }
         @if (course.settings?.showSections?.resources) {
           <li (click)="closeDropdown()">
-            <a routerLink="/c/{{ course.id }}/resources">Resources</a>
+            <a routerLink="/c/{{ course.id }}/resources">{{ 'course.navbar.resources' | translate }}</a>
           </li>
         }
       </ul>
