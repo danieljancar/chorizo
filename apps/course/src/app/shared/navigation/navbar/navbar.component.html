@@ -57,7 +57,7 @@
         role="button"
         tabindex="0"
       >
-        <mat-icon>language</mat-icon>
+        <mat-icon>translate</mat-icon>
       </div>
       <ul
         class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
@@ -65,12 +65,12 @@
       >
         @for (lang of languages; track lang) {
           <li>
-            <a (click)="changeLang(lang)"
-              ><span class="badge badge-outline">{{
-                languageNames[lang] | slice: 0 : 2 | uppercase
+            <a (click)="changeLang(lang)">
+              <span class="badge badge-outline">{{
+                lang | slice: 0 : 2 | uppercase
               }}</span>
-              {{ languageNames[lang] }}</a
-            >
+              {{ languageNames[lang] }}
+            </a>
           </li>
         }
       </ul>

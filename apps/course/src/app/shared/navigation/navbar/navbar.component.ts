@@ -15,8 +15,9 @@ import { Observable } from 'rxjs';
 import { ToastService } from '../../../core/feedback/toast.service';
 import { environment } from '../../../../environments/environment';
 import { ToastType } from '../../../types/feedback/toast.types';
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { TranslateModule } from '@ngx-translate/core';
 import { languageNames, LanguageNames } from '../../../names/language.names';
+import { LanguageService } from '../../../core/util/language.service';
 
 @Component({
   selector: 'app-navbar',
@@ -39,25 +40,26 @@ import { languageNames, LanguageNames } from '../../../names/language.names';
   ],
 })
 export class NavbarComponent implements OnInit {
-  isLoggedIn$: Observable<boolean>;
-  title: string = environment.metaConfig.title;
-  isAccountDropDown: boolean = false;
-  isLangDropDown: boolean = false;
-  languages: (keyof LanguageNames)[] = [];
-  public currentLang: string = this.translateService.currentLang;
-  languageNames: LanguageNames = languageNames;
+  public isLoggedIn$: Observable<boolean>;
+  public title: string = environment.metaConfig.title;
+  public isAccountDropDown: boolean = false;
+  public isLangDropDown: boolean = false;
+  public languages: (keyof LanguageNames)[] = [];
+  public currentLang: string;
+  public languageNames: LanguageNames = languageNames;
 
   constructor(
     private authService: AuthService,
     private router: Router,
     private toastService: ToastService,
-    private translateService: TranslateService,
+    private languageService: LanguageService,
   ) {
     this.isLoggedIn$ = this.authService.isLoggedIn$;
+    this.currentLang = this.languageService.currentLang;
   }
 
   ngOnInit() {
-    this.languages = Object.keys(this.languageNames) as (keyof LanguageNames)[];
+    this.languages = this.languageService.getLanguages();
   }
 
   logout() {
@@ -80,12 +82,8 @@ export class NavbarComponent implements OnInit {
   }
 
   changeLang(lang: string): void {
+    this.languageService.changeLang(lang);
     this.toggleLangDropdown();
-    this.translateService.use(lang);
-    this.toastService.showToast(
-      this.translateService.instant('language-change-success'),
-      ToastType.Success,
-    );
   }
 
   closeDropdown(): void {
