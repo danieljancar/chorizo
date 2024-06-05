@@ -17,8 +17,17 @@ export const de = {
     'made-with-love': 'Hergestellt mit ❤️ von',
     chorizo: 'Chorizo',
   },
-  homepageLatestCourses: {
-    'error-message': 'Keine Kurse verfügbar',
+  homepage: {
+    title: 'Startseite',
+    markdownRenderer: {
+      about: {
+        title: 'Über',
+      },
+    },
+    latestCourses: {
+      title: 'Neueste Kurse',
+      'error-message': 'Keine Kurse verfügbar',
+    },
   },
   feedbackMessage: {
     'default-title': 'Oops!',

@@ -2,16 +2,26 @@
   class="footer footer-center px-10 py-20 bg-base-200 text-base-content rounded mt-20"
 >
   <nav class="grid grid-flow-col gap-4">
-    <a class="link link-hover" routerLink="/">{{ 'footer.home' | translate }}</a>
-    <a class="link link-hover" routerLink="/c">{{ 'footer.courses' | translate }}</a>
-    <a class="link link-hover" routerLink="/a/account">{{ 'footer.account' | translate }}</a>
-    <a class="link link-hover" routerLink="/l/">{{ 'footer.legal' | translate }}</a>
+    <a class="link link-hover" routerLink="/">{{
+      'footer.home' | translate
+    }}</a>
+    <a class="link link-hover" routerLink="/c">{{
+      'footer.courses' | translate
+    }}</a>
+    <a class="link link-hover" routerLink="/a/account">{{
+      'footer.account' | translate
+    }}</a>
+    <a class="link link-hover" routerLink="/l/">{{
+      'footer.legal' | translate
+    }}</a>
   </nav>
   <aside>
     <p>{{ 'footer.copyright' | translate: { currentYear } }}</p>
     <p>
       {{ 'footer.made-with-love' | translate }}
-      <a [href]="chorizoGithub" class="link link-hover">{{ 'footer.chorizo' | translate }}</a>
+      <a [href]="chorizoGithub" class="link link-hover">{{
+        'footer.chorizo' | translate
+      }}</a>
     </p>
   </aside>
 </footer>
