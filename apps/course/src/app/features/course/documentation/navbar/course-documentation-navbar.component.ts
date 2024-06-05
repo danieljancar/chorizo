@@ -19,6 +19,7 @@ import {
   CourseDocument,
 } from '../../../../../../projects/types/src/lib/course/course-documentation.types';
 import { CourseSkeletonDocumentationNavbarComponent } from '../skeletons/course-skeleton-documentation-navbar.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-course-documentation-navbar',
@@ -30,6 +31,7 @@ import { CourseSkeletonDocumentationNavbarComponent } from '../skeletons/course-
     LoadingBarsComponent,
     FeedbackMessageComponent,
     CourseSkeletonDocumentationNavbarComponent,
+    TranslateModule,
   ],
   templateUrl: './course-documentation-navbar.component.html',
   styleUrls: ['./course-documentation-navbar.component.scss'],

@@ -44,8 +44,4 @@ export class AppComponent {
     this.translate.use(this.defaultLanguage);
     this.isBigScreen = window.innerWidth > 640;
   }
-
-  public switchLanguage(lang: string) {
-    this.translate.use(lang);
-  }
 }
