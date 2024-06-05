@@ -5,6 +5,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
 import { ToastService } from '../feedback/toast.service';
 import { ToastType } from '../../types/feedback/toast.types';
+import { TranslateService } from '@ngx-translate/core';
 
 /**
  * Provides functionality for managing and tracking the state of the current and last visited courses within an Angular application.
@@ -35,6 +36,7 @@ export class CourseStateService {
     private afs: AngularFirestore,
     private router: Router,
     private toastService: ToastService,
+    private t: TranslateService,
   ) {}
 
   setCurrentCourse(courseId: string): void {
@@ -52,7 +54,7 @@ export class CourseStateService {
             this.currentCourseSubject.next(undefined);
             this.router.navigate(['/c']).then(() => {
               this.toastService.showToast(
-                'Course with that ID was not found.',
+                this.t.instant('courseStateService.course-not-found'),
                 ToastType.Error,
               );
             });

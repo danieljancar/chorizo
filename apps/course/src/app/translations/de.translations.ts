@@ -12,23 +12,31 @@ export const de = {
   name: 'Name',
   'language-change-success': 'Sprache erfolgreich geändert',
   'language-change-error': 'Fehler beim Ändern der Sprache',
-  'feedback-message.default-title': 'Oh nein!',
-  'feedback-message.default-message': 'Etwas ist schief gelaufen',
-  'homepage-latest-courses.error-message': 'Keine Kurse verfügbar',
-  'auth.login-success': 'Erfolgreich eingeloggt.',
-  'auth.register-success': 'Erfolgreich registriert.',
-  'auth.unexpected-error':
-    'Ein unerwarteter Fehler ist aufgetreten, bitte versuchen Sie es erneut.',
-  'auth.email-already-in-use':
-    'Diese Email wird bereits verwendet, bitte versuchen Sie eine andere.',
-  'auth.weak-password':
-    'Das Passwort ist zu schwach, bitte versuchen Sie ein stärkeres Passwort.',
-  'auth.user-disabled':
-    'Dieser Benutzer wurde deaktiviert. Bitte wenden Sie sich an den Support für weitere Informationen.',
-  'auth.incorrect-email-password':
-    'Falsche Email oder Passwort, bitte versuchen Sie es erneut.',
-  'auth.too-many-requests':
-    'Zu viele Anfragen. Bitte versuchen Sie es später erneut.',
-  'auth.invalid-credential':
-    'Ungültige Anmeldedaten. Bitte versuchen Sie es erneut.',
+  homepageLatestCourses: {
+    'error-message': 'Keine Kurse verfügbar',
+  },
+  feedbackMessage: {
+    'default-title': 'Oops!',
+    'default-message': 'Etwas ist schief gelaufen.',
+  },
+  authService: {
+    'login-success': 'Erfolgreich eingeloggt.',
+    'register-success': 'Erfolgreich registriert.',
+    'unexpected-error':
+      'Ein unerwarteter Fehler ist aufgetreten, bitte versuche es erneut.',
+    'email-already-in-use':
+      'Diese E-Mail wird bereits verwendet, bitte versuche es mit einer anderen.',
+    'weak-password':
+      'Das Passwort ist zu schwach, bitte versuche ein stärkeres Passwort.',
+    'user-disabled':
+      'Dieser Benutzer wurde deaktiviert. Bitte kontaktiere den Support für weitere Informationen.',
+    'incorrect-email-password':
+      'Falsche E-Mail oder Passwort, bitte versuche es erneut.',
+    'too-many-requests': 'Zu viele Anfragen. Bitte versuche es später erneut.',
+    'invalid-credential':
+      'Ungültige Anmeldeinformationen. Bitte versuche es erneut.',
+  },
+  courseStateService: {
+    'course-not-found': 'Kurs mit dieser ID wurde nicht gefunden.',
+  },
 };
