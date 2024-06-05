@@ -2,7 +2,7 @@
   <div class="navbar bg-base-100 border-b-2">
     <div class="items-center flex-1">
       <button class="btn btn-ghost text-2xl btn-lg md:block hidden">
-        Courses
+        {{ 'courses.title' | translate }}
       </button>
     </div>
     <div class="flex gap-2 items-center">
@@ -11,7 +11,7 @@
           <input
             type="text"
             class="input input-bordered w-auto"
-            placeholder="Search"
+            [placeholder]="'courses.filter.search' | translate"
             formControlName="searchTerm"
           />
         </form>
@@ -30,8 +30,16 @@
           class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
           tabindex="0"
         >
-          <li><a (click)="setSortBy(Sort.latest)">Latest</a></li>
-          <li><a (click)="setSortBy(Sort.oldest)">Oldest</a></li>
+          <li>
+            <a (click)="setSortBy(Sort.latest)">{{
+              'courses.filter.sort.latest' | translate
+            }}</a>
+          </li>
+          <li>
+            <a (click)="setSortBy(Sort.oldest)">{{
+              'courses.filter.sort.oldest' | translate
+            }}</a>
+          </li>
         </ul>
       </div>
     </div>

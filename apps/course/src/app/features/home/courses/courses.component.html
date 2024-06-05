@@ -4,8 +4,8 @@
     <app-loading-bars />
   } @else if (!isLoading && courses.length === 0) {
     <app-feedback-message
-      message="No courses were found, try again later."
-      title="Nothing found"
+      [message]="'courses.no-courses-message' | translate"
+      [title]="'courses.no-courses-title' | translate"
       icon="mood_bad"
       showIcon="false"
     />
@@ -32,8 +32,8 @@
     </div>
   } @else {
     <app-feedback-message
-      message="An error occurred while trying to fetch the courses, try again later."
-      title="Error"
+      [message]="'courses.error-message' | translate"
+      [title]="'courses.error-title' | translate"
       icon="sick"
       showIcon="false"
     />

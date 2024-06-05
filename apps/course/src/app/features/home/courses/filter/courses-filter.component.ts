@@ -9,23 +9,25 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { debounceTime } from 'rxjs/operators';
 import { MatIcon } from '@angular/material/icon';
 import { SortText, SortValue } from '../../../../enums/sort.enums';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-courses-filter',
   standalone: true,
-  imports: [ReactiveFormsModule, MatIcon, FormsModule],
+  imports: [ReactiveFormsModule, MatIcon, FormsModule, TranslateModule],
   templateUrl: './courses-filter.component.html',
   styleUrls: ['./courses-filter.component.scss'],
 })
 export class CoursesFilterComponent implements OnInit {
-  filterForm: FormGroup;
-  currentSort: SortValue;
-  isDropdownOpen: boolean = false;
+  public filterForm: FormGroup;
+  public currentSort: SortValue;
+  public isDropdownOpen: boolean = false;
   protected readonly Sort = SortValue;
 
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
+    private t: TranslateService,
   ) {
     this.filterForm = new FormGroup({
       searchTerm: new FormControl(''),
@@ -75,7 +77,8 @@ export class CoursesFilterComponent implements OnInit {
   }
 
   getSortText(): string {
-    return SortText[this.currentSort];
+    let sort = SortText[this.currentSort];
+    return this.t.instant('courses.filter.sort.' + sort.toLowerCase());
   }
 
   toggleDropdown(): void {
