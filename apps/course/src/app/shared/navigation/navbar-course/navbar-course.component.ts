@@ -5,11 +5,12 @@ import { Course } from '../../../../../projects/types/src/lib/course/course.type
 import { AsyncPipe } from '@angular/common';
 import { MatIcon } from '@angular/material/icon';
 import { CourseStateService } from '../../../core/data/course-state.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-navbar-course',
   standalone: true,
-  imports: [RouterLink, AsyncPipe, MatIcon],
+  imports: [RouterLink, AsyncPipe, MatIcon, TranslateModule],
   templateUrl: './navbar-course.component.html',
   styleUrls: ['./navbar-course.component.scss'],
 })

@@ -7,6 +7,7 @@ import { map, switchMap, take, tap } from 'rxjs/operators';
 import { ToastService } from '../../core/feedback/toast.service';
 import { ToastType } from '../../types/feedback/toast.types';
 import { User } from '../../../../projects/types/src/lib/user.types';
+import { TranslateService } from '@ngx-translate/core';
 
 @Injectable({
   providedIn: 'root',
@@ -17,6 +18,7 @@ export class AuthGuard implements CanActivate {
     private afs: AngularFirestore,
     private router: Router,
     private toastService: ToastService,
+    private t: TranslateService,
   ) {}
 
   canActivate(): Observable<boolean> | Promise<boolean> | boolean {
@@ -39,7 +41,7 @@ export class AuthGuard implements CanActivate {
                   return true;
                 } else {
                   this.toastService.showToast(
-                    'You must be a verified user to access this page.',
+                    this.t.instant('authGuard.must-be-verified-user'),
                     ToastType.Info,
                   );
                   return false;
@@ -48,7 +50,7 @@ export class AuthGuard implements CanActivate {
             );
         } else {
           this.toastService.showToast(
-            'You must be logged in to access this page.',
+            this.t.instant('authGuard.must-be-logged-in'),
             ToastType.Info,
           );
           return of(false);

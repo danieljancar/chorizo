@@ -1,37 +1,28 @@
 export const de = {
+  navbar: {
+    home: 'Startseite',
+    courses: 'Kurse',
+    account: 'Konto',
+    logout: 'Abmelden',
+    'logout-success': 'Erfolgreich abgemeldet.',
+    login: 'Anmelden',
+    'language-change': 'Sprache ändern',
+  },
+  footer: {
+    home: 'Startseite',
+    courses: 'Kurse',
+    account: 'Konto',
+    legal: 'Rechtliches',
+    copyright: 'Urheberrecht © {{ currentYear }} - Alle Rechte vorbehalten',
+    'made-with-love': 'Hergestellt mit ❤️ von',
+    chorizo: 'Chorizo',
+  },
   homepageLatestCourses: {
     'error-message': 'Keine Kurse verfügbar',
   },
   feedbackMessage: {
     'default-title': 'Oops!',
     'default-message': 'Etwas ist schief gelaufen.',
-  },
-  authService: {
-    'login-success': 'Erfolgreich eingeloggt.',
-    'register-success': 'Erfolgreich registriert.',
-    'unexpected-error':
-      'Ein unerwarteter Fehler ist aufgetreten, bitte versuche es erneut.',
-    'email-already-in-use':
-      'Diese E-Mail wird bereits verwendet, bitte versuche es mit einer anderen.',
-    'weak-password':
-      'Das Passwort ist zu schwach, bitte versuche ein stärkeres Passwort.',
-    'user-disabled':
-      'Dieser Benutzer wurde deaktiviert. Bitte kontaktiere den Support für weitere Informationen.',
-    'incorrect-email-password':
-      'Falsche E-Mail oder Passwort, bitte versuche es erneut.',
-    'too-many-requests': 'Zu viele Anfragen. Bitte versuche es später erneut.',
-    'invalid-credential':
-      'Ungültige Anmeldeinformationen. Bitte versuche es erneut.',
-  },
-  courseStateService: {
-    'course-not-found': 'Kurs mit dieser ID wurde nicht gefunden.',
-  },
-  fileDownloadService: {
-    'error-download-file': 'Fehler beim Herunterladen der Datei',
-  },
-  languageService: {
-    'language-change-success': 'Sprache erfolgreich geändert',
-    'language-change-error': 'Fehler beim Ändern der Sprache',
   },
   accountProfileBanner: {
     'change-avatar': 'Avatar ändern',
@@ -61,15 +52,6 @@ export const de = {
       'min-length': 'Die Mindestlänge beträgt {{min}} Zeichen',
       'max-length': 'Die Maximallänge beträgt {{max}} Zeichen',
     },
-  },
-  relativeTimePipe: {
-    'just-now': 'Gerade eben',
-    'minute-ago': 'Vor 1 Minute',
-    'minutes-ago': 'Vor {{ minutes }} Minuten',
-    'hour-ago': 'Vor 1 Stunde',
-    'hours-ago': 'Vor {{ hours }} Stunden',
-    'day-ago': 'Vor 1 Tag',
-    'days-ago': 'Vor {{ days }} Tagen',
   },
   login: {
     title: 'Anmelden',
@@ -115,5 +97,59 @@ export const de = {
       'max-length': 'Die Maximallänge sollte {{max}} Zeichen betragen',
       'password-mismatch': 'Passwörter stimmen nicht überein',
     },
+  },
+  course: {
+    navbar: {
+      introduction: 'Einführung',
+      agenda: 'Agenda',
+      tasks: 'Aufgaben',
+      documentation: 'Dokumentation',
+      resources: 'Ressourcen',
+    },
+  },
+  authService: {
+    'login-success': 'Erfolgreich eingeloggt.',
+    'register-success': 'Erfolgreich registriert.',
+    'unexpected-error':
+      'Ein unerwarteter Fehler ist aufgetreten, bitte versuche es erneut.',
+    'email-already-in-use':
+      'Diese E-Mail wird bereits verwendet, bitte versuche es mit einer anderen.',
+    'weak-password':
+      'Das Passwort ist zu schwach, bitte versuche ein stärkeres Passwort.',
+    'user-disabled':
+      'Dieser Benutzer wurde deaktiviert. Bitte kontaktiere den Support für weitere Informationen.',
+    'incorrect-email-password':
+      'Falsche E-Mail oder Passwort, bitte versuche es erneut.',
+    'too-many-requests': 'Zu viele Anfragen. Bitte versuche es später erneut.',
+    'invalid-credential':
+      'Ungültige Anmeldeinformationen. Bitte versuche es erneut.',
+  },
+  courseStateService: {
+    'course-not-found': 'Kurs mit dieser ID wurde nicht gefunden.',
+  },
+  fileDownloadService: {
+    'error-download-file': 'Fehler beim Herunterladen der Datei',
+  },
+  languageService: {
+    'language-change-success': 'Sprache erfolgreich geändert',
+    'language-change-error': 'Fehler beim Ändern der Sprache',
+  },
+  authGuard: {
+    'must-be-verified-user':
+      'Sie müssen ein verifizierter Benutzer sein, um auf diese Seite zuzugreifen.',
+    'must-be-logged-in':
+      'Sie müssen eingeloggt sein, um auf diese Seite zuzugreifen.',
+  },
+  loginGuard: {
+    'not-verified': 'Noch nicht verifiziert.',
+  },
+  relativeTimePipe: {
+    'just-now': 'Gerade eben',
+    'minute-ago': 'Vor 1 Minute',
+    'minutes-ago': 'Vor {{ minutes }} Minuten',
+    'hour-ago': 'Vor 1 Stunde',
+    'hours-ago': 'Vor {{ hours }} Stunden',
+    'day-ago': 'Vor 1 Tag',
+    'days-ago': 'Vor {{ days }} Tagen',
   },
 };
