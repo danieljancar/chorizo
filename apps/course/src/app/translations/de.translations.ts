@@ -29,6 +29,21 @@ export const de = {
       'error-message': 'Keine Kurse verfügbar',
     },
   },
+  courses: {
+    title: 'Kurse',
+    'no-courses-title': 'Nichts gefunden',
+    'no-courses-message':
+      'Keine Kurse verfügbar, bitte versuche es später erneut.',
+    'error-title': 'Fehler aufgetreten',
+    'error-message': 'Fehler beim Laden der Kurse',
+    filter: {
+      search: 'Suche',
+      sort: {
+        latest: 'Neueste',
+        oldest: 'Älteste',
+      },
+    },
+  },
   feedbackMessage: {
     'default-title': 'Oops!',
     'default-message': 'Etwas ist schief gelaufen.',

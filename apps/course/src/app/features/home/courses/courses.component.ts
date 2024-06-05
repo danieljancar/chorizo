@@ -9,6 +9,7 @@ import { Title } from '@angular/platform-browser';
 import { environment } from '../../../../environments/environment';
 import { AppComponent } from '../../../app.component';
 import { RelativeTimePipe } from '../../../pipes/relative-time.pipe';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-courses',
@@ -21,6 +22,7 @@ import { RelativeTimePipe } from '../../../pipes/relative-time.pipe';
     RouterLink,
     FeedbackMessageComponent,
     RelativeTimePipe,
+    TranslateModule,
   ],
 })
 export class CoursesComponent implements OnInit {
@@ -32,9 +34,11 @@ export class CoursesComponent implements OnInit {
     protected route: ActivatedRoute,
     protected router: Router,
     private title: Title,
+    private t: TranslateService,
   ) {
     this.title.setTitle(
-      'Courses - ' +
+      this.t.instant('courses.title') +
+        ' - ' +
         environment.metaConfig.title +
         ' - ' +
         AppComponent.chorizo.title,
