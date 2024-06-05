@@ -28,13 +28,13 @@ export class LanguageService {
       () => {
         localStorage.setItem(this.LANG_KEY, lang);
         this.toastService.showToast(
-          this.translate.instant('language-change-success'),
+          this.translate.instant('languageService.language-change-success'),
           ToastType.Success,
         );
       },
       () => {
         this.toastService.showToast(
-          this.translate.instant('language-change-error'),
+          this.translate.instant('languageService.language-change-error'),
           ToastType.Error,
         );
       },

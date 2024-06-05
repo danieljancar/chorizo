@@ -9,11 +9,12 @@ import {
 import { MatIcon } from '@angular/material/icon';
 import { ImageLoaderService } from '../../../../core/util/image-loader.service';
 import { NgOptimizedImage } from '@angular/common';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-account-profile-banner',
   standalone: true,
-  imports: [MatIcon, NgOptimizedImage],
+  imports: [MatIcon, NgOptimizedImage, TranslateModule],
   templateUrl: './account-profile-banner.component.html',
   styleUrl: './account-profile-banner.component.scss',
 })
@@ -25,7 +26,10 @@ export class AccountProfileBannerComponent implements OnChanges {
 
   avatarUrl: string | undefined;
 
-  constructor(private imageLoaderService: ImageLoaderService) {}
+  constructor(
+    private imageLoaderService: ImageLoaderService,
+    private t: TranslateService,
+  ) {}
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['avatarPath']?.currentValue) {
@@ -43,7 +47,9 @@ export class AccountProfileBannerComponent implements OnChanges {
       .then((url) => {
         this.avatarUrl = url;
       })
-      .catch((error) => console.error('Error loading avatar image:', error));
+      .catch((error) =>
+        console.error(this.t.instant('accountProfileBanner.load-avatar-error')),
+      );
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

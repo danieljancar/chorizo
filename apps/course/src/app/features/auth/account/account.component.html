@@ -24,11 +24,11 @@
         >
           <div>
             <label class="label">
-              <span class="label-text">Name</span>
+              <span class="label-text">{{ 'account.name' | translate }}</span>
             </label>
             <input
               type="text"
-              placeholder="Please enter your name"
+              [placeholder]="'account.name-placeholder' | translate"
               [value]="user.name"
               class="input input-bordered w-full"
               formControlName="name"
@@ -41,11 +41,11 @@
           </div>
           <div>
             <label class="label">
-              <span class="label-text">Email</span>
+              <span class="label-text">{{ 'account.email' | translate }}</span>
             </label>
             <input
               type="email"
-              placeholder="Please enter your email"
+              [placeholder]="'account.email-placeholder' | translate"
               [value]="user.email"
               class="input input-bordered w-full"
               formControlName="email"
@@ -58,11 +58,11 @@
           </div>
           <div>
             <label class="label">
-              <span class="label-text">Bio</span>
+              <span class="label-text">{{ 'account.bio' | translate }}</span>
             </label>
             <textarea
               class="textarea textarea-bordered h-24 w-full"
-              placeholder="Please enter your bio"
+              [placeholder]="'account.bio-placeholder' | translate"
               formControlName="bio"
               >{{ user.bio }}</textarea
             >
@@ -81,13 +81,14 @@
             class="btn btn-primary mt-4 w-full"
             type="submit"
           >
-            Update
+            {{ 'account.update' | translate }}
           </button>
         </form>
       }
       @if (user.updatedAt) {
         <p class="text-center text-xs mt-2">
-          Last updated: {{ user.updatedAt.toDate() | relativeTime: 'relative' }}
+          {{ 'account.last-updated' | translate }}:
+          {{ user.updatedAt.toDate() | relativeTime: 'relative' }}
         </p>
       }
     }

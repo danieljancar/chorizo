@@ -1,10 +1,13 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 
 @Pipe({
   name: 'relativeTime',
   standalone: true,
 })
 export class RelativeTimePipe implements PipeTransform {
+  constructor(private t: TranslateService) {}
+
   transform(value: Date, args?: 'relative' | 'standard'): string {
     if (!value) return '';
 
@@ -35,7 +38,7 @@ export class RelativeTimePipe implements PipeTransform {
       'November',
       'December',
     ];
-    return `${day}. ${months[monthIndex]} ${year}`;
+    return `${day}. ${this.t.instant(months[monthIndex])} ${year}`;
   }
 
   private getRelativeTime(date: Date): string {
@@ -48,13 +51,19 @@ export class RelativeTimePipe implements PipeTransform {
     const days = Math.floor(hours / 24);
 
     if (seconds < 60) {
-      return 'Just now';
+      return this.t.instant('relativeTimePipe.just-now');
     } else if (minutes < 60) {
-      return minutes === 1 ? '1 minute ago' : `${minutes} minutes ago`;
+      return minutes === 1
+        ? this.t.instant('relativeTimePipe.minute-ago')
+        : this.t.instant('relativeTimePipe.minutes-ago', { minutes });
     } else if (hours < 24) {
-      return hours === 1 ? '1 hour ago' : `${hours} hours ago`;
+      return hours === 1
+        ? this.t.instant('relativeTimePipe.hour-ago')
+        : this.t.instant('relativeTimePipe.hours-ago', { hours });
     } else if (days < 7) {
-      return days === 1 ? '1 day ago' : `${days} days ago`;
+      return days === 1
+        ? this.t.instant('relativeTimePipe.day-ago')
+        : this.t.instant('relativeTimePipe.days-ago', { days });
     } else {
       return this.formatDate(date);
     }

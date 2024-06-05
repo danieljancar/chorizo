@@ -25,6 +25,7 @@ import { RelativeTimePipe } from '../../../pipes/relative-time.pipe';
 import { interval, Observable, Subscription } from 'rxjs';
 import { ToastType } from '../../../types/feedback/toast.types';
 import { UserService } from '../../../core/data/user.service';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-account',
@@ -39,6 +40,7 @@ import { UserService } from '../../../core/data/user.service';
     RouterLink,
     AccountProfileBannerComponent,
     RelativeTimePipe,
+    TranslateModule,
   ],
 })
 export class AccountComponent implements OnInit, OnDestroy {
@@ -54,6 +56,7 @@ export class AccountComponent implements OnInit, OnDestroy {
     private toastService: ToastService,
     private changeDetectorRef: ChangeDetectorRef,
     private userService: UserService,
+    private t: TranslateService,
   ) {
     this.setTitle();
     this.userProfileForm = this.initUserProfileForm();
@@ -81,14 +84,14 @@ export class AccountComponent implements OnInit, OnDestroy {
       .updateUserAvatar(file)
       .then(() => {
         this.toastService.showToast(
-          'Avatar updated successfully.',
+          this.t.instant('account.update-avatar-success'),
           ToastType.Success,
         );
         this.avatarIsUploading = false;
       })
       .catch(() => {
         this.toastService.showToast(
-          'Failed to update avatar, please try again.',
+          this.t.instant('account.update-avatar-error'),
           ToastType.Error,
         );
         this.avatarIsUploading = false;
@@ -103,14 +106,14 @@ export class AccountComponent implements OnInit, OnDestroy {
         .updateUser(updatedUserData)
         .then(() => {
           this.toastService.showToast(
-            'Your profile was updated successfully.',
+            this.t.instant('account.update-profile-success'),
             ToastType.Success,
           );
           this.loadUser();
         })
         .catch(() => {
           this.toastService.showToast(
-            'There was an error updating your profile.',
+            this.t.instant('account.update-profile-error'),
             ToastType.Error,
           );
         });
@@ -129,7 +132,7 @@ export class AccountComponent implements OnInit, OnDestroy {
       },
       error: () => {
         this.toastService.showToast(
-          'Error loading user data.',
+          this.t.instant('account.load-user-data-error'),
           ToastType.Error,
         );
         this.isLoading = false;
@@ -141,7 +144,7 @@ export class AccountComponent implements OnInit, OnDestroy {
   private setTitle(): void {
     const titleService = inject(Title);
     titleService.setTitle(
-      `Account - ${environment.metaConfig.title} - ${AppComponent.chorizo.title}`,
+      `${this.t.instant('account.account')} - ${environment.metaConfig.title} - ${AppComponent.chorizo.title}`,
     );
   }
 
@@ -177,14 +180,28 @@ export class AccountComponent implements OnInit, OnDestroy {
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private parseErrors(errors: any): string {
-    if (errors['required']) return 'This field is required';
-    if (errors['username']) return 'Invalid username format';
-    if (errors['email']) return 'Invalid email format';
-    if (errors['bio']) return 'Bio should be between 3 and 800 characters';
-    if (errors['minlength'])
-      return `Minimum length should be ${errors['minlength']['requiredLength']}`;
-    if (errors['maxlength'])
-      return `Maximum length should be ${errors['maxlength']['requiredLength']}`;
+    if (errors['required']) {
+      return this.t.instant('account.parse-errors.required');
+    }
+    if (errors['username']) {
+      return this.t.instant('account.parse-errors.invalid-username');
+    }
+    if (errors['email']) {
+      return this.t.instant('account.parse-errors.invalid-email');
+    }
+    if (errors['bio']) {
+      return this.t.instant('account.parse-errors.bio-length');
+    }
+    if (errors['minlength']) {
+      return this.t.instant('account.parse-errors.min-length', {
+        min: errors['minlength']['requiredLength'],
+      });
+    }
+    if (errors['maxlength']) {
+      return this.t.instant('account.parse-errors.max-length', {
+        max: errors['maxlength']['requiredLength'],
+      });
+    }
     return 'Unknown error';
   }
 }

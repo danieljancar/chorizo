@@ -1,39 +1,39 @@
 <div class="flex justify-center items-center my-auto h-full">
   <div class="card w-full max-w-lg">
     <div class="card-body">
-      <h2 class="card-title">Login</h2>
-      <p>Enter your credentials to access your account.</p>
+      <h2 class="card-title">{{ 'login.title' | translate }}</h2>
+      <p>{{ 'login.credentials-description' | translate }}</p>
       <form (ngSubmit)="submit()" [formGroup]="credentials">
         <label class="label">
-          <span class="label-text">Email</span>
+          <span class="label-text">{{ 'login.email-label' | translate }}</span>
         </label>
         <input
+          [placeholder]="'login.email-placeholder' | translate"
           class="input input-bordered w-full"
           formControlName="email"
-          placeholder="Email"
           type="email"
         />
-        @if (getErrorMessage('email')) {
+        @if (parseErrors('email')) {
           <div class="text-error text-xs p-1">
-            {{ getErrorMessage('email') }}
+            {{ parseErrors('email') }}
           </div>
         }
-
         <label class="label">
-          <span class="label-text">Password</span>
+          <span class="label-text">{{
+            'login.password-label' | translate
+          }}</span>
         </label>
         <input
+          [placeholder]="'login.password-placeholder' | translate"
           class="input input-bordered w-full"
           formControlName="password"
-          placeholder="Password"
           type="password"
         />
-        @if (getErrorMessage('password')) {
+        @if (parseErrors('password')) {
           <div class="text-error text-xs p-1">
-            {{ getErrorMessage('password') }}
+            {{ parseErrors('password') }}
           </div>
         }
-
         <button
           [disabled]="!credentials.valid || isLoggingIn"
           class="btn btn-primary mt-4 w-full"
@@ -42,13 +42,15 @@
           @if (isLoggingIn) {
             <span class="loading loading-spinner"></span>
           }
-          Login
+          {{ 'login.credentials-submit' | translate }}
         </button>
       </form>
       <div class="text-center mt-4">
         <p class="mb-5">
-          Don't have an account?
-          <a class="link link-primary" routerLink="/a/register">Register</a>
+          {{ 'login.no-account-message' | translate }}
+          <a class="link link-primary" routerLink="/a/register">{{
+            'login.register-link' | translate
+          }}</a>
         </p>
       </div>
     </div>

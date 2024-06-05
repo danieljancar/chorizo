@@ -15,13 +15,14 @@ import { AppComponent } from '../../../app.component';
 import { usernameTakenValidator } from '../../../validators/username-taken.validator';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { ToastType } from '../../../types/feedback/toast.types';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-register',
   standalone: true,
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
-  imports: [ReactiveFormsModule, RouterLink],
+  imports: [ReactiveFormsModule, RouterLink, TranslateModule],
 })
 export class RegisterComponent {
   public credentials: FormGroup;
@@ -34,6 +35,7 @@ export class RegisterComponent {
     private toastService: ToastService,
     private titleService: Title,
     private afs: AngularFirestore,
+    private t: TranslateService,
   ) {
     this.credentials = this.formBuilder.group(
       {
@@ -69,7 +71,7 @@ export class RegisterComponent {
     );
 
     this.titleService.setTitle(
-      `Register - ${environment.metaConfig.title} - ${AppComponent.chorizo.title}`,
+      `${this.t.instant('register.title')} - ${environment.metaConfig.title} - ${AppComponent.chorizo.title}`,
     );
   }
 
@@ -77,22 +79,26 @@ export class RegisterComponent {
     const control = this.credentials.get(controlName);
     if (control && control.touched && control.errors) {
       if (control.errors['required']) {
-        return 'This field is required';
+        return this.t.instant('register.parse-errors.required');
       }
       if (control.errors['email']) {
-        return 'Invalid email format';
+        return this.t.instant('register.parse-errors.invalid-email');
       }
       if (control.errors['usernameTaken']) {
-        return 'Username is already taken, please try another';
+        return this.t.instant('register.parse-errors.username-taken');
       }
       if (control.errors['minlength']) {
-        return `Minimum length should be ${control.errors['minlength']['requiredLength']}`;
+        return this.t.instant('register.parse-errors.min-length', {
+          min: control.errors['minlength']['requiredLength'],
+        });
       }
       if (control.errors['maxlength']) {
-        return `Maximum length should be ${control.errors['maxlength']['requiredLength']}`;
+        return this.t.instant('register.parse-errors.max-length', {
+          max: control.errors['maxlength']['requiredLength'],
+        });
       }
       if (control.errors['passwordMatcher']) {
-        return 'Passwords do not match';
+        return this.t.instant('register.parse-errors.password-mismatch');
       }
     }
     return null;
@@ -111,7 +117,7 @@ export class RegisterComponent {
         .register(email, password, username)
         .then(async () => {
           this.toastService.showToast(
-            'Registration successful.',
+            this.t.instant('register.register-success'),
             ToastType.Success,
           );
           this.isRegistering = false;
