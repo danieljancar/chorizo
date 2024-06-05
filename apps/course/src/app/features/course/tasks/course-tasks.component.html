@@ -15,8 +15,10 @@
             />
             <h1 class="ml-3 flex items-center">
               {{ task.title }}
-              <span
-                class="badge badge-sm ml-2">{{ 'course.tasks.workPhase.' + task.workPhase.toLowerCase() | translate }}</span>
+              <span class="badge badge-sm ml-2">{{
+                'course.tasks.workPhase.' + task.workPhase.toLowerCase()
+                  | translate
+              }}</span>
             </h1>
           </div>
           <div class="collapse-content">
@@ -43,10 +45,7 @@
                   {{ 'course.tasks.mark-as-done' | translate }}
                 </button>
                 @if (task.done?.status) {
-                  <div
-                    class="tooltip tooltip-left"
-                    data-tip="Reverse"
-                  >
+                  <div class="tooltip tooltip-left" data-tip="Reverse">
                     <button
                       class="btn btn-circle btn-outline ml-1"
                       (click)="reverseCompletedStatus(task.id)"
