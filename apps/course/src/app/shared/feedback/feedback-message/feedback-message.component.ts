@@ -22,10 +22,10 @@ export class FeedbackMessageComponent {
   @Input() public icon: string = 'warning';
   @Input({ transform: booleanAttribute }) public showIcon: boolean = true;
   @Input() public title: string = this.t.instant(
-    'feedback-message.default-title',
+    'feedbackMessage.default-title',
   );
   @Input() public message: string = this.t.instant(
-    'feedback-message.default-message',
+    'feedbackMessage.default-message',
   );
 
   constructor(private t: TranslateService) {}

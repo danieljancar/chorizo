@@ -24,7 +24,7 @@ export class AuthService {
 
   public async login(email: string, password: string) {
     await this.afa.signInWithEmailAndPassword(email, password);
-    const message = this.t.instant('auth.login-success');
+    const message = this.t.instant('authService.login-success');
     this.toastService.showToast(message, ToastType.Success);
   }
 
@@ -41,33 +41,33 @@ export class AuthService {
         createdAt: new Date(),
         updatedAt: new Date(),
       });
-      const message = this.t.instant('auth.register-success');
+      const message = this.t.instant('authService.register-success');
       this.toastService.showToast(message, ToastType.Info);
     }
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   public handleAuthError(error: any): string {
-    let message = this.t.instant('auth.unexpected-error');
+    let message = this.t.instant('authService.unexpected-error');
     switch (error.code) {
       case 'auth/email-already-in-use':
-        message = this.t.instant('auth.email-already-in-use');
+        message = this.t.instant('authService.email-already-in-use');
         break;
       case 'auth/weak-password':
-        message = this.t.instant('auth.weak-password');
+        message = this.t.instant('authService.weak-password');
         break;
       case 'auth/user-disabled':
-        message = this.t.instant('auth.user-disabled');
+        message = this.t.instant('authService.user-disabled');
         break;
       case 'auth/user-not-found':
       case 'auth/wrong-password':
-        message = this.t.instant('auth.incorrect-email-password');
+        message = this.t.instant('authService.incorrect-email-password');
         break;
       case 'auth/too-many-requests':
-        message = this.t.instant('auth.too-many-requests');
+        message = this.t.instant('authService.too-many-requests');
         break;
       case 'auth/invalid-credential':
-        message = this.t.instant('auth.invalid-credential');
+        message = this.t.instant('authService.invalid-credential');
         break;
     }
     return message;
