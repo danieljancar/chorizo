@@ -13,7 +13,8 @@
     "build:adminui:dev": "cd apps/admin-ui && yarn build",
     "build:course:dev": "cd apps/course && npm run build",
     "preview:prepare:dev": "firebase use chorizo-dev",
-    "preview:deploy:dev": "firebase deploy --only hosting"
+    "preview:deploy:dev": "firebase deploy --only hosting",
+    "deploy:rules": "firebase deploy --only firestore:rules"
   },
   "author": "Daniel Jancar",
   "license": "MIT",

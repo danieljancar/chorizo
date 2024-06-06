@@ -3,7 +3,11 @@
     {
       "target": "adminui",
       "public": "apps/admin-ui/dist",
-      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
       "rewrites": [
         {
           "source": "**",
@@ -29,7 +33,11 @@
     {
       "target": "course",
       "public": "apps/course/dist/course/browser",
-      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
       "rewrites": [
         {
           "source": "**",
@@ -52,5 +60,8 @@
         }
       ]
     }
-  ]
+  ],
+  "firestore": {
+    "rules": "config/firestore.rules"
+  }
 }

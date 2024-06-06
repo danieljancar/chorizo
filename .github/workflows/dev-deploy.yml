@@ -67,6 +67,6 @@ jobs:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
 
       - name: Deploy to Firebase - Development
-        run: npm run preview:deploy:dev
+        run: npm run preview:deploy:dev && npm run deploy:rules
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
