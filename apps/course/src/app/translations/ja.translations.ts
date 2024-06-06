@@ -1,0 +1,220 @@
+export const ja = {
+  navbar: {
+    home: 'ホーム',
+    courses: 'コース',
+    account: 'アカウント',
+    logout: 'ログアウト',
+    'logout-success': 'ログアウトしました。',
+    login: 'ログイン',
+    'language-change': '言語を変更',
+  },
+  footer: {
+    home: 'ホーム',
+    courses: 'コース',
+    account: 'アカウント',
+    legal: '法律情報',
+    copyright: '著作権 © {{ currentYear }} - すべての権利予約済み',
+    'made-with-love': '愛を込めて作成',
+    chorizo: 'Chorizo',
+  },
+  homepage: {
+    title: 'ホーム',
+    markdownRenderer: {
+      about: {
+        title: '概要',
+      },
+    },
+    latestCourses: {
+      title: '最新のコース',
+      'error-message': 'コースが利用できません',
+    },
+  },
+  courses: {
+    title: 'コース',
+    'no-courses-title': '何も見つかりません',
+    'no-courses-message':
+      'コースは利用できません、後でもう一度お試しください。',
+    'error-title': 'エラーが発生しました',
+    'error-message': 'コースの読み込みエラー',
+    filter: {
+      search: '検索',
+      sort: {
+        latest: '最新',
+        oldest: '最も古い',
+      },
+    },
+  },
+  feedbackMessage: {
+    'default-title': 'おっと!',
+    'default-message': '何かがうまくいきませんでした。',
+  },
+  accountProfileBanner: {
+    'change-avatar': 'アバターを変更',
+    'load-avatar-error': 'アバターの読み込みエラー',
+  },
+  account: {
+    account: 'アカウント',
+    name: '名前',
+    'name-placeholder': '名前を入力してください',
+    email: 'メール',
+    'email-placeholder': 'メールを入力してください',
+    bio: 'バイオ',
+    'bio-placeholder': 'バイオを入力してください',
+    update: '更新',
+    'last-updated': '最終更新',
+    'load-user-data-error': 'ユーザーデータの読み込みエラー',
+    'update-avatar-success': 'アバターが正常に更新されました',
+    'update-avatar-error': 'アバターの更新エラー',
+    'update-profile-success': 'プロフィールが正常に更新されました。',
+    'update-profile-error': 'プロフィールの更新中にエラーが発生しました。',
+    'parse-errors': {
+      required: 'このフィールドは必須です',
+      'invalid-username': '無効なユーザー名',
+      'invalid-email': '無効なメール',
+      'bio-length': 'バイオは3〜800文字である必要があります',
+      'min-length': '最小長は{{min}}文字です',
+      'max-length': '最大長は{{max}}文字です',
+    },
+  },
+  login: {
+    title: 'ログイン',
+    'credentials-description':
+      'アカウントにアクセスするには、資格情報を入力してください。',
+    'email-label': 'メール',
+    'email-placeholder': 'メール',
+    'password-label': 'パスワード',
+    'password-placeholder': 'パスワード',
+    'credentials-submit': 'ログイン',
+    'no-account-message': 'アカウントがありませんか？',
+    'register-link': '登録',
+    'parse-errors': {
+      required: 'このフィールドは必須です',
+      'invalid-email': '無効なメール形式、別のメールを試してください。',
+      'min-length': '最小長は{{min}}文字である必要があります',
+      'max-length': '最大長は{{max}}文字である必要があります',
+    },
+  },
+  register: {
+    title: '登録',
+    'credentials-description': 'アカウントを作成するには登録してください。',
+    'username-label': 'ユーザー名',
+    'username-placeholder': 'ユーザー名',
+    'email-label': 'メール',
+    'email-placeholder': 'メール',
+    'password-label': 'パスワード',
+    'password-placeholder': 'パスワード',
+    'confirm-password-label': 'パスワードを確認',
+    'confirm-password-placeholder': 'パスワードを確認',
+    'credentials-submit': '登録',
+    'existing-account-message': 'すでにアカウントをお持ちですか？',
+    'login-link': 'ログイン',
+    'register-success': '正常に登録されました。',
+    'parse-errors': {
+      required: 'このフィールドは必須です',
+      'invalid-email': '無効なメール形式',
+      'username-taken':
+        'ユーザー名は既に使用されています、別のユーザー名を試してください。',
+      'min-length': '最小長は{{min}}文字である必要があります',
+      'max-length': '最大長は{{max}}文字である必要があります',
+      'password-mismatch': 'パスワードが一致しません',
+    },
+  },
+  course: {
+    navbar: {
+      introduction: 'イントロダクション',
+      agenda: '議題',
+      tasks: 'タスク',
+      documentation: 'ドキュメント',
+      resources: 'リソース',
+    },
+    tasks: {
+      title: 'タスク',
+      'mark-as-done': '完了としてマーク',
+      'reverse-status': 'ステータスを元に戻す',
+      'mark-as-done-success': 'タスクが完了としてマークされました',
+      'reverse-status-success': 'ステータスが正常に戻されました',
+      'mark-as-done-error': 'タスクを完了としてマークする際のエラー',
+      'reverse-status-error': 'ステータスを元に戻す際のエラー',
+      workPhase: {
+        individual: '個人',
+        pair: 'ペア',
+        group: 'グループ',
+        plenum: '本会議',
+      },
+    },
+    documentation: {
+      title: 'ドキュメント',
+      navbar: {
+        close: '閉じる',
+      },
+      next: '次',
+      previous: '前',
+    },
+    resources: {
+      title: 'リソース',
+      'last-modified': '最終更新日',
+      name: '名前',
+    },
+  },
+  authService: {
+    'login-success': '正常にログインしました。',
+    'register-success': '正常に登録されました。',
+    'unexpected-error': '予期しないエラーが発生しました、再試行してください。',
+    'email-already-in-use':
+      'このメールは既に使用されています、別のメールを試してください。',
+    'weak-password':
+      'パスワードが弱すぎます、より強力なパスワードを試してください。',
+    'user-disabled':
+      'このユーザーは無効になっています。詳細についてはサポートにお問い合わせください。',
+    'incorrect-email-password':
+      'メールまたはパスワードが正しくありません、もう一度試してください。',
+    'too-many-requests': 'リクエストが多すぎます。後でもう一度試してください。',
+    'invalid-credential': '無効な資格情報です。再試行してください。',
+  },
+  courseStateService: {
+    'course-not-found': 'このIDのコースは見つかりませんでした。',
+  },
+  fileDownloadService: {
+    'error-download-file': 'ファイルのダウンロードエラー',
+  },
+  languageService: {
+    'language-change-success': '言語が正常に変更されました',
+    'language-change-error': '言語を変更する際のエラー',
+  },
+  authGuard: {
+    'must-be-verified-user':
+      'このページにアクセスするには、認証されたユーザーである必要があります。',
+    'must-be-logged-in':
+      'このページにアクセスするにはログインする必要があります。',
+  },
+  loginGuard: {
+    'not-verified': '未確認。',
+  },
+  relativeTimePipe: {
+    'just-now': 'たった今',
+    'minute-ago': '1分前',
+    'minutes-ago': '{{ minutes }}分前',
+    'hour-ago': '1時間前',
+    'hours-ago': '{{ hours }}時間前',
+    'day-ago': '1日前',
+    'days-ago': '{{ days }}日前',
+    'month-ago': '1ヶ月前',
+    'months-ago': '{{ months }}ヶ月前',
+    'year-ago': '1年前',
+    'years-ago': '{{ years }}年前',
+    months: {
+      January: '1月',
+      February: '2月',
+      March: '3月',
+      April: '4月',
+      May: '5月',
+      June: '6月',
+      July: '7月',
+      August: '8月',
+      September: '9月',
+      October: '10月',
+      November: '11月',
+      December: '12月',
+    },
+  },
+};
