@@ -1,6 +1,8 @@
 <div class="mx-1 sm:mx-3 md:mx-32 lg:mx-60 xl:mx-72 mt-1.5 md:mt-6">
   <div class="flex flex-row justify-between items-center h-full border-b-2">
-    <button class="btn btn-ghost text-2xl btn-lg">Account</button>
+    <button class="btn btn-ghost text-2xl btn-lg">
+      {{ 'account.account' | translate }}
+    </button>
     <button (click)="loadUser()" class="btn btn-ghost">
       <mat-icon>refresh</mat-icon>
     </button>

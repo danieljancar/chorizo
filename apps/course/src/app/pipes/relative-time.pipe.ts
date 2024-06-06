@@ -24,6 +24,11 @@ export class RelativeTimePipe implements PipeTransform {
     const day = date.getDate();
     const monthIndex = date.getMonth();
     const year = date.getFullYear();
+    const monthTranslationKey = `relativeTimePipe.months.${this.getMonthName(monthIndex)}`;
+    return `${day}. ${this.t.instant(monthTranslationKey)} ${year}`;
+  }
+
+  private getMonthName(monthIndex: number): string {
     const months = [
       'January',
       'February',
@@ -38,7 +43,7 @@ export class RelativeTimePipe implements PipeTransform {
       'November',
       'December',
     ];
-    return `${day}. ${this.t.instant(months[monthIndex])} ${year}`;
+    return months[monthIndex];
   }
 
   private getRelativeTime(date: Date): string {
@@ -49,6 +54,8 @@ export class RelativeTimePipe implements PipeTransform {
     const minutes = Math.floor(seconds / 60);
     const hours = Math.floor(minutes / 60);
     const days = Math.floor(hours / 24);
+    const months = Math.floor(days / 30);
+    const years = Math.floor(days / 365);
 
     if (seconds < 60) {
       return this.t.instant('relativeTimePipe.just-now');
@@ -60,12 +67,18 @@ export class RelativeTimePipe implements PipeTransform {
       return hours === 1
         ? this.t.instant('relativeTimePipe.hour-ago')
         : this.t.instant('relativeTimePipe.hours-ago', { hours });
-    } else if (days < 7) {
+    } else if (days < 30) {
       return days === 1
         ? this.t.instant('relativeTimePipe.day-ago')
         : this.t.instant('relativeTimePipe.days-ago', { days });
+    } else if (months < 12) {
+      return months === 1
+        ? this.t.instant('relativeTimePipe.month-ago')
+        : this.t.instant('relativeTimePipe.months-ago', { months });
     } else {
-      return this.formatDate(date);
+      return years === 1
+        ? this.t.instant('relativeTimePipe.year-ago')
+        : this.t.instant('relativeTimePipe.years-ago', { years });
     }
   }
 }
