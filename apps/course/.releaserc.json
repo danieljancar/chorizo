@@ -8,15 +8,5 @@
     "@semantic-release/git"
   ],
   "preset": "angular",
-  "npmPublish": false,
-  "publish": [
-    {
-      "path": "@semantic-release/exec",
-      "cmd": "semantic-release -r @chorizo/adminui"
-    },
-    {
-      "path": "@semantic-release/exec",
-      "cmd": "semantic-release -r @chorizo/course"
-    }
-  ]
+  "npmPublish": true
 }
