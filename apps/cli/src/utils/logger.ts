@@ -1,14 +1,7 @@
 import winston from 'winston';
 import path from 'path';
 import fs from 'fs';
-import { isProjectInstance } from './config';
-
-const logDirectory = process.cwd();
-const logPath = path.join(logDirectory, 'cli.log');
-
-if (!fs.existsSync(logDirectory)) {
-  fs.mkdirSync(logDirectory, { recursive: true });
-}
+import { getProjectInstanceDir, isProjectInstance } from './config';
 
 const baseLogger = winston.createLogger({
   level: 'info',
@@ -21,15 +14,8 @@ const baseLogger = winston.createLogger({
     winston.format.json(),
   ),
   defaultMeta: { service: 'chorizo-cli', path: process.cwd() },
-  transports: [new winston.transports.File({ filename: logPath })],
 });
 
-/**
- * A simple logger that logs to a file.
- * @returns void
- * @example
- * logger.info('Project initialized with config');
- */
 const logger = {
   /**
    * Logs an info message.
@@ -41,6 +27,12 @@ const logger = {
    */
   info: (message: string, ...meta: any[]) => {
     if (isProjectInstance()) {
+      const projectDir = getProjectInstanceDir();
+      const logPath = path.join(projectDir, 'cli.log');
+      if (!fs.existsSync(logPath)) {
+        fs.mkdirSync(projectDir, { recursive: true });
+      }
+      baseLogger.add(new winston.transports.File({ filename: logPath }));
       baseLogger.info(message, ...meta);
     }
   },
@@ -54,6 +46,12 @@ const logger = {
    */
   warn: (message: string, ...meta: any[]) => {
     if (isProjectInstance()) {
+      const projectDir = getProjectInstanceDir();
+      const logPath = path.join(projectDir, 'cli.log');
+      if (!fs.existsSync(logPath)) {
+        fs.mkdirSync(projectDir, { recursive: true });
+      }
+      baseLogger.add(new winston.transports.File({ filename: logPath }));
       baseLogger.warn(message, ...meta);
     }
   },
@@ -67,6 +65,12 @@ const logger = {
    */
   error: (message: string, ...meta: any[]) => {
     if (isProjectInstance()) {
+      const projectDir = getProjectInstanceDir();
+      const logPath = path.join(projectDir, 'cli.log');
+      if (!fs.existsSync(logPath)) {
+        fs.mkdirSync(projectDir, { recursive: true });
+      }
+      baseLogger.add(new winston.transports.File({ filename: logPath }));
       baseLogger.error(message, ...meta);
     }
   },
