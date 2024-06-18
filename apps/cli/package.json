@@ -31,7 +31,7 @@
     "@types/inquirer": "^9.0.7",
     "@types/node": "^20.12.12",
     "commander": "^12.1.0",
-    "firebase-tools": "^13.10.2",
+    "firebase-tools": "^13.11.2",
     "inquirer": "^8.2.6",
     "simple-git": "^3.24.0",
     "ts-node": "^10.9.2",
