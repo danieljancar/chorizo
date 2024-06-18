@@ -77,7 +77,7 @@ export class CoursesFilterComponent implements OnInit {
   }
 
   getSortText(): string {
-    let sort = SortText[this.currentSort];
+    const sort = SortText[this.currentSort];
     return this.t.instant('courses.filter.sort.' + sort.toLowerCase());
   }
 
