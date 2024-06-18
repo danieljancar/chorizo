@@ -1,6 +1,7 @@
 {
-  "name": "firecms-starter",
-  "private": true,
+  "name": "@chorizo/adminui",
+  "description": "AdminUI for Course managing Firebase data",
+  "private": false,
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",

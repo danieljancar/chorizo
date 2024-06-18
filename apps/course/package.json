@@ -1,7 +1,7 @@
 {
-  "name": "course",
+  "name": "@chorizo/course",
   "description": "Actual course interface for Chorizo's course platform",
-  "version": "0.1.0",
+  "version": "0.0.0",
   "main": "index.js",
   "scripts": {
     "ng": "ng",
@@ -12,7 +12,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
-  "private": true,
+  "private": false,
   "dependencies": {
     "@angular/animations": "^17.1.0",
     "@angular/cdk": "^17.1.1",
