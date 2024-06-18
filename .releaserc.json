@@ -1,5 +1,7 @@
 {
-  "branches": ["master"],
+  "branches": [
+    "master"
+  ],
   "plugins": [
     "@semantic-release/commit-analyzer",
     "@semantic-release/release-notes-generator",
@@ -12,11 +14,11 @@
   "publish": [
     {
       "path": "@semantic-release/exec",
-      "cmd": "semantic-release -r @chorizo/adminui"
+      "cmd": "(cd apps/adminui && npx semantic-release)"
     },
     {
       "path": "@semantic-release/exec",
-      "cmd": "semantic-release -r @chorizo/course"
+      "cmd": "(cd apps/course && npx semantic-release)"
     }
   ]
 }
