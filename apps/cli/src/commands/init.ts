@@ -195,6 +195,7 @@ function waitForUserConfirmation() {
 }
 
 async function retrieveFirebaseConfig(projectId: string): Promise<any> {
+  //
   console.log('🔍 Retrieving Firebase configuration...');
   const appListCmd = `firebase apps:list --project ${projectId} --json`;
 
