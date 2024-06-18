@@ -47,7 +47,7 @@ export class AccountProfileBannerComponent implements OnChanges {
       .then((url) => {
         this.avatarUrl = url;
       })
-      .catch((error) =>
+      .catch(() =>
         console.error(this.t.instant('accountProfileBanner.load-avatar-error')),
       );
   }
