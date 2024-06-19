@@ -2,6 +2,29 @@
   "name": "@chorizo/course",
   "description": "Actual course interface for Chorizo's course platform",
   "main": "index.js",
+  "private": false,
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danieljancar/chorizo.git"
+  },
+  "bugs": {
+    "url": "https://github.com/danieljancar/chorizo/issues"
+  },
+  "homepage": "https://github.com/danieljancar/chorizo#readme",
+  "keywords": [
+    "Angular",
+    "Firebase",
+    "Course",
+    "Chorizo",
+    "Platform",
+    "Learning"
+  ],
+  "author": "Daniel Jancar",
+  "license": "MIT",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -11,7 +34,6 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
-  "private": false,
   "dependencies": {
     "@angular/animations": "^17.1.0",
     "@angular/cdk": "^17.1.1",
@@ -54,23 +76,5 @@
     "semantic-release": "^24.0.0",
     "tailwindcss": "^3.4.1",
     "typescript": "~5.3.2"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/danieljancar/chorizo.git"
-  },
-  "bugs": {
-    "url": "https://github.com/danieljancar/chorizo/issues"
-  },
-  "homepage": "https://github.com/danieljancar/chorizo#readme",
-  "keywords": [
-    "Angular",
-    "Firebase",
-    "Course",
-    "Chorizo",
-    "Platform",
-    "Learning"
-  ],
-  "author": "Daniel Jancar",
-  "license": "MIT"
+  }
 }

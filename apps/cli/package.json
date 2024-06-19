@@ -1,9 +1,25 @@
 {
   "name": "@chorizo/cli",
   "description": "A CLI for setting up and maintaining Chorizo course instances",
-  "private": false,
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danieljancar/chorizo.git"
+  },
+  "bugs": {
+    "url": "https://github.com/danieljancar/chorizo/issues"
+  },
+  "homepage": "https://github.com/danieljancar/chorizo#readme",
+  "keywords": [
+    "chorizo",
+    "cli",
+    "course",
+    "setup"
+  ],
+  "author": "Daniel Jancar",
+  "license": "MIT",
   "scripts": {
     "build": "tsc",
     "prepublishOnly": "npm run build"
@@ -21,21 +37,5 @@
     "ts-node": "^10.9.2",
     "typescript": "^5.4.5",
     "winston": "^3.13.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/danieljancar/chorizo.git"
-  },
-  "bugs": {
-    "url": "https://github.com/danieljancar/chorizo/issues"
-  },
-  "homepage": "https://github.com/danieljancar/chorizo#readme",
-  "keywords": [
-    "chorizo",
-    "cli",
-    "course",
-    "setup"
-  ],
-  "author": "Daniel Jancar",
-  "license": "MIT"
+  }
 }

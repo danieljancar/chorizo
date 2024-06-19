@@ -15,29 +15,6 @@
     "preview:deploy:dev": "firebase deploy --only hosting",
     "deploy:rules": "firebase deploy --only firestore:rules"
   },
-  "author": "Daniel Jancar",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/danieljancar/chorizo.git"
-  },
-  "bugs": {
-    "email": "dan_jan1@icloud.com",
-    "url": "https://github.com/danieljancar/chorizo/issues"
-  },
-  "keywords": [
-    "course",
-    "management",
-    "platform",
-    "self-hosted",
-    "dynamic",
-    "tailored",
-    "streamlined",
-    "administration",
-    "technical-course",
-    "course-management"
-  ],
-  "homepage": "https://github.com/git+,danieljancar/chorizo#readme",
   "devDependencies": {
     "@commitlint/cli": "^18.6.1",
     "@commitlint/config-conventional": "^18.6.2",
@@ -58,5 +35,15 @@
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/commit-analyzer": "^13.0.0",
     "@semantic-release/release-notes-generator": "^14.0.0"
-  }
+  },
+  "private": true,
+  "maintainers": [
+    {
+      "name": "Daniel Jancar",
+      "email": "dan_jan1@icloud.com",
+      "web": "https://danieljancar.dev",
+      "github": "danieljancar"
+    }
+  ],
+  "license": "MIT"
 }
