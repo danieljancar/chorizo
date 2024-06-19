@@ -1,8 +1,3 @@
-@if (isLoading) {
-  <app-loading-bars />
-} @else {
-  <markdown
-    [src]="'assets/legal/content/' + legal?.file + '.md'"
-    class="markdown-content"
-  />
+@if (legal) {
+  <markdown [data]="legal.markdown" class="markdown-content"></markdown>
 }

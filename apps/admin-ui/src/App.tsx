@@ -8,11 +8,13 @@ import { firebaseConfig, metaConfig } from './config.ts';
 import { usersCollection } from './collections/users/users.tsx';
 import { coursesCollection } from './collections/courses/courses.tsx';
 import { generalMainCollection } from './collections/general/general-main.tsx';
+import { legalCollection } from './collections/legal/legal.tsx';
 
 const rootCollections = [
   usersCollection,
   coursesCollection,
   generalMainCollection,
+  legalCollection,
 ];
 
 export default function App() {

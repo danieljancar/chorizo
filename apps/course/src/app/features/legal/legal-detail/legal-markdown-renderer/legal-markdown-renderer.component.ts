@@ -9,7 +9,6 @@ import {
   CLIPBOARD_OPTIONS,
   ClipboardButtonComponent,
   MarkdownComponent,
-  MarkdownService,
   provideMarkdown,
 } from 'ngx-markdown';
 import { HttpClient } from '@angular/common/http';
@@ -39,14 +38,8 @@ import { LegalDocument } from '../../../../types/legal.type';
 })
 export class LegalMarkdownRendererComponent implements OnInit {
   @Input() public legal: LegalDocument | undefined;
-  public isLoading: boolean = true;
 
-  constructor(private markdownService: MarkdownService) {}
+  constructor() {}
 
-  ngOnInit() {
-    const mdPath: string = `assets/legal/content/${this.legal?.file}.md`;
-    this.markdownService.getSource(mdPath).subscribe(() => {
-      this.isLoading = false;
-    });
-  }
+  ngOnInit(): void {}
 }

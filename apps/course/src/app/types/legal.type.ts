@@ -1,11 +1,14 @@
 export type Legal = {
-  name: string;
+  title: string;
   description: string;
-  files: LegalDocument[];
+  documents: LegalDocument[];
 };
 
 export type LegalDocument = {
-  name: string;
+  id: string;
+  title: string;
   description: string;
-  file: string;
+  markdown?: string;
+  url?: string;
+  displayType: 'markdown' | 'url';
 };
