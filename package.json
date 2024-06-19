@@ -1,6 +1,6 @@
 {
   "name": "@chorizo/monorepo",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "description": "A self-hosted course management platform. Manage courses, create entry lists, and share downloadable resources seamlessly. Fully dynamic and tailored for streamlined administration.",
   "scripts": {
     "prepare": "husky install",
