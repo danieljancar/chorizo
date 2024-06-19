@@ -68,4 +68,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_RELEASE: ${{ secrets.GH_RELEASE }}
-        run: npx semantic-release --no-ci
+        run: npx semantic-release --branches master --extends @semantic-release/github
