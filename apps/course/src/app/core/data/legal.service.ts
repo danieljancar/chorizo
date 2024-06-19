@@ -1,26 +1,26 @@
-import { inject, Injectable } from '@angular/core';
-import { Legal, LegalDocument } from '../../types/legal.type';
-import * as legalData from '../../../assets/legal/legal.json';
-import { ToastService } from '../feedback/toast.service';
-import { ToastType } from '../../types/feedback/toast.types';
+import { Injectable } from '@angular/core';
+import { LegalDocument } from '../../types/legal.type';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LegalService {
-  public legals: LegalDocument[] = (legalData as Legal).files;
+  constructor(private firestore: AngularFirestore) {}
 
-  getLegalDocumentByFileId(file: string): LegalDocument | undefined {
-    return this.legals.find((legal) => {
-      if (legal) {
-        return legal.file === file;
-      } else {
-        inject(ToastService).showToast(
-          'Could not find the legal document, try again.',
-          ToastType.Error,
-        );
-      }
-      return undefined;
-    });
+  getLegalDocuments(): Observable<LegalDocument[]> {
+    return this.firestore
+      .collection<LegalDocument>('legal')
+      .valueChanges({ idField: 'id' });
+  }
+
+  getLegalDocumentById(id: string): Observable<LegalDocument | undefined> {
+    return this.firestore
+      .collection<LegalDocument>('legal')
+      .doc<LegalDocument>(id)
+      .valueChanges()
+      .pipe(map((document) => document ?? undefined));
   }
 }

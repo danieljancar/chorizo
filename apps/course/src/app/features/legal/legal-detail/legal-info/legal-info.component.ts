@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { LegalDocument } from '../../../../types/legal.type';
 
 @Component({
@@ -8,6 +8,10 @@ import { LegalDocument } from '../../../../types/legal.type';
   templateUrl: './legal-info.component.html',
   styleUrl: './legal-info.component.scss',
 })
-export class LegalInfoComponent {
-  @Input() legal: LegalDocument | undefined;
+export class LegalInfoComponent implements OnInit {
+  @Input() public legal: LegalDocument | undefined;
+
+  constructor() {}
+
+  ngOnInit(): void {}
 }

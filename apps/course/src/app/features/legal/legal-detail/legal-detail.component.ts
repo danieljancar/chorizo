@@ -2,13 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { LegalInfoComponent } from './legal-info/legal-info.component';
 import { LegalMarkdownRendererComponent } from './legal-markdown-renderer/legal-markdown-renderer.component';
 import { LegalDocument } from '../../../types/legal.type';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Observable, of } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 import { LegalService } from '../../../core/data/legal.service';
-import { Title } from '@angular/platform-browser';
-import { environment } from '../../../../environments/environment';
-import { AppComponent } from '../../../app.component';
-import { ToastService } from '../../../core/feedback/toast.service';
-import { ToastType } from '../../../types/feedback/toast.types';
+import { map, switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-legal-detail',
@@ -18,38 +15,31 @@ import { ToastType } from '../../../types/feedback/toast.types';
   styleUrl: './legal-detail.component.scss',
 })
 export class LegalDetailComponent implements OnInit {
-  public legal: LegalDocument | undefined;
+  legalDocument$: Observable<LegalDocument | undefined> = of(undefined);
+  safeLegalDocument: LegalDocument | undefined = undefined;
+  isLoading = true;
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router,
     private legalService: LegalService,
-    private title: Title,
-    private toastService: ToastService,
   ) {}
 
   ngOnInit(): void {
-    const legalId = this.route.snapshot.paramMap.get('legalId');
-    if (legalId) {
-      this.legal = this.legalService.getLegalDocumentByFileId(legalId);
-      if (this.legal) {
-        {
-          this.title.setTitle(
-            this.legal.name +
-              ' - ' +
-              environment.metaConfig.title +
-              ' - ' +
-              AppComponent.chorizo.title,
-          );
+    this.isLoading = false;
+    this.legalDocument$ = this.route.paramMap.pipe(
+      switchMap((params) => {
+        const legalId = params.get('legalId'); // Use the ID from the route parameter
+        if (legalId) {
+          return this.legalService
+            .getLegalDocumentById(legalId)
+            .pipe(map((document) => document ?? undefined));
+        } else {
+          return of(undefined);
         }
-      } else {
-        this.router.navigate(['/404']).then(() => {
-          this.toastService.showToast(
-            'The document could not be found.',
-            ToastType.Error,
-          );
-        });
-      }
-    }
+      }),
+    );
+    this.legalDocument$.subscribe((document) => {
+      this.safeLegalDocument = document;
+    });
   }
 }
