@@ -65,11 +65,7 @@ jobs:
           npm publish --access public
 
       - name: Create GitHub Release
-        id: create_release
-        uses: softprops/action-gh-release@v1
-        with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref_name }}
-          body: |
-            Release for admin-ui and course packages.
-          token: ${{ secrets.GITHUB_TOKEN }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_RELEASE: ${{ secrets.GH_RELEASE }}
+        run: npx semantic-release --no-ci
