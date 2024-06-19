@@ -9,9 +9,6 @@ jobs:
   release:
     name: Release
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        app: [course, admin-ui]
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -21,11 +18,21 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Authenticate to npm
+        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
+
       - name: Install dependencies
         run: npm install
 
-      - name: Install app dependencies
-        run: npm install --prefix apps/${{ matrix.app }}
+      - name: Install admin-ui dependencies with yarn
+        run: yarn --cwd apps/admin-ui install
+
+      - name: Install course dependencies with npm
+        run: npm install --prefix apps/course
+
+      - name: Lint commit messages
+        run: npx commitlint --from=HEAD~1 --to=HEAD
+        continue-on-error: true
 
       - name: Check Git Status
         run: git status
@@ -33,15 +40,35 @@ jobs:
       - name: Stage all changes
         run: git add -A
 
-      - name: Lint commit messages
-        run: |
-          npx commitlint --from=HEAD~1 --to=HEAD
-        continue-on-error: true
-
-      - name: Semantic Release
+      - name: Semantic Release Admin UI
         env:
-          GH_RELEASE: ${{ secrets.GH_RELEASE }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           DEBUG: semantic-release:*
-        run: npx semantic-release --no-verify --cwd apps/${{ matrix.app }}
+        run: npx semantic-release --no-verify --cwd apps/admin-ui
+
+      - name: Publish Admin UI to npm
+        run: |
+          cd apps/admin-ui
+          npm publish --access public
+
+      - name: Semantic Release Course
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          DEBUG: semantic-release:*
+        run: npx semantic-release --no-verify --cwd apps/course
+
+      - name: Publish Course to npm
+        run: |
+          cd apps/course
+          npm publish --access public
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref_name }}
+          body: |
+            Release for admin-ui and course packages.
