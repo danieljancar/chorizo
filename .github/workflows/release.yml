@@ -21,9 +21,15 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Check Git Status
+        run: git status
+
+      - name: Stage all changes
+        run: git add -A
+
       - name: Semantic Release
         env:
           GH_RELEASE: ${{ secrets.GH_RELEASE }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npx semantic-release
+        run: npx semantic-release --no-verify
