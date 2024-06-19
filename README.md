@@ -6,6 +6,10 @@
 
 <div align="center">
 
+![NPM Version](https://img.shields.io/npm/v/%40chorizo%2Fcli?style=flat&label=%40chorizo%2Fcli&link=https%3A%2F%2Fwww.npmjs.com%2Fpackage%2F%40chorizo%2Fcli)
+![NPM @chorizo/course Version](https://img.shields.io/npm/v/%40chorizo%2Fcourse?style=flat&label=%40chorizo%2Fcourse)
+![NPM Version](https://img.shields.io/npm/v/%40chorizo%2Fadminui?style=flat&label=%40chorizo%2Fadminui)
+
 [![Chorizo](https://img.shields.io/badge/Chorizo-ea8634?logo=github)](https://github.com/danieljancar/chorizo)
 [![Mockups - Figma](https://img.shields.io/badge/Mockups-Figma-e36631?logo=figma&logoColor=e36631)](https://www.figma.com/file/oarKaGgevt8SQNcB2w4Lbr/Mockups?type=design&mode=design&t=CBVvajzXHWh5z6Gf-1)
 [![issues - chorizo](https://img.shields.io/github/issues/danieljancar/chorizo)](https://github.com/danieljancar/chorizo/issues)
@@ -15,6 +19,7 @@
 [![Triage Labeler](https://github.com/danieljancar/chorizo/actions/workflows/triager.yml/badge.svg?event=issues)](https://github.com/danieljancar/chorizo/actions/workflows/triager.yml)
 [![Formatting](https://github.com/danieljancar/chorizo/actions/workflows/format.yml/badge.svg)](https://github.com/danieljancar/chorizo/actions/workflows/format.yml)
 
+[![Monorepo Release](https://github.com/danieljancar/chorizo/actions/workflows/release.yml/badge.svg)](https://github.com/danieljancar/chorizo/actions/workflows/release.yml)
 [![Deploy latest develop changes](https://github.com/danieljancar/chorizo/actions/workflows/dev-deploy.yml/badge.svg)](https://github.com/danieljancar/chorizo/actions/workflows/dev-deploy.yml)
 
 [![Angular](https://img.shields.io/badge/Angular-c3012f?logo=angular)](https://angular.dev)
