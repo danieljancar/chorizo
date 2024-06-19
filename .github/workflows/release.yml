@@ -9,6 +9,9 @@ jobs:
   release:
     name: Release
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        app: [course, admin-ui]
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -21,8 +24,8 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Install all dependencies
-        run: npm run install:all
+      - name: Install app dependencies
+        run: npm install --prefix apps/${{ matrix.app }}
 
       - name: Check Git Status
         run: git status
@@ -32,7 +35,7 @@ jobs:
 
       - name: Lint commit messages
         run: |
-          npx commitlint --from HEAD~1 --to HEAD
+          npx commitlint --from=HEAD~1 --to=HEAD
         continue-on-error: true
 
       - name: Semantic Release
@@ -41,5 +44,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           DEBUG: semantic-release:*
-          HUSKY_SKIP_HOOKS: 1
-        run: npx semantic-release --no-verify
+        run: npx semantic-release --no-verify --cwd apps/${{ matrix.app }}
