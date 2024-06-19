@@ -11,10 +11,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v2
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v2
         with:
           node-version: '20'
 
@@ -65,10 +65,11 @@ jobs:
           npm publish --access public
 
       - name: Create GitHub Release
+        id: create_release
         uses: softprops/action-gh-release@v1
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
           tag_name: ${{ github.ref }}
           release_name: Release ${{ github.ref_name }}
           body: |
             Release for admin-ui and course packages.
+          token: ${{ secrets.GITHUB_TOKEN }}
