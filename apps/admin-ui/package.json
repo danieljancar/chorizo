@@ -2,7 +2,7 @@
   "name": "@chorizo/adminui",
   "description": "AdminUI for Course managing Firebase data",
   "private": false,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -34,5 +34,22 @@
     "semantic-release-yarn": "^3.0.2",
     "typescript": "^5.0.2",
     "vite": "^5.2.8"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danieljancar/chorizo.git"
+  },
+  "bugs": {
+    "url": "https://github.com/danieljancar/chorizo/issues"
+  },
+  "homepage": "https://github.com/danieljancar/chorizo#readme",
+  "keywords": [
+    "AdminUI",
+    "Firebase",
+    "FireCMS",
+    "React",
+    "Chorizo"
+  ],
+  "author": "Daniel Jancar",
+  "license": "MIT"
 }
