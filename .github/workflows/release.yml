@@ -1,4 +1,4 @@
-name: Semantic Release
+name: Monorepo Release
 
 on:
   push:
@@ -6,15 +6,15 @@ on:
       - master
 
 jobs:
-  release:
-    name: Release
+  monorepo_release:
+    name: Monorepo Semantic Release
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
           node-version: '20'
 
@@ -24,48 +24,57 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Install admin-ui dependencies with yarn
-        run: yarn --cwd apps/admin-ui install
-
-      - name: Install course dependencies with npm
-        run: npm install --prefix apps/course
-
-      - name: Lint commit messages
-        run: npx commitlint --from=HEAD~1 --to=HEAD
-        continue-on-error: true
-
-      - name: Check Git Status
-        run: git status
-
-      - name: Stage all changes
-        run: git add -A
-
-      - name: Semantic Release Admin UI
+      - name: Run Semantic Release for Monorepo
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-          DEBUG: semantic-release:*
-        run: npx semantic-release --no-verify --cwd apps/admin-ui
+        run: npx semantic-release
+
+  publish_admin_ui:
+    name: Publish Admin UI
+    needs: monorepo_release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Authenticate to npm
+        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
+
+      - name: Install admin-ui dependencies
+        run: npm install --prefix apps/admin-ui
 
       - name: Publish Admin UI to npm
         run: |
           cd apps/admin-ui
+          npm version patch
           npm publish --access public
 
-      - name: Semantic Release Course
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-          DEBUG: semantic-release:*
-        run: npx semantic-release --no-verify --cwd apps/course
+  publish_course:
+    name: Publish Course
+    needs: monorepo_release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Authenticate to npm
+        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
+
+      - name: Install course dependencies
+        run: npm install --prefix apps/course
 
       - name: Publish Course to npm
         run: |
           cd apps/course
+          npm version patch
           npm publish --access public
-
-      - name: Create GitHub Release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GH_RELEASE: ${{ secrets.GH_RELEASE }}
-        run: npx semantic-release --branches master --extends @semantic-release/github
