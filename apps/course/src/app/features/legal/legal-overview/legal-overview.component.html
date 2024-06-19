@@ -1,3 +1,6 @@
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+      rel="stylesheet"/>
+
 <div class="mx-1 md:mx-3 lg:mx-32 xl:mx-60 min-h-1-2">
   @if (isLoading) {
     <app-loading-bars/>
@@ -8,7 +11,7 @@
       </div>
     </div>
     <div class="flex flex-col xl:flex-row flex-wrap justify-center">
-      @for (document of legalDocuments$ | async; track legalDocuments$) {
+      @for (document of (legalDocuments$ | async); track legalDocuments$) {
         @if (document.displayType === 'markdown') {
           <div
             role="link"
@@ -16,7 +19,9 @@
             class="w-full xl:w-5/12 mb-2 mt-2 card lg:card-side bg-base-100 shadow-xl transition hover:opacity-75 hover:scale-95 hover:cursor-pointer"
           >
             <div class="card-body text-pretty">
-              <h2 class="card-title">{{ document.title }}</h2>
+              <h2 class="card-title">
+                {{ document.title }}
+              </h2>
               <p>{{ document.description }}</p>
             </div>
           </div>
@@ -27,13 +32,16 @@
             class="w-full xl:w-5/12 mb-2 mt-2 card lg:card-side bg-base-100 shadow-xl transition hover:opacity-75 hover:scale-95 hover:cursor-pointer"
           >
             <div class="card-body text-pretty">
-              <h2 class="card-title">{{ document.title }}</h2>
+              <h2 class="card-title">
+                {{ document.title }}
+                <span class="material-symbols-outlined">link</span>
+              </h2>
               <p>{{ document.description }}</p>
             </div>
           </div>
-          @if ($index % 2 === 0) {
-            <div class="my-1.5 xl:m-8"></div>
-          }
+        }
+        @if ($index % 2 === 0) {
+          <div class="my-1.5 xl:m-8"></div>
         }
       }
     </div>
