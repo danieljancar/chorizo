@@ -18,15 +18,5 @@
       }
     ]
   ],
-  "npmPublish": false,
-  "publish": [
-    {
-      "path": "@semantic-release/exec",
-      "cmd": "(cd apps/admin-ui && npx semantic-release)"
-    },
-    {
-      "path": "@semantic-release/exec",
-      "cmd": "(cd apps/course && npx semantic-release)"
-    }
-  ]
+  "npmPublish": false
 }
