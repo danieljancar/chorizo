@@ -1,7 +1,7 @@
 {
   "name": "@chorizo/course",
   "description": "Actual course interface for Chorizo's course platform",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "main": "index.js",
   "scripts": {
     "ng": "ng",
