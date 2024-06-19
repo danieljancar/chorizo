@@ -1,6 +1,5 @@
 {
   "name": "@chorizo/cli",
-  "version": "1.0.0",
   "description": "A CLI for setting up and maintaining Chorizo course instances",
   "private": false,
   "main": "dist/index.js",
