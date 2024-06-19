@@ -37,7 +37,7 @@
     "@mui/lab": "^5.0.0-alpha.132",
     "@mui/material": "^5.13.3",
     "@mui/x-date-pickers": "^5.0.20",
-    "firebase": "^9",
+    "firebase": "^10.4.0",
     "firecms": "^2.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

@@ -26,8 +26,6 @@
         class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
         tabindex="0"
       >
-        <li routerLink="/"><a>Home</a></li>
-        <li routerLink="/c"><a>Courses</a></li>
         <li (click)="closeDropdown()" routerLink="/">
           <a>{{ 'navbar.home' | translate }}</a>
         </li>
@@ -46,8 +44,6 @@
       <li routerLink="/c">
         <a>{{ 'navbar.courses' | translate }}</a>
       </li>
-      <li routerLink="/"><a>Home</a></li>
-      <li routerLink="/c"><a>Courses</a></li>
     </ul>
   </div>
   <div class="navbar-end">
