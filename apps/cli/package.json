@@ -5,8 +5,7 @@
   "types": "dist/index.d.ts",
   "private": false,
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/danieljancar/chorizo.git"
+    "type": "git"
   },
   "bugs": {
     "url": "https://github.com/danieljancar/chorizo/issues"
