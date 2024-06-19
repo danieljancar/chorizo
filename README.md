@@ -62,11 +62,39 @@ Chorizo is designed to revolutionize course management with its cutting-edge fea
 
 # Usage
 
-Detailed instructions on how to use Chorizo for managing your courses will be provided here...
+Chorizo is a self-hosted course management platform that allows you to manage courses, create entry lists, and share
+downloadable resources seamlessly. To get started with Chorizo, follow these steps:
+
+- **@chorizo/cli**: The Chorizo CLI is a command-line interface that helps you set up and manage your Chorizo project(
+  s).
+- **@chorizo/course**: The Chorizo course package contains the Angular frontend for the course management platform.
+- **@chorizo/adminui**: The Chorizo adminui package contains the Angular frontend for the admin dashboard.
+
+- **Firebase**: Chorizo uses Firebase for the backend, including authentication, storage, and database services.
+- **TailwindCSS**: Chorizo uses TailwindCSS for styling, providing a highly customizable and responsive user interface.
+- **Angular**: Chorizo is built using Angular, a powerful and popular web application framework.
+- **Typescript**: Chorizo is written in Typescript, a statically typed superset of JavaScript that enhances code quality
+  and maintainability.
+
+> **Disclaimer**: Chorizo is licensed under the MIT License. By using Chorizo, you agree to the terms of the license.
 
 # Setup
 
-Detailed instructions on how to set up Chorizo on your own server will be provided here...
+To get started with Chorizo, follow these steps:
+
+1. Install the Chorizo CLI globally:
+
+```bash
+npm install -g @chorizo/cli
+```
+
+2. Create a new Chorizo project:
+
+```bash
+chorizo init
+```
+
+3. Follow the instructions to set up your project.
 
 # Contributing
 
