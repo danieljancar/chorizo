@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/danieljancar/chorizo/compare/v1.2.0...v1.3.0) (2024-06-19)
+
+### Features
+
+- change npm registry to github for apps ([760e64e](https://github.com/danieljancar/chorizo/commit/760e64ee4369114422c4a015b037646687a6576f))
+- reverse npm registry to npmjs ([1c49574](https://github.com/danieljancar/chorizo/commit/1c49574909e785f180017efd7ee68ac8c01f8c23))
+
 # [1.2.0](https://github.com/danieljancar/chorizo/compare/v1.1.0...v1.2.0) (2024-06-19)
 
 ### Features
