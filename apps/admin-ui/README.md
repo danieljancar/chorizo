@@ -1,29 +1,33 @@
-## FireCMS starter template
+# @chorizo/adminui
 
-Welcome to FireCMS!
+This is the course content management module for Chorizo. It provides the necessary functionality to manage courses,
 
-This is a starter template for your next project. It includes the basic
-configuration to get you started.
+---
 
-In order to run this project, you will need to create a Firebase project,
-create a web app and copy the configuration to the `firebase-config.ts`.
+# Table of Contents
 
-Then simply run:
+- [Features](#features)
+- [License](#license)
 
-### Running the project
+## Features
 
-```bash
-yarn dev
-```
+- **Course Overview**: Get an overview of all courses and their details.
+- **Manage Courses**: Create, update, and delete courses.
+- **Manage Users**: Create, update, and delete users.
+- **Manage Assignments**: Create, update, and delete assignments.
+- **Manage Lessons**: Create, update, and delete lessons.
+- **Manage Resources**: Create, update, and delete resources.
 
-### Building the project
+> **Note**: This FireCMS module is part of the Chorizo project. For more information, please refer to
+> the [monorepo](https://github.com/danieljancar/chorizo).
 
-Make sure you update your `package.json` `build` script with the correct
-project name. Then run:
+# License
 
-```bash
-yarn build
-```
+This project is licensed under the [MIT License](../../LICENSE). By contributing to Chorizo, you agree that your
+contributions
+will be released under the same license. Also, you agree to
+the [Contributor Covenant Code of Conduct](../../.github/CODE_OF_CONDUCT.md)
+and [Developer Certificate of Origin](../../.github/DCO.md).
 
-> Note: this may not work if you have set up your Firebase hosting with
-> a custom config.
+> **Warning**: Don't interact with this project directly. It is part of the Chorizo project and can be managed with the
+> help of the @chorizo/cli.
