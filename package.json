@@ -54,5 +54,10 @@
     "prettier": "3.2.4",
     "semantic-release": "^23.1.1",
     "yarn": "^1.22.21"
+  },
+  "dependencies": {
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/commit-analyzer": "^13.0.0",
+    "@semantic-release/release-notes-generator": "^14.0.0"
   }
 }
