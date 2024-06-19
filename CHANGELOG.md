@@ -1,3 +1,9 @@
+# [1.1.0](https://github.com/danieljancar/chorizo/compare/v1.0.0...v1.1.0) (2024-06-19)
+
+### Features
+
+- change npm registry to github for apps ([879c578](https://github.com/danieljancar/chorizo/commit/879c57810653348b22a25c3c154f85f7f2272135)), closes [#105](https://github.com/danieljancar/chorizo/issues/105)
+
 # 1.0.0 (2024-06-19)
 
 ### Bug Fixes
