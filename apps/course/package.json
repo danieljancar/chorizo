@@ -3,6 +3,7 @@
   "description": "Actual course interface for Chorizo's course platform",
   "main": "index.js",
   "private": false,
+  "version": "1.2.1",
   "publishConfig": {
     "access": "public"
   },
