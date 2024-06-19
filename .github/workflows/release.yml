@@ -46,7 +46,7 @@ jobs:
         run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
 
       - name: Install admin-ui dependencies
-        run: npm install --prefix apps/admin-ui
+        run: yarn --prefix apps/admin-ui
 
       - name: Publish Admin UI to npm
         run: |
