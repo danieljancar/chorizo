@@ -1,0 +1,7 @@
+@if (role === UserRole.ADMIN) {
+  <span class="badge badge-lg badge-error">{{ role }}</span>
+} @else if (role === UserRole.USER) {
+  <span class="badge badge-lg badge-primary">{{ role }}</span>
+} @else {
+  <span class="badge badge-lg badge-secondary">not verified</span>
+}

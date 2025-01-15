@@ -14,6 +14,7 @@
       <app-account-profile-banner
         [username]="user['username']"
         [avatarPath]="user['avatar']"
+        [role]="user['role']"
         (avatarChange)="handleAvatarChange($event)"
         [uploading]="avatarIsUploading"
       ></app-account-profile-banner>
