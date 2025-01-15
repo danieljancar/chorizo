@@ -5,7 +5,7 @@ export type User = {
   email: string;
   username: string;
   password?: string;
-  role: 'user' | 'admin' | undefined;
+  role: UserRole | undefined;
   name?: string;
   avatar?: string;
   bio?: string;
@@ -13,3 +13,8 @@ export type User = {
   createdAt: Timestamp;
   updatedAt?: Timestamp;
 };
+
+export enum UserRole {
+  ADMIN = 'admin',
+  USER = 'user',
+}

@@ -6,23 +6,29 @@ import {
   Output,
   SimpleChanges,
 } from '@angular/core';
-import { MatIcon } from '@angular/material/icon';
 import { ImageLoaderService } from '../../../../core/util/image-loader.service';
 import { NgOptimizedImage } from '@angular/common';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { UserRole } from '../../../../../../projects/types/src/lib/user.types';
+import { AccountProfileRoleBadgeComponent } from './account-profile-role-badge/account-profile-role-badge.component';
 
 @Component({
   selector: 'app-account-profile-banner',
   standalone: true,
-  imports: [MatIcon, NgOptimizedImage, TranslateModule],
+  imports: [
+    NgOptimizedImage,
+    TranslateModule,
+    AccountProfileRoleBadgeComponent,
+  ],
   templateUrl: './account-profile-banner.component.html',
-  styleUrl: './account-profile-banner.component.scss',
 })
 export class AccountProfileBannerComponent implements OnChanges {
   @Input() avatarPath: string | undefined;
   @Input() username: string = '';
-  @Output() avatarChange = new EventEmitter<File>();
   @Input() uploading: boolean = false;
+  @Input() role: UserRole | undefined;
+
+  @Output() avatarChange = new EventEmitter<File>();
 
   avatarUrl: string | undefined;
 

@@ -33,7 +33,8 @@
 
 # ⚠️ Notice ⚠️
 
-Still has to be worked on: 
+Still has to be worked on:
+
 - Data-Security (Firebase Rules)
 - CLI for instance setup
 - Tests

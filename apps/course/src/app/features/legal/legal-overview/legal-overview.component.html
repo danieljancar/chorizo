@@ -1,9 +1,11 @@
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
-      rel="stylesheet"/>
+<link
+  href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+  rel="stylesheet"
+/>
 
 <div class="mx-1 md:mx-3 lg:mx-32 xl:mx-60 min-h-1-2">
   @if (isLoading) {
-    <app-loading-bars/>
+    <app-loading-bars />
   } @else {
     <div class="navbar bg-base-100 border-b-2">
       <div class="items-center flex-1">
@@ -11,7 +13,7 @@
       </div>
     </div>
     <div class="flex flex-col xl:flex-row flex-wrap justify-center">
-      @for (document of (legalDocuments$ | async); track legalDocuments$) {
+      @for (document of legalDocuments$ | async; track legalDocuments$) {
         @if (document.displayType === 'markdown') {
           <div
             role="link"
